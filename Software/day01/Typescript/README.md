@@ -17,7 +17,6 @@ concept of frontend, backend, data storage... with a piece of devops.
 
 ✔️ Create an interactive application using your terminal.
 
-
 ## Introduction
 
 ### Requirements
@@ -57,7 +56,6 @@ which was very popular in the Software world, mostly for web development.
 At the beginning, it was created to make web page interactive, but now you can
 code almost everything in Javascript, even backend and standalone apps thanks to
 NodeJS 🚀
-
 
 > If you can read that page, it's thanks to Javascript that will transform
 > markdown into human-readable text 😉
@@ -105,7 +103,7 @@ to test and share pieces of code 😃
 Finally, it's important to use an IDE to help you.
 We recommend you [VSCode](https://code.visualstudio.com) or [WebStorm](https://www.jetbrains.com/webstorm/).
 
-> You can get a free Jetbrains license using your [school account](https://console.bocal.org/#/login).
+> You can get a free JetBrains license using your [school account](https://console.bocal.org/#/login).
 
 ## Step 0 - Setup
 
@@ -608,7 +606,7 @@ To do this, we must build a program that follows a strong architecture.
 We will use one of the most popular: [MVC](https://www.calhoun.io/using-mvc-to-structure-go-web-applications/).
 
 MVC stands for **Model - View - Controller**. It's an architecture where your
-code logic is split into smaller part to easily maintain and scale a project.
+code logic is split into smaller parts to easily maintain and scale a project.
 
 We will now adapt MVC to our need, don't worry if we do not strictly follow the architecture.
 
@@ -631,7 +629,7 @@ between them.
 
 - Create a directory `artistsBook` in `src` and create the file
 `router.ts` in it.
-- Create a function `router` that will perform the loop describe in the example.
+- Create a function `router` that will perform the loop described in the example.
 > You are big boy/girl now, you got the keys to do it by yourself 💪
 - Update `index.ts` to call `router`.
 
@@ -729,7 +727,7 @@ artistsBook/
     artists.json
 ```
 
-This exercise seem hard but if you write your code step by step, it will
+This exercise may seems hard but if you write your code step by step, it will
 be a piece of cake 🍰!
 
 ## Step 6 - Artists Book v2.0
@@ -886,7 +884,7 @@ function update(name: string, newName: string, callback: (found: boolean, err: N
 
 > ⚠️ Same as create, take care when you rewrite the JSON file.
 
-#### Views
+#### View
 
 Add the function `askNewName` in your `view`.
 
@@ -987,6 +985,8 @@ What do you want to do?
 See you!
 ```
 
+#TODO: add DELETE
+
 ## Step 7 - Artists Book v3.0
 
 You have implemented a complete MVC architecture, that's excellent 🚀
@@ -999,9 +999,9 @@ Let's add some fields by updating the `Artist` type:
 - `fans`: `number` of fans
 - `listenedTime`: the amount of time you listened to this artist. It must be stored as a [`Date`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
 
-> 💡 It's common to put a unique identifier when you store data, this way, you can easily distinguish them.
+>💡 It's common to put a unique identifier when you store data, this way, you can easily distinguish them.
 
-You'll have to update all your codebase to supports those new fields.
+You'll have to update all your codebase to support those new fields.
 
 > Don't worry, it's not that hard because you have build a strong architecture!  
 > And if you struggle, remember that the staff is here to help you out 😃
