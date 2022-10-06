@@ -346,7 +346,7 @@ Now that the foundations are laid for your project, it's time to start the front
 
 ***
 
-### Your first component :rocket:
+### Your first component 🚀
 
 The first step is to create the Home page.
 
@@ -467,13 +467,13 @@ Now that you have solid foundations, it's time to go further!
 
 You have a Home page, a Register page and a Login page. What's missing? A Dashboard page!
 
-Let's now play with artists :rocket:
+Let's now play with artists 🚀
 
 To see what is an `Artist`, check the [API doc](../resources/README.md).
 
 Create a Dashboard page listing some artists, with the following url: `/dashboard`.
 
-:warning: ***For now, any data is stored inside a React useState. There is no real database. No interaction with the API.*** :warning:
+⚠️ ***For now, any data is stored inside a React useState. There is no real database. No interaction with the API.*** ⚠️
 
 **Requirements :**
 - Update the Register `button` to redirect to the Dashboard page when clicked.
@@ -579,7 +579,7 @@ Let's call the API when a user register.
 
 ***
 
-## Step 8 - Time to play with real data :rocket:
+## Step 8 - Time to play with real data 🚀
 
 Now that you know how to call an API from a User Interface, it's time to have a complete interaction with it.
 
@@ -647,4 +647,4 @@ Well it's possible, it's called [React Context](https://en.reactjs.org/docs/cont
 
 Try to use it.
 
-> Made with :heart: by PoC
+> Made with ❤️ by PoC

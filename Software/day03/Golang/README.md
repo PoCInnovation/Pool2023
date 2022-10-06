@@ -2,13 +2,13 @@
 
 **Day purposes**
 
-:heavy_check_mark: Discover HTTP server with Gin.
+✔️ Discover HTTP server with Gin.
 
-:heavy_check_mark: Learn basics and good practises of web development.
+✔️ Learn basics and good practises of web development.
 
-:heavy_check_mark: Secure your endpoints with validators.
+✔️ Secure your endpoints with validators.
 
-:heavy_check_mark: Explore request's resources, their location and usage.
+✔️ Explore request's resources, their location and usage.
 
 ## Introduction
 
@@ -442,4 +442,4 @@ What about mixing it?
 
 Expose yesterday's database with today's API.
 
-> Made with :heart: by PoC
+> Made with ❤️ by PoC

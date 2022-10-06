@@ -109,4 +109,4 @@ Then, follow these guidelines:
   - `chore:` general things that should be excluded (e.g., `chore: Clean up X`);
   - `ci:` for internal CI specific changes (e.g., `ci: Enable X for tests`);
 
-> Made with :heart: by PoC
+> Made with ❤️ by PoC

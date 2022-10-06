@@ -151,11 +151,11 @@ Each milestones must use the [milestone template](./milestone_template.md).
 
 There are three parts :
 - Overall
-  > **:warning: It's checklist must be completed before starting this sprint :warning:**
+  > **⚠️ It's checklist must be completed before starting this sprint ⚠️**
 - Monitoring
-  > **:warning: You must write a report each week :warning:**
+  > **⚠️ You must write a report each week ⚠️**
 - Final Report
-  > **:warning: It's checklist must be completed before starting a new sprint :warning:**
+  > **⚠️ It's checklist must be completed before starting a new sprint ⚠️**
 
 Additional informations are written in the milestones's checklists. Read them carefully !
 
@@ -203,4 +203,4 @@ Follow this [tutorial](https://docs.github.com/en/code-security/dependabot/depen
 
 If you have any questions, please contact [Adrien Fort](https://github.com/adrienfort).
 
-> Made with :heart: by PoC
+> Made with ❤️ by PoC
