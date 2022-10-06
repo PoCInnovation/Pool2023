@@ -373,4 +373,4 @@ Storing a JWT inside a store is a bad idea. Here is [how to solve this problem](
 
 Your turn!
 
-> Made with :heart: by PoC
+> Made with ❤️ by PoC
