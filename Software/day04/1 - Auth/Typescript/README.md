@@ -2,11 +2,11 @@
 
 **Day purposes**
 
-:heavy_check_mark: Authenticate users.
+✔️ Authenticate users.
 
-:heavy_check_mark: Master several authentication method.
+✔️ Master several authentication method.
 
-:heavy_check_mark: Discover OAuth.
+✔️ Discover OAuth.
 
 ## Introduction
 
@@ -25,7 +25,7 @@ usages.
 
 For this subject, we will return to our express servers. You can use the 
 API you coded yesterday or go initialize a new empty server. It's up to you,
-you now know how do it :rocket:
+you now know how do it 🚀
 > In both cases, code inside the `day04/Auth` folder.
 
 - At the repository's root, create a `day04` and a `Auth` folders.
@@ -78,7 +78,7 @@ interface User {
 }
 ```
 
-:bulb: To win time, the database will be a simple array stored in RAM.
+💡 To win time, the database will be a simple array stored in RAM.
 
 If it's not already done, create a folder `endpoints` in `src`. This is
 where you will put all your endpoints related to cookies.
@@ -388,4 +388,4 @@ to safely store session.
 - [Store sensitive data in Vault](https://codersociety.com/blog/articles/hashicorp-vault-node)
 - [Other authentication workflow](https://apiacademy.co/2021/04/the-most-common-api-authentication-methods/)
 
-> Made with :heart: by PoC
+> Made with ❤️ by PoC

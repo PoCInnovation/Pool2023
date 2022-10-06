@@ -1,6 +1,6 @@
 # Artist-Book
 
-A simple Node REST API to manage artists and musics :rocket:
+A simple Node REST API to manage artists and musics 🚀
 
 ## Getting started
 

@@ -1047,4 +1047,4 @@ Try to do it in that way by merging your `repository` and your `model` into a [C
 - [Contribute to Typescript](https://github.com/microsoft/TypeScript)
 - [Type a Javascript module](https://github.com/DefinitelyTyped/DefinitelyTyped)
 
-> Made with :heart: by PoC
+> Made with ❤️ by PoC

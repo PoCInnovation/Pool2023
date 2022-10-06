@@ -21,7 +21,7 @@ usages.
 
 ## Step 0 - Setup
 
-Today, we'll get back to our Gin servers! You can either start using the code you've written yesterday or start a brand-new project. It's up to you, you now know how do it :rocket:
+Today, we'll get back to our Gin servers! You can either start using the code you've written yesterday or start a brand-new project. It's up to you, you now know how do it 🚀
 > In both cases, code inside the `day04/Auth` folder.
 
 - At the repository's root, create a `day04` and a `Auth` folders.
@@ -78,7 +78,7 @@ var Users = []User{}
         - Set the status as 403
         - Send back `Forbidden`
 
-> :warning: Do forget to use `StatusCode` from the `http` package
+> ⚠️ Do forget to use `StatusCode` from the `http` package
 
 ## Step 2 - JWT, ou JSON Web Token
 
@@ -195,7 +195,7 @@ var UsersOAuth := UserOAuth[]{}
 
 - Once you have retrieved the id of the connected user, save it in the db and return a JWT like in exercise 2 containing this id
 
-:warning: If the user's id already exists in db, you must return its information rather than create a new user with the same id each time!
+⚠️ If the user's id already exists in db, you must return its information rather than create a new user with the same id each time!
 
 - Create a route **GET** `/me-oauth`
   - If the header stors a token
@@ -225,4 +225,4 @@ Implemente the authentification with other sites, such as [GitHub](https://sharm
 
 You can use a real database to stock your users
 
-> Made with :heart: by PoC
+> Made with ❤️ by PoC

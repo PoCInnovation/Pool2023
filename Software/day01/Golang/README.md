@@ -679,7 +679,7 @@ See you!
 
 Update your codebase to allow user to **remove** an artist from his list.
 
-It's up to you to find the best way to do it :rocket:
+It's up to you to find the best way to do it 🚀
 
 ## Step 7 - Artists Book v3.0
 
@@ -821,4 +821,4 @@ You can maybe start by adding the **CRUD** for your new `Music` resource.
 - [Go routines](https://medium.com/technofunnel/understanding-golang-and-goroutines-72ac3c9a014d)
 - [Courses](https://www.calhoun.io)
 
-> Made with :heart: by PoC
+> Made with ❤️ by PoC
