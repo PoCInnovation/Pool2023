@@ -2,13 +2,13 @@
 
 **Day purposes**
 
-:heavy_check_mark: Understand devOps interests.
+✔️ Understand devOps interests.
 
-:heavy_check_mark: Learn basics of Docker.
+✔️ Learn basics of Docker.
 
-:heavy_check_mark: Create simple image.
+✔️ Create simple image.
 
-:heavy_check_mark: Deploy a complete stack with docker-compose.
+✔️ Deploy a complete stack with docker-compose.
 
 ## Introduction
 
@@ -44,7 +44,7 @@ engine with his CLI and [docker-compose](https://docs.docker.com/compose/install
 
 ### Installation
 
-> :warning: The following steps are made for fedora (your default dump). <br>
+> ⚠️ The following steps are made for fedora (your default dump). <br>
 > If you use another OS, please, follow this [documentation](https://docs.docker.com/engine/install/)
 
 #### Clean up
@@ -180,7 +180,7 @@ image of your language.
 - Build the API
 - Set the entrypoint to start the server when running image.
 
-> :warning: Be careful to the listening API host.
+> ⚠️ Be careful to the listening API host.
 
 > Take a look at those [good practises](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/).
 
@@ -271,7 +271,7 @@ config database, backend and frontend in the docker-compose.
 Indeed, don't forget to exposed ports and link your services.
 
 > This step is voluntarily complex to make you search and understand
-> by yourself, this is what real devOps engineer do :rocket:
+> by yourself, this is what real devOps engineer do 🚀
 
 ## Additional resources
 
@@ -283,4 +283,4 @@ Indeed, don't forget to exposed ports and link your services.
 - [A GUI to manage your container: LazyDocker](https://github.com/jesseduffield/lazydocker)
 - [Infra as code with Terraform](https://registry.terraform.io)
 
-> Made with :heart: by PoC
+> Made with ❤️ by PoC

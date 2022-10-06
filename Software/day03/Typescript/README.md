@@ -2,13 +2,13 @@
 
 **Day purposes**
 
-:heavy_check_mark: Discover HTTP server with express.
+✔️ Discover HTTP server with express.
 
-:heavy_check_mark: Learn basics and good practises of web development.
+✔️ Learn basics and good practises of web development.
 
-:heavy_check_mark: Secure your endpoints with validators.
+✔️ Secure your endpoints with validators.
 
-:heavy_check_mark: Explore request's resources, their location and usage.
+✔️ Explore request's resources, their location and usage.
 
 ## Introduction
 
@@ -249,7 +249,7 @@ npm i env-var
 You will also need to install [direnv](https://direnv.net)
 to load environment variable from your terminal using `direnv allow`.
 
-> :warning: Do not forget to update your shell with the [direnv hook](https://direnv.net/docs/hook.html).
+> ⚠️ Do not forget to update your shell with the [direnv hook](https://direnv.net/docs/hook.html).
 
 ### Practice
 
@@ -732,4 +732,4 @@ handles errors and works well.
 - [NodeJS server frameworks](https://nodesource.com/blog/Express-Koa-Hapi)
 - [Centralized your error handling](https://dev.to/nedsoft/central-error-handling-in-express-3aej)
 
-> Made with :heart: by PoC
+> Made with ❤️ by PoC
