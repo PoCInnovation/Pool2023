@@ -643,7 +643,7 @@ func TestCreateArtist(t *testing.T) {
 	for _, a:= range artists {
 		_, err:= c.CreateArtist(ctx, a.Name, a.Nationality)
 		if err!= nil {
-			t. Errorf("artist create failed: %v", err)
+			t.Errorf("artist create failed: %v", err)
 		}
 	}
 }
@@ -727,6 +727,10 @@ In the relational database, there are 3 types of relationships:
   Example: a `RecordCompany` can produce multiple artists
 - Many to Many: Several entities linked to several other entities of another table</br>
   Example: An `Artist` can write several musics and a music can be created by several artists in collaboration.
+
+Here's a schema to illustrate these relationships:
+
+![relational type](../../../../.github/assets/software_bdd_relational_type.png)
 
 To create these relationships with ENT, you will need to declare [edges](https://entgo.io/docs/schema-edges) that will serve as a link between your models.
 
@@ -832,7 +836,7 @@ At the end of this exercise, the database will look like this:
 - `Phone`
 - `Email`
 
-RecordCompany:
+`RecordCompany`:
 - `Name`
 - `Artists`
 
@@ -860,9 +864,9 @@ You begin to understand the principle, create 2 new files:
 
 ### C for Create
 
-Create the `CreateRecordCompany` methods that take the following parameters:
-- Context: A context for ENT
-- artistID: the unique number (uuid) of the artist to whom this label is attached
+Add the `CreateRecordCompany` method that take the following parameters:
+- `context`: A context for ENT
+- `artistID`: the unique number (uuid) of the artist to whom this label is attached
 - `phone`: The phone number of the label.
 - `email`: The email of the label.
 
@@ -870,42 +874,42 @@ This method must create a label and binds it to the Artist whose ID is passed as
 
 ### R for Read
 
-Create the `GetRecordCompanies` and `GetRecordCompanyByID` methods that also reference all artists associated with these labels.
+Create the `GetRecordCompanies` and `GetRecordCompanyByID` methods that also reference all the artists associated with these labels.
 
-> Resource: Reminder [Eager Loading with ENT](https://entgo.io/docs/eager-load)
+> Don't forget to take a look at [Eager Loading with ENT](https://entgo.io/docs/eager-load) 😉
 
 ### U for Update
 
 Create the `UpdateRecordCompany` method on the `Controller` type that takes the following parameters:
-- Context: A context for ENT
+- `context`: A context for ENT
 - `id`: the label identifier to be modified
 - `name`: The label name (can be empty/invalid).
 
 Create the `UpdateRecordCompany` method on the `Database` type that takes the following parameters:
-- Context: A context for ENT
+- `context`: A context for ENT
 - `label`: a pointer to the already modified label whose changes must be saved in database.
 
-If the label does not exist, you must return an error.
+> If the label does not exist, you must return an error ❌
 
 ### D for Delete
 
-Create the `UpdateRecordCompany` methods that take the following parameters:
-- Context: A context for ENT
+Create the `UpdateRecordCompany` methods that takes the following parameters:
+- `context`: A context for ENT
 - `id`: the label identifier to be deleted
 
-If the label does not exist, you must return an error.
+> If the label does not exist, you must return an error
 
 
 ### Make connections
 
-Create an AddArtistToRecordCompany method.
+Create an `AddArtistToRecordCompany` method.
 
 It must take as parameters:
 - `artistID`: Artist identifier
 - `recordCompanyID`: Record company identifier
 
 Your function will connect these entities by following their ID.
-Indeed, if one of them does not exist, return an error.
+> If one of them doesn't exist, return an error ❌
 
 Create a `RemoveArtistFromRecordCompany` method.
 
@@ -914,18 +918,18 @@ It must take as parameters:
 - `recordCompanyID`: Record company identifier
 
 Your function will disconnect these entities according to their identifier.
-Indeed, if one of them does not exist, return an error.
+> If one of them does not exist, return an error.
 
-> NB: Perhaps you have heard about the various arguments? Wouldn`t it be practical to give a list of artists to add
-> Ent provided you with many functions ... :wink:, :wink:, :wink:, :wink:, :wink:, :wink:, :wink:, :wink:, :wink:
+> Perhaps you have heard about various arguments? Wouldn't it be practical to give a list of artists to add instead of one by one?
+> Ent give you access to many functions... 😉
 
 ## Step 8 - Active Artists
 
-Finally, we are near the end! There is only one entity left: music.
+Finally, we are near the end! There is only one entity left: `Music` 😄
 
 And only one relationship type remains: the [ManyToMany](https://entgo.io/docs/schema-edges/#m2m-two-types).
 
-This step is intentionally less guided, if you have reached it, you should have understood everything about the relational database, crud and how you should code it.
+This step is intentionally less guided, if you have reached it, you should have understood everything about relational databases, CRUD and how you should code it.
 
 The final database will look like this:
 
@@ -956,7 +960,7 @@ Create the `Music` template with ENT.
 It will consist of the following properties:
 - `id`: unique identifier
 - `name`: name of music
-- `link`: public link to the music (it could be whatever you want like _YouTube_, _Spotify_...)
+- `link`: public link to the music (it could be whatever you want, like *YouTube*, *Spotify*...)
 - `artists`: Artists who collaborated for this music
 
 You will need to create a ManyToMany relationship between Artist and Music.
@@ -1004,7 +1008,7 @@ do whatever you find useful.
 
 Have fun!
 
-### Testing, again and again
+### Testing, again and again 🧪
 
 You've noticed that your architecture has become more complex.
 If this continues, you risk, when modifying a feature, to break other essential functionalities.
