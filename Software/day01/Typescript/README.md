@@ -417,11 +417,11 @@ where `${name}` is the result of `askName`.
 
 To test your function, update `src/index.ts` to call `helloName`.
 
-You should get the following result :
+You should get the following result:
 
 ```text
 ✔ What is your name? … Slim Shady
-Hello Slim Shady
+Hello Slim Shady!
 ```
 
 > To see the effect of the asynchronicity, remove some `await` in your program and try again.
