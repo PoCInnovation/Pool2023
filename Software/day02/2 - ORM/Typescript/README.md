@@ -94,7 +94,7 @@ You should see a new folder `prisma` in your current directory, which means that
 
 To begin, we will create only one table.
 
-In the file `prisma/schema.prisma`, create model `Artist` with the
+In the file `prisma/schema.prisma`, create a model `Artist` with the
 following properties:
 - `id`: the unique key of your model, it must be a string [automatically generated as uuid](https://www.prisma.io/docs/concepts/components/prisma-schema/data-model#defining-a-default-value).
 - `name`: Artist's name
@@ -110,7 +110,7 @@ query directly from Typescript 🚀
 
 ## Step 2 - Things get serious
 
-You defined your database but there is no running database at this time.
+You defined your model but there is no running database at this time.
 We are now using an ORM so everything will be manage by it, we just need to
 give it a connection URL.<br>
 The purpose of this step is to create a database, migrate our schema in and setup a client.
