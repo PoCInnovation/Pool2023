@@ -668,7 +668,7 @@ Create a new file `tests/artist_db_test.go`.
 Declare a global variable for your tests that will contain the connection and an init function to instantiate it only once when you run the tests.
 
 ```go
-test package
+package tests
 
 var db *database.Database
 

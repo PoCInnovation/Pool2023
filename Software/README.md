@@ -1,4 +1,4 @@
-# :wave: Welcome to the PoC Software Pool 2022!
+# 👋 Welcome to the PoC Software Pool 2023!
 
 During one week, you will be able to discover the different facets of software development: from database management to devops, through a tour of existing technologies.
 
@@ -10,11 +10,11 @@ The training takes place in 5 days, each day will focus on a software theme and 
 
 External speakers will also come to bring their experience in the field and explain the main axes of software development in a company. They will also give you important tips.
 
-## :open_book: Day 1 - Langage Initiation
+## :open_book: Day 1 - Language Initiation
 
-You will choose a langage: Typescript or Golang and learn the basics of it by creating an interactive application in your terminal.
+You will choose a language: Typescript or Golang and learn the basics of it by creating an interactive application in your terminal.
 
-This choice will organise your week. You will learn something new in the choosen langage each of the following days.
+This choice will organize your week. You will learn something new in the chosen language each of the following days.
 
 - [Typescript](./day01/Typescript/)
 - [Golang](./day01/Golang/)
@@ -27,7 +27,7 @@ winning combination - [Christophe VILLENEUVE](https://www.linkedin.com/in/christ
 
 ## :information_source: Day 2 - Database
 
-You will discover the relational databases through the managment of a PostgreSQL database in two ways: by hand with SQL queries and with an Object Relational Database (ORM).
+You will discover the relational databases through the management of a PostgreSQL database in two ways: by hand with SQL queries and with an Object Relational Database (ORM).
 
 - [SQL](./day02/1%20-%20SQL/)
 
@@ -40,7 +40,7 @@ You will discover the relational databases through the managment of a PostgreSQL
 NewSQL - [Christophe VILLENEUVE](https://www.linkedin.com/in/christophe-villeneuve-3a68743/?originalSubdomain=fr)
 
 
-## :computer: Day 3 - API REST
+## 💻: Day 3 - API REST
 
 You will discover core concepts of the web and the basics of HTTP servers by building a REST API.
 
@@ -50,7 +50,7 @@ You will discover core concepts of the web and the basics of HTTP servers by bui
 **Talks:**
 - What makes a developer great ? - [Sam ALBA](https://www.linkedin.com/in/samalba/)
 
-## :policeman: Day 4 - Authentification & Docker
+## :policeman: Day 4 - Authentication & Docker
 
 The first part will be dedicated to the implementation of authentication. You will see the Json Web Token, passports and the use of sessions.
 
