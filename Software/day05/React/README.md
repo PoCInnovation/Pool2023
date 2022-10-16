@@ -461,7 +461,7 @@ To do that, you will use [Cypress](https://www.cypress.io).
 - You must create the file `cypress/integration/login.spec.ts`
 
 **Tips:**
-- You will need to easily find components of you UI. Give them [`id`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id?retiredLocale=id).
+- You will need to easily find components of you UI, give them an [`id`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id?retiredLocale=id) 😄
 
 ## Step 5 - Your first dashboard
 
