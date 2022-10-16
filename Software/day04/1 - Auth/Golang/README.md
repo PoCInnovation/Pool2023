@@ -1,18 +1,18 @@
-# PoC Software Pool - Day 04 - Authentification
+# PoC Software Pool 2023 - Day 04 - Authentication
 
 ✔ Authenticate your users.
 
-✔ Master authentification methods.
+✔ Master authentication methods.
 
 ✔ Connect with Google.
 
 ## Introduction
 
-Authentication has many purpose in this world of servers and API.<br>
-Manage users' account, control activities and limit privileges required to
-know the user identity.
+Authentication has many purposes in this world of servers and API.<br>
+Manage user accounts, control activities and limit privileges required to
+know the user identity are some examples.
 
-Many system exist today, depending on the usage and the consumers: Api key,
+Many systems exist today, depending on the usage and the consumers: Api keys,
 sessions, OAuth and so on, you can multiply the way to fit with your product
 and give the best possible user experience.
 
@@ -24,7 +24,7 @@ usages.
 Today, we'll get back to our Gin servers! You can either start using the code you've written yesterday or start a brand-new project. It's up to you, you now know how do it 🚀
 > In both cases, code inside the `day04/Auth` folder.
 
-- At the repository's root, create a `day04` and a `Auth` folders.
+- At the repository's root, create a `day04` and `Auth` folders.
 
 ```shell
 mkdir -p day04 && mkdir -p day04/Auth
@@ -37,11 +37,11 @@ mkdir -p day04 && mkdir -p day04/Auth
 A session is a way of handling user authentication.
 You'll store the data of connected users in the backend.
 The server is responsible for sending a cookie to the client, which will allow him to authenticate whenever he makes a request.
-If the cookie's data are the same as the one stored in the session, it means the user is authenticated.
+If the cookie's data is the same as the one stored in the session, it means the user is authenticated.
 
-### Practise
+### Practice
 
-In order to set up this, you'll have to :
+In order to set up this, you'll have to:
 
 - Add a packaged able to handle Gin's sessions: `go get -u github.com/gin-contrib/sessions`
 - Create a `User` struct which mocks a simple database, stored in your RAM
@@ -78,25 +78,25 @@ var Users = []User{}
         - Set the status as 403
         - Send back `Forbidden`
 
-> ⚠️ Do forget to use `StatusCode` from the `http` package
+> ⚠️ Don't forget to use `StatusCode` from the `http` package
 
-## Step 2 - JWT, ou JSON Web Token
+## Step 2 - JWT, or JSON Web Token
 
 ### Concept
 
-JSON Web Token are used to share security token between entities, it can be
+JSON Web Token are used to share security tokens between entities, it can be
 user or a service.<br>
 It's a signed electronic signature to verify consumer's identity. It's common
 to use [HMAC](https://en.wikipedia.org/wiki/HMAC) or [RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem)) to sign tokens.<br>
-Those token can be store in cookies, but they can also be sent in a header.
+Those token can be stored in cookies, but they can also be sent in a header.
 
 A JWT (JSON Web Token) is composed of 3 parts: `Header`, `Payload` and `Signature`.<br>
 For more information about JWT, go to [jwt.io](https://jwt.io/introduction/). You can also use a [debugger](https://jwt.io/#debugger-io) to visualize the different parts of a jwt.
 
-The classic workflow for JWT authentication is :
+The classic workflow for JWT authentication is:
 1. You authenticate yourself with your credential (username, password, etc...)
 2. API will sign those credentials with a secret key
-3. API send back the token to the user
+3. API sends back the token to the user
 4. The client put the token to authenticate him in the header
 
 ### Practice
@@ -104,7 +104,7 @@ The classic workflow for JWT authentication is :
 Let's create an authentication system with JWT.
 
 To do so:
-- Add a package tout generate the JWT: `go get -u github.com/dgrijalva/jwt-go`
+- Add a package too generate the JWT: `go get -u github.com/dgrijalva/jwt-go`
 - Create the structure `UserJWT` which mocks a simple database, stored in your RAM
 
 ```go
@@ -134,8 +134,8 @@ var UsersJWT := UserJWT[]{}
     - Send back `Bad Request`
 
 - Create a route **GET** `/me-jwt`
-  - If the header stors a token
-    - Returns the authentificated user informations if it exists
+  - If the header stores a token
+    - Returns the authenticated user information if it exists
     - Returns the status `401` and the message `Unauthorized` in the other case
   - If there is no given token
     - Returns the status `403` and the message `Forbidden`
@@ -151,10 +151,10 @@ You have certainly already meet the button "_Login with Google_" or
 "_Login with GitHub_" and you wanted to register on a website.<br>
 This is exactly what you are going to create.
 
-In sort, you will use an external service to authenticate users.
+In short, you will use an external service to authenticate users.
 
 The workflow is quite complex but common for any kind of service you want
-to use to create your OAuth 2.0 authentication :
+to use to create your OAuth 2.0 authentication:
 - You create an OAuth application in the service you want to use (Google,
 Facebook, Twitter, GitHub, Microsoft...)
 - You define a redirection URL that will redirect the user to your website
@@ -168,14 +168,14 @@ logs him in the service.<br>
 As well, the token is linked to the application, if a user log himself
 in two different application, both application will have a different token.
 
-### Practise
+### Practice
 
 We will use google for this exercise and passport to simplify the process:
 
-- Create an application with google on the [developers console](https://console.developers.google.com/)
+- Create an application with google in the [developers console](https://console.developers.google.com/)
 > You will need to set the callback url which you will do in the following steps
 
-- Add `oauth2` to the dependences: `go get -u golang.org/x/oauth2`
+- Add `oauth2` to the dependencies: `go get -u golang.org/x/oauth2`
 > **Take a moment to read the [documentation](https://pkg.go.dev/golang.org/x/oauth2/google)**.
 
 - Create an object `userOAuth` which mocks a simple database, stored in your RAM
@@ -198,7 +198,7 @@ var UsersOAuth := UserOAuth[]{}
 ⚠️ If the user's id already exists in db, you must return its information rather than create a new user with the same id each time!
 
 - Create a route **GET** `/me-oauth`
-  - If the header stors a token
+  - If the header stores a token
     - Returns the user's `displayName` if it exists
     - Returns the status `401` and the message `Unauthorized` in the other case
   - If there is no given token
@@ -209,7 +209,7 @@ var UsersOAuth := UserOAuth[]{}
 Since you now master several way of authentication, you can try to
 improve your current API.
 
-Here's some ideas...
+Here are some ideas...
 
 ### Link
 
@@ -219,10 +219,10 @@ to link a Google account with an account created on the API.
 
 ### GitHub, Facebook, ...
 
-Implemente the authentification with other sites, such as [GitHub](https://sharmarajdaksh.github.io/blog/github-oauth-with-go), Facebook, ...
+Implement the authentification with other sites, such as [GitHub](https://sharmarajdaksh.github.io/blog/github-oauth-with-go), Facebook, ...
 
 ### Persistent database
 
-You can use a real database to stock your users
+You can use a real database to stock your users 🚀
 
 > Made with ❤️ by PoC

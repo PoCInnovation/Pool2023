@@ -1,4 +1,4 @@
-# PoC Software Pool 2022 - Day 04 - Authentification
+# PoC Software Pool 2023 - Day 04 - Authentication
 
 **Day purposes**
 
@@ -10,11 +10,11 @@
 
 ## Introduction
 
-Authentication has many purpose in this world of servers and API.<br>
-Manage users' account, control activities and limit privileges required to
-know the user identity.
+Authentication has many purposes in this world of servers and API.<br>
+Manage users accounts, control activities and limit privileges required to
+know the user identity are some examples.
 
-Many system exist today, depending on the usage and the consumers: Api key,
+Many systems exist today, depending on the usage and the consumers: Api keys,
 sessions, OAuth and so on, you can multiply the way to fit with your product
 and give the best possible user experience.
 
@@ -28,7 +28,7 @@ API you coded yesterday or go initialize a new empty server. It's up to you,
 you now know how do it 🚀
 > In both cases, code inside the `day04/Auth` folder.
 
-- At the repository's root, create a `day04` and a `Auth` folders.
+- At the repository's root, create a `day04` and `Auth` folders.
 
 ```shell
 mkdir -p day04 && mkdir -p day04/Auth
@@ -48,17 +48,17 @@ performance or adapt his behavior.
 
 You can store any kind of data in cookies: signed id, JSON object etc...<br>
 However, pay attention to security, cookies are not secure by default and
-ìn a production application, it's importe to take time to 
+ìn a production application, it's important to take time to 
 [secure cookies](https://resources.infosecinstitute.com/topic/securing-cookies-httponly-secure-flags/)
 
 Here we will use [cookies in express](https://expressjs.com/fr/api.html#res.cookie)
 to figure out which user is sending a request to our server.
 
-### Practise
+### Practice
 
 ####  Installation
 
-Let's first install required dependencies and 
+Let's first install the required dependencies and 
 [apply cookie-parser](https://www.npmjs.com/package/cookie-parser)
 to your express server.
 
@@ -68,17 +68,17 @@ npm install cookie-parser @types/cookie-parser
 
 #### Store data
 
-Create a file `utils.ts` to export a `User` type interface that
+Create a file `utils.ts` to export a `User` type that
 will represent the type of our future ephemeral database.
 
 ```ts
-interface User {
+type User {
 	email:    string;
 	password: string;
 }
 ```
 
-💡 To win time, the database will be a simple array stored in RAM.
+> 💡 To win time, the database will be a simple array stored in RAM.
 
 If it's not already done, create a folder `endpoints` in `src`. This is
 where you will put all your endpoints related to cookies.
@@ -117,9 +117,9 @@ If there is no `body`, return `Bad Request` with status `400`.
 
 ##### Login
 
-Create an endpoint `/cookies/login` with a resolver on method `POST`.
+Create an endpoint `/cookies/login` with a resolver on method `POST` 😄
 
-The resolver must take as `body` parameter :
+The resolver must take as `body` parameter:
 
 ```json
 {
@@ -130,7 +130,7 @@ The resolver must take as `body` parameter :
 
 It will extract information from `body` and check if there is a match in
 the `users` array.<br>
-If identifier matches, it should return an `httpOnly` cookie containing the user's email.
+If the identifier matches, it should return an `httpOnly` cookie containing the user's email ✉️
 
 If there is no `body`, return `Bad Request` with status `400`.
 
@@ -151,25 +151,24 @@ JSON Web Token are used to share security token between entities, it can be
 user or a service.<br>
 It's a signed electronic signature to verify consumer's identity. It's common
 to use [HMAC](https://en.wikipedia.org/wiki/HMAC) or [RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem)) to sign tokens.<br>
-Those token can be store in cookies, but they can also be sent in a header.
+Those token can be stored in cookies, but they can also be sent in a header.
 
 A JWT (JSON Web Token) is composed of 3 parts: `Header`, `Payload` and `Signature`.<br>
 For more information about JWT, go to [jwt.io](https://jwt.io/introduction/). You can also use a [debugger](https://jwt.io/#debugger-io) to visualize the different parts of a jwt.
 
-The classic workflow for JWT authentication is :
+The classic workflow for JWT authentication is:
 1. You authenticate yourself with your credential (username, password, etc...)
 2. API will sign those credentials with a secret key
-3. API send back the token to the user
+3. API sends back the token to the user
 4. The client put the token to authenticate him in the header
 
-### Practise
+### Practice
 
-Let's create an authentication system with JWT.
+Let's create an authentication system with JWT 🔥
 
 #### Installation
 
-Use the array `users` from the previous step to store users and download
-[JWT](https://www.npmjs.com/package/jsonwebtoken) dependency.
+Use the array `users` from the previous step to store users and download the [JWT](https://www.npmjs.com/package/jsonwebtoken) dependency.
 
 ```shell
 npm install jsonwebtoken @types/jsonwebtoken
@@ -181,7 +180,7 @@ You can also create a file `jwt.ts` with another ephemeral database.
 
 Create an endpoint `/jwt/register` with a resolver on method `POST`.
 
-The resolver must take as `body` parameter :
+The resolver must take as `body` parameter:
 
 ```json
 {
@@ -192,7 +191,7 @@ The resolver must take as `body` parameter :
 
 It will extract these information from `body` and add it to the
 `users` array.<br>
-Then it should return a `JWT token` containing the user's email.
+Then it should return a `JWT token` containing the user's email ✉️
 
 If there is no `body`, return `Bad Request` with status `400`.
 
@@ -200,7 +199,7 @@ If there is no `body`, return `Bad Request` with status `400`.
 
 Create an endpoint `/jwt/login` with a resolver on method `POST`.
 
-The resolver must take as `body` parameter :
+The resolver must take as `body` parameter:
 
 ```json
 {
@@ -231,21 +230,21 @@ At this point, users can authenticate themselves through email and password,
 but it's stored as plain text.<br>
 Anyone with reading access to `users` (or a hypothetical database) will
 be able to read the password of every user. That's a real problem and
-users can't trust a platform who do not keep his data in security.
+users can't trust a platform that don't keep his data in security.
 
 To gain trust, we will [hash](https://en.wikipedia.org/wiki/Hash_function)
 password, this way, nobody, even us, will be able to read the password.
 
-To do so, let's install the [Bcrypt](https://www.npmjs.com/package/bcrypt),
+To do so, let's install [Bcrypt](https://www.npmjs.com/package/bcrypt),
 a powerful and straight-forward hash dependency.
 
 ```shell
 npm install bcrypt @types/bcrypt
 ```
 
-Now you just have to update your endpoints `register` to save a hashed
-password and your endpoints `login` to compare the given password
-with the stored one.
+Now you just have to update your endpoint `register` to save a hashed
+password and your endpoint `login` to compare the given password
+with the stored one 😉
 
 ## Step 4 - OAuth2 with Google
 
@@ -258,10 +257,10 @@ You have certainly already meet the button "_Login with Google_" or
 "_Login with GitHub_" and you wanted to register on a website.<br>
 This is exactly what you are going to create.
 
-In sort, you will use an external service to authenticate users.
+In short, you will use an external service to authenticate users.
 
 The workflow is quite complex but common for any kind of service you want
-to use to create your OAuth 2.0 authentication :
+to use to create your OAuth 2.0 authentication:
 - You create an OAuth application in the service you want to use (Google,
 Facebook, Twitter, GitHub, Microsoft...)
 - You define a redirection URL that will redirect the user to your website
@@ -275,7 +274,7 @@ logs him in the service.<br>
 As well, the token is linked to the application, if a user log himself
 in two different application, both application will have a different token.
 
-### Practise
+### Practice
 
 Here we will use [passport](https://github.com/jaredhanson/passport)
 to simplify the workflow.
@@ -286,28 +285,26 @@ Let's install required dependencies.
 npm install passport passport-google-oauth20 @types/passport @types/passport-google-oauth20
 ```
 
-You will also need to create an application on 
-[Google developers console](https://console.developers.google.com/) and
+You will also need to create an application on the [Google developers console](https://console.developers.google.com/) and
 configure your **callback url** that you will write during next steps.
 
-
-Indeed, create a file `OAuth.ts` to code your endpoints.
+Create a file `OAuth.ts` to code your endpoints.
 
 ### Storage
 
 There his no password or email logic when dealing with OAuth authentication,
-instead you can store the user identifier.
+so you can store the user identifier.
 
-Let's define a new interface for our ephemeral storage.
+Let's define a new type for our ephemeral storage.
 
 ```ts
-interface UserOAuth {
+type UserOAuth {
   displayName: string;
   googleId: string;
 }
 ```
 
-And indeed a new variable to store data
+And a new variable to store data:
 
 ```ts
 let userOAuth: UserOAuth[] = [];
@@ -334,12 +331,12 @@ Create an endpoint that will redirect user to the Google authentication service.
 
 Create an endpoint used by Google to redirect user after authentication.
 You should figure out that it will be your **callback url**.<br>
-Thanks passport, you will access information returned by Google,
-you can store these information in your storage and return either a
+Thanks to passport, you will access information returned by Google,
+you can store this information in your storage and return either a
 cookie or a JWT to track the ID.
 
-Indeed, if user already exist, you don't have to insert the user in
-the database.
+> If the user already exist, you don't have to insert it in
+the database 😉
 
 #### User
 
@@ -371,12 +368,12 @@ like [Facebook](https://www.passportjs.org/packages/passport-facebook/) or
 [GitHub](https://www.passportjs.org/packages/passport-github2/).
 
 You will see that thanks [passport](https://www.passportjs.org),
-it's a piece of cake!
+it's a piece of cake 🍰!
 
 ### Things get serious
 
 You used an ephemeral storage through an in-memory array, you can use
-your knowledge from the previous day to store user in it.
+your knowledge from the previous day to store users in a database 😃
 
 You can also set up a [Redis](https://medium.com/swlh/session-management-in-nodejs-using-redis-as-session-store-64186112aa9)
 to safely store session.
