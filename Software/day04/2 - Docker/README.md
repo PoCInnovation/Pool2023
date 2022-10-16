@@ -1,18 +1,18 @@
-# PoC Software Pool 2022 - Day 04 - Docker
+# PoC Software Pool 2023 - Day 04 - Docker
 
 **Day purposes**
 
-✔️ Understand devOps interests.
+✔️ Understand DevOps interests.
 
-✔️ Learn basics of Docker.
+✔️ Learn the basics of Docker.
 
-✔️ Create simple image.
+✔️ Create a simple image.
 
-✔️ Deploy a complete stack with docker-compose.
+✔️ Deploy a complete stack with `docker compose`.
 
 ## Introduction
 
-When it's time to deploy an application, you will face various problems :
+When it's time to deploy an application, you will face various problems:
 - How scale on various servers?
 - How build your app for several architectures?
 - How manage dependencies and linked services that work with your app?
@@ -20,27 +20,27 @@ When it's time to deploy an application, you will face various problems :
 For instance, if you want to deploy a simple application composed of a web 
 server, a frontend and a database, you will need to install all the
 required dependencies in the server, maybe update root config and create
-system service to automatically restart it on fail, manage volumes and so on...
+system services to automatically restart it on fail, manage volumes and so on...
 
 You've understood it, manually manage a stack is complex and painful.<br>
-This is why Docker exist, with it, you can easily package your application
-into containers and manage independently or together the containers.
+This is why Docker exist, with it you can easily package your application
+into containers that you can manage independently or together.
 
 This dynamic follows the way of [DevOps](https://aws.amazon.com/devops/what-is-devops/),
 it's a philosophy and set of practices to improve the delivery process from
 build to release and monitoring.
 
-Here's a simple schema of the devops workflow
+Here's a simple schema of the devops workflow:
 
 ![devops workflow](../../../.github/assets/software_devops_workflow.jpeg)
 
-This subject is focus on docker and containers building & management. It's
-on one the most important part of the devops.
+This subject is focused on docker and containers building & management. It's
+one the most important part of DevOps.
 
 ## Step 0 - Setup
 
 Let's install [Docker](https://docs.docker.com/engine/install/fedora/)
-engine with his CLI and [docker-compose](https://docs.docker.com/compose/install/).
+engine with his CLI and [docker compose](https://docs.docker.com/compose/install/linux).
 
 ### Installation
 
@@ -66,7 +66,7 @@ sudo dnf remove docker                   \
 
 #### Installation
 
-We can now install docker engine and docker-compose
+We can now install docker engine and the compose plugin:
 
 ```shell
 # Add docker repository to your package manager
@@ -76,22 +76,24 @@ sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/dock
 # Install Docker
 sudo dnf install docker-ce docker-ce-cli containerd.io
 
-# Install docker-compose
-sudo curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
-```
+# Install docker compose
+sudo dnf install docker-compose-plugin
 
 ### Start Docker
 
-After installing all dependencies, start docker engine:
+After installing all the dependencies, start docker engine:
 
 ```shell
 # Start docker service
 sudo systemctl start docker
 
-# Automatically start it when computer start
+# Optional: Automatically start it when on computer start
 sudo systemctl enable docker
+```
 
+The last thing to do for a seamless experience is to [enable the use of Docker without a root user](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user): 
+
+```shell
 # Add current user to docker group to use docker CLI without sudo
 sudo groupadd docker
 sudo usermod -aG docker $USER
@@ -108,21 +110,23 @@ docker: Error response from daemon: cgroups: cannot found cgroup mount destinati
 ```
 
 If that happens, read this [issue](https://github.com/docker/for-linux/issues/219)
-and try fixes in it.
+and try the fixes in it.
+
+> If you still struggle, don't hesitate to ask the staff to help you 😄
 
 ### Hello Docker
 
-You can verify that everything goes well by running a [`hello-world`]()
+You can verify that everything goes well by running a [`hello-world`](https://hub.docker.com/_/hello-world)
 container.
 
-You should have the following output
+You should have the following output:
 
 ```shell
 docker run hello-world
 # Unable to find image 'hello-world:latest' locally
 # latest: Pulling from library/hello-world
-# 93288797bd35: Pull complete 
-# Digest: sha256:975f4b14f326b05db86e16de00144f9c12257553bba9484fed41f9b6f2257800
+# 2db29710123e: Pull complete 
+# Digest: sha256:18a657d0cc1c7d0678a3fbea8b7eb4918bba25968d3e1b0adebfa71caddbc346
 # Status: Downloaded newer image for hello-world:latest
 # 
 # Hello from Docker!
@@ -131,7 +135,7 @@ docker run hello-world
 # To generate this message, Docker took the following steps:
 #  1. The Docker client contacted the Docker daemon.
 #  2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
-#     (arm64v8)
+#     (amd64)
 #  3. The Docker daemon created a new container from that image which runs the
 #     executable that produces the output you are currently reading.
 #  4. The Docker daemon streamed that output to the Docker client, which sent it
@@ -147,19 +151,19 @@ docker run hello-world
 #  https://docs.docker.com/get-started/
 ```
 
-## Step 01 - Dockerfile
+## Step 1 - Dockerfile
 
 Dockerfile is the first piece to containerize your application.<br>
 The purpose is to create an image of your application to make it easily
-deployable.
+deployable 😃
 
-This will help you to do not install the application directly on the
-computer nor having dependencies issues.<br>
-With an image, you can not have any problem, it's self deployable and
+This will help you to avoid installing the application directly on the
+computer and having dependencies issues.<br>
+With an image, you can't have any of these problems, it's self deployable and
 everything is already installed in it, you just have to run it with
 `docker run <image>`.
 
-Let's create an image of the API you made yesterday.
+Let's create an image of the API you made yesterday 🚀
 
 First, in your pool repository, in the folder `day04`, create a folder `docker`.
 
@@ -167,52 +171,51 @@ First, in your pool repository, in the folder `day04`, create a folder `docker`.
 mkdir -p day04/docker
 ```
 
-Now you can create a directory `exo01`, copy-paste yesterday API
+Now you can create a directory `step1`, copy-paste yesterday API
 sources and create a file [`Dockerfile`](https://docs.docker.com/engine/reference/builder/).
 
-Your `Dockerfile` must execute the following set :
+Your `Dockerfile` must execute the following set:
 - Pull the latest [`alpine`](https://nickjanetakis.com/blog/the-3-biggest-wins-when-using-alpine-as-a-base-docker-image)
 image of your language.
-- [Expose](https://docs.docker.com/engine/reference/builder/#expose) port 8080
+- [Expose](https://docs.docker.com/engine/reference/builder/#expose) port `8080`
 - Install dependencies
 - Set the [environment variable](https://docs.docker.com/engine/reference/builder/#env)
 `HELLO_MESSAGE` to `docker`
 - Build the API
-- Set the entrypoint to start the server when running image.
+- Set the entrypoint to start the server when running the image.
 
 > ⚠️ Be careful to the listening API host.
 
-> Take a look at those [good practises](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/).
+> Take a look at those [good practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/) 😉
 
-## Step 02 - Docker-compose
+## Step 2 - Docker compose
 
 In the previous step, you saw how to put your application in a container,
 it's time to go further: you will manage multiple containers with
-[docker-compose](https://docs.docker.com/compose/).
+[docker compose](https://docs.docker.com/compose/).
 
-Create a directory `exo02`
+Create a directory `step2`:
 
 ```shell
-mkdir -p exo02
+mkdir -p step2
 ```
 
-The purpose is to manage a fullstack application within container.<br>
-This [application](./resources)
-is composed of :
+The purpose is to manage a fullstack application within containers.<br>
+This [application](./resources) is composed of:
 - a [PostgreSQL database](https://www.postgresql.org) (to run in a container)
 - a [NestJS](https://nestjs.com) API
 - a [React](https://reactjs.org) web application
 
-Here's a simple schema of the application architecture
+Here's a simple schema of the application architecture:
 
 ![front-back-db](../../../.github/assets/software-micro-services.png)
 
-### Put bases
+### Lay the foundations
 
-In the directory `exo02`, copy the [frontend](./resources/frontend.zip)
+In the directory `step2`, copy the [frontend](./resources/frontend.zip)
 and [backend](./resources/backend.zip) zips and extract them.
 
-You should have the following architecture :
+You should end up with the following architecture:
 
 ```shell
 tree -d
@@ -237,41 +240,41 @@ tree -d
 ### Dockerfiles
 
 As you may notice, there is no `Dockerfile` in `frontend` or `backend`.<br>
-You figured out, you will need to create image for the `frontend` and the `backend`.<br>
+You figured out, you will need to create images for the `frontend` and the `backend`.<br>
 In each directory, create a `Dockerfile` and write a set of instructions to
-make it works.
+make it work.
 
-> You will need to test and understand how each program work to containerize it.<br>
-> Google is also your best friend, as a devOps engineer, it's common to
+> 💡 You will need to test and understand how each program work to containerize it.<br>
+> Google is also your best friend, as a DevOps engineer it's common to
 > work on multiple stack without necessarily being an expert on them.
 
 ### Compose
 
-The [docker-compose](https://docs.docker.com/compose/compose-file/) aim to
+[Docker compose](https://docs.docker.com/compose/compose-file/) aims to
 orchestrate services. It will help you a lot when you need to deploy
-multiple microservice.
+multiple [microservices](https://aws.amazon.com/microservices/).
 
-Your docker-compose must be composed of :
+Your `docker-compose` file must be composed of:
 
-3 services :
-- backend: run `backend` image
-- frontend: run `frontend` image
-- database: run `postgres` image
+3 services:
+- backend: run the `backend` image
+- frontend: run the `frontend` image
+- database: run the `postgres` image
 
-1 network :
+1 network:
 - backend: link database & backend in a private network
 
 1 volume:
 - db-data: store database permanent data
 
-To complete this step, you'll need to use all knowledge acquired during
+To complete this step, you'll need to use all the knowledge acquired during
 previous day. It will be important to set an environment to correctly
-config database, backend and frontend in the docker-compose.
+configure the database, backend and frontend in the `docker-compose`.
 
-Indeed, don't forget to exposed ports and link your services.
+> Don't forget to exposed ports and link your services 😄
 
 > This step is voluntarily complex to make you search and understand
-> by yourself, this is what real devOps engineer do 🚀
+> by yourself, this is what real DevOps engineers do 🚀
 
 ## Additional resources
 
