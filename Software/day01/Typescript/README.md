@@ -999,12 +999,15 @@ Let's add some fields by updating the `Artist` type:
 - `fans`: `number` of fans
 - `listenedTime`: the amount of time you listened to this artist. It must be stored as a [`Date`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
 
->💡 It's common to put a unique identifier when you store data, this way, you can easily distinguish them.
+> 💡 It's common to put a unique identifier when you store data, this way, you can easily distinguish them.
 
 You'll have to update all your codebase to support those new fields.
 
 > Don't worry, it's not that hard because you have build a strong architecture!  
 > And if you struggle, remember that the staff is here to help you out 😃
+
+> If you have the error `ERR_REQUIRE_ESM`, you have to use `nanoid@^3.3.4` instead of `nanoid@^4.0.0`\
+> Check [this issue](https://github.com/ai/nanoid/issues/365) to learn more about it 😉
 
 ## Bonus
 
