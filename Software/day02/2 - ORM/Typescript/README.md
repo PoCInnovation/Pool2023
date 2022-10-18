@@ -196,24 +196,35 @@ npx prisma generate
 
 Finally, we can start coding 🥳
 
-Create a folder `src` and a file `index.ts`, then paste the following code inside:
+
+Create a folder `src` and a file `client.ts`, then paste the following code inside:
 ```ts
 // Import the Prisma Client constructor
 import { PrismaClient } from '@prisma/client';
 
 // Constructor client
 const prisma = new PrismaClient();
+export default prisma;
+```
+
+This will instantiate a prisma client that we'll use in the following steps 😄
+
+> If you're curious, [here's why this matters](https://www.prisma.io/docs/concepts/components/prisma-client/working-with-prismaclient/instantiate-prisma-client#the-number-of-prismaclient-instances-matters)
+
+Then, create an `index.ts` file still in `src` with the following content:
+```ts
+import prisma from './client';
 
 // Declare an asynchronous main
 async function main() {
-    console.log(`Database connected`);
-};
+  console.log('Database connected');
+}
 
 // Run main
 main()
   .catch((e) => {
     // Throw on error	
-    throw `Failed to initialize database: ${e}`;
+    throw new Error(`Failed to initialize database: ${e}`);
   })
   .finally(async () => {
     // Disconnect client after main
@@ -235,9 +246,6 @@ Let's write functions to create, read, update and delete an `Artist` 😄
 
 You will create a directory `src/models` and code all your functions in the
 file `artists.ts`.
-
-To do this, you will need to create a file `client.ts` in your directory
-`src` that will create a `Prisma Client` and export it.
 
 > You can copy the logic of the previous step 😉
 
@@ -296,23 +304,40 @@ It must take as parameter an `id` of type `string` and delete it.
 > Like yesterday, if you use `nanoid` and get a `ERR_REQUIRE_ESM` error, you have to use `nanoid@^3.3.4` instead of `nanoid@^4.0.0`\
 > Check [this issue](https://github.com/ai/nanoid/issues/365) to learn more about it 😉
 
-TODO: remove this step but show the given tests
-## Step 4 - CRUD testing
 
-Tests are important, even more when it's about resource manipulation. 
+### Testing
+Tests are important, even more when it's about resource manipulation.<br>
 If something is broken in it, your whole application will be broken.
 
-To do so, you will set up a Jest testing suite. 
-You can check [day01](../../../day01/Typescript) if you don't remember the setup.
+To gain time, we created a Jest testing suite for you ✨
 
-You can now write tests for each CRUD functions:
-- `createArtist`
-- `getArtists`
-- `getArtist`
-- `updateArtist`
-- `deleteArtist`
+<details>
+  <summary>Setup and run the tests</summary>
+  TODO: provide the code
+  First, extract the given <code>step3_tests.zip</code> file given to you.<br>
+  You should have a <code>jest.config.json</code> file that you have to put at the root of your project, as long as the <code>tests</code> with our first file inside it 🥳<br>
 
-## Step 5 - Contact Artists
+  Then, you should add Jest to your project:
+  ```shell
+  npm install -D jest ts-jest @types/jest
+
+  npm install @jest/globals
+  ```
+
+  Finally, add the following scripts to your <code>package.json</code>:
+
+  ```json
+  "test": "jest tests --env=node",
+  "test:cov": "jest --coverage tests --env=node",
+  "test:watch": "jest --watchAll tests --env=node"
+  ```
+
+  You can now run <code>npm run test</code> to make sure your code works as expected:
+
+  ![tests-output](https://user-images.githubusercontent.com/49811529/196558801-be5c2a90-b96c-4d0b-8157-512587db358f.png)
+</details>
+
+## Step 4 - Contact Artists
 
 If you correctly remember the first step, our database is composed of 4 tables:
 `Artist`, `Contact`, `Music` and `RecordCompany`. To simplify the work, we code our project step by step.
@@ -424,7 +449,7 @@ TODO: remove this and talk about the given tests
 
 As usual, test your functions to verify their behavior.
 
-## Step 6 - Skilled artists
+## Step 5 - Skilled artists
 
 We added the first relation of our `Artist`, let's add the second with `RecordCompany` 💪
 
@@ -509,7 +534,7 @@ Create a function `removeArtistFromRecordCompany`, which takes the same paramete
 It will perform the reverse behavior, which is to [disconnect](https://www.prisma.io/docs/reference/api-reference/prisma-client-reference#disconnect)
 these entities using their id 😃
 
-## Step 7 - Active artists
+## Step 6 - Active artists
 
 Finally, we are near the end! Only one entity remains: `Music`.
 
