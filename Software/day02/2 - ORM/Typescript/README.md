@@ -245,7 +245,7 @@ As usual, a resource must expose a CRUD interface to be manipulated.
 Let's write functions to create, read, update and delete an `Artist` 😄
 
 You will create a directory `src/models` and code all your functions in the
-file `artists.ts`.
+file `artist.ts`.
 
 > You can copy the logic of the previous step 😉
 
@@ -327,14 +327,16 @@ To gain time, we created a Jest testing suite for you ✨
   Finally, add the following scripts to your <code>package.json</code>:
 
   ```json
-  "test": "jest tests --env=node",
-  "test:cov": "jest --coverage tests --env=node",
-  "test:watch": "jest --watchAll tests --env=node"
+  "test": "jest tests -i --env=node",
+  "test:cov": "jest -i --coverage tests --env=node",
+  "test:watch": "jest -i --watchAll tests --env=node"
   ```
 
   You can now run <code>npm run test</code> to make sure your code works as expected:
 
   ![tests-output](https://user-images.githubusercontent.com/49811529/196558801-be5c2a90-b96c-4d0b-8157-512587db358f.png)
+
+  > If the tests don't pass, make sure you've respected the folders, files and function names, if it's all good then your logic is certainly wrong 😉
 </details>
 
 ## Step 4 - Contact Artists
@@ -388,6 +390,8 @@ relation between them
 
 > 💡 If an `Artist` is deleted, his `Contact` must follow. This is what we call cascade.
 
+> ⚠️ You have to create an `artistId` field with an `artist` relation in `Contact`, and a `contact` relation in `Artist` to make the tests
+
 You can apply your changes using this command:
 ```shell
 npx prisma db push
@@ -405,7 +409,7 @@ Still in `src/models`, create the file `contact.ts`.
 
 #### C for Create
 
-Create an _asynchronous_ function `addContact`.
+Create an _asynchronous_ function `createContact`.
 
 It must take as parameters:
 - `artistId`: Artist's identifier to link with
@@ -414,7 +418,7 @@ It must take as parameters:
 This function must create a `Contact` and [connect](https://www.prisma.io/docs/concepts/components/prisma-client/relation-queries#connect-an-existing-record)
 it to the selected `Artist` to be able to return it.
 
-> If the artist doesn't exist, it must return an error ❌
+> ⚠️ If the artist doesn't exist, it must `throw` an error (like the one in `index.ts`)
 
 #### U for Update
 
@@ -426,7 +430,7 @@ It must take as parameters:
 
 This function must update the `Contact` with the given data and return it.<br>
 
-> If the artist doesn't exist, it must return an error
+> If the artist doesn't exist, it must `throw` an error ❌
 
 > Same as `updateArtist`, `data` can contain any properties of `Contact` so
 > you will also need to use [Partial](https://www.typescriptlang.org/docs/handbook/utility-types.html) 😉
@@ -436,7 +440,7 @@ This function must update the `Contact` with the given data and return it.<br>
 Create an _asynchronous_ function `deleteContact`.
 
 It must take as parameter the `id` of the `Contact` to remove and delete it.<br>
-Once again, return an error if the `Contact` doesn't exist.
+Once again, `throw` an error if the `Contact` doesn't exist.
 
 #### R for Read
 
@@ -444,10 +448,13 @@ It's not relevant to retrieve a `Contact` without his `Artist`.
 
 Instead of create `getContacts` and `getContact`, you will update **all** the `Artist` model functions to [include](https://www.prisma.io/docs/concepts/components/prisma-client/relation-queries#include-all-fields-for-a-specific-relation) the `Contact` in his result.
 
-TODO: remove this and talk about the given tests
 #### T for Test
 
-As usual, test your functions to verify their behavior.
+As usual, you should test your functions to verify their behavior.
+
+TODO: give the files
+
+Replace the content of your `tests` folder with the files given for this step and run them with `npm run test` 🧪
 
 ## Step 5 - Skilled artists
 
@@ -466,6 +473,8 @@ to add the model `RecordCompany` with the following properties:
 
 You can now link them in a [`One To Many`](https://www.prisma.io/docs/concepts/components/prisma-schema/relations/one-to-many-relations)
 relation.
+
+> ⚠️ You have to name your new `Artist` fields `recordCompanyId` and `recordCompany` for the tests to work.
 
 ### CRUD (again)
 
@@ -499,14 +508,14 @@ It must take as parameters:
 - `data`: an object that contains the company properties to update (`name`)
 
 The function must update the `RecordCompany` in the database and return it.<br>
-If the `RecordCompany` doesn't exist, return an error.
+If the `RecordCompany` doesn't exist, `throw` an error.
 
 #### D for Delete
 
 Create an _asynchronous_ function `deleteRecordCompany`.
 
-It must take as parameters the company `id` as parameter and delete the `RecordCompany` in the database.<br>
-> If the `RecordCompany` doesn't exist, return an error ❌
+It must take as parameter the company `id` and delete the `RecordCompany` in the database.<br>
+> If the `RecordCompany` doesn't exist, `throw` an error ❌
 
 ### Link our entities
 
@@ -524,7 +533,8 @@ It must take as parameters:
 - `recordCompanyId`: Record company identifier
 
 Your function will [connect](https://www.prisma.io/docs/reference/api-reference/prisma-client-reference#connect)
-these entities suing their id.<br>
+these entities using their id.
+
 > Don't forget error handling 😉
 
 #### Unlink
@@ -533,6 +543,12 @@ Create a function `removeArtistFromRecordCompany`, which takes the same paramete
 
 It will perform the reverse behavior, which is to [disconnect](https://www.prisma.io/docs/reference/api-reference/prisma-client-reference#disconnect)
 these entities using their id 😃
+
+#### Testing
+
+You know how this goes now! 
+
+Copy the given test files and run them to check that you implemented everything correctly 🧪 
 
 ## Step 6 - Active artists
 
@@ -569,7 +585,7 @@ We want to:
 - link an artist to a music
 - remove an artist from a music
 
-> Don't forget to handle errors 😃
+> Don't forget to handle errors and check that everything works with the tests 😃
 
 ## Bonus
 
