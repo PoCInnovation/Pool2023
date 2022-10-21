@@ -565,7 +565,6 @@ properties :
 - `id`: unique identifier
 - `name`: music's name
 - `link`: public link to the music (it could be whatever you want _YouTube_, _Spotify_...)
-- `artistsId`: `Artist` owner
 - `artists`: list of `Artist` in featuring
 
 You will need to create a [`Many To Many`](https://www.prisma.io/docs/concepts/components/prisma-schema/relations/many-to-many-relations)
@@ -585,7 +584,9 @@ We want to:
 - link an artist to a music
 - remove an artist from a music
 
-> Don't forget to handle errors and check that everything works with the tests 😃
+You can also write your own tests based on the ones we gave you for the previous steps to make sure everything works as intended 👍
+
+> Don't forget to handle errors 😃
 
 ## Bonus
 
