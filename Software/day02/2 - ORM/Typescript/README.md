@@ -196,24 +196,35 @@ npx prisma generate
 
 Finally, we can start coding 🥳
 
-Create a folder `src` and a file `index.ts`, then paste the following code inside:
+
+Create a folder `src` and a file `client.ts`, then paste the following code inside:
 ```ts
 // Import the Prisma Client constructor
 import { PrismaClient } from '@prisma/client';
 
 // Constructor client
 const prisma = new PrismaClient();
+export default prisma;
+```
+
+This will instantiate a prisma client that we'll use in the following steps 😄
+
+> If you're curious, [here's why this matters](https://www.prisma.io/docs/concepts/components/prisma-client/working-with-prismaclient/instantiate-prisma-client#the-number-of-prismaclient-instances-matters)
+
+Then, create an `index.ts` file still in `src` with the following content:
+```ts
+import prisma from './client';
 
 // Declare an asynchronous main
 async function main() {
-    console.log(`Database connected`);
-};
+  console.log('Database connected');
+}
 
 // Run main
 main()
   .catch((e) => {
     // Throw on error	
-    throw `Failed to initialize database: ${e}`;
+    throw new Error(`Failed to initialize database: ${e}`);
   })
   .finally(async () => {
     // Disconnect client after main
@@ -234,10 +245,7 @@ As usual, a resource must expose a CRUD interface to be manipulated.
 Let's write functions to create, read, update and delete an `Artist` 😄
 
 You will create a directory `src/models` and code all your functions in the
-file `artists.ts`.
-
-To do this, you will need to create a file `client.ts` in your directory
-`src` that will create a `Prisma Client` and export it.
+file `artist.ts`.
 
 > You can copy the logic of the previous step 😉
 
@@ -296,23 +304,42 @@ It must take as parameter an `id` of type `string` and delete it.
 > Like yesterday, if you use `nanoid` and get a `ERR_REQUIRE_ESM` error, you have to use `nanoid@^3.3.4` instead of `nanoid@^4.0.0`\
 > Check [this issue](https://github.com/ai/nanoid/issues/365) to learn more about it 😉
 
-TODO: remove this step but show the given tests
-## Step 4 - CRUD testing
 
-Tests are important, even more when it's about resource manipulation. 
+### Testing
+Tests are important, even more when it's about resource manipulation.<br>
 If something is broken in it, your whole application will be broken.
 
-To do so, you will set up a Jest testing suite. 
-You can check [day01](../../../day01/Typescript) if you don't remember the setup.
+To gain time, we created a Jest testing suite for you ✨
 
-You can now write tests for each CRUD functions:
-- `createArtist`
-- `getArtists`
-- `getArtist`
-- `updateArtist`
-- `deleteArtist`
+<details>
+  <summary>Setup and run the tests</summary>
+  TODO: provide the code
+  First, extract the given <code>step3_tests.zip</code> file given to you.<br>
+  You should have a <code>jest.config.json</code> file that you have to put at the root of your project, as long as the <code>tests</code> with our first file inside it 🥳<br>
 
-## Step 5 - Contact Artists
+  Then, you should add Jest to your project:
+  ```shell
+  npm install -D jest ts-jest @types/jest
+
+  npm install @jest/globals
+  ```
+
+  Finally, add the following scripts to your <code>package.json</code>:
+
+  ```json
+  "test": "jest tests -i --env=node",
+  "test:cov": "jest -i --coverage tests --env=node",
+  "test:watch": "jest -i --watchAll tests --env=node"
+  ```
+
+  You can now run <code>npm run test</code> to make sure your code works as expected:
+
+  ![tests-output](https://user-images.githubusercontent.com/49811529/196558801-be5c2a90-b96c-4d0b-8157-512587db358f.png)
+
+  > If the tests don't pass, make sure you've respected the folders, files and function names, if it's all good then your logic is certainly wrong 😉
+</details>
+
+## Step 4 - Contact Artists
 
 If you correctly remember the first step, our database is composed of 4 tables:
 `Artist`, `Contact`, `Music` and `RecordCompany`. To simplify the work, we code our project step by step.
@@ -363,6 +390,8 @@ relation between them
 
 > 💡 If an `Artist` is deleted, his `Contact` must follow. This is what we call cascade.
 
+> ⚠️ You have to create an `artistId` field with an `artist` relation in `Contact`, and a `contact` relation in `Artist` to make the tests
+
 You can apply your changes using this command:
 ```shell
 npx prisma db push
@@ -380,7 +409,7 @@ Still in `src/models`, create the file `contact.ts`.
 
 #### C for Create
 
-Create an _asynchronous_ function `addContact`.
+Create an _asynchronous_ function `createContact`.
 
 It must take as parameters:
 - `artistId`: Artist's identifier to link with
@@ -389,7 +418,7 @@ It must take as parameters:
 This function must create a `Contact` and [connect](https://www.prisma.io/docs/concepts/components/prisma-client/relation-queries#connect-an-existing-record)
 it to the selected `Artist` to be able to return it.
 
-> If the artist doesn't exist, it must return an error ❌
+> ⚠️ If the artist doesn't exist, it must `throw` an error (like the one in `index.ts`)
 
 #### U for Update
 
@@ -401,7 +430,7 @@ It must take as parameters:
 
 This function must update the `Contact` with the given data and return it.<br>
 
-> If the artist doesn't exist, it must return an error
+> If the artist doesn't exist, it must `throw` an error ❌
 
 > Same as `updateArtist`, `data` can contain any properties of `Contact` so
 > you will also need to use [Partial](https://www.typescriptlang.org/docs/handbook/utility-types.html) 😉
@@ -411,7 +440,7 @@ This function must update the `Contact` with the given data and return it.<br>
 Create an _asynchronous_ function `deleteContact`.
 
 It must take as parameter the `id` of the `Contact` to remove and delete it.<br>
-Once again, return an error if the `Contact` doesn't exist.
+Once again, `throw` an error if the `Contact` doesn't exist.
 
 #### R for Read
 
@@ -419,12 +448,15 @@ It's not relevant to retrieve a `Contact` without his `Artist`.
 
 Instead of create `getContacts` and `getContact`, you will update **all** the `Artist` model functions to [include](https://www.prisma.io/docs/concepts/components/prisma-client/relation-queries#include-all-fields-for-a-specific-relation) the `Contact` in his result.
 
-TODO: remove this and talk about the given tests
 #### T for Test
 
-As usual, test your functions to verify their behavior.
+As usual, you should test your functions to verify their behavior.
 
-## Step 6 - Skilled artists
+TODO: give the files
+
+Replace the content of your `tests` folder with the files given for this step and run them with `npm run test` 🧪
+
+## Step 5 - Skilled artists
 
 We added the first relation of our `Artist`, let's add the second with `RecordCompany` 💪
 
@@ -441,6 +473,8 @@ to add the model `RecordCompany` with the following properties:
 
 You can now link them in a [`One To Many`](https://www.prisma.io/docs/concepts/components/prisma-schema/relations/one-to-many-relations)
 relation.
+
+> ⚠️ You have to name your new `Artist` fields `recordCompanyId` and `recordCompany` for the tests to work.
 
 ### CRUD (again)
 
@@ -474,14 +508,14 @@ It must take as parameters:
 - `data`: an object that contains the company properties to update (`name`)
 
 The function must update the `RecordCompany` in the database and return it.<br>
-If the `RecordCompany` doesn't exist, return an error.
+If the `RecordCompany` doesn't exist, `throw` an error.
 
 #### D for Delete
 
 Create an _asynchronous_ function `deleteRecordCompany`.
 
-It must take as parameters the company `id` as parameter and delete the `RecordCompany` in the database.<br>
-> If the `RecordCompany` doesn't exist, return an error ❌
+It must take as parameter the company `id` and delete the `RecordCompany` in the database.<br>
+> If the `RecordCompany` doesn't exist, `throw` an error ❌
 
 ### Link our entities
 
@@ -499,7 +533,8 @@ It must take as parameters:
 - `recordCompanyId`: Record company identifier
 
 Your function will [connect](https://www.prisma.io/docs/reference/api-reference/prisma-client-reference#connect)
-these entities suing their id.<br>
+these entities using their id.
+
 > Don't forget error handling 😉
 
 #### Unlink
@@ -509,7 +544,13 @@ Create a function `removeArtistFromRecordCompany`, which takes the same paramete
 It will perform the reverse behavior, which is to [disconnect](https://www.prisma.io/docs/reference/api-reference/prisma-client-reference#disconnect)
 these entities using their id 😃
 
-## Step 7 - Active artists
+#### Testing
+
+You know how this goes now! 
+
+Copy the given test files and run them to check that you implemented everything correctly 🧪 
+
+## Step 6 - Active artists
 
 Finally, we are near the end! Only one entity remains: `Music`.
 
@@ -524,7 +565,6 @@ properties :
 - `id`: unique identifier
 - `name`: music's name
 - `link`: public link to the music (it could be whatever you want _YouTube_, _Spotify_...)
-- `artistsId`: `Artist` owner
 - `artists`: list of `Artist` in featuring
 
 You will need to create a [`Many To Many`](https://www.prisma.io/docs/concepts/components/prisma-schema/relations/many-to-many-relations)
@@ -543,6 +583,8 @@ We want to:
 - delete
 - link an artist to a music
 - remove an artist from a music
+
+You can also write your own tests based on the ones we gave you for the previous steps to make sure everything works as intended 👍
 
 > Don't forget to handle errors 😃
 
