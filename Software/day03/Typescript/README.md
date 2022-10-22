@@ -78,7 +78,7 @@ As usual, you can also create a folder `src`:
 mkdir -p src
 ```
 
-## Step 1 - Hello web
+## Step 1 - Hello web 👋
 
 Let's begin with a simple `hello world`. In fact, it will be more complex
 than a simple hello world function called from a main, but it's not that hard 🙂
@@ -210,7 +210,7 @@ If there is no cookie `message`, return `Bad Request` with status `400`.
 > 💡 You should check [http-status-codes](https://www.npmjs.com/package/http-status-codes)
 > to explicitly set your status code in your response.
 
-## Step 3 - A scaling issue
+## Step 3 - A scaling issue 📈
 
 ### Theory
 
@@ -311,7 +311,7 @@ npm i http-status-codes
 Now, replace all raw http status code by the ones [exported](https://github.com/prettymuchbryce/http-status-codes) by the dependency.
 
 TODO: remove the step and talk about the given tests
-## Step 5 - Testing time
+## Step [OLD\] - Testing time
 
 Since [day01](../../day01/Typescript), we asked you to create tests to verify
 the behavior of your functions. API are not exception and there are also
@@ -329,7 +329,7 @@ on your server.
 You can also create an [environment](https://learning.postman.com/docs/sending-requests/managing-environments/)
 to manage your configuration.
 
-## Step 6 - Who use hard coded text?
+## Step 5 - Who use hard coded text?
 
 It's important to transform the data sent to the client to make the API easier to use 😄<br>
 With time, data took standard forms like `JSON` or `XML`. Here we will use
@@ -357,49 +357,43 @@ to correctly type your data 👀<br>
 As well, `req.query` is an object, so you will need to call a method
 to retrieves object's keys.
 
-## Step 7 - Some logic 🤯
-
-In the previous step, you learned how to format data. We will increase a bit
-the difficulty by manipulating it.
-
-Create an endpoint `/are-these-palindromes` with a handler on `POST`.
-
-This endpoint must take a JSON body containing an array of strings like the
-one below:
-```json
-[
-    "meow",
-    "lol"
-]
-```
-
-And it must return an array of objects containing the string and a boolean
-set to `true` if the string is a [palindrome](https://en.wikipedia.org/wiki/Palindrome).
-
-Here's an example: 
-```json
-[
-    {
-        "input": "meow",
-        "result": false
-    },
-    {
-        "input": "lol",
-        "result": true
-    }
-]
-```
-
-> 💡 You will need to call [string methods](https://www.tutorialspoint.com/typescript/typescript_strings.htm) to correctly complete this exercise.
-
-## Step 8 - Server's bodyguard
+## Step 6 - Server's bodyguard 🛡️
 
 TODO: remove/reduce this and the next step
 
 It's important to know what kind of data is sent to your API. This will
-help you to keep an API resilient and secured.
+help you to keep it resilient and secured.
 
-For example, if you send an empty body to the endpoint from step 7, you should
+
+<details>
+  <summary>For example, here's an endpoint that check if body words are palindromes</summary>
+
+  ```ts
+  type Palindrome = {
+	  input: string,
+	  result: boolean
+  }
+
+  server.post('/are-these-palindromes', (req: Request, res: Response) => {
+  	const words = req.body;
+
+  	const isPalindrome = (word: string) => {
+  		return word.split('').reverse().join('') === word;
+  	};
+
+  	const palindromes: Array<Palindrome> = words.map((word: string) => {
+  		return {
+  			input: word,
+  			result: isPalindrome(word)
+  		};
+  	});
+  	res.status(StatusCodes.OK).send(palindromes);
+  });
+  ```
+  
+</details>
+<br>
+If you send an empty body to this endpoint, you should
 get an error. That kind of issue is not suitable in a production API.
 
 To ensure API security, a system has been created: [`Middleware`](https://en.wikipedia.org/wiki/Middleware).
@@ -418,14 +412,14 @@ const myMiddleware = (req: Request, res: Response, next: NextFunction) => {
 ```
 
 > 💡 Middleware can also be used for other purposes: logger, permissions 
-> management etc...
+> management...
 
 To verify user inputs, we will use the [Zod](https://github.com/colinhacks/zod) framework.<br>
 Zod helps you to retrieve a verified typed body in your handler.
 
 Install Zod with the following command:
 ```shell
-npm i zod
+npm install zod
 ```
 
 To make it work, you'll need to add the following line in your `tsconfig.json`:
@@ -433,26 +427,28 @@ To make it work, you'll need to add the following line in your `tsconfig.json`:
 "strictNullChecks": true
 ```
 
-#### Create schema
+Finally, add the `/are-these-palindromes` endpoint to your server so we can validate it ✅
+
+#### Schema
 
 [Zod](https://github.com/colinhacks/zod) validate data using a schema. The
 first step is to create a zod object `palindromeSchema` defining the shape
 of the expected input.
 
-To split our logic, we will create a dedicate file named `serverSchema.ts` in
+To split our logic, we will create a dedicated file named `schema.ts` in
 the directory `src` to export our schema.
 
-> Your schema also define the final type of your data, to get it, you can
-> call the function `zod.infer`. It's a powerful feature because you keep
+> Your schema also defines the final type of your data, to get it, you can
+> call the function `z.infer`. It's a powerful feature because you keep
 > only one source of truth 💯
 
-#### Write middleware
+#### Middleware
 
 Let's write the middleware! We will put it in a dedicated file
-named `serverMiddlewares.ts`.
+named `middlewares.ts`.
 
 You can now [write the middleware](https://expressjs.com/en/guide/using-middleware.html)
-`verifyPalindromeMiddleware` that will verify the body of the request
+`verifyPalindrome` that will verify the body of the request
 sent to `/are-these-palindromes`.
 
 If the body doesn't fit in `palindromeSchema`, return a status `400` with the
@@ -475,10 +471,10 @@ Example:
 server.use(myMiddleware())
 ```
 
-Indeed, this has no sense here, because you have only one endpoint who must
+> This has no sense here, because you have only one endpoint who must
 be verified. But it can be useful to apply a logger middleware for instance 😄
 
-## Step 9 - Automatic fortress
+## Step 7 - Automatic fortress
 
 Writing middlewares is the best way to validate data sent to your handler, but
 what if you have 10 endpoints to validate? You are not going to write
@@ -530,7 +526,7 @@ const validateMiddleware = (schema: any, location = Location.BODY) => {
 > action several time in your endpoints. It will make the code cleaner and
 > easier to read 💪
 
-## Step 10 - Time to clean up
+## Step 8 - Time to clean up
 
 At this point, you should have many endpoints in the file `server.ts`:
 - Some simply retrieve content in the request and return it
@@ -549,7 +545,7 @@ to use those endpoints in `server.ts` 😉
 > in a specific file.<br>
 > This way, you can keep a simple and resilient architecture.
 
-## Step 11 - Go Winston!
+## Step 9 - Go Winston!
 
 You now have a clean architecture, but something is missing...<br>
 You don't know what happens in your API, which endpoints are hit and if
