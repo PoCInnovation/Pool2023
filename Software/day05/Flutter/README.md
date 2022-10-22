@@ -76,7 +76,7 @@ dart main.dart
 `Flutter` is an object oriented framework, so you will code as you might with flutter. In order to do it, you will [create a class](https://dart.dev/samples#classes) named `Vehicle` and create the following variables in it : 
 
 - `name` of type `String`;
-- `_started`  of type `bool` in it. (the underscore is to make the variable private)
+- `_started` of type `bool` in it. (the underscore is to make the variable private)
 
 To start the vehicle you have to create the function `start` in the class that make the started value to `true`.
 
@@ -373,4 +373,4 @@ Storing a JWT inside a store is a bad idea. Here is [how to solve this problem](
 
 Your turn!
 
-> Made with ❤️ by PoC
+> Made with :heart: by PoC
