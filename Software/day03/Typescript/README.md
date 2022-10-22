@@ -88,7 +88,9 @@ package. It's the most popular framework to create server in NodeJS.
 
 Let's install express and its type dependencies:
 ```shell
-npm install express @types/express
+npm install express
+
+npm install -D @types/express
 ```
 
 Then let's create a file `server.ts` to initialize our server.
@@ -126,7 +128,7 @@ request. Generally used to store structured data in a given format
 - [`query`](https://en.wikipedia.org/wiki/Query_string): a string that
 extends the url to fill parameter of type `key/value`. Generally used to
 give additional information about the request.<br>
-For example: order of data to return, max number of entities etc... It also
+For example: order of data to return, max number of entities etc... It's also
 used for [SEO](https://en.wikipedia.org/wiki/Search_engine_optimization).
 - [`url param`](https://doriantaylor.com/policy/http-url-path-parameter-syntax): a dynamic
 string in the path. Generally used to select a resource directly from
@@ -143,7 +145,9 @@ In this step, we will learn how to extract data from these locations 🙂
 
 To do so, we need to install additional dependencies:
 ```shell
-npm install body-parser cookie-parser @types/cookie-parser
+npm install body-parser cookie-parser
+
+npm install -D @types/cookie-parser
 ```
 
 These dependencies are [middlewares](https://expressjs.com/en/guide/using-middleware.html) that will help you parse data from
@@ -232,26 +236,23 @@ your environment.
 
 ### Installation
 
-Let's install [env-var](https://github.com/evanshortiss/env-var), a useful dependency to automatically load your environment with a defined schema.
+Let's install [`dotenv`](https://www.npmjs.com/package/dotenv) to preload our variables from a file.
+
+You will also need to install [env-var](https://github.com/evanshortiss/env-var), a useful dependency to automatically validate your environment with a defined schema.
 
 ```shell
-npm i env-var
+npm i dotenv env-var
 ```
-
-You will also need to install [direnv](https://direnv.net)
-to load environment variables from your terminal using `direnv allow`.
-
-> ⚠️ Don't forget to update your shell with the [direnv hook](https://direnv.net/docs/hook.html).
 
 ### Practice
 
-Now you can create a file named `.envrc` that will `export` the following
+Now you can create a file named `.env` that will define the following
 environment variables:
 - `SERVER_PORT`: `8080`
 - `SERVER_HOST`: `localhost`
 - `HELLO_MESSAGE`: `world`
 
-Let's create a `serverConfig.go` file in the directory `src`. 
+Let's create a `config.ts` file in the directory `src`. 
 
 > 💡 In order to keep a clean architecture, it's common to dedicate a file 
 > to your API configuration.
@@ -264,6 +265,8 @@ variables and export them.
 > do not repeat code.<br>
 > Indeed, you can use other methods of the package to type your values.
 
+> Take a look at the [`env-var` with `dotenv` documentation](https://github.com/evanshortiss/env-var/blob/master/EXAMPLE.md#dotenv) 😉
+
 Update `server.ts` to use the `host` and `port` define in your environment.<br>
 If no `port` is defined, use the port `8080`.
 
@@ -271,8 +274,8 @@ You must also update the endpoint `GET` `/hello` to use the variable `HELLO_MESS
 as response.<br>
 If the value is not defined, return `No message defined` with status `404`.
 
-> If your `.envrc` contains sensitive information, **do not push it**! A good
-practice is to create a file `.envrc.example` that will define the
+> If your `.env` contains sensitive information, **do not push it**! A good
+practice is to create a file `.env.example` that will define the
 same environment variables but without value.
 
 ## Step 4 - HTTP status
