@@ -232,14 +232,13 @@ Let's create an endpoint `/health` that will always return the status `200`.<br>
 If that endpoint fails when you test it, you are sure that your server is not
 working. That's call a health-check!
 
-Even if status codes make sense of their own, you don't know the meaning of [every status
-code](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status).
+Even if status codes make sense of their own, you don't know the meaning of [every status code](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status).
 <br>
 When the client receives the response status, it's his own responsibility to properly handle it. But it's important to explicit these status in your codebase.
 
 To do so, we will use aliases instead of the raw number. This way it will be really easy to understand what we return in our response 😉
 
-Now, replace all raw http status codes by the one s[exported](https://pkg.go.dev/net/http#pkg-constants) by the [http package](https://pkg.go.dev/net/http).
+Now, replace all raw http status codes by the ones [exported](https://pkg.go.dev/net/http#pkg-constants) by the [http package](https://pkg.go.dev/net/http).
 
 TODO: remove the step and talk about the given tests
 ## Step 5 - Testing time
