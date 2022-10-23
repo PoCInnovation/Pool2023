@@ -420,7 +420,7 @@ Install Zod with the following command:
 npm install zod
 ```
 
-To make it work, you'll need to add the following line in your `tsconfig.json`:
+To make it work, you'll may need to add the following line in your `tsconfig.json`:
 ```json
 "strictNullChecks": true
 ```
@@ -651,10 +651,30 @@ And the last errors to handle:
 - If no user is found, return `Unknown user` with status `404`.
 
 
+## Step 9 - Password hashing
+
 Congratulation, you can now authenticate users in a simple and easy way!
 
-TODO: add bcrypt
+At this point, users can authenticate themselves through email and password,
+but it's stored as plain text.<br>
+Anyone with reading access to `users` (or a hypothetical database) will
+be able to read the password of **every user** 😱. That's a real problem and
+users can't trust a platform that don't keep their data in security.
 
+To gain trust, we will [hash](https://en.wikipedia.org/wiki/Hash_function) every password, so this way nobody, even us, will be able to read it.
+
+To do so, let's install [Bcrypt](https://www.npmjs.com/package/bcrypt),
+a powerful and straight-forward hash dependency.
+
+```shell
+npm install bcrypt
+
+npm install -D @types/bcrypt
+```
+
+Now you just have to update your `register` endpoint to save a hashed
+password and your `login` endpoint to compare the given password
+with the stored one 😉
 
 ## Step [TODO AT THE END] - Go Winston!
 
