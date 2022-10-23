@@ -43,7 +43,7 @@ mkdir -p day03
 
 - Initialize a Go module `SoftwareGoDay3`.
 
-> See [day01](../../day01/Golang) if you do not remember how to initialize a Go module 😉
+> See [day01](../../day01/Golang) if you don't remember how to initialize a Go module 😉
 
 # Step 1 - Hello Web
 
@@ -61,7 +61,7 @@ When your `server` is correctly initialized, launch it to listen on port `8080`.
 > endpoint to easily reach it.\
 > For example: `server listening on http://localhost:8080/`
 
-You must also define an endpoint `hello` reachable through the `GET` [method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods).<br>
+You must also define an endpoint `/hello` reachable through the `GET` [method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods).<br>
 When hitting the endpoint, it must responds `world` with the status `200`.
 
 To do so:
@@ -99,7 +99,7 @@ request. Generally used to store structured data in a given format (`JSON`, `XML
 - [`query`](https://en.wikipedia.org/wiki/Query_string): a string that
 extends the url to fill parameter of type `key/value`. Generally used to
 give additional information about the request.<br>
-For example: order of data to return, max number of entities etc... It also
+For example: order of data to return, max number of entities etc... It's also
 used for [SEO](https://en.wikipedia.org/wiki/Search_engine_optimization).
 - [`url param`](https://doriantaylor.com/policy/http-url-path-parameter-syntax): a dynamic
 string in the path. Generally used to select a resource directly from
@@ -119,7 +119,7 @@ It's time to create your different endpoints 🚀
 Create the endpoint `/repeat-my-query`, it must define the following handler
 for the `GET` method:
 
-If there is a message in the [query](https://github.com/gin-gonic/gin#querystring-parameters),
+If there is a `message` in the [query](https://github.com/gin-gonic/gin#querystring-parameters),
 return it with status `200`.<br>
 If there is no message: return a status `400`.
 
@@ -202,7 +202,7 @@ environment variables:
 - `SERVER_HOST`: `localhost`
 - `HELLO_MESSAGE`: `world`
 
-Let's create a `serverConfig.go` file in the directory `server`.
+Let's create a `config.go` file in the directory `server`.
 
 > 💡 In order to keep a clean architecture, it's common to dedicate a file 
 > to your API configuration.
