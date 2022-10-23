@@ -676,14 +676,132 @@ Now you just have to update your `register` endpoint to save a hashed
 password and your `login` endpoint to compare the given password
 with the stored one 😉
 
-## Step [TODO AT THE END] - Go Winston!
 
-You now have a clean architecture, but something is missing...<br>
+## Bonus
+
+Well done for completing this day 🔥
+
+If you are still looking for exercises, we have a few ones for you 😄
+
+They are sorted in order of importance with some guidance, but feel free to implement them as you wish!
+
+
+<details>
+  <summary>OAuth with Google</summary>
+  <br>
+
+  ### Concept
+
+[OAuth 2.0](https://oauth.net/2/) is a powerful authentication framework
+to use trustworthy service to manage the authentication for you.
+
+You have certainly already meet the button "_Login with Google_" or
+"_Login with GitHub_" and you wanted to register on a website.<br>
+This is exactly what you're going to create.
+
+In short, you will use an external service to authenticate users.
+
+The workflow is quite complex but common for any kind of service you want
+to use to create your OAuth 2.0 authentication:
+- You create an OAuth application in the service you want to use (Google,
+Facebook, Twitter, GitHub, Microsoft...)
+- You define a redirection URL that will redirect the user to your website
+after he successfully connected to the service
+- From your server, retrieve from this url an authentication token
+- Server can use this token to retrieve user's information and execute
+action on the service.
+
+The user is warned about which permissions you require when he
+logs him in the service.<br>
+As well, the token is linked to the application, if a user log himself
+in two different application, both application will have a different token.
+
+### Practice
+
+Here you will use [passport](https://github.com/jaredhanson/passport)
+to simplify the workflow.
+
+Let's install required dependencies:
+
+```shell
+npm install passport passport-google-oauth20
+
+npm install -D @types/passport @types/passport-google-oauth20
+```
+
+You will also need to create an application on the [Google developers console](https://console.developers.google.com/) and
+configure your **callback url** that you will write during next steps.
+
+Create a file `OAuth.ts` to code your endpoints.
+
+### Storage
+
+There his no password or email logic when dealing with OAuth authentication,
+so you can store the user identifier.
+
+Define a new type for your ephemeral storage:
+```ts
+type UserOAuth = {
+  displayName: string;
+  googleId: string;
+}
+```
+
+And a new variable to store data:
+
+```ts
+let userOAuth: UserOAuth[] = [];
+```
+
+### Strategy
+
+Passport works with [Strategy](https://www.passportjs.org/packages/),
+so you will need here to set up the [GoogleStrategy](https://www.passportjs.org/packages/passport-google-oauth20/).
+
+You should use the application identifier, secret code, the callback url
+and the function called after user being redirected to your API.
+
+### Endpoints
+
+You will need to create two endpoints to use 
+[Google with passport](http://www.passportjs.org/packages/passport-google-oauth20/).
+
+#### Redirect
+
+Create an endpoint that will redirect the user to the Google authentication service.
+
+#### Callback
+
+Create an endpoint used by Google to redirect user after authentication.
+You should figure out that it will be your **callback url**.<br>
+Thanks to passport, you will access information returned by Google,
+you can store this information in your storage and return either a
+cookie or a JWT to track the ID.
+
+> If the user already exist, you don't have to insert it in
+the database 😉
+
+#### User
+
+Create an endpoint `/oauth/me` with a handler on method `GET`.
+
+If a JWT token or cookie is present and the user is found in storage, return the `displayName`.
+
+> Don't forget to handle errors 💯
+
+<br><br>
+</details
+
+
+<details>
+  <summary>Logger middleware with Winston</summary>
+  <br>
+
+You have a clean architecture, but something is missing...<br>
 You don't know what happens in your API, which endpoints are hit and if
 everything works.
 
-Seeing the whole web traffic will help you to detect
-issues in your API, but also attacks from others.
+Seeing the whole web traffic will help you to detect issues in your API, but also attacks from others.
 
 To do so, you will set up a [logger](https://www.securitymetrics.com/blog/importance-log-management).
 It's an important piece of your API, during development but also in production.
@@ -698,17 +816,17 @@ npm install winston
 
 ### Winston! Stand up!
 
-Create a file `serverLogger.ts` in the `src` directory.
+Create a file `logger.ts` in the `src` directory.
 
 Inside it, export a [winston](https://github.com/winstonjs/winston) logger
 with the following properties:
-- The output format must be: `"[{timestamp}] [{severity}]": {message}`
-- Logs must be written to the standard output and the file `/var/log/api.log`
-- Logs written in standard output must be colored
+- An output format like this: `"[{timestamp}] [{severity}]": {message}`
+- Write logs to the standard output and the file `/var/log/api.log`
+- [Colorize the logs](https://github.com/winstonjs/winston#colorizing-standard-logging-levels) written in standard output
 
-Winston works with a [transport system](https://github.com/winstonjs/winston/blob/2.4.0/docs/transports.md),
+Winston works with a [transport system](https://github.com/winstonjs/winston/blob/master/docs/transports.md),
 this way you can use multiple transport at the same time.<br>
-It also sorts logs following a [severity system](https://github.com/winstonjs/winston/tree/2.x#logging-levels).
+It also sorts logs following a [severity system](https://github.com/winstonjs/winston/tree/master#logging-levels).
 
 > A good practice consist of saving errors logs in a file `/var/log/error.log`
 > to easily find issues later 💯
@@ -717,42 +835,30 @@ It also sorts logs following a [severity system](https://github.com/winstonjs/wi
 > to define `severity` stages.
 
 You can verify that everything works by replacing your `console.log` with
-a `info` log.
+an `info` log.
 
 ### Winston! Line up!
 
 One last thing remains to have a perfect API: a logger to display all
 inbound requests and responses.
 
-Create a new middleware `logMiddleware` in the file `serverMiddlewares.ts`.
+Create a new middleware `logMiddleware` in the file `middlewares.ts`.
 
-This middleware must :
-- Display inbound requests with the message:
+This middleware should:
+- Display inbound requests with a message like this:
 `request [{request_id}] on {method} [{path}] from ({user_ip})`
-- Display responses with the message:
+- Display responses with a message similar to this one:
 `request [{request_id}] response in {elapsed_time}ms with status {response status code}`
 
 You can create unique identifiers with the dependency [uuid](https://www.npmjs.com/package/uuid).
 
-> To log response, you will need to do a little hack with [events](https://nodejs.org/api/http.html).
+> To log responses, you will need to do a little hack with [events](https://nodejs.org/api/http.html) 👀
 
-Apply your middleware to your API and verify that everything works by sending
-requests.
+Apply your middleware to your API and verify that everything works by sending requests 🚀
 
-## Bonus
-
-Well done for completing this day 🔥
-
-If you are still looking for exercises, here are four intermediate ones:
-
-<details>
-  <summary>Expose data</summary>
-  Yesterday you discovered how to manipulate a database with Prisma. Today, you've build an API with Express.
-
-  What about mixing it?
-
-  Expose yesterday's database with today's API 🚀
+<br><br>
 </details>
+
 
 <details>
   <summary>404, Found</summary>
@@ -775,36 +881,16 @@ If you are still looking for exercises, here are four intermediate ones:
   ```
 </details>
 
-<details>
-  <summary>Code readability is the key</summary>
-  TODO: end check if the step name number is still the same
 
-  Step 4 was about explicit status codes returned by our API. Let's do
-  this with errors too 😄
-  
-  At this moment, it should be something like this:
-  ```ts
-  res.status(httpStatus.BAD_REQUEST).send(content);
-  ```
-  
-  Let's make it simpler, find a way to get the following result:
-  ```ts
-  throw new BadRequestError(context);
-  ```
-  
-  > 💡 You can write a class for each type of error.
-  
-  To do this, you will need to use [inheritance](https://www.tutorialspoint.com/typescript/typescript_classes.htm)
-  on class [Error](https://newbedev.com/typescript-extending-error-class) to extends it.
-  
-  What you must do is:
-  - Create a `class` that extends the `Error` class
-  - Create one `class` for each custom error
-  
-  Then you will need a special middleware to handle thrown errors.
-  
-  > You are free to do it in your own way, it's a bonus 😄
+<details>
+  <summary>Expose data</summary>
+  Yesterday you discovered how to manipulate a database with Prisma. Today, you've build an API with Express.
+
+  What about mixing it?
+
+  Expose yesterday's database with today's API 🚀
 </details>
+
 
 <details>
   <summary>Testing time, round 2</summary>
