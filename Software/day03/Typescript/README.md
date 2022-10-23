@@ -420,7 +420,7 @@ Install Zod with the following command:
 npm install zod
 ```
 
-To make it work, you'll may need to add the following line in your `tsconfig.json`:
+To make it work, you may need to add the following line in your `tsconfig.json`:
 ```json
 "strictNullChecks": true
 ```
