@@ -359,14 +359,12 @@ to retrieves object's keys.
 
 ## Step 6 - Server's bodyguard 🛡️
 
-TODO: remove/reduce this and the next step
-
 It's important to know what kind of data is sent to your API. This will
 help you to keep it resilient and secured.
 
 
 <details>
-  <summary>For example, here's an endpoint that check if body words are palindromes</summary>
+  <summary>For example, here's an endpoint that checks if body words are palindromes</summary>
 
   ```ts
   type Palindrome = {
@@ -474,59 +472,7 @@ server.use(myMiddleware())
 > This has no sense here, because you have only one endpoint who must
 be verified. But it can be useful to apply a logger middleware for instance 😄
 
-## Step 7 - Automatic fortress
-
-Writing middlewares is the best way to validate data sent to your handler, but
-what if you have 10 endpoints to validate? You are not going to write
-one middleware for each schema. It could lead to errors and more than that, 
-code duplication is never a good thing.
-
-The purpose of this step is to create a generic middleware to validate
-any kind of zod schema.
-
-Let's create the function `validateMiddleware` in the file `serverMiddlewares.ts`.
-
-It must take as parameters :
-- `schema`: a zod objet to verify
-- `location`: data location (body, query, ...)
-
-This middleware must retrieve the data in the given location and verify that
-it match with the `schema`.
-
-In case of failure, it must return `400` with the reason of the error.<br>
-In case of success, just call the next function.
-
-You must replace the middleware `verifyPalindromeMiddleware` with the new
-one and verify that everything works.
-
-> 💡 If you have correctly understood the step, you will need to create a 
-> function that return another function.<br>
-> [Arrow functions](https://www.tutorialsteacher.com/typescript/arrow-function)
-> are perfects for that use case.
-
-Here's an example of the prototype of `validateMiddleware` with nested functions:
-
-```ts
-// Here `schema` has type `any` because there is no generic zod object type
-// but you can try to define it ;)
-// As well, you can create an Enum to list location.
-// Don't hesitate to add a default location to make your function easier
-// to use.
-const validateMiddleware = (schema: any, location = Location.BODY) => {
-  return (req: Request, res: Response, next: NextFunction): void => {
-    // your logic goes here
-  };
-};
-```
-
-> Zod return typed values, so you can replace your `req.body` to give
-> typed value to other functions.
-
-> Never forget that it's important to create a middleware when you repeat an
-> action several time in your endpoints. It will make the code cleaner and
-> easier to read 💪
-
-## Step 8 - Time to clean up
+## Step 7 - Time to clean up
 
 At this point, you should have many endpoints in the file `server.ts`:
 - Some simply retrieve content in the request and return it
@@ -545,11 +491,178 @@ to use those endpoints in `server.ts` 😉
 > in a specific file.<br>
 > This way, you can keep a simple and resilient architecture.
 
-## Step 9 - Go Winston!
+
+## Step 8 - Authentication with JWT 👨
+
+What if you want to control who can access certain endpoints of your API?
+
+That's where authentication comes into play 🚀
+
+Ie has many purposes in this world of servers and API.<br>
+Manage users accounts, control activities and limit privileges requiring to
+know the user identity are some examples.
+
+Many systems exist today, depending on the usage and the consumers: [API keys](https://cloud.google.com/endpoints/docs/openapi/when-why-api-key),
+sessions, [OAuth](https://auth0.com/intro-to-iam/what-is-oauth-2/) and so on, you can multiply the way to fit with your product
+and give the best possible user experience.
+
+Here we will use JSON Web Tokens 😃
+
+### Concept
+
+JSON Web Tokens are used to share security token between entities, it can be
+user or a service.<br>
+It's a signed electronic signature to verify a consumer's identity. 
+
+> 💡 It's common to use [HMAC](https://en.wikipedia.org/wiki/HMAC) or [RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem)) to sign tokens.
+
+Those token can be stored in cookies, but they can also be sent in a header.
+
+A JWT (JSON Web Token) is composed of 3 parts: `Header`, `Payload` and `Signature`.<br>
+For more information about JWT, go to [jwt.io](https://jwt.io/introduction/). You can also use a [debugger](https://jwt.io/#debugger-io) to visualize the different parts of a jwt.
+
+The classic workflow for JWT authentication is:
+1. You authenticate yourself with your credential (username, password, etc...)
+2. API will sign those credentials with a secret key
+3. API sends back the token to the user
+4. The client put the token in future requests to authenticate him in the header
+
+### Practice
+
+Let's create an authentication system with JWT 🔥
+
+#### Installation
+
+First, download the [JWT](https://www.npmjs.com/package/jsonwebtoken) dependency:
+
+```shell
+npm install jsonwebtoken
+
+npm install -D @types/jsonwebtoken
+```
+
+Then add a `src/utils.ts` file with these useful functions and types:
+```ts
+// Defining the type of user credentials
+export type User = {
+  email: string;
+  password: string;
+}
+
+// Get a user from his email address
+export const getUser = (users: User[], email: string) => users.find((u) => u.email === email);
+
+// Function to check if a given email is already registered
+export const isRegistered = (users: User[], email: string) => !!getUser(users, email);
+```
+
+Finally, in your `endpoints` folder create a `jwt.ts` file with the following content:
+```ts
+import type { User } from '../utils';
+
+// Storing users in an array for simplicity
+const users: User[] = [];
+```
+
+#### Register
+
+Now it's time to create the endpoints 💥
+
+The first one is `/jwt/register` with a resolver on method `POST`.
+
+The resolver must take as `body` parameter:
+
+```json
+{
+  "email": "<email>",
+  "password": "<password>"
+}
+```
+
+It will extract these information from `body` and add it to the
+`users` array.<br>
+Then it should return a `JWT token` containing the user's email ✉️ in a JSON format like this:
+```json
+{
+  "accessToken": "<token>",
+  "user": {
+    "email": "<email>",
+    "password": "<password>"
+  },
+  "message": "User successfully created"
+}
+```
+
+If there is no `body`, return `Bad Request` with status `400`.
+
+If the user is already registered, you have to return `User already exists` with the `403` status.
+
+> 💡 You will need to use a secret, create a new environment variable in your `config.ts` for this.
+
+> Don't forget to create a sub-router and import it in the main router you created at the last step 😉
+
+
+#### Login
+
+Now let's create an endpoint `/jwt/login` with a resolver on method `POST`.
+
+It must take as `body` parameter:
+
+```json
+{
+  "email": "<email>",
+  "password": "<password>"
+}
+```
+
+It will extract information from `body` and check if there is a match in
+the `users` array.<br>
+
+If the identifier matches, you should return the same JSON as for `/jwt/register`, but with this message:
+```json
+{
+  "message": "Successful login"  
+}
+```
+
+As always don't forget error handling:
+- If there is no `body`, return `Bad Request` with status `400`
+- If the email doesn't match any user, return `User not found` with the `404` status
+- If the password doesn't match, return `Wrong password` with `404` again.
+
+#### Token
+
+Finally, let's create an an endpoint `/jwt/me` to retrieve user data on method `GET`.
+
+If a token is present in the header `Authorization` with the format 
+`Bearer ${TOKEN}`, return information related to the authenticated user:
+```json
+{ 
+  "user": {
+    "email": "<email>",
+    "password": "<password>"
+  },
+  "message": "User found" 
+}
+```
+
+And the last errors to handle:
+- If no token is found, return `No bearer found` with status `400`.
+- If no user is found, return `Unknown user` with status `404`.
+
+
+Congratulation, you can now authenticate users in a simple and easy way!
+
+TODO: add bcrypt
+
+
+## Step [TODO AT THE END] - Go Winston!
 
 You now have a clean architecture, but something is missing...<br>
 You don't know what happens in your API, which endpoints are hit and if
-everything works.<br>Seeing the whole web traffic will help you to detect
+everything works.
+
+Seeing the whole web traffic will help you to detect
 issues in your API, but also attacks from others.
 
 To do so, you will set up a [logger](https://www.securitymetrics.com/blog/importance-log-management).
