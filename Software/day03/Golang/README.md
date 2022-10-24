@@ -45,7 +45,7 @@ mkdir -p day03
 
 > See [day01](../../day01/Golang) if you don't remember how to initialize a Go module 😉
 
-# Step 1 - Hello Web
+# Step 1 - Hello Web 👋
 
 Let's begin with a simple `hello world`. In fact, it will be more complex
 than a simple hello world function called from a main, but it's not that hard 🙂
@@ -162,7 +162,7 @@ If there is no message: return a status `400`.
 
 > 💡 You should check [AbortWithStatus](https://pkg.go.dev/github.com/gin-gonic/gin#Context.AbortWithStatus).
 
-## Step 3 - A scaling issue
+## Step 3 - A scaling issue 📈
 
 ### Theory
 
@@ -241,7 +241,7 @@ To do so, we will use aliases instead of the raw number. This way it will be rea
 Now, replace all raw http status codes by the ones [exported](https://pkg.go.dev/net/http#pkg-constants) by the [http package](https://pkg.go.dev/net/http).
 
 TODO: remove the step and talk about the given tests
-## Step 5 - Testing time
+## Step [OLD\] - Testing time
 
 Since [day01](../../day01/Golang), we asked you to create tests to verify
 the behavior of your functions. API are not exception and there are also
@@ -259,7 +259,7 @@ on your server.
 You can also create an [environment](https://learning.postman.com/docs/sending-requests/managing-environments/)
 to manage your configuration.
 
-## Step 6 - Who use hard coded text?
+## Step 5 - Who use hard coded text?
 
 It's important to transform the data sent to the client to make the API easier to use 😄<br>
 With time, data took standard forms like `JSON` or `XML`. Here we will use
@@ -268,10 +268,10 @@ the most popular: [`JSON`](https://en.wikipedia.org/wiki/JSON).
 Create an endpoint `/repeat-all-my-queries` with a handler on the `GET` method.
 
 This handler must retrieve all the [query parameters](https://en.wikipedia.org/wiki/Query_string)
-znd return an array of objects containing the `key` and the `value` of each
+and return an array of objects containing the `key` and the `value` of each
 query parameter.
 
-Here's the shape of the data to return:
+Here's the shape of the data to return an `OK` status:
 ```json
 [
     {
@@ -281,9 +281,11 @@ Here's the shape of the data to return:
 ]
 ```
 
+Don't forget error handling, you have to return a `Bad Request` status in case there is no query param.
+
 > As it returns an Object array, you have to create a `structure` 👀
 
-## Step 7 - Some logic 🤯
+## Step 6 - Some logic 🤯
 
 In the previous step, you learned how to format data. We will increase a bit
 the difficulty by manipulating it.
@@ -319,7 +321,7 @@ Here's an example:
 > 💡 You will need to call [string methods](https://pkg.go.dev/strings)
 to correctly complete this exercise.
 
-## Step 8 - Server's bodyguard
+## Step 7 - Server's bodyguard 🛡️
 TODO: remove/reduce this and the next step
 > This exercise is not useful, please go to the further step
 
@@ -365,7 +367,7 @@ func Logger() gin.HandlerFunc {
 - Apply this middleware to the `/are-these-palindromes` endpoint.
 > Here's [how to use middlewares with gin](https://github.com/gin-gonic/gin#using-middleware).
 
-## Step 9 - Time to clean up
+## Step 8 - Time to clean up 🧹
 
 At this point, you should have many endpoints in one file in your package `routes`:
 - Some simply retrieve content in the request and return it.
