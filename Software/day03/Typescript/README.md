@@ -352,7 +352,7 @@ Here's the shape of the data to return:
 ]
 ```
 
-To be Typescript compliant, you should create an [interface](https://www.typescriptlang.org/docs/handbook/interfaces.html)
+To be Typescript compliant, you should create [a type or an interface](https://www.typescriptlang.org/docs/handbook/2/objects.html)
 to correctly type your data 👀<br>
 As well, `req.query` is an object, so you will need to call a method
 to retrieves object's keys.
@@ -498,7 +498,7 @@ What if you want to control who can access certain endpoints of your API?
 
 That's where authentication comes into play 🚀
 
-Ie has many purposes in this world of servers and API.<br>
+It has many purposes in this world of servers and API.<br>
 Manage users accounts, control activities and limit privileges requiring to
 know the user identity are some examples.
 
@@ -523,7 +523,7 @@ For more information about JWT, go to [jwt.io](https://jwt.io/introduction/). Yo
 
 The classic workflow for JWT authentication is:
 1. You authenticate yourself with your credential (username, password, etc...)
-2. API will sign those credentials with a secret key
+2. API signs those credentials with a secret key
 3. API sends back the token to the user
 4. The client put the token in future requests to authenticate him in the header
 
@@ -553,6 +553,7 @@ export type User = {
 export const getUser = (users: User[], email: string) => users.find((u) => u.email === email);
 
 // Function to check if a given email is already registered
+// !! is a coercion to a boolean value to return either true or false
 export const isRegistered = (users: User[], email: string) => !!getUser(users, email);
 ```
 
@@ -593,9 +594,11 @@ Then it should return a `JWT token` containing the user's email ✉️ in a JSON
 }
 ```
 
-If there is no `body`, return `Bad Request` with status `400`.
+You should return it with the `201 CREATED` status in this case (use the right `http-status-code` 😉)
 
-If the user is already registered, you have to return `User already exists` with the `403` status.
+If there is no `body`, return `Bad Request` with the corresponding status.
+
+If the user is already registered, you have to return `User already exists` with the `403 Forbidden` status.
 
 > 💡 You will need to use a secret, create a new environment variable in your `config.ts` for this.
 
@@ -625,9 +628,11 @@ If the identifier matches, you should return the same JSON as for `/jwt/register
 }
 ```
 
+This time didn't create any resource, so we'll just return an `OK` status 😄
+
 As always don't forget error handling:
-- If there is no `body`, return `Bad Request` with status `400`
-- If the email doesn't match any user, return `User not found` with the `404` status
+- If there is no `body`, return a `Bad Request` message & status.
+- If the email doesn't match any user, return `User not found` with the `404 Not Found` status
 - If the password doesn't match, return `Wrong password` with `404` again.
 
 #### Token
@@ -635,7 +640,7 @@ As always don't forget error handling:
 Finally, let's create an an endpoint `/jwt/me` to retrieve user data on method `GET`.
 
 If a token is present in the header `Authorization` with the format 
-`Bearer ${TOKEN}`, return information related to the authenticated user:
+`Bearer ${TOKEN}`, return information related to the authenticated user with an `OK` status:
 ```json
 { 
   "user": {
@@ -647,8 +652,8 @@ If a token is present in the header `Authorization` with the format
 ```
 
 And the last errors to handle:
-- If no token is found, return `No bearer found` with status `400`.
-- If no user is found, return `Unknown user` with status `404`.
+- If no token is found, return `No bearer found` with status `Bad Request`.
+- If no user is found, return `Unknown user` with status `Not Found`.
 
 
 ## Step 9 - Password hashing
