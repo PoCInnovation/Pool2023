@@ -394,10 +394,10 @@ func ApplyRoutes(r *gin.Engine) error {
 }
 ```
 
-Then create these files: `routes/health.go`, `hello.go`, `palindrome.go`, `repeat.go`.
+Then create these files in `routes`: `health.go`, `hello.go`, `palindrome.go`, `repeat.go`.
 
 Now move your endpoints into the corresponding files and create the required functions.
-> `ApplyRoutes` should be the only exported function.
+> 💡 `ApplyRoutes` should be the only exported function of your `routes` package.
 
 You should end up with the following architecture:
 ```
