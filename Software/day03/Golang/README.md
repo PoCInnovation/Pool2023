@@ -45,7 +45,7 @@ mkdir -p day03
 
 > See [day01](../../day01/Golang) if you don't remember how to initialize a Go module 😉
 
-# Step 1 - Hello Web 👋
+## Step 1 - Hello Web 👋
 
 Let's begin with a simple `hello world`. In fact, it will be more complex
 than a simple hello world function called from a main, but it's not that hard 🙂
@@ -76,7 +76,7 @@ Here is an example to manage your routes:
 package router
 
 import (
-	"github.com/gin-gonic/gin"
+    "github.com/gin-gonic/gin"
 )
 
 func world(c *gin.Context) {
@@ -285,51 +285,46 @@ Don't forget error handling, you have to return a `Bad Request` status in case t
 
 > As it returns an Object array, you have to create a `structure` 👀
 
-## Step 6 - Some logic 🤯
+## Step 6 - Server's bodyguard 🛡️
 
-In the previous step, you learned how to format data. We will increase a bit
-the difficulty by manipulating it.
+It's important to know what kind of data is sent to your API. This will help you to keep it resilient and secured.
 
-Create an endpoint `/are-these-palindromes` with a handler on `POST`.
+<details>
+    <summary>For example, here's an endpoint that checks if body words are palindromes</summary>
 
-This endpoint must take a JSON body containing an array of strings like the
-one below:
-```json
-[
-    "meow",
-    "lol"
-]
-```
-
-And it must return an array of objects containing the string and a boolean
-set to `true` if the string is a [palindrome](https://en.wikipedia.org/wiki/Palindrome).
-
-Here's an example:
-```json
-[
-    {
-        "input": "meow",
-        "result": false
-    },
-    {
-        "input": "lol",
-        "result": true
+    ```go
+    // Structure for our returned JSON
+    type PalindromeResponse struct {
+        Input  string `json:"input"`
+        Result bool   `json:"result"`
     }
-]
-```
 
-> 💡 You will need to call [string methods](https://pkg.go.dev/strings)
-to correctly complete this exercise.
+    // Helper function to check a single string
+    func isPalindrome(input string) bool {
+        size := len(input)
+        stop := size / 2
+        for i := 0; i < stop; i++ {
+            if input[i] != input[size-i-1] {
+                return false
+            }
+        }
+        return true
+    }
 
-## Step 7 - Server's bodyguard 🛡️
-TODO: remove/reduce this and the next step
-> This exercise is not useful, please go to the further step
+    // Main function
+    func areThesePalindromes(c *gin.Context) {
+        var inputs []string
+        _ = c.BindJSON(&inputs)
+        palindromes := make([]PalindromeResponse, len(inputs))
+        for idx, input := range inputs {
+            palindromes[idx] = PalindromeResponse{Input: input, Result: isPalindrome(input)}
+        }
+        c.JSON(http.StatusOK, palindromes)
+    }
+    ```
+</details>
 
-It's important to know what kind of data is sent to your API. This will
-help you to keep an API resilient and secured.
-
-For example, if you send an empty body to the endpoint from step 7, you should
-get an error. That kind of issue is not suitable in a production API.
+If you send an empty body to this endpoint, you should get an error. That kind of issue is not suitable in a production API.
 
 To ensure API security, a system has been created: [`Middleware`](https://en.wikipedia.org/wiki/Middleware).
 
@@ -340,34 +335,37 @@ Here's a code snippet of a [middleware for an gin API](https://github.com/gin-go
 ```go
 func Logger() gin.HandlerFunc {
     return func(c *gin.Context) {
-        // before request
+        // Before request
         t := time.Now()
 
-		// Set example variable
-		c.Set("example", "12345")
+        // Set an example variable
+        c.Set("example", "12345")
 
+        // Calling the next function to be executed
+        c.Next()
 
-		c.Next() // Next function to be executed
+        // After the request
+        latency := time.Since(t)
+        log.Print(latency)
 
-		// after request
-		latency := time.Since(t)
-		log.Print(latency)
-
-		// access the status we are sending
-		status := c.Writer.Status()
-		log.Println(status)
-	}
+        // Access the status we are sending
+        status := c.Writer.Status()
+        log.Println(status)
+    }
 }
 ```
 
-- Create a `middlewares` package, containing the `CheckPalindrome` function.
-> Here's [how to validate body with gin](https://github.com/gin-gonic/gin#model-binding-and-validation).\
-> If the body is invalid, return the right error code with an explicit error message.
+Add the `/are-these-palindromes` endpoint to your server so we can validate it ✅
+
+Then, create a `middlewares` package, containing the `CheckPalindrome` function.
+> Here's [how to validate body with gin](https://github.com/gin-gonic/gin#model-binding-and-validation).
+
+> If the body is invalid, return the right error code with an explicit error message 😄
 
 - Apply this middleware to the `/are-these-palindromes` endpoint.
-> Here's [how to use middlewares with gin](https://github.com/gin-gonic/gin#using-middleware).
+> 💡 Here's [how to use middlewares with gin](https://github.com/gin-gonic/gin#using-middleware).
 
-## Step 8 - Time to clean up 🧹
+## Step 7 - Time to clean up 🧹
 
 At this point, you should have many endpoints in one file in your package `routes`:
 - Some simply retrieve content in the request and return it.
@@ -377,20 +375,20 @@ At this point, you should have many endpoints in one file in your package `route
 
 It's time to organize our endpoints into different files.
 
-Create the file `routes/index.go` with the following content :
+Create the file `routes/index.go` with the following content:
 ```go
 package routes
 
 import (
-	"github.com/gin-gonic/gin"
+    "github.com/gin-gonic/gin"
 )
 
 func ApplyRoutes(r *gin.Engine) error {
-	applyHealth(r)
-	applyHello(r)
-	applyRepeat(r)
-	applyPalindrome(r)
-	return nil
+    applyHealth(r)
+    applyHello(r)
+    applyRepeat(r)
+    applyPalindrome(r)
+    return nil
 }
 ```
 
