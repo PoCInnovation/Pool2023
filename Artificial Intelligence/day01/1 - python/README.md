@@ -47,13 +47,13 @@ Before we get started with **iPython notebooks**, which you will be using for mo
 Open up a new terminal window: inside, simply run the `python` command !
 
 ```bash
-> python
+> 1 - python
 ```
 
 This command will open up the python command line:
 
 ```bash
-> python
+> 1 - python
 Python 3.X.XX (main, XXX XX XXXX, XX:XX:XX) 
 [GCC 7.5.0] :: Anaconda, Inc. on linux
 Type "help", "copyright", "credits" or "license" for more information.
