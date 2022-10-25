@@ -330,7 +330,7 @@ To ensure API security, a system has been created: [`Middleware`](https://en.wik
 
 > 💡 Middleware can also be used for other purposes: logger, permissions management etc...
 
-Here's a code snippet of a [middleware for an gin API](https://github.com/gin-gonic/gin#custom-middleware):
+Here's a code snippet of a [middleware for a gin API](https://github.com/gin-gonic/gin#custom-middleware):
 
 ```go
 func Logger() gin.HandlerFunc {
@@ -364,6 +364,8 @@ Then, create a `middlewares` package, containing the `CheckPalindrome` function.
 
 - Apply this middleware to the `/are-these-palindromes` endpoint.
 > 💡 Here's [how to use middlewares with gin](https://github.com/gin-gonic/gin#using-middleware).
+
+> If you end up with an empty array result with the middleware, check [this issue related to binding](https://github.com/gin-gonic/gin/issues/1078) 😉
 
 ## Step 7 - Time to clean up 🧹
 
