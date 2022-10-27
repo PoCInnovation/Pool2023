@@ -503,8 +503,7 @@ Manage users accounts, control activities and limit privileges requiring to
 know the user identity are some examples.
 
 Many systems exist today, depending on the usage and the consumers: [API keys](https://cloud.google.com/endpoints/docs/openapi/when-why-api-key),
-sessions, [OAuth](https://auth0.com/intro-to-iam/what-is-oauth-2/) and so on, you can multiply the way to fit with your product
-and give the best possible user experience.
+sessions, [OAuth](https://auth0.com/intro-to-iam/what-is-oauth-2/) and so on, you can use a single one or combine them to fit with your product and provide the best possible user experience.
 
 Here we will use JSON Web Tokens 😃
 
