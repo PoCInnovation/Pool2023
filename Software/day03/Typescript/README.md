@@ -733,8 +733,7 @@ npm install passport passport-google-oauth20
 npm install -D @types/passport @types/passport-google-oauth20
 ```
 
-You will also need to create an application on the [Google developers console](https://console.developers.google.com/) and
-configure your **callback url** that you will write during next steps.
+You will also need to create an application on the [Google developers console](https://console.developers.google.com/) and configure your **callback url** that you will use next.
 
 Create a file `OAuth.ts` to code your endpoints.
 

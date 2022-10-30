@@ -449,7 +449,6 @@ Let's configure it with the CLI:
 npx eslint --init
 ```
 
-TODO: update with latest message/versions
 <Details>
   <Summary><strong>Follow those steps when configuring ESLint</strong></Summary>
 
@@ -467,20 +466,22 @@ TODO: update with latest message/versions
   ? How would you like to define a style for your project?
   <b>Use a popular style guide</b>
   ? Which style guide do you want to follow?
-  <b>Airbnb: https://github.com/airbnb/javascript</b>
+  <b>Standard: https://github.com/standard/eslint-config-standard-with-typescript</b>
   ? What format do you want your config file to be in?
   <b>JavaScript</b>
-  Checking peerDependencies of eslint-config-airbnb-base@latest
-  The config that you've selected requires the following  dependencies:
+  Checking peerDependencies of eslint-config-standard-with-typescript@latest
+  The config that you've selected requires the following dependencies:
   
-  @typescript-eslint/eslint-plugin@latest eslint-config-airbnb-base@latest eslint@^5.16.0 || ^6.8.0 || ^7. 2.0
-  eslint-plugin-import@^2.21.2 @typescript-eslint/parser@latest ? Would you like to install them now with npm?
+  ...
+  ? Would you like to install them now?
   <b>Yes</b>
+  ? Which package manager do you want to use?
+  <b>npm</b>
   </pre>
 </Details>
 
 > Those steps are configuring some ESLint rules, during the pool we will follow the
-> [AirBnB](https://airbnb.io/javascript/#objects--prototype-builtins) convention.
+> [AirBnB](https://github.com/airbnb/javascript) convention.
 
 Let's add some rules in the `package.json` to run the linter:
 - `lint`: `eslint src/**/*.ts`.
@@ -488,15 +489,16 @@ Let's add some rules in the `package.json` to run the linter:
 
 > You will certainly find syntax errors when running it.
 
-As you'll see, calls to `console.log` are considered as a warning. To remove it
-we will update our ESLint configuration with the one below:
+As you'll see, calls to `console.log` are considered as a warning.<br>
+We also need to use the base convention provided by AirBnB.
 
-TODO: check config version, es2022 or even esNext...
+To fix this, let's update our ESLint configuration with the one below:
+
 ```js
 module.exports = {
   env: {
     browser: true,
-    es2021: true,
+    es2022: true,
   },
   extends: ['airbnb-base'],
   parser: '@typescript-eslint/parser',
@@ -525,15 +527,14 @@ module.exports = {
 };
 ```
 
-Be sure that you have the following modules in your `devDependencies`:
-#TODO: versions
+Make that you have the following modules in your `devDependencies`:
 ```json
-"@typescript-eslint/eslint-plugin": "^5.3.1",
-"@typescript-eslint/parser": "^5.3.1",
-"eslint": "^8.0.0",
+"@typescript-eslint/eslint-plugin": "^5.39.0",
+"@typescript-eslint/parser": "^5.39.0",
+"eslint": "^8.25.0",
 "eslint-config-airbnb-base": "^15.0.0",
-"eslint-plugin-import": "^2.25.3",
-"prettier": "^2.4.1",
+"eslint-plugin-import": "^2.26.0",
+"prettier": "^2.7.1",
 ```
 
 If a dependency is missing, install it.
@@ -997,7 +998,7 @@ Let's add some fields by updating the `Artist` type:
 - `id`: A [unique identifier](https://www.npmjs.com/package/nanoid) of type `string`
 - `top`: Best song, as a `string`
 - `fans`: `number` of fans
-- `listenedTime`: the amount of time you listened to this artist. It must be stored as a [`Date`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
+- `listenedTime`: the amount of time you listened to this artist, stored as a `number` of listened hours
 
 > 💡 It's common to put a unique identifier when you store data, this way, you can easily distinguish them.
 
