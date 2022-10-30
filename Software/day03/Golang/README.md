@@ -518,6 +518,7 @@ If the user is already registered, you have to return `User already exists` with
 
 > 💡 You will need to use a secret, create a new environment variable in your `config.go` for this.
 
+> If you get a `key is of invalid type` error, take a look at [this issue](https://github.com/dgrijalva/jwt-go/issues/65#issuecomment-284784243) 😉
 
 #### Login
 
@@ -549,30 +550,35 @@ As always don't forget error handling:
 - If the email doesn't match any user, return `User not found` with the `404 Not Found` status
 - If the password doesn't match, return `Wrong password` with `404` again.
 
+> You can also add an [expiration date](https://gist.github.com/soulmachine/b368ce7292ddd7f91c15accccc02b8df#1-how-to-hadle-jwt-expiration)
+> to the tokens generated in `register` and `login` 😉
 
+#### Token
 
+Finally, let's create an an endpoint `/jwt/me` to retrieve user data on method `GET`.
 
-TODO:
-- Create a route **GET** `/me-jwt`
-  - If the header stores a token
-    - Returns the authenticated user information if it exists
-    - Returns the status `401` and the message `Unauthorized` in the other case
-  - If there is no given token
-    - Returns the status `403` and the message `Forbidden`
+If a token is present in the header `Authorization` with the format 
+`Bearer <TOKEN>`, return information related to the authenticated user with an `OK` status:
+```json
+{ 
+  "user": {
+    "email": "<email>",
+    "password": "<password>"
+  },
+  "message": "User found" 
+}
+```
 
-
-
-
-
-
-
-
+And the last errors to handle:
+- If the token is wrong, return `Unauthorized` with the right status.
+- If no user is found, return `Unknown user` with the right status.
 
 
 ## Bonus
 
 Well done for completing this day 🔥
 
+TODO: add auth advanced exercises
 If you are still looking for exercises, here are two intermediate ones:
 
 ### Testing time, round 2
