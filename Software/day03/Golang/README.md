@@ -497,7 +497,7 @@ The resolver must take as `body` parameter:
 }
 ```
 
-It will extract these information from the `body` and add it to `UsersJWT`.<br>
+It will extract these information from the `body` and add it to `users`.<br>
 Then it should return a `JWT token` containing the user's email ✉️ in a JSON format like this:
 ```json
 {
@@ -519,18 +519,40 @@ If the user is already registered, you have to return `User already exists` with
 > 💡 You will need to use a secret, create a new environment variable in your `config.go` for this.
 
 
+#### Login
+
+Now let's create an endpoint `/jwt/login` with a resolver on method `POST`.
+
+It must take as `body` parameter:
+
+```json
+{
+  "email": "<email>",
+  "password": "<password>"
+}
+```
+
+It will extract information from `body` and check if there is a match in
+the `users` map.<br>
+
+If the identifier matches, you should return the same JSON as for `/jwt/register`, but with this message:
+```json
+{
+  "message": "Successful login"  
+}
+```
+
+This time didn't create any resource, so we'll just return an `OK` status 😄
+
+As always don't forget error handling:
+- If there is no `body`, return a `Bad Request` message & status.
+- If the email doesn't match any user, return `User not found` with the `404 Not Found` status
+- If the password doesn't match, return `Wrong password` with `404` again.
 
 
 
 
 TODO:
-- Create a route **POST** `/signin-jwt`
-  - Takes a body, containing the user's `email` and `password`
-  - If the credentials match, returns a token storing the signed body
-  - Whenever there's no message or that the credentials don't match
-    - Set the status as 400
-    - Send back `Bad Request`
-
 - Create a route **GET** `/me-jwt`
   - If the header stores a token
     - Returns the authenticated user information if it exists
