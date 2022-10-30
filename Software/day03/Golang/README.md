@@ -411,6 +411,142 @@ routes/
 ...
 ```
 
+## Step 8 - Authentication with JWT 👨
+
+What if you want to control who can access certain endpoints of your API?
+
+That's where authentication comes into play 🚀
+
+It has many purposes in this world of servers and API.<br>
+Manage users accounts, control activities and limit privileges requiring to
+know the user identity are some examples.
+
+Many systems exist today, depending on the usage and the consumers: [API keys](https://cloud.google.com/endpoints/docs/openapi/when-why-api-key),
+sessions, [OAuth](https://auth0.com/intro-to-iam/what-is-oauth-2/) and so on, you can use a single one or combine them to fit with your product and provide the best possible user experience.
+
+Here we will use JSON Web Tokens 😃
+
+### Concept
+
+JSON Web Tokens are used to share security token between entities, it can be
+user or a service.<br>
+It's a signed electronic signature to verify a consumer's identity. 
+
+> 💡 It's common to use [HMAC](https://en.wikipedia.org/wiki/HMAC) or [RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem)) to sign tokens.
+
+Those token can be stored in cookies, but they can also be sent in a header.
+
+A JWT (JSON Web Token) is composed of 3 parts: `Header`, `Payload` and `Signature`.<br>
+For more information about JWT, go to [jwt.io](https://jwt.io/introduction/). You can also use a [debugger](https://jwt.io/#debugger-io) to visualize the different parts of a jwt.
+
+The classic workflow for JWT authentication is:
+1. You authenticate yourself with your credential (username, password, etc...)
+2. API signs those credentials with a secret key
+3. API sends back the token to the user
+4. The client put the token in future requests to authenticate him in the header
+
+### Practice
+
+Let's create an authentication system with JWT 🔥
+
+#### Installation
+
+The first thing we need to do is to add a package to generate the JWT:
+```sh
+go get -u github.com/golang-jwt/jwt
+```
+
+Then, add a folder `jwt` in `routes`.<br>
+It will contain 2 files:<br>
+`jwt.go` with a `users` [map](https://go.dev/tour/moretypes/19) that will mock a simple database, stored in your RAM.
+
+```go
+package jwt
+
+type user struct {
+	Email    string `json:"email"`
+	Password string `json:"password"`
+}
+
+var users = map[string]user{}
+```
+
+`utils.go`, with a few useful functions:
+```go
+package jwt
+
+// Function to check if a given email is already registered
+func isRegistered(email string) bool {
+	_, ok := users[email]
+	return ok
+}
+```
+
+#### Register
+
+Now it's time to create the endpoints 💥
+
+The first one is `/jwt/register` with a resolver on method `POST`.
+
+The resolver must take as `body` parameter:
+
+```json
+{
+  "email": "<email>",
+  "password": "<password>"
+}
+```
+
+It will extract these information from the `body` and add it to `UsersJWT`.<br>
+Then it should return a `JWT token` containing the user's email ✉️ in a JSON format like this:
+```json
+{
+  "accessToken": "<token>",
+  "user": {
+    "email": "<email>",
+    "password": "<password>"
+  },
+  "message": "User successfully created"
+}
+```
+
+You should return it with the `201 CREATED` status in this case (use the right `net/http` status 😉)
+
+If there is no `body`, return `Bad Request` with the corresponding status.
+
+If the user is already registered, you have to return `User already exists` with the `403 Forbidden` status.
+
+> 💡 You will need to use a secret, create a new environment variable in your `config.go` for this.
+
+
+
+
+
+
+TODO:
+- Create a route **POST** `/signin-jwt`
+  - Takes a body, containing the user's `email` and `password`
+  - If the credentials match, returns a token storing the signed body
+  - Whenever there's no message or that the credentials don't match
+    - Set the status as 400
+    - Send back `Bad Request`
+
+- Create a route **GET** `/me-jwt`
+  - If the header stores a token
+    - Returns the authenticated user information if it exists
+    - Returns the status `401` and the message `Unauthorized` in the other case
+  - If there is no given token
+    - Returns the status `403` and the message `Forbidden`
+
+
+
+
+
+
+
+
+
+
 ## Bonus
 
 Well done for completing this day 🔥
