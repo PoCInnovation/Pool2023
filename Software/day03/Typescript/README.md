@@ -78,7 +78,7 @@ As usual, you can also create a folder `src`:
 mkdir -p src
 ```
 
-## Step 1 - Hello web
+## Step 1 - Hello web 👋
 
 Let's begin with a simple `hello world`. In fact, it will be more complex
 than a simple hello world function called from a main, but it's not that hard 🙂
@@ -88,7 +88,9 @@ package. It's the most popular framework to create server in NodeJS.
 
 Let's install express and its type dependencies:
 ```shell
-npm install express @types/express
+npm install express
+
+npm install -D @types/express
 ```
 
 Then let's create a file `server.ts` to initialize our server.
@@ -126,7 +128,7 @@ request. Generally used to store structured data in a given format
 - [`query`](https://en.wikipedia.org/wiki/Query_string): a string that
 extends the url to fill parameter of type `key/value`. Generally used to
 give additional information about the request.<br>
-For example: order of data to return, max number of entities etc... It also
+For example: order of data to return, max number of entities etc... It's also
 used for [SEO](https://en.wikipedia.org/wiki/Search_engine_optimization).
 - [`url param`](https://doriantaylor.com/policy/http-url-path-parameter-syntax): a dynamic
 string in the path. Generally used to select a resource directly from
@@ -143,7 +145,9 @@ In this step, we will learn how to extract data from these locations 🙂
 
 To do so, we need to install additional dependencies:
 ```shell
-npm install body-parser cookie-parser @types/cookie-parser
+npm install body-parser cookie-parser
+
+npm install -D @types/cookie-parser
 ```
 
 These dependencies are [middlewares](https://expressjs.com/en/guide/using-middleware.html) that will help you parse data from
@@ -206,7 +210,7 @@ If there is no cookie `message`, return `Bad Request` with status `400`.
 > 💡 You should check [http-status-codes](https://www.npmjs.com/package/http-status-codes)
 > to explicitly set your status code in your response.
 
-## Step 3 - A scaling issue
+## Step 3 - A scaling issue 📈
 
 ### Theory
 
@@ -232,26 +236,23 @@ your environment.
 
 ### Installation
 
-Let's install [env-var](https://github.com/evanshortiss/env-var), a useful dependency to automatically load your environment with a defined schema.
+Let's install [`dotenv`](https://www.npmjs.com/package/dotenv) to preload our variables from a file.
+
+You will also need to install [env-var](https://github.com/evanshortiss/env-var), a useful dependency to automatically validate your environment with a defined schema.
 
 ```shell
-npm i env-var
+npm i dotenv env-var
 ```
-
-You will also need to install [direnv](https://direnv.net)
-to load environment variables from your terminal using `direnv allow`.
-
-> ⚠️ Don't forget to update your shell with the [direnv hook](https://direnv.net/docs/hook.html).
 
 ### Practice
 
-Now you can create a file named `.envrc` that will `export` the following
+Now you can create a file named `.env` that will define the following
 environment variables:
 - `SERVER_PORT`: `8080`
 - `SERVER_HOST`: `localhost`
 - `HELLO_MESSAGE`: `world`
 
-Let's create a `serverConfig.go` file in the directory `src`. 
+Let's create a `config.ts` file in the directory `src`. 
 
 > 💡 In order to keep a clean architecture, it's common to dedicate a file 
 > to your API configuration.
@@ -264,6 +265,8 @@ variables and export them.
 > do not repeat code.<br>
 > Indeed, you can use other methods of the package to type your values.
 
+> Take a look at the [`env-var` with `dotenv` documentation](https://github.com/evanshortiss/env-var/blob/master/EXAMPLE.md#dotenv) 😉
+
 Update `server.ts` to use the `host` and `port` define in your environment.<br>
 If no `port` is defined, use the port `8080`.
 
@@ -271,8 +274,8 @@ You must also update the endpoint `GET` `/hello` to use the variable `HELLO_MESS
 as response.<br>
 If the value is not defined, return `No message defined` with status `404`.
 
-> If your `.envrc` contains sensitive information, **do not push it**! A good
-practice is to create a file `.envrc.example` that will define the
+> If your `.env` contains sensitive information, **do not push it**! A good
+practice is to create a file `.env.example` that will define the
 same environment variables but without value.
 
 ## Step 4 - HTTP status
@@ -308,7 +311,7 @@ npm i http-status-codes
 Now, replace all raw http status code by the ones [exported](https://github.com/prettymuchbryce/http-status-codes) by the dependency.
 
 TODO: remove the step and talk about the given tests
-## Step 5 - Testing time
+## Step [OLD\] - Testing time
 
 Since [day01](../../day01/Typescript), we asked you to create tests to verify
 the behavior of your functions. API are not exception and there are also
@@ -326,7 +329,7 @@ on your server.
 You can also create an [environment](https://learning.postman.com/docs/sending-requests/managing-environments/)
 to manage your configuration.
 
-## Step 6 - Who use hard coded text?
+## Step 5 - Who use hard coded text?
 
 It's important to transform the data sent to the client to make the API easier to use 😄<br>
 With time, data took standard forms like `JSON` or `XML`. Here we will use
@@ -349,54 +352,46 @@ Here's the shape of the data to return:
 ]
 ```
 
-To be Typescript compliant, you should create an [interface](https://www.typescriptlang.org/docs/handbook/interfaces.html)
+To be Typescript compliant, you should create [a type or an interface](https://www.typescriptlang.org/docs/handbook/2/objects.html)
 to correctly type your data 👀<br>
 As well, `req.query` is an object, so you will need to call a method
 to retrieves object's keys.
 
-## Step 7 - Some logic 🤯
-
-In the previous step, you learned how to format data. We will increase a bit
-the difficulty by manipulating it.
-
-Create an endpoint `/are-these-palindromes` with a handler on `POST`.
-
-This endpoint must take a JSON body containing an array of strings like the
-one below:
-```json
-[
-    "meow",
-    "lol"
-]
-```
-
-And it must return an array of objects containing the string and a boolean
-set to `true` if the string is a [palindrome](https://en.wikipedia.org/wiki/Palindrome).
-
-Here's an example: 
-```json
-[
-    {
-        "input": "meow",
-        "result": false
-    },
-    {
-        "input": "lol",
-        "result": true
-    }
-]
-```
-
-> 💡 You will need to call [string methods](https://www.tutorialspoint.com/typescript/typescript_strings.htm) to correctly complete this exercise.
-
-## Step 8 - Server's bodyguard
-
-TODO: remove/reduce this and the next step
+## Step 6 - Server's bodyguard 🛡️
 
 It's important to know what kind of data is sent to your API. This will
-help you to keep an API resilient and secured.
+help you to keep it resilient and secured.
 
-For example, if you send an empty body to the endpoint from step 7, you should
+
+<details>
+  <summary>For example, here's an endpoint that checks if body words are palindromes</summary>
+
+  ```ts
+  type Palindrome = {
+	  input: string,
+	  result: boolean
+  }
+
+  server.post('/are-these-palindromes', (req: Request, res: Response) => {
+  	const words = req.body;
+
+  	const isPalindrome = (word: string) => {
+  		return word.split('').reverse().join('') === word;
+  	};
+
+  	const palindromes: Array<Palindrome> = words.map((word: string) => {
+  		return {
+  			input: word,
+  			result: isPalindrome(word)
+  		};
+  	});
+  	res.status(StatusCodes.OK).send(palindromes);
+  });
+  ```
+  
+</details>
+<br>
+If you send an empty body to this endpoint, you should
 get an error. That kind of issue is not suitable in a production API.
 
 To ensure API security, a system has been created: [`Middleware`](https://en.wikipedia.org/wiki/Middleware).
@@ -415,41 +410,43 @@ const myMiddleware = (req: Request, res: Response, next: NextFunction) => {
 ```
 
 > 💡 Middleware can also be used for other purposes: logger, permissions 
-> management etc...
+> management...
 
 To verify user inputs, we will use the [Zod](https://github.com/colinhacks/zod) framework.<br>
 Zod helps you to retrieve a verified typed body in your handler.
 
 Install Zod with the following command:
 ```shell
-npm i zod
+npm install zod
 ```
 
-To make it work, you'll need to add the following line in your `tsconfig.json`:
+To make it work, you may need to add the following line in your `tsconfig.json`:
 ```json
 "strictNullChecks": true
 ```
 
-#### Create schema
+Finally, add the `/are-these-palindromes` endpoint to your server so we can validate it ✅
+
+#### Schema
 
 [Zod](https://github.com/colinhacks/zod) validate data using a schema. The
 first step is to create a zod object `palindromeSchema` defining the shape
 of the expected input.
 
-To split our logic, we will create a dedicate file named `serverSchema.ts` in
+To split our logic, we will create a dedicated file named `schema.ts` in
 the directory `src` to export our schema.
 
-> Your schema also define the final type of your data, to get it, you can
-> call the function `zod.infer`. It's a powerful feature because you keep
+> Your schema also defines the final type of your data, to get it, you can
+> call the function `z.infer`. It's a powerful feature because you keep
 > only one source of truth 💯
 
-#### Write middleware
+#### Middleware
 
 Let's write the middleware! We will put it in a dedicated file
-named `serverMiddlewares.ts`.
+named `middlewares.ts`.
 
 You can now [write the middleware](https://expressjs.com/en/guide/using-middleware.html)
-`verifyPalindromeMiddleware` that will verify the body of the request
+`verifyPalindrome` that will verify the body of the request
 sent to `/are-these-palindromes`.
 
 If the body doesn't fit in `palindromeSchema`, return a status `400` with the
@@ -472,62 +469,10 @@ Example:
 server.use(myMiddleware())
 ```
 
-Indeed, this has no sense here, because you have only one endpoint who must
+> This has no sense here, because you have only one endpoint who must
 be verified. But it can be useful to apply a logger middleware for instance 😄
 
-## Step 9 - Automatic fortress
-
-Writing middlewares is the best way to validate data sent to your handler, but
-what if you have 10 endpoints to validate? You are not going to write
-one middleware for each schema. It could lead to errors and more than that, 
-code duplication is never a good thing.
-
-The purpose of this step is to create a generic middleware to validate
-any kind of zod schema.
-
-Let's create the function `validateMiddleware` in the file `serverMiddlewares.ts`.
-
-It must take as parameters :
-- `schema`: a zod objet to verify
-- `location`: data location (body, query, ...)
-
-This middleware must retrieve the data in the given location and verify that
-it match with the `schema`.
-
-In case of failure, it must return `400` with the reason of the error.<br>
-In case of success, just call the next function.
-
-You must replace the middleware `verifyPalindromeMiddleware` with the new
-one and verify that everything works.
-
-> 💡 If you have correctly understood the step, you will need to create a 
-> function that return another function.<br>
-> [Arrow functions](https://www.tutorialsteacher.com/typescript/arrow-function)
-> are perfects for that use case.
-
-Here's an example of the prototype of `validateMiddleware` with nested functions:
-
-```ts
-// Here `schema` has type `any` because there is no generic zod object type
-// but you can try to define it ;)
-// As well, you can create an Enum to list location.
-// Don't hesitate to add a default location to make your function easier
-// to use.
-const validateMiddleware = (schema: any, location = Location.BODY) => {
-  return (req: Request, res: Response, next: NextFunction): void => {
-    // your logic goes here
-  };
-};
-```
-
-> Zod return typed values, so you can replace your `req.body` to give
-> typed value to other functions.
-
-> Never forget that it's important to create a middleware when you repeat an
-> action several time in your endpoints. It will make the code cleaner and
-> easier to read 💪
-
-## Step 10 - Time to clean up
+## Step 7 - Time to clean up
 
 At this point, you should have many endpoints in the file `server.ts`:
 - Some simply retrieve content in the request and return it
@@ -546,12 +491,321 @@ to use those endpoints in `server.ts` 😉
 > in a specific file.<br>
 > This way, you can keep a simple and resilient architecture.
 
-## Step 11 - Go Winston!
 
-You now have a clean architecture, but something is missing...<br>
+## Step 8 - Authentication with JWT 👨
+
+What if you want to control who can access certain endpoints of your API?
+
+That's where authentication comes into play 🚀
+
+It has many purposes in this world of servers and API.<br>
+Manage users accounts, control activities and limit privileges requiring to
+know the user identity are some examples.
+
+Many systems exist today, depending on the usage and the consumers: [API keys](https://cloud.google.com/endpoints/docs/openapi/when-why-api-key),
+sessions, [OAuth](https://auth0.com/intro-to-iam/what-is-oauth-2/) and so on, you can use a single one or combine them to fit with your product and provide the best possible user experience.
+
+Here we will use JSON Web Tokens 😃
+
+### Concept
+
+JSON Web Tokens are used to share security token between entities, it can be
+user or a service.<br>
+It's a signed electronic signature to verify a consumer's identity. 
+
+> 💡 It's common to use [HMAC](https://en.wikipedia.org/wiki/HMAC) or [RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem)) to sign tokens.
+
+Those token can be stored in cookies, but they can also be sent in a header.
+
+A JWT (JSON Web Token) is composed of 3 parts: `Header`, `Payload` and `Signature`.<br>
+For more information about JWT, go to [jwt.io](https://jwt.io/introduction/). You can also use a [debugger](https://jwt.io/#debugger-io) to visualize the different parts of a jwt.
+
+The classic workflow for JWT authentication is:
+1. You authenticate yourself with your credential (username, password, etc...)
+2. API signs those credentials with a secret key
+3. API sends back the token to the user
+4. The client put the token in future requests to authenticate him in the header
+
+### Practice
+
+Let's create an authentication system with JWT 🔥
+
+#### Installation
+
+First, download the [JWT](https://www.npmjs.com/package/jsonwebtoken) dependency:
+
+```shell
+npm install jsonwebtoken
+
+npm install -D @types/jsonwebtoken
+```
+
+Then add a `src/utils.ts` file with these useful functions and types:
+```ts
+// Defining the type of user credentials
+export type User = {
+  email: string;
+  password: string;
+}
+
+// Get a user from his email address
+export const getUser = (users: User[], email: string) => users.find((u) => u.email === email);
+
+// Function to check if a given email is already registered
+// !! is a coercion to a boolean value to return either true or false
+export const isRegistered = (users: User[], email: string) => !!getUser(users, email);
+```
+
+Finally, in your `endpoints` folder create a `jwt.ts` file with the following content:
+```ts
+import type { User } from '../utils';
+
+// Storing users in an array for simplicity
+const users: User[] = [];
+```
+
+#### Register
+
+Now it's time to create the endpoints 💥
+
+The first one is `/jwt/register` with a resolver on method `POST`.
+
+The resolver must take as `body` parameter:
+
+```json
+{
+  "email": "<email>",
+  "password": "<password>"
+}
+```
+
+It will extract these information from `body` and add it to the
+`users` array.<br>
+Then it should return a `JWT token` containing the user's email ✉️ in a JSON format like this:
+```json
+{
+  "accessToken": "<token>",
+  "user": {
+    "email": "<email>",
+    "password": "<password>"
+  },
+  "message": "User successfully created"
+}
+```
+
+You should return it with the `201 CREATED` status in this case (use the right `http-status-code` 😉)
+
+If there is no `body`, return `Bad Request` with the corresponding status.
+
+If the user is already registered, you have to return `User already exists` with the `403 Forbidden` status.
+
+> 💡 You will need to use a secret, create a new environment variable in your `config.ts` for this.
+
+> Don't forget to create a sub-router and import it in the main router you created at the last step 😉
+
+
+#### Login
+
+Now let's create an endpoint `/jwt/login` with a resolver on method `POST`.
+
+It must take as `body` parameter:
+
+```json
+{
+  "email": "<email>",
+  "password": "<password>"
+}
+```
+
+It will extract information from `body` and check if there is a match in
+the `users` array.<br>
+
+If the identifier matches, you should return the same JSON as for `/jwt/register`, but with this message:
+```json
+{
+  "message": "Successful login"  
+}
+```
+
+This time didn't create any resource, so we'll just return an `OK` status 😄
+
+As always don't forget error handling:
+- If there is no `body`, return a `Bad Request` message & status.
+- If the email doesn't match any user, return `User not found` with the `404 Not Found` status
+- If the password doesn't match, return `Wrong password` with `404` again.
+
+#### Token
+
+Finally, let's create an an endpoint `/jwt/me` to retrieve user data on method `GET`.
+
+If a token is present in the header `Authorization` with the format 
+`Bearer ${TOKEN}`, return information related to the authenticated user with an `OK` status:
+```json
+{ 
+  "user": {
+    "email": "<email>",
+    "password": "<password>"
+  },
+  "message": "User found" 
+}
+```
+
+And the last errors to handle:
+- If no token is found, return `No bearer found` with status `Bad Request`.
+- If no user is found, return `Unknown user` with status `Not Found`.
+
+
+## Step 9 - Password hashing
+
+Congratulation, you can now authenticate users in a simple and easy way!
+
+At this point, users can authenticate themselves through email and password,
+but it's stored as plain text.<br>
+Anyone with reading access to `users` (or a hypothetical database) will
+be able to read the password of **every user** 😱. That's a real problem and
+users can't trust a platform that don't keep their data in security.
+
+To gain trust, we will [hash](https://en.wikipedia.org/wiki/Hash_function) every password, so this way nobody, even us, will be able to read it.
+
+To do so, let's install [Bcrypt](https://www.npmjs.com/package/bcrypt),
+a powerful and straight-forward hash dependency.
+
+```shell
+npm install bcrypt
+
+npm install -D @types/bcrypt
+```
+
+Now you just have to update your `register` endpoint to save a hashed
+password and your `login` endpoint to compare the given password
+with the stored one 😉
+
+
+## Bonus
+
+Well done for completing this day 🔥
+
+If you are still looking for exercises, we have a few ones for you 😄
+
+They are sorted in order of importance with some guidance, but feel free to implement them as you wish!
+
+
+<details>
+  <summary>OAuth with Google</summary>
+  <br>
+
+  ### Concept
+
+[OAuth 2.0](https://oauth.net/2/) is a powerful authentication framework
+to use trustworthy service to manage the authentication for you.
+
+You have certainly already meet the button "_Login with Google_" or
+"_Login with GitHub_" and you wanted to register on a website.<br>
+This is exactly what you're going to create.
+
+In short, you will use an external service to authenticate users.
+
+The workflow is quite complex but common for any kind of service you want
+to use to create your OAuth 2.0 authentication:
+- You create an OAuth application in the service you want to use (Google,
+Facebook, Twitter, GitHub, Microsoft...)
+- You define a redirection URL that will redirect the user to your website
+after he successfully connected to the service
+- From your server, retrieve from this url an authentication token
+- Server can use this token to retrieve user's information and execute
+action on the service.
+
+The user is warned about which permissions you require when he
+logs him in the service.<br>
+As well, the token is linked to the application, if a user log himself
+in two different application, both application will have a different token.
+
+### Practice
+
+Here you will use [passport](https://github.com/jaredhanson/passport)
+to simplify the workflow.
+
+Let's install required dependencies:
+
+```shell
+npm install passport passport-google-oauth20
+
+npm install -D @types/passport @types/passport-google-oauth20
+```
+
+You will also need to create an application on the [Google developers console](https://console.developers.google.com/) and
+configure your **callback url** that you will write during next steps.
+
+Create a file `OAuth.ts` to code your endpoints.
+
+### Storage
+
+There his no password or email logic when dealing with OAuth authentication,
+so you can store the user identifier.
+
+Define a new type for your ephemeral storage:
+```ts
+type UserOAuth = {
+  displayName: string;
+  googleId: string;
+}
+```
+
+And a new variable to store data:
+
+```ts
+let userOAuth: UserOAuth[] = [];
+```
+
+### Strategy
+
+Passport works with [Strategy](https://www.passportjs.org/packages/),
+so you will need here to set up the [GoogleStrategy](https://www.passportjs.org/packages/passport-google-oauth20/).
+
+You should use the application identifier, secret code, the callback url
+and the function called after user being redirected to your API.
+
+### Endpoints
+
+You will need to create two endpoints to use 
+[Google with passport](http://www.passportjs.org/packages/passport-google-oauth20/).
+
+#### Redirect
+
+Create an endpoint that will redirect the user to the Google authentication service.
+
+#### Callback
+
+Create an endpoint used by Google to redirect user after authentication.
+You should figure out that it will be your **callback url**.<br>
+Thanks to passport, you will access information returned by Google,
+you can store this information in your storage and return either a
+cookie or a JWT to track the ID.
+
+> If the user already exist, you don't have to insert it in
+the database 😉
+
+#### User
+
+Create an endpoint `/oauth/me` with a handler on method `GET`.
+
+If a JWT token or cookie is present and the user is found in storage, return the `displayName`.
+
+> Don't forget to handle errors 💯
+
+<br><br>
+</details
+
+
+<details>
+  <summary>Logger middleware with Winston</summary>
+  <br>
+
+You have a clean architecture, but something is missing...<br>
 You don't know what happens in your API, which endpoints are hit and if
-everything works.<br>Seeing the whole web traffic will help you to detect
-issues in your API, but also attacks from others.
+everything works.
+
+Seeing the whole web traffic will help you to detect issues in your API, but also attacks from others.
 
 To do so, you will set up a [logger](https://www.securitymetrics.com/blog/importance-log-management).
 It's an important piece of your API, during development but also in production.
@@ -566,17 +820,17 @@ npm install winston
 
 ### Winston! Stand up!
 
-Create a file `serverLogger.ts` in the `src` directory.
+Create a file `logger.ts` in the `src` directory.
 
 Inside it, export a [winston](https://github.com/winstonjs/winston) logger
 with the following properties:
-- The output format must be: `"[{timestamp}] [{severity}]": {message}`
-- Logs must be written to the standard output and the file `/var/log/api.log`
-- Logs written in standard output must be colored
+- An output format like this: `"[{timestamp}] [{severity}]": {message}`
+- Write logs to the standard output and the file `/var/log/api.log`
+- [Colorize the logs](https://github.com/winstonjs/winston#colorizing-standard-logging-levels) written in standard output
 
-Winston works with a [transport system](https://github.com/winstonjs/winston/blob/2.4.0/docs/transports.md),
+Winston works with a [transport system](https://github.com/winstonjs/winston/blob/master/docs/transports.md),
 this way you can use multiple transport at the same time.<br>
-It also sorts logs following a [severity system](https://github.com/winstonjs/winston/tree/2.x#logging-levels).
+It also sorts logs following a [severity system](https://github.com/winstonjs/winston/tree/master#logging-levels).
 
 > A good practice consist of saving errors logs in a file `/var/log/error.log`
 > to easily find issues later 💯
@@ -585,42 +839,30 @@ It also sorts logs following a [severity system](https://github.com/winstonjs/wi
 > to define `severity` stages.
 
 You can verify that everything works by replacing your `console.log` with
-a `info` log.
+an `info` log.
 
 ### Winston! Line up!
 
 One last thing remains to have a perfect API: a logger to display all
 inbound requests and responses.
 
-Create a new middleware `logMiddleware` in the file `serverMiddlewares.ts`.
+Create a new middleware `logMiddleware` in the file `middlewares.ts`.
 
-This middleware must :
-- Display inbound requests with the message:
+This middleware should:
+- Display inbound requests with a message like this:
 `request [{request_id}] on {method} [{path}] from ({user_ip})`
-- Display responses with the message:
+- Display responses with a message similar to this one:
 `request [{request_id}] response in {elapsed_time}ms with status {response status code}`
 
 You can create unique identifiers with the dependency [uuid](https://www.npmjs.com/package/uuid).
 
-> To log response, you will need to do a little hack with [events](https://nodejs.org/api/http.html).
+> To log responses, you will need to do a little hack with [events](https://nodejs.org/api/http.html) 👀
 
-Apply your middleware to your API and verify that everything works by sending
-requests.
+Apply your middleware to your API and verify that everything works by sending requests 🚀
 
-## Bonus
-
-Well done for completing this day 🔥
-
-If you are still looking for exercises, here are four intermediate ones:
-
-<details>
-  <summary>Expose data</summary>
-  Yesterday you discovered how to manipulate a database with Prisma. Today, you've build an API with Express.
-
-  What about mixing it?
-
-  Expose yesterday's database with today's API 🚀
+<br><br>
 </details>
+
 
 <details>
   <summary>404, Found</summary>
@@ -643,36 +885,16 @@ If you are still looking for exercises, here are four intermediate ones:
   ```
 </details>
 
-<details>
-  <summary>Code readability is the key</summary>
-  TODO: end check if the step name number is still the same
 
-  Step 4 was about explicit status codes returned by our API. Let's do
-  this with errors too 😄
-  
-  At this moment, it should be something like this:
-  ```ts
-  res.status(httpStatus.BAD_REQUEST).send(content);
-  ```
-  
-  Let's make it simpler, find a way to get the following result:
-  ```ts
-  throw new BadRequestError(context);
-  ```
-  
-  > 💡 You can write a class for each type of error.
-  
-  To do this, you will need to use [inheritance](https://www.tutorialspoint.com/typescript/typescript_classes.htm)
-  on class [Error](https://newbedev.com/typescript-extending-error-class) to extends it.
-  
-  What you must do is:
-  - Create a `class` that extends the `Error` class
-  - Create one `class` for each custom error
-  
-  Then you will need a special middleware to handle thrown errors.
-  
-  > You are free to do it in your own way, it's a bonus 😄
+<details>
+  <summary>Expose data</summary>
+  Yesterday you discovered how to manipulate a database with Prisma. Today, you've build an API with Express.
+
+  What about mixing it?
+
+  Expose yesterday's database with today's API 🚀
 </details>
+
 
 <details>
   <summary>Testing time, round 2</summary>
