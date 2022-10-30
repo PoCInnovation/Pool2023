@@ -581,6 +581,70 @@ Well done for completing this day 🔥
 TODO: add auth advanced exercises
 If you are still looking for exercises, here are two intermediate ones:
 
+
+<details>
+  <summary>OAuth with Google</summary>
+  <br>
+
+  ### Concept
+
+[OAuth 2.0](https://oauth.net/2/) is a powerful authentication framework
+to use trustworthy service to manage the authentication for you.
+
+You have certainly already meet the button "_Login with Google_" or
+"_Login with GitHub_" and you wanted to register on a website.<br>
+This is exactly what you're going to create.
+
+In short, you will use an external service to authenticate users.
+
+The workflow is quite complex but common for any kind of service you want
+to use to create your OAuth 2.0 authentication:
+- You create an OAuth application in the service you want to use (Google,
+Facebook, Twitter, GitHub, Microsoft...)
+- You define a redirection URL that will redirect the user to your website
+after he successfully connected to the service
+- From your server, retrieve from this url an authentication token
+- Server can use this token to retrieve user's information and execute
+action on the service.
+
+The user is warned about which permissions you require when he
+logs him in the service.<br>
+As well, the token is linked to the application, if a user log himself
+in two different application, both application will have a different token.
+
+### Practice
+
+Here you will use the `oauth2` package for a simple workflow:
+```sh
+go get -u golang.org/x/oauth2
+```
+
+> **Take a moment to read the [documentation](https://pkg.go.dev/golang.org/x/oauth2/google)**.
+
+You will also need to create an application on the [Google developers console](https://console.developers.google.com/) and configure your **callback url** that you will use next.
+
+You can then create a `routes/oauth/google.go` file with a mocked database:
+```go
+package oauth
+
+type userGoogle struct {
+  DisplayName   string
+  GoogleId      string
+}
+
+var usersGoogle := map[string]userGoogle{}
+```
+
+Then you can create the needed routes to handle a google login
+> First, follow the documentation.\
+> Then if you're in trouble, this [tutorial](https://medium.com/@hfogelberg/the-black-magic-of-oauth-in-golang-part-1-3cef05c28dde) can help you.
+
+- Once you have retrieved the id of the connected user, save it in the "db" and return a JWT like in exercise the previous steps, containing this id (instead of an email before)
+
+> ⚠️ If the user's id already exists in db, you must return its information rather than create a new user with the same id each time.
+<br><br>
+</details>
+
 ### Testing time, round 2
 TODO: replace with advanced tests based on the provided ones
 
