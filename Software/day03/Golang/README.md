@@ -455,12 +455,24 @@ It will contain 2 files:<br>
 ```go
 package jwt
 
-type user struct {
-	Email    string `json:"email"`
-	Password string `json:"password"`
+type User struct {
+    Email    string `json:"email"`
+    Password string `json:"password"`
 }
 
-var users = map[string]user{}
+var users = map[string]User{}
+
+// Useful response types
+type AuthResponse struct {
+    AccessToken string `json:"accessToken"`
+    User        `json:"user"`
+    Message     string `json:"message"`
+}
+
+type MeResponse struct {
+    User    `json:"user"`
+    Message string `json:"message"`
+}
 ```
 
 `utils.go`, with a few useful functions:
@@ -469,8 +481,8 @@ package jwt
 
 // Function to check if a given email is already registered
 func isRegistered(email string) bool {
-	_, ok := users[email]
-	return ok
+    _, ok := users[email]
+    return ok
 }
 ```
 
@@ -511,6 +523,8 @@ If the user is already registered, you have to return `User already exists` with
 > 💡 You will need to use a secret, create a new environment variable in your `config.go` for this.
 
 > If you get a `key is of invalid type` error, take a look at [this issue](https://github.com/dgrijalva/jwt-go/issues/65#issuecomment-284784243) 😉
+
+TODO: add warning if tests fail because of already existing users
 
 #### Login
 
