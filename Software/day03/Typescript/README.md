@@ -49,23 +49,24 @@ You will also need to create a `tsconfig.json` with the following configuration:
 ```json
 {
   "compilerOptions": {
-    "target": "es2020",
+    "target": "ES2022",
     "module": "commonjs",
-    "sourceMap": true, 
-    "outDir": "./dist",  
-    "strict": true,  
+    "sourceMap": true,
+    "outDir": "./dist",
+    "strict": true,
     "allowUnreachableCode": false,
 
     "baseUrl": "./src",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true
   },
+
   "include": [
-    "src/**/*.ts"
+    "src/**/*.ts",
+    "tests/**/*.ts"
   ],
   "exclude": [
     "node_modules",
-    "tests/**/*.ts"
   ]
 }
 ```
@@ -77,6 +78,8 @@ As usual, you can also create a folder `src`:
 ```shell
 mkdir -p src
 ```
+
+TODO: add instructions for tests
 
 ## Step 1 - Hello web 👋
 
@@ -107,9 +110,9 @@ When your `server` is correctly initialized, launch it to listen on port `8080`.
 
 > We encourage you to show a message that displays your server root
 > endpoint to easily reach it.\
-> For example: `server listening on http://localhost:8080/`
+> For example: `Server listening on http://localhost:8080/`
 
-You must also define an endpoint `hello` reachable through the `GET` [method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods).\
+You must also define an endpoint `hello` reachable through the `GET` [method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods).<br>
 When hitting the endpoint, it must responds `world` with the status `200`.
 
 > 💡 You can import the types `Request` and `Response` from `express` to add
