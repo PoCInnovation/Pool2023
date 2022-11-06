@@ -524,8 +524,6 @@ If the user is already registered, you have to return `User already exists` with
 
 > If you get a `key is of invalid type` error, take a look at [this issue](https://github.com/dgrijalva/jwt-go/issues/65#issuecomment-284784243) 😉
 
-TODO: add warning if tests fail because of already existing users
-
 #### Login
 
 Now let's create an endpoint `/jwt/login` with a resolver on method `POST`.
@@ -579,6 +577,10 @@ And the last errors to handle:
 - If the token is wrong, return `Unauthorized` with the right status.
 - If no user is found, return `Unknown user` with the right status.
 
+
+> ⚠️ Be careful when using the tests for this step, you'll need to restart your server every time you want to run them.\
+> Indeed, a registration test for example will fail if we launch it twice as our function will return a `User already exists` error.\
+> Restarting the server will clear our RAM database and fix this 😃
 
 ## Bonus
 
