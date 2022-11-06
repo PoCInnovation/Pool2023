@@ -7,6 +7,7 @@ For this step, please create a `requirements.txt` and add the following library 
 - Pandas
 - Seaborn
 - Matplotlib
+- sklearn
 
 After, install the requirements.
 
