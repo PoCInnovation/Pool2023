@@ -476,10 +476,6 @@ npx eslint --init
   <b>Yes</b>
   ? Where does your code run?
   <b>Node</b>
-  ? How would you like to define a style for your project?
-  <b>Use a popular style guide</b>
-  ? Which style guide do you want to follow?
-  <b>Standard: https://github.com/standard/eslint-config-standard-with-typescript</b>
   ? What format do you want your config file to be in?
   <b>YAML</b>
   The config that you've selected requires the following dependencies:
@@ -511,10 +507,9 @@ env:
   es2022: true
 
 extends:
-  - eslint:recommended
-  - plugin:@typescript-eslint/recommended
   - airbnb-base
   - airbnb-typescript/base
+  - plugin:@typescript-eslint/recommended
 
 parser: '@typescript-eslint/parser'
 
@@ -522,9 +517,6 @@ parserOptions:
   project: tsconfig.json
   ecmaVersion: latest
   sourceType: module
-
-plugins:
-  - '@typescript-eslint'
 
 rules:
   no-console: 'off'
@@ -537,7 +529,6 @@ Make that you have the following modules in your `devDependencies`:
 "eslint": "^8.27.0",
 "eslint-config-airbnb-base": "^15.0.0",
 "eslint-config-airbnb-typescript": "^17.0.0",
-"eslint-plugin-import": "^2.26.0",
 ```
 
 If a dependency is missing, install it.
@@ -560,8 +551,8 @@ npm install -D prettier eslint-config-prettier eslint-plugin-prettier
 > [`eslint-config-prettier`](https://github.com/prettier/eslint-config-prettier#readme) is used avoid conflicts between ESLint and Prettier rules, while [`eslint-plugin-prettier`](https://github.com/prettier/eslint-plugin-prettier#readme) will report Prettier errors in ESLint 😉
 
 When you are done, update your `.eslintrc.yml` to:
-- extends `prettier` and `plugin:prettier/recommended`
-- add the `prettier` plugin
+- [extends `plugin:prettier/recommended`](https://github.com/prettier/eslint-plugin-prettier#recommended-configuration)
+- set the `prettier/prettier` rule to `warn`
 
 Finally, create a `.prettierrc.json` file at the root of your project and [configure](https://prettier.io/docs/en/configuration.html)
 it as you like!
