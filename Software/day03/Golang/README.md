@@ -516,7 +516,7 @@ Then it should return a `JWT token` containing the user's email ✉️ in a JSON
 
 You should return it with the `201 CREATED` status in this case (use the right `net/http` status 😉)
 
-If there is no `body`, return `Bad Request` with the corresponding status.
+If the `body` doesn't correspond to a `User`, return `Bad Request` with the corresponding status.
 
 If the user is already registered, you have to return `User already exists` with the `403 Forbidden` status.
 
@@ -549,10 +549,10 @@ If the identifier matches, you should return the same JSON as for `/jwt/register
 }
 ```
 
-This time didn't create any resource, so we'll just return an `OK` status 😄
+This time we didn't create any resource, so we'll just return an `OK` status 😄
 
 As always don't forget error handling:
-- If there is no `body`, return a `Bad Request` message & status.
+- If there's a wrong `body`, return a `Bad Request` message & status.
 - If the email doesn't match any user, return `User not found` with the `404 Not Found` status
 - If the password doesn't match, return `Wrong password` with `404` again.
 
