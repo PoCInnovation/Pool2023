@@ -547,7 +547,7 @@ If the identifier matches, you should return the same JSON as for `/jwt/register
 }
 ```
 
-This time we didn't create any resource, so we'll just return an `OK` status 😄
+This time we haven't created any resource, so we'll just return an `OK` status 😄
 
 As always don't forget error handling:
 - If there's a wrong `body`, return a `Bad Request` message & status.
