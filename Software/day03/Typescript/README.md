@@ -168,7 +168,7 @@ It's time to create your different endpoints in the file `server.ts` 🚀
 Create the endpoint `/repeat-my-query`, it must define the following handler
 for the `GET` method:
 
-If there is a message in the [query](https://www.educative.io/edpresso/what-is-reqquery-in-expressjs),
+If there is a `message` in the [query](https://www.educative.io/edpresso/what-is-reqquery-in-expressjs),
 return it with status `200`.<br>
 If there is no message: return `Bad Request` with status `400`.
 
@@ -312,25 +312,6 @@ npm i http-status-codes
 ```
 
 Now, replace all raw http status code by the ones [exported](https://github.com/prettymuchbryce/http-status-codes) by the dependency.
-
-TODO: remove the step and talk about the given tests
-## Step [OLD\] - Testing time
-
-Since [day01](../../day01/Typescript), we asked you to create tests to verify
-the behavior of your functions. API are not exception and there are also
-tools to manage tests.
-
-To do so, you can use [Postman](https://www.postman.com), it's a powerful 
-GUI to make requests, tests suites and many other useful stuff like API 
-mockup, documentation etc...
-
-Install Postman and create a [Postman collection](https://learning.postman.com/docs/sending-requests/intro-to-collections/)
-to tests every endpoint previously coded.<br>
-After you create your request, you should be able to run a whole [test-suite](https://www.postman.com/use-cases/api-testing-automation/)
-on your server.
-
-You can also create an [environment](https://learning.postman.com/docs/sending-requests/managing-environments/)
-to manage your configuration.
 
 ## Step 5 - Who use hard coded text?
 

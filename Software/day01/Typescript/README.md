@@ -264,7 +264,7 @@ In your `package.json`, add those scripts:
 Now we will [configure Jest](https://jestjs.io/docs/configuration).
 Create the file `jest.config.ts` with the following content:
 
-```js
+```ts
 import type { Config } from 'jest';
 
 const config: Config = {
