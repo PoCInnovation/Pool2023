@@ -41,7 +41,7 @@ flutter create myapp
 # Enter the folder
 cd myapp
 
-# See connected devices
+# See connected devices (chrome, linux, smartphone, ect)
 flutter devices
 
 # Launch the application
@@ -58,13 +58,13 @@ Flutter is a framework based on the dart language.
 
 ## Step 0.1 - Hello World
 
-Like every new langage you write for the first time, you must print `Hello World` in the terminal.
+Like every new language you write for the first time, you must print `Hello World` in the terminal.
 
 In order to do this, you have to create a folder `Dart` in which you will put your dart code. Create a `main.dart` file in it and let's code.
 
 Here is a the doc to know [how to make a main in Dart](https://dart.dev/guides/language/language-tour#the-main-function).
 
-To test your code, you need to run it (obviously), so you can do it just by put the `dart` word befor your file name, `main.dart` in your case.
+To test your code, you need to run it (obviously), so you can do it just by put the `dart` word before your file name, `main.dart` in your case.
 
 
 ```sh
@@ -76,7 +76,7 @@ dart main.dart
 `Flutter` is an object oriented framework, so you will code as you might with flutter. In order to do it, you will [create a class](https://dart.dev/samples#classes) named `Vehicle` and create the following variables in it : 
 
 - `name` of type `String`;
-- `_started`  of type `bool` in it. (the underscore is for make the variable private)
+- `_started`  of type `bool` in it. (the underscore is to make the variable private)
 
 To start the vehicle you have to create the function `start` in the class that make the started value to `true`.
 
@@ -110,9 +110,9 @@ void main() {
 
 ## Step 0.4 - Async
 
-In this day you will have to interact with an API that is not syncrone with your app, as it's another programme on another machine, that make sens.
+In this day you will have to interact with an API that is not synchronous with your app, as it's another program on another machine, that make sense.
 
-In order to learn a little bit of it, you will make a delay before your car rev the engine. To succed, you have to make the `revTheEngine` function [asyncrone](https://dart.dev/codelabs/async-await#working-with-futures-async-and-await) and add this line of code on the first line of the function:
+In order to learn a little bit of it, you will make a delay before your car rev the engine. To succeed, you have to make the `revTheEngine` function [asynchronous](https://dart.dev/codelabs/async-await#working-with-futures-async-and-await) and add this line of code on the first line of the function:
 
 ```dart
 await Future.delayed(const Duration(seconds: 2));
@@ -144,7 +144,7 @@ lib/
 ├── main.dart
 ```
 
-We are going to make our first `screen` which we will call `home.dart` (to put in the screen folder obviously 🙂 ), it will serve as our home page.
+We are going to make our first `screen` which we will call `home.dart` (to put in the screen folder obviously 🙂), it will serve as our home page.
 You will put the following code in it, which will be present on each screen you create:
 
 ```dart
@@ -365,7 +365,7 @@ In this exercise you have to create the function `createMusic` and `getMusic` in
 
 ### Animations
 
-Add [annimations](https://docs.flutter.dev/development/ui/animations) to enhance your user experience.
+Add [animations](https://docs.flutter.dev/development/ui/animations) to enhance your user experience.
 
 ### Security Issue
 
