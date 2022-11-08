@@ -731,7 +731,7 @@ Define a new type for your ephemeral storage:
 type UserOAuth = {
   displayName: string;
   googleId: string;
-}
+};
 ```
 
 And a new variable to store data:
@@ -866,6 +866,9 @@ Apply your middleware to your API and verify that everything works by sending re
     ]
   }
   ```
+
+  Then, you can write your own tests to make sure it works as intended 🧪
+  > Take a look at the ones we gave you, and try to replicate them to match the behavior you want
 </details>
 
 
@@ -876,38 +879,6 @@ Apply your middleware to your API and verify that everything works by sending re
   What about mixing it?
 
   Expose yesterday's database with today's API 🚀
-</details>
-
-
-<details>
-  <summary>Testing time, round 2</summary>
-  TODO: replace with advanced tests based on the provided ones
-
-  Postman is a powerful tool, but it's an external tool... you need a team
-  who knows the tool and everything relate to it. As well, it's hard to
-  create complex pipelines with Postman, scripts work good, but it does not
-  feel natural compared to code.
-  
-  There are frameworks specialized in tests with code, with those, it
-  becomes really easy to test the business logic of our projects.
-  
-  Let's write test suite with the most popular: [`Jest`](https://jestjs.io).
-  
-  Setup Jest on your project and create a directory `tests` with a file `server.tests.ts`.
-  
-  > You can reuse setup from the [day01](../../day01/Typescript) 😉
-  
-  You will also need to install an http client to make your request.
-  Let's install [axios](https://github.com/axios/axios) because it's more
-  powerful than a simple fetch.
-  
-  Create a class `Requester` that will wrap an `axios` client and
-  contain methods to interact with the API.
-  
-  > That kind of classes are called [SDK](https://www.redhat.com/en/topics/cloud-native-apps/what-is-SDK) 😉
-  
-  You can now write a tests suite for each endpoint to verify that it correctly
-  handles errors and works well.
 </details>
 <br>
 
