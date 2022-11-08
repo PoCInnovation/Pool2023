@@ -72,7 +72,7 @@ You will also need to create a `tsconfig.json` with the following configuration:
 ```
 
 > Check the [documentation](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html)
-> if you are curious about TSConfig.
+> if you are curious about TSConfig and its options 👍
 
 As usual, you can also create a folder `src`:
 ```shell
@@ -352,25 +352,25 @@ help you to keep it resilient and secured.
 
   ```ts
   type Palindrome = {
-	  input: string,
-	  result: boolean
-  }
+    input: string;
+    result: boolean;
+  };
 
   server.post('/are-these-palindromes', (req: Request, res: Response) => {
-  	const words = req.body;
+    const words = req.body;
 
-  	const isPalindrome = (word: string) => {
-  		return word.split('').reverse().join('') === word;
-  	};
+    const isPalindrome = (word: string) => {
+      return word.split('').reverse().join('') === word;
+    };
 
-  	const palindromes: Array<Palindrome> = words.map((word: string) => {
-  		return {
-  			input: word,
-  			result: isPalindrome(word)
-  		};
-  	});
-  	res.status(StatusCodes.OK).send(palindromes);
-  });
+    const palindromes: Palindrome[] = words.map((word: string) => {
+      return {
+        input: word,
+        result: isPalindrome(word),
+      };
+    });
+    res.status(StatusCodes.OK).send(palindromes);
+});
   ```
   
 </details>
