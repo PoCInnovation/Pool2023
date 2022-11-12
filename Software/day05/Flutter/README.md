@@ -12,7 +12,7 @@
 
 ## Setup
 
-The objective of this day is to create a music application like spotify with [Flutter](https://flutter.dev)
+The objective of this day is to create a music application like spotify with [Flutter](https://flutter.dev).
 
 You will first install [Flutter](https://docs.flutter.dev/get-started/install) and [Android Studio](https://developer.android.com/studio).
 
@@ -20,7 +20,7 @@ To use Flutter on Android Studio you need to install the plugins for `Flutter` a
 
 To use Flutter on Visual Studio Code you will need to use the [Flutter extension](https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter).
 
-If you want to use another IDE that does not have a plugin for Flutter you can always use the [flutter commands](https://docs.flutter.dev/reference/flutter-cli)
+If you want to use another IDE that does not have a plugin for Flutter you can always use the [flutter commands](https://docs.flutter.dev/reference/flutter-cli).
 
 Even if you use another IDE than Android Studio, you need to install Android Studio.
 
@@ -28,7 +28,7 @@ To launch your application you will need a smartphone emulator, in other words a
 
 Once the installation is complete you can create and launch your first mobile application with the following commands:
 
-```shell
+```sh
 # At the root of your pool repository, create today's folder
 mkdir -p day05
 
@@ -41,8 +41,11 @@ flutter create myapp
 # Enter the folder
 cd myapp
 
+# See connected devices (chrome, linux, smartphone, ect)
+flutter devices
+
 # Launch the application
-flutter run
+flutter run -d "device name"
 ```
 
 If all went well you should have the basic flutter application running in your emulator.
@@ -53,6 +56,80 @@ Flutter is a framework based on the dart language.
 
 ***Do not start without knowing anything about it, here is an [introduction](https://dart.dev/samples) to this language.***
 
+## Step 0.1 - Hello World
+
+Like every new language you write for the first time, you must print `Hello World` in the terminal.
+
+In order to do this, you have to create a folder `Dart` in which you will put your dart code. Create a `main.dart` file in it and let's code.
+
+Here is a the doc to know [how to make a main in Dart](https://dart.dev/guides/language/language-tour#the-main-function).
+
+To test your code, you need to run it (obviously), so you can do it just by put the `dart` word before your file name, `main.dart` in your case.
+
+
+```sh
+dart main.dart
+```
+
+## Step 0.2 - Vehicle
+
+`Flutter` is an object oriented framework, so you will code as you might with flutter. In order to do it, you will [create a class](https://dart.dev/samples#classes) named `Vehicle` and create the following variables in it : 
+
+- `name` of type `String`;
+- `_started`  of type `bool` in it. (the underscore is to make the variable private)
+
+To start the vehicle you have to create the function `start` in the class that make the started value to `true`.
+
+To see if the vehicle is started, you have to make the function `isStarted` that print `Started` or `Not started` depending of the `_started` variable.
+
+If you did everything good, the following code must start.
+
+```dart
+void main() {
+  final Vehicle vehicle = Vehicle(name: "car"); // see named parameters to have a constructor like this.
+
+  vehicle.start();
+  vehicle.isStarted();
+}
+```
+
+## Step 0.3 - Car
+
+Now that your vehicle is operational, make it [abstract](https://dart.dev/samples#interfaces-and-abstract-classes).
+
+To complete this, task you have to create a `Car` class that inherit of the `Vehicle` class, [override](https://api.flutter.dev/flutter/dart-core/override-constant.html) start function to put a print that display the name of the car followed by `car starting`, and make the following main work:
+
+```dart
+void main() {
+  final Vehicle car = Car(name: "Peugeot");
+
+  car.start();
+  car.isStarted();
+}
+```
+
+## Step 0.4 - Async
+
+In this day you will have to interact with an API that is not synchronous with your app, as it's another program on another machine, that make sense.
+
+In order to learn a little bit of it, you will make a delay before your car rev the engine. To succeed, you have to make the `revTheEngine` function [asynchronous](https://dart.dev/codelabs/async-await#working-with-futures-async-and-await) and add this line of code on the first line of the function:
+
+```dart
+await Future.delayed(const Duration(seconds: 2));
+```
+
+In order to finish this introduction, use this main and run it:
+
+```dart
+void main() {
+  final Vehicle car = Car(name: "Peugeot");
+
+  car.start();
+  Future.delayed(const Duration(seconds: 3), car.isStarted);
+  car.isStarted();
+}
+```
+
 ## Step 1 - Getting started
 
 You can open the `main.dart` file located in the `lib` folder and delete everything in it.
@@ -62,13 +139,12 @@ Once the file is empty in the `lib` folder, reproduce the same architecture as t
 ```
 lib/
 ├── models/
-├── providers/
 ├── screens/
-├── utilities/
+├── utils/
 ├── main.dart
 ```
 
-We are going to make our first `screen` which we will call `home.dart` (to put in the screen folder obviously 🙂 ), it will serve as our home page.
+We are going to make our first `screen` which we will call `home.dart` (to put in the screen folder obviously 🙂), it will serve as our home page.
 You will put the following code in it, which will be present on each screen you create:
 
 ```dart
@@ -184,19 +260,19 @@ Now it's time to see how to create the two main pages of our application:
 
 - `Artist List`: a list of all artists created by the user.
 
-- Artist creation`: a form to fill in each field needed to create an artist.
+- `Artist creation`: a form to fill in each field needed to create an artist.
 
 The first thing we ask you to do here is to create a [bottomNavigationBar](https://api.flutter.dev/flutter/material/BottomNavigationBar-class.html) that will allow us to navigate between these two pages.
 
 Now that you can navigate between your two pages, it's time to populate these pages with the following requirements:
 
-- Artist List`
+- `Artist List`
   - A [tile](https://api.flutter.dev/flutter/material/ListTile-class.html) for each artist. All displayed as a list
 
 - Artist creation`:
   - A `TextField` for the artist's name.
-  - A scoring system that goes from 0 to 5 to rate the artist.
-  - A TextField for the nationality of the artist.
+  - A `scoring system` that goes from 0 to 5 to rate the artist.
+  - A `TextField` for the nationality of the artist.
   - A `TextField` for the genre of the music.
   - A `TextField` for the url of the artist's picture.
   - A `Button` to confirm the creation of the artist.
@@ -207,22 +283,22 @@ To prepare for the next exercise you will create a model for the `user`, the `ar
 
 - User
   - `id` of type `String`.
-  - email` of type `String`.
-  - password` of type `String`.
-  - artists` of type `List<Artist>`.
+  - `email` of type `String`.
+  - `password` of type `String`.
+  - `artists` of type `List<Artist>`.
 
 - Artist
-  - name` of type `String`.
-  - rating` of type `int`.
-  - nationality` of type `String`.
+  - `name` of type `String`.
+  - `rating` of type `int`.
+  - `nationality` of type `String`.
   - `musicGender` of type `String`.
   - `photoUrl` of type `String`.
-  - musics` of type `List<Music>`.
-  - user` of type `User`.
-  - userId` of type `String`.
+  - `musics` of type `List<Music>`.
+  - `user` of type `User`.
+  - `userId` of type `String`.
 
 - Music
-  - name` of type `String`.
+  - `name` of type `String`.
   - `rating` of type `int`.
   - `url` of type `String`.
   - `artist` of type `Artist`.
@@ -230,7 +306,7 @@ To prepare for the next exercise you will create a model for the `user`, the `ar
 
 The goal now is to use these models. You are going to create a `User` after the user has logged in and an `Artist` after filling in the artist creation form, all stored in stores.
 
-To do this you will create a `store` folder and then a `store.dart` file under the `lib` folder, which you will use to store your data so that it can be accessed throughout your code with only the import of the `store.dart` file to access it.
+To do this you will create a `store` folder and then a `store.dart` file under the `lib` folder, which you will use to store your data so that it can be accessed throughout your code with only the import 'README.md'of the `store.dart` file to access it.
 
 ## Step 7 - Authentication with an API
 
@@ -289,7 +365,7 @@ In this exercise you have to create the function `createMusic` and `getMusic` in
 
 ### Animations
 
-Add [annimations](https://docs.flutter.dev/development/ui/animations) to enhance your user experience.
+Add [animations](https://docs.flutter.dev/development/ui/animations) to enhance your user experience.
 
 ### Security Issue
 
@@ -297,4 +373,4 @@ Storing a JWT inside a store is a bad idea. Here is [how to solve this problem](
 
 Your turn!
 
-> Made with ❤️ by PoC
+> Made with :heart: by PoC
