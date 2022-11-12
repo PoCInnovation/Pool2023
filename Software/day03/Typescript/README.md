@@ -495,7 +495,7 @@ Here we will use JSON Web Tokens 😃
 
 JSON Web Tokens are used to share security token between entities, it can be
 user or a service.<br>
-It's a signed electronic signature to verify a consumer's identity. 
+It's a signed electronic signature to verify a consumer's identity.
 
 > 💡 It's common to use [HMAC](https://en.wikipedia.org/wiki/HMAC) or [RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem)) to sign tokens.
 

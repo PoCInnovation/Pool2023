@@ -520,6 +520,8 @@ parserOptions:
 
 rules:
   no-console: 'off'
+  quotes:
+    - error
 ```
 
 Make that you have the following modules in your `devDependencies`:
