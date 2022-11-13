@@ -89,6 +89,8 @@ Then, create a new React project with Typescript:
 npx create-react-app artists-book --template typescript
 ```
 
+> Don't worry if you see vulnerabilities after this command it's a false positive, if you are curious about it [take a look at this issue](https://github.com/facebook/create-react-app/issues/11174) 😉
+
 To verify that everything is ok, run the following commands:
 
 ```shell
@@ -226,10 +228,8 @@ export default App;
 
 - Install ESlint:
 ```sh
-npm install -D eslint-config-airbnb eslint-config-airbnb-typescript eslint-config-prettier eslint-plugin-prettier
+npm install -D eslint eslint-config-airbnb eslint-config-airbnb-typescript eslint-config-prettier eslint-plugin-prettier @typescript-eslint/eslint-plugin @typescript-eslint/parser
 ```
-
-TODO: clean this config, it might be wrong/too much (missing airbnb base? cy needed? ...)
 
 - Create the file `.eslintrc.yaml` and fill it with:
 ```yaml
@@ -250,33 +250,9 @@ extends:
   - plugin:prettier/recommended
   - react-app
 
-globals:
-  "cy": true
-
 rules:
   prettier/prettier: warn
-
-  react/react-in-jsx-scope: 0
-  react/no-unescaped-entities: 0
-  react/jsx-props-no-spreading: 0
-  react/require-default-props: 0
-  react/no-children-prop: 0
-  react-hooks/exhaustive-deps: off
-
-  no-alert: 0
-  no-console: 0
-  no-nested-ternary: 0
-  max-classes-per-file: 0
-  class-methods-use-this: 0
-
-  import/prefer-default-export: 0
-
-  arrow-body-style: ["error", "as-needed"]
-
-  "@typescript-eslint/no-non-null-assertion": off
-  "@typescript-eslint/no-unused-vars": ["warn", { ignoreRestSiblings: true }]
-  "@typescript-eslint/no-use-before-define": 0
-  "@typescript-eslint/ban-ts-comment": off
+  no-console: off
 ```
 
 - Add the following scripts to `package.json`:
@@ -422,6 +398,14 @@ If some elements are not responsive, fix it!
 - Here is [how to do](https://chakra-ui.com/docs/features/responsive-styles) with Chakra UI. As you can see, the setup has already been done!
 
 ## Step 5 - Testing time
+
+TODO: give the tests and explain how they work:
+- npm i -D cypress @types/jest
+- add the scripts
+- add the files (config + cypress folder)
+- gitignore with videos/screenshots
+- explain how to add IDs
+
 
 You now have three responsive pages.
 
