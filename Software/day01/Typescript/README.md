@@ -262,20 +262,16 @@ In your `package.json`, add those scripts:
 > 💡 It's common to add a subcommand with `:` to change the behavior of a command.
 
 Now we will [configure Jest](https://jestjs.io/docs/configuration).
-Create the file `jest.config.ts` with the following content:
+Create the file `jest.config.json` with the following content:
 
-```ts
-import type { Config } from 'jest';
-
-const config: Config = {
-  transform: {
-    '^.+\\.tsx?$': 'ts-jest',
-  },
-  testMatch: ['**/tests/**/*.ts'],
-  moduleFileExtensions: ['ts', 'js'],
-};
-
-export default config;
+```json
+{
+    "transform": {
+        "^.+\\.tsx?$": "ts-jest"
+    },
+    "testMatch": ["**/tests/**/*.tests.ts"],
+    "moduleFileExtensions": ["ts", "js"]
+}
 ```
 
 Create a `tests` directory, this is where we will write our tests.
