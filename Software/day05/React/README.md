@@ -119,12 +119,12 @@ Now that you understand the **core concepts** of React, it's time to lay the fou
 
 ### Clean Up
 
-Remove some files to have the following glossary:
+Remove some files to have the following hierarchy:
 
 ```sh
   ├──node_modules       # External modules required
   │   └──{...}
-  ├--public             # Static files - https://create-react-app.dev/docs/using-the-public-folder/
+  ├──public             # Static files - https://create-react-app.dev/docs/using-the-public-folder/
   │   ├──index.html
   │   └──robots.txt     # Prevent crawl up - https://www.geeksforgeeks.org/robots-txt-file/
   ├──src                # The folder where you will code
@@ -138,34 +138,32 @@ Remove some files to have the following glossary:
 ```
 > It's ok if some errors appear, it will be fixed 😃
 
-Then follow these steps. It will setup your project with [Chakra UI](https://chakra-ui.com), a component library to help you to build your React projects, [ESlint](https://eslint.org) and [Prettier](https://prettier.io). It will also give you a good architecture.
+Then follow these steps to setup your project with [Chakra UI](https://chakra-ui.com), a component library to help you build your React projects, [ESlint](https://eslint.org) and [Prettier](https://prettier.io). It will also give you a good architecture to start this day 🔥
 
 ### Installation
 
 - Install Chakra UI:
 ```sh
-npm i @chakra-ui/react @emotion/react@^11 @emotion/styled@^11 framer-motion@^5 @chakra-ui/theme-tools
+npm i @chakra-ui/react @emotion/react @emotion/styled framer-motion
 ```
 
 - Update `src/index.tsx`:
 ```tsx
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 
 import { ChakraProvider } from '@chakra-ui/react';
-
 import App from './app/App';
-
 import theme from './theme';
 import './theme/index.css';
 
-ReactDOM.render(
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+root.render(
 	<React.StrictMode>
 		<ChakraProvider theme={theme} resetCSS>
 			<App />
 		</ChakraProvider>
 	</React.StrictMode>,
-	document.getElementById('root'),
 );
 ```
 > Check the Chakra UI [tutorial](https://chakra-ui.com/guides/getting-started/cra-guide) to setup Create-React-App projects.
@@ -191,46 +189,39 @@ html {
 - Create the file `src/theme/index.ts` and fill it with:
 ```ts
 import { extendTheme } from '@chakra-ui/react';
-import { createBreakpoints } from '@chakra-ui/theme-tools';
 
 // Set breakpoint to help to make the app responsive.
-const breakpoints = createBreakpoints({
+const breakpoints = {
 	xs: '320px',
 	sm: '576px',
 	md: '768px',
 	lg: '1024px',
 	xl: '1280px',
 	'2xl': '1440px',
-});
-
-const overrides = {
-	breakpoints,
 };
 
-export default extendTheme(overrides);
+export default extendTheme({ breakpoints });
 ```
 
 - Create the folder `src/app`.
 
-- Create the file `src/app/App.tsx` and fill it with:
+- Move the file `src/App.tsx` in the `app` folder and fill it with this:
 ```tsx
 import { Center, Spinner, Text, VStack } from '@chakra-ui/react';
 
 const App = (): JSX.Element => (
-	<>
-		<Center mt="160px">
-			<VStack spacing="32px">
-				<Text>It's time for you to start frontend development!</Text>
-				<Spinner w="132px" h="132px" />
-			</VStack>
-		</Center>
-	</>
+	<Center mt="160px">
+		<VStack spacing="32px">
+			<Text>It's time for you to start frontend development!</Text>
+			<Spinner w="132px" h="132px" />
+		</VStack>
+	</Center>
 );
 
 export default App;
 ```
 
-- Add `"baseUrl": "src",` under `"compilerOptions": {` in `tsconfig.json`.
+- Add `"baseUrl": "src",` under the `compilerOptions` of your `tsconfig.json`.
 > Check the tsconfig [documentation](https://www.typescriptlang.org/tsconfig#baseUrl) about `baseUrl`.
 
 - Install ESlint:
@@ -238,12 +229,14 @@ export default App;
 npm install -D eslint-config-airbnb eslint-config-airbnb-typescript eslint-config-prettier eslint-plugin-prettier
 ```
 
+TODO: clean this config, it might be wrong/too much (missing airbnb base? cy needed? ...)
+
 - Create the file `.eslintrc.yaml` and fill it with:
 ```yaml
 parser: "@typescript-eslint/parser"
 
 parserOptions:
-  ecmaVersion: 6
+  ecmaVersion: latest
   project: tsconfig.json
 
 env:
@@ -254,11 +247,8 @@ extends:
   - airbnb-typescript
   - airbnb/hooks
   - plugin:@typescript-eslint/recommended
-  - prettier
+  - plugin:prettier/recommended
   - react-app
-
-plugins:
-  - prettier
 
 globals:
   "cy": true
