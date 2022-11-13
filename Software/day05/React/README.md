@@ -325,7 +325,7 @@ Now that the foundations are laid for your project, it's time to start the front
 
 ***Before going further, be aware of this:***
 
-***As you are using Chakra UI, you mustn't use HTML tags. In fact, Chakra UI makes available plenty of components, such as Button, Box, Flex, Stack, ... You can find the full list [here](https://chakra-ui.com/docs/getting-started) on the left.***
+***As you are using Chakra UI, you mustn't use HTML tags. In fact, Chakra UI makes available plenty of components, such as Button, Box, Flex, Stack, ... You can find the full list [here](https://chakra-ui.com/docs/components).***
 
 ***It's important to take at least 20 minutes to read this list, it will save you a lot of time.***
 
@@ -336,7 +336,7 @@ Now that the foundations are laid for your project, it's time to start the front
 
 ***
 
-### Your first component 🚀
+## Step 2 - Your first component 🚀
 
 The first step is to create the Home page.
 
@@ -351,9 +351,9 @@ The first step is to create the Home page.
 
 > Make sure you understood everything in the foundations.
 
-> You should have a look at the Chakra UI [Text](https://chakra-ui.com/docs/typography/text) component 😉
+> You should have a look at the Chakra UI [Text](https://chakra-ui.com/docs/typography/text) and [`Heading`](https://chakra-ui.com/docs/components/heading) components 😉
 
-Well done! You have created your first React Component!
+Well done! You have created your first React Component 🥳
 
 > 💡 A ***great idea*** is to create a folder `src/components` to store reusable components.
 
@@ -361,7 +361,7 @@ Well done! You have created your first React Component!
 
 ⚠️ ✋ ⚠️ ✋ ⚠️ ***Very Important*** ⚠️ ✋ ⚠️ ✋ ⚠️
 
-***From now, you free to add any element you want in your UI as long as you have the requirements. Chakra UI is a really powerful tool, have fun with it!***
+***From now, you're free to add any element you want in your UI as long as you have the requirements. Chakra UI is a really powerful tool, have fun with it!***
 
 ***Don't hesitate to ask us questions about design, about ways to code frontend elements, or to validate your architecture.***
 
@@ -372,7 +372,7 @@ TODO: update link for example deployed
 
 ***
 
-## Step 2 - Your first routes
+## Step 3 - Your first routes
 
 Now that you have your Home page, it's time to have Register and Login pages with the following urls: `/register` and `/login`.
 
@@ -403,7 +403,7 @@ Now that you have your Home page, it's time to have Register and Login pages wit
 - You should have a look at the React [State Hook](https://en.reactjs.org/docs/hooks-state.html).
 - Check the [web console](https://developer.mozilla.org/en-US/docs/Tools/Web_Console) to see the logs (Ctrl + Shift + I) 😉
 
-## Step 3 - What if you change the screen size?
+## Step 4 - What if you change the screen size?
 
 Now that you have several pages, its time to make sure that they are responsive on different screen size.
 
@@ -421,7 +421,7 @@ If some elements are not responsive, fix it!
 **Tips:**
 - Here is [how to do](https://chakra-ui.com/docs/features/responsive-styles) with Chakra UI. As you can see, the setup has already been done!
 
-## Step 4 - Testing time
+## Step 5 - Testing time
 
 You now have three responsive pages.
 
@@ -453,7 +453,7 @@ To do that, you will use [Cypress](https://www.cypress.io).
 **Tips:**
 - You will need to easily find components of you UI, give them an [`id`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id?retiredLocale=id) 😄
 
-## Step 5 - Your first dashboard
+## Step 6 - Your first dashboard
 
 Now that you have solid foundations, it's time to go further!
 
@@ -471,7 +471,7 @@ Create a Dashboard page listing some artists, with the following url: `/dashboar
 - Update the Register `button` to redirect to the Dashboard page when clicked.
 - Update the Login `button` to redirect to the Dashboard page when clicked.
 - The Dashboard page must contains:
-  - A `navbar` in the top containing :
+  - A `navbar` in the top containing:
     - A `link` to the Dashboard page on the left.
     - A `button` `Add an Artist` on the right, **doing nothing for now**.
   - A `grid` listing artists's `card`.
@@ -489,7 +489,7 @@ Create a Dashboard page listing some artists, with the following url: `/dashboar
 - You should have a look to the Chakra UI [Navbar](https://chakra-templates.dev/navigation/navbar) and [Cards](https://chakra-templates.dev/components/cards) templates.
 > Be careful with the Chakra UI templates. It's just to give you an idea of what you can do. ***Do not copy-paste code.***
 
-## Step 6 - Become a true Frontend Developer
+## Step 7 - Become a true Frontend Developer
 
 Now that you can list some artists, what if you can add artists?
 
@@ -533,7 +533,7 @@ If you want to go further in frontend development, follow this principle as much
 
 ***
 
-## Step 7 - Your first API call from a UI
+## Step 8 - Your first API call from a UI
 
 Now that you have built your User Interface, it's time to call the [API](../resources/README.md) and interact with real data 🚀
 > Please take a moment to setup this.\
@@ -571,7 +571,7 @@ Let's call the API when a user registers.
 
 ***
 
-## Step 8 - Time to play with real data 🚀
+## Step 9 - Time to play with real data 🚀
 
 Now that you know how to call an API from a User Interface, it's time to have a complete interaction with it.
 
@@ -587,7 +587,7 @@ Now that you know how to call an API from a User Interface, it's time to have a 
 **Tips:**
 - You already have all you need, but you can ask the staff if you struggle 😄
 
-## Step 9 - What about musics?
+## Step 10 - What about musics?
 
 Well, we have artists. What about musics?
 
