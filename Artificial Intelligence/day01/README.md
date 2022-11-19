@@ -1,4 +1,4 @@
-# PoC Software Pool 2023 - Day 01
+# PoC AI Pool 2023 - Day 01
 
 **Day purposes**
 
