@@ -89,6 +89,8 @@ Then, create a new React project with Typescript:
 npx create-react-app artists-book --template typescript
 ```
 
+> Don't worry if you see vulnerabilities after this command it's a false positive, if you are curious about it [take a look at this issue](https://github.com/facebook/create-react-app/issues/11174) 😉
+
 To verify that everything is ok, run the following commands:
 
 ```shell
@@ -119,12 +121,12 @@ Now that you understand the **core concepts** of React, it's time to lay the fou
 
 ### Clean Up
 
-Remove some files to have the following glossary:
+Remove some files to have the following hierarchy:
 
 ```sh
   ├──node_modules       # External modules required
   │   └──{...}
-  ├--public             # Static files - https://create-react-app.dev/docs/using-the-public-folder/
+  ├──public             # Static files - https://create-react-app.dev/docs/using-the-public-folder/
   │   ├──index.html
   │   └──robots.txt     # Prevent crawl up - https://www.geeksforgeeks.org/robots-txt-file/
   ├──src                # The folder where you will code
@@ -138,34 +140,32 @@ Remove some files to have the following glossary:
 ```
 > It's ok if some errors appear, it will be fixed 😃
 
-Then follow these steps. It will setup your project with [Chakra UI](https://chakra-ui.com), a component library to help you to build your React projects, [ESlint](https://eslint.org) and [Prettier](https://prettier.io). It will also give you a good architecture.
+Then follow these steps to setup your project with [Chakra UI](https://chakra-ui.com), a component library to help you build your React projects, [ESlint](https://eslint.org) and [Prettier](https://prettier.io). It will also give you a good architecture to start this day 🔥
 
 ### Installation
 
 - Install Chakra UI:
 ```sh
-npm i @chakra-ui/react @emotion/react@^11 @emotion/styled@^11 framer-motion@^5 @chakra-ui/theme-tools
+npm i @chakra-ui/react @emotion/react @emotion/styled framer-motion
 ```
 
 - Update `src/index.tsx`:
 ```tsx
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 
 import { ChakraProvider } from '@chakra-ui/react';
-
 import App from './app/App';
-
 import theme from './theme';
 import './theme/index.css';
 
-ReactDOM.render(
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+root.render(
 	<React.StrictMode>
 		<ChakraProvider theme={theme} resetCSS>
 			<App />
 		</ChakraProvider>
 	</React.StrictMode>,
-	document.getElementById('root'),
 );
 ```
 > Check the Chakra UI [tutorial](https://chakra-ui.com/guides/getting-started/cra-guide) to setup Create-React-App projects.
@@ -191,51 +191,44 @@ html {
 - Create the file `src/theme/index.ts` and fill it with:
 ```ts
 import { extendTheme } from '@chakra-ui/react';
-import { createBreakpoints } from '@chakra-ui/theme-tools';
 
 // Set breakpoint to help to make the app responsive.
-const breakpoints = createBreakpoints({
+const breakpoints = {
 	xs: '320px',
 	sm: '576px',
 	md: '768px',
 	lg: '1024px',
 	xl: '1280px',
 	'2xl': '1440px',
-});
-
-const overrides = {
-	breakpoints,
 };
 
-export default extendTheme(overrides);
+export default extendTheme({ breakpoints });
 ```
 
 - Create the folder `src/app`.
 
-- Create the file `src/app/App.tsx` and fill it with:
+- Move the file `src/App.tsx` in the `app` folder and fill it with this:
 ```tsx
 import { Center, Spinner, Text, VStack } from '@chakra-ui/react';
 
 const App = (): JSX.Element => (
-	<>
-		<Center mt="160px">
-			<VStack spacing="32px">
-				<Text>It's time for you to start frontend development!</Text>
-				<Spinner w="132px" h="132px" />
-			</VStack>
-		</Center>
-	</>
+	<Center mt="160px">
+		<VStack spacing="32px">
+			<Text>It's time for you to start frontend development!</Text>
+			<Spinner w="132px" h="132px" />
+		</VStack>
+	</Center>
 );
 
 export default App;
 ```
 
-- Add `"baseUrl": "src",` under `"compilerOptions": {` in `tsconfig.json`.
+- Add `"baseUrl": "src",` under the `compilerOptions` of your `tsconfig.json`.
 > Check the tsconfig [documentation](https://www.typescriptlang.org/tsconfig#baseUrl) about `baseUrl`.
 
 - Install ESlint:
 ```sh
-npm install -D eslint-config-airbnb eslint-config-airbnb-typescript eslint-config-prettier eslint-plugin-prettier
+npm install -D eslint eslint-config-airbnb eslint-config-airbnb-typescript eslint-config-prettier eslint-plugin-prettier @typescript-eslint/eslint-plugin @typescript-eslint/parser
 ```
 
 - Create the file `.eslintrc.yaml` and fill it with:
@@ -243,7 +236,7 @@ npm install -D eslint-config-airbnb eslint-config-airbnb-typescript eslint-confi
 parser: "@typescript-eslint/parser"
 
 parserOptions:
-  ecmaVersion: 6
+  ecmaVersion: latest
   project: tsconfig.json
 
 env:
@@ -254,39 +247,12 @@ extends:
   - airbnb-typescript
   - airbnb/hooks
   - plugin:@typescript-eslint/recommended
-  - prettier
+  - plugin:prettier/recommended
   - react-app
-
-plugins:
-  - prettier
-
-globals:
-  "cy": true
 
 rules:
   prettier/prettier: warn
-
-  react/react-in-jsx-scope: 0
-  react/no-unescaped-entities: 0
-  react/jsx-props-no-spreading: 0
-  react/require-default-props: 0
-  react/no-children-prop: 0
-  react-hooks/exhaustive-deps: off
-
-  no-alert: 0
-  no-console: 0
-  no-nested-ternary: 0
-  max-classes-per-file: 0
-  class-methods-use-this: 0
-
-  import/prefer-default-export: 0
-
-  arrow-body-style: ["error", "as-needed"]
-
-  "@typescript-eslint/no-non-null-assertion": off
-  "@typescript-eslint/no-unused-vars": ["warn", { ignoreRestSiblings: true }]
-  "@typescript-eslint/no-use-before-define": 0
-  "@typescript-eslint/ban-ts-comment": off
+  no-console: off
 ```
 
 - Add the following scripts to `package.json`:
@@ -335,7 +301,7 @@ Now that the foundations are laid for your project, it's time to start the front
 
 ***Before going further, be aware of this:***
 
-***As you are using Chakra UI, you mustn't use HTML tags. In fact, Chakra UI makes available plenty of components, such as Button, Box, Flex, Stack, ... You can find the full list [here](https://chakra-ui.com/docs/getting-started) on the left.***
+***As you are using Chakra UI, you mustn't use HTML tags. In fact, Chakra UI makes available plenty of components, such as Button, Box, Flex, Stack, ... You can find the full list [here](https://chakra-ui.com/docs/components).***
 
 ***It's important to take at least 20 minutes to read this list, it will save you a lot of time.***
 
@@ -346,7 +312,7 @@ Now that the foundations are laid for your project, it's time to start the front
 
 ***
 
-### Your first component 🚀
+## Step 2 - Your first component 🚀
 
 The first step is to create the Home page.
 
@@ -361,9 +327,9 @@ The first step is to create the Home page.
 
 > Make sure you understood everything in the foundations.
 
-> You should have a look at the Chakra UI [Text](https://chakra-ui.com/docs/typography/text) component 😉
+> You should have a look at the Chakra UI [Text](https://chakra-ui.com/docs/typography/text) and [`Heading`](https://chakra-ui.com/docs/components/heading) components 😉
 
-Well done! You have created your first React Component!
+Well done! You have created your first React Component 🥳
 
 > 💡 A ***great idea*** is to create a folder `src/components` to store reusable components.
 
@@ -371,7 +337,7 @@ Well done! You have created your first React Component!
 
 ⚠️ ✋ ⚠️ ✋ ⚠️ ***Very Important*** ⚠️ ✋ ⚠️ ✋ ⚠️
 
-***From now, you free to add any element you want in your UI as long as you have the requirements. Chakra UI is a really powerful tool, have fun with it!***
+***From now, you're free to add any element you want in your UI as long as you have the requirements. Chakra UI is a really powerful tool, have fun with it!***
 
 ***Don't hesitate to ask us questions about design, about ways to code frontend elements, or to validate your architecture.***
 
@@ -382,7 +348,7 @@ TODO: update link for example deployed
 
 ***
 
-## Step 2 - Your first routes
+## Step 3 - Your first routes
 
 Now that you have your Home page, it's time to have Register and Login pages with the following urls: `/register` and `/login`.
 
@@ -413,7 +379,7 @@ Now that you have your Home page, it's time to have Register and Login pages wit
 - You should have a look at the React [State Hook](https://en.reactjs.org/docs/hooks-state.html).
 - Check the [web console](https://developer.mozilla.org/en-US/docs/Tools/Web_Console) to see the logs (Ctrl + Shift + I) 😉
 
-## Step 3 - What if you change the screen size?
+## Step 4 - What if you change the screen size?
 
 Now that you have several pages, its time to make sure that they are responsive on different screen size.
 
@@ -431,7 +397,15 @@ If some elements are not responsive, fix it!
 **Tips:**
 - Here is [how to do](https://chakra-ui.com/docs/features/responsive-styles) with Chakra UI. As you can see, the setup has already been done!
 
-## Step 4 - Testing time
+## Step 5 - Testing time
+
+TODO: give the tests and explain how they work:
+- npm i -D cypress @types/jest
+- add the scripts
+- add the files (config + cypress folder)
+- gitignore with videos/screenshots
+- explain how to add IDs
+
 
 You now have three responsive pages.
 
@@ -463,7 +437,7 @@ To do that, you will use [Cypress](https://www.cypress.io).
 **Tips:**
 - You will need to easily find components of you UI, give them an [`id`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id?retiredLocale=id) 😄
 
-## Step 5 - Your first dashboard
+## Step 6 - Your first dashboard
 
 Now that you have solid foundations, it's time to go further!
 
@@ -481,7 +455,7 @@ Create a Dashboard page listing some artists, with the following url: `/dashboar
 - Update the Register `button` to redirect to the Dashboard page when clicked.
 - Update the Login `button` to redirect to the Dashboard page when clicked.
 - The Dashboard page must contains:
-  - A `navbar` in the top containing :
+  - A `navbar` in the top containing:
     - A `link` to the Dashboard page on the left.
     - A `button` `Add an Artist` on the right, **doing nothing for now**.
   - A `grid` listing artists's `card`.
@@ -499,7 +473,7 @@ Create a Dashboard page listing some artists, with the following url: `/dashboar
 - You should have a look to the Chakra UI [Navbar](https://chakra-templates.dev/navigation/navbar) and [Cards](https://chakra-templates.dev/components/cards) templates.
 > Be careful with the Chakra UI templates. It's just to give you an idea of what you can do. ***Do not copy-paste code.***
 
-## Step 6 - Become a true Frontend Developer
+## Step 7 - Become a true Frontend Developer
 
 Now that you can list some artists, what if you can add artists?
 
@@ -543,7 +517,7 @@ If you want to go further in frontend development, follow this principle as much
 
 ***
 
-## Step 7 - Your first API call from a UI
+## Step 8 - Your first API call from a UI
 
 Now that you have built your User Interface, it's time to call the [API](../resources/README.md) and interact with real data 🚀
 > Please take a moment to setup this.\
@@ -581,7 +555,7 @@ Let's call the API when a user registers.
 
 ***
 
-## Step 8 - Time to play with real data 🚀
+## Step 9 - Time to play with real data 🚀
 
 Now that you know how to call an API from a User Interface, it's time to have a complete interaction with it.
 
@@ -597,7 +571,7 @@ Now that you know how to call an API from a User Interface, it's time to have a 
 **Tips:**
 - You already have all you need, but you can ask the staff if you struggle 😄
 
-## Step 9 - What about musics?
+## Step 10 - What about musics?
 
 Well, we have artists. What about musics?
 
