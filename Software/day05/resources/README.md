@@ -4,7 +4,7 @@ A simple Node REST API to manage artists and musics 🚀
 
 ## Getting started
 
-Run the following commands :
+Run the following commands:
 ```bash
 # Copy the required env variables inside the file .env
 cp .envrc.example .envrc
@@ -17,7 +17,7 @@ cp .envrc.example .envrc
 direnv allow .
 
 # Build the API images and start the containers
-docker-compose up
+docker compose up
 
 # Check if the server is running: you should get "Success"
 curl -s http://localhost:8080/health | grep "Up" > /dev/null && echo "Success" || echo "Failure"
