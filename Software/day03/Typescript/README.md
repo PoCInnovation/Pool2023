@@ -49,34 +49,37 @@ You will also need to create a `tsconfig.json` with the following configuration:
 ```json
 {
   "compilerOptions": {
-    "target": "es2020",
+    "target": "ES2022",
     "module": "commonjs",
-    "sourceMap": true, 
-    "outDir": "./dist",  
-    "strict": true,  
+    "sourceMap": true,
+    "outDir": "./dist",
+    "strict": true,
     "allowUnreachableCode": false,
 
     "baseUrl": "./src",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true
   },
+
   "include": [
-    "src/**/*.ts"
+    "src/**/*.ts",
+    "tests/**/*.ts"
   ],
   "exclude": [
     "node_modules",
-    "tests/**/*.ts"
   ]
 }
 ```
 
 > Check the [documentation](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html)
-> if you are curious about TSConfig.
+> if you are curious about TSConfig and its options 👍
 
 As usual, you can also create a folder `src`:
 ```shell
 mkdir -p src
 ```
+
+TODO: add instructions for tests
 
 ## Step 1 - Hello web 👋
 
@@ -107,9 +110,9 @@ When your `server` is correctly initialized, launch it to listen on port `8080`.
 
 > We encourage you to show a message that displays your server root
 > endpoint to easily reach it.\
-> For example: `server listening on http://localhost:8080/`
+> For example: `Server listening on http://localhost:8080/`
 
-You must also define an endpoint `hello` reachable through the `GET` [method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods).\
+You must also define an endpoint `hello` reachable through the `GET` [method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods).<br>
 When hitting the endpoint, it must responds `world` with the status `200`.
 
 > 💡 You can import the types `Request` and `Response` from `express` to add
@@ -165,7 +168,7 @@ It's time to create your different endpoints in the file `server.ts` 🚀
 Create the endpoint `/repeat-my-query`, it must define the following handler
 for the `GET` method:
 
-If there is a message in the [query](https://www.educative.io/edpresso/what-is-reqquery-in-expressjs),
+If there is a `message` in the [query](https://www.educative.io/edpresso/what-is-reqquery-in-expressjs),
 return it with status `200`.<br>
 If there is no message: return `Bad Request` with status `400`.
 
@@ -310,25 +313,6 @@ npm i http-status-codes
 
 Now, replace all raw http status code by the ones [exported](https://github.com/prettymuchbryce/http-status-codes) by the dependency.
 
-TODO: remove the step and talk about the given tests
-## Step [OLD\] - Testing time
-
-Since [day01](../../day01/Typescript), we asked you to create tests to verify
-the behavior of your functions. API are not exception and there are also
-tools to manage tests.
-
-To do so, you can use [Postman](https://www.postman.com), it's a powerful 
-GUI to make requests, tests suites and many other useful stuff like API 
-mockup, documentation etc...
-
-Install Postman and create a [Postman collection](https://learning.postman.com/docs/sending-requests/intro-to-collections/)
-to tests every endpoint previously coded.<br>
-After you create your request, you should be able to run a whole [test-suite](https://www.postman.com/use-cases/api-testing-automation/)
-on your server.
-
-You can also create an [environment](https://learning.postman.com/docs/sending-requests/managing-environments/)
-to manage your configuration.
-
 ## Step 5 - Who use hard coded text?
 
 It's important to transform the data sent to the client to make the API easier to use 😄<br>
@@ -368,25 +352,25 @@ help you to keep it resilient and secured.
 
   ```ts
   type Palindrome = {
-	  input: string,
-	  result: boolean
-  }
+    input: string;
+    result: boolean;
+  };
 
   server.post('/are-these-palindromes', (req: Request, res: Response) => {
-  	const words = req.body;
+    const words = req.body;
 
-  	const isPalindrome = (word: string) => {
-  		return word.split('').reverse().join('') === word;
-  	};
+    const isPalindrome = (word: string) => {
+      return word.split('').reverse().join('') === word;
+    };
 
-  	const palindromes: Array<Palindrome> = words.map((word: string) => {
-  		return {
-  			input: word,
-  			result: isPalindrome(word)
-  		};
-  	});
-  	res.status(StatusCodes.OK).send(palindromes);
-  });
+    const palindromes: Palindrome[] = words.map((word: string) => {
+      return {
+        input: word,
+        result: isPalindrome(word),
+      };
+    });
+    res.status(StatusCodes.OK).send(palindromes);
+});
   ```
   
 </details>
@@ -511,7 +495,7 @@ Here we will use JSON Web Tokens 😃
 
 JSON Web Tokens are used to share security token between entities, it can be
 user or a service.<br>
-It's a signed electronic signature to verify a consumer's identity. 
+It's a signed electronic signature to verify a consumer's identity.
 
 > 💡 It's common to use [HMAC](https://en.wikipedia.org/wiki/HMAC) or [RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem)) to sign tokens.
 
@@ -733,8 +717,7 @@ npm install passport passport-google-oauth20
 npm install -D @types/passport @types/passport-google-oauth20
 ```
 
-You will also need to create an application on the [Google developers console](https://console.developers.google.com/) and
-configure your **callback url** that you will write during next steps.
+You will also need to create an application on the [Google developers console](https://console.developers.google.com/) and configure your **callback url** that you will use next.
 
 Create a file `OAuth.ts` to code your endpoints.
 
@@ -748,7 +731,7 @@ Define a new type for your ephemeral storage:
 type UserOAuth = {
   displayName: string;
   googleId: string;
-}
+};
 ```
 
 And a new variable to store data:
@@ -883,6 +866,9 @@ Apply your middleware to your API and verify that everything works by sending re
     ]
   }
   ```
+
+  Then, you can write your own tests to make sure it works as intended 🧪
+  > Take a look at the ones we gave you, and try to replicate them to match the behavior you want
 </details>
 
 
@@ -893,38 +879,6 @@ Apply your middleware to your API and verify that everything works by sending re
   What about mixing it?
 
   Expose yesterday's database with today's API 🚀
-</details>
-
-
-<details>
-  <summary>Testing time, round 2</summary>
-  TODO: replace with advanced tests based on the provided ones
-
-  Postman is a powerful tool, but it's an external tool... you need a team
-  who knows the tool and everything relate to it. As well, it's hard to
-  create complex pipelines with Postman, scripts work good, but it does not
-  feel natural compared to code.
-  
-  There are frameworks specialized in tests with code, with those, it
-  becomes really easy to test the business logic of our projects.
-  
-  Let's write test suite with the most popular: [`Jest`](https://jestjs.io).
-  
-  Setup Jest on your project and create a directory `tests` with a file `server.tests.ts`.
-  
-  > You can reuse setup from the [day01](../../day01/Typescript) 😉
-  
-  You will also need to install an http client to make your request.
-  Let's install [axios](https://github.com/axios/axios) because it's more
-  powerful than a simple fetch.
-  
-  Create a class `Requester` that will wrap an `axios` client and
-  contain methods to interact with the API.
-  
-  > That kind of classes are called [SDK](https://www.redhat.com/en/topics/cloud-native-apps/what-is-SDK) 😉
-  
-  You can now write a tests suite for each endpoint to verify that it correctly
-  handles errors and works well.
 </details>
 <br>
 

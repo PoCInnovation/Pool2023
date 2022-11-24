@@ -45,6 +45,10 @@ mkdir -p day03
 
 > See [day01](../../day01/Golang) if you don't remember how to initialize a Go module 😉
 
+TODO: add explanations for tests:
+
+go get github.com/stretchr/testify
+
 ## Step 1 - Hello Web 👋
 
 Let's begin with a simple `hello world`. In fact, it will be more complex
@@ -215,6 +219,14 @@ Update the needed files to use your environment variables.
 practice is to create a file `.env.example` that will define the
 same environment variables but without value.
 
+> `godotenv` can have [some problems](https://github.com/joho/godotenv/issues/43) when using it with tests like ours 🙁<br>
+> An easy way to fix it is to run the following command
+> ```sh
+> ln -s $PWD/.env tests/.env
+> ```
+> to create [a symlink](https://linuxhint.com/symlink-linux/) of your `.env` file in the `tests` folder 😄
+
+
 ## Step 4 - HTTP status
 
 REST APIs return data according to customer's desire, but in case he tries to
@@ -239,25 +251,6 @@ When the client receives the response status, it's his own responsibility to pro
 To do so, we will use aliases instead of the raw number. This way it will be really easy to understand what we return in our response 😉
 
 Now, replace all raw http status codes by the ones [exported](https://pkg.go.dev/net/http#pkg-constants) by the [http package](https://pkg.go.dev/net/http).
-
-TODO: remove the step and talk about the given tests
-## Step [OLD\] - Testing time
-
-Since [day01](../../day01/Golang), we asked you to create tests to verify
-the behavior of your functions. API are not exception and there are also
-tools to manage tests.
-
-To do so, you can use [Postman](https://www.postman.com), it's a powerful 
-GUI to make requests, tests suites and many other useful stuff like API 
-mockup, documentation etc...
-
-Install Postman and create a [Postman collection](https://learning.postman.com/docs/sending-requests/intro-to-collections/)
-to tests every endpoint previously coded.<br>
-After you create your request, you should be able to run a whole [test-suite](https://www.postman.com/use-cases/api-testing-automation/)
-on your server.
-
-You can also create an [environment](https://learning.postman.com/docs/sending-requests/managing-environments/)
-to manage your configuration.
 
 ## Step 5 - Who use hard coded text?
 
@@ -292,37 +285,36 @@ It's important to know what kind of data is sent to your API. This will help you
 <details>
     <summary>For example, here's an endpoint that checks if body words are palindromes</summary>
 
-    ```go
-    // Structure for our returned JSON
-    type PalindromeResponse struct {
-        Input  string `json:"input"`
-        Result bool   `json:"result"`
-    }
-
-    // Helper function to check a single string
-    func isPalindrome(input string) bool {
-        size := len(input)
-        stop := size / 2
-        for i := 0; i < stop; i++ {
-            if input[i] != input[size-i-1] {
-                return false
-            }
-        }
-        return true
-    }
-
-    // Main function
-    func areThesePalindromes(c *gin.Context) {
-        var inputs []string
-        _ = c.BindJSON(&inputs)
-        palindromes := make([]PalindromeResponse, len(inputs))
-        for idx, input := range inputs {
-            palindromes[idx] = PalindromeResponse{Input: input, Result: isPalindrome(input)}
-        }
-        c.JSON(http.StatusOK, palindromes)
-    }
-    ```
+  ```go
+  // Structure for our returned JSON
+  type PalindromeResponse struct {
+      Input  string `json:"input"`
+      Result bool   `json:"result"`
+  }  
+  // Helper function to check a single string
+  func isPalindrome(input string) bool {
+      size := len(input)
+      stop := size / 2
+      for i := 0; i < stop; i++ {
+          if input[i] != input[size-i-1] {
+              return false
+          }
+      }
+      return true
+  }  
+  // Main function
+  func areThesePalindromes(c *gin.Context) {
+      var inputs []string
+      _ = c.BindJSON(&inputs)
+      palindromes := make([]PalindromeResponse, len(inputs))
+      for idx, input := range inputs {
+          palindromes[idx] = PalindromeResponse{Input: input, Result: isPalindrome(input)}
+      }
+      c.JSON(http.StatusOK, palindromes)
+  }
+  ```
 </details>
+<br>
 
 If you send an empty body to this endpoint, you should get an error. That kind of issue is not suitable in a production API.
 
@@ -355,7 +347,7 @@ func Logger() gin.HandlerFunc {
 }
 ```
 
-Add the `/are-these-palindromes` endpoint to your server so we can validate it ✅
+Add the `/are-these-palindromes` endpoint with a `POST` method to your server so we can validate it ✅
 
 Then, create a `middlewares` package, containing the `CheckPalindrome` function.
 > Here's [how to validate body with gin](https://github.com/gin-gonic/gin#model-binding-and-validation).
@@ -463,12 +455,24 @@ It will contain 2 files:<br>
 ```go
 package jwt
 
-type user struct {
-	Email    string `json:"email"`
-	Password string `json:"password"`
+type User struct {
+    Email    string `json:"email"`
+    Password string `json:"password"`
 }
 
-var users = map[string]user{}
+var users = map[string]User{}
+
+// Useful response types
+type AuthResponse struct {
+    AccessToken string `json:"accessToken"`
+    User        `json:"user"`
+    Message     string `json:"message"`
+}
+
+type MeResponse struct {
+    User    `json:"user"`
+    Message string `json:"message"`
+}
 ```
 
 `utils.go`, with a few useful functions:
@@ -477,8 +481,8 @@ package jwt
 
 // Function to check if a given email is already registered
 func isRegistered(email string) bool {
-	_, ok := users[email]
-	return ok
+    _, ok := users[email]
+    return ok
 }
 ```
 
@@ -512,7 +516,7 @@ Then it should return a `JWT token` containing the user's email ✉️ in a JSON
 
 You should return it with the `201 CREATED` status in this case (use the right `net/http` status 😉)
 
-If there is no `body`, return `Bad Request` with the corresponding status.
+If the `body` doesn't correspond to a `User`, return `Bad Request` with the corresponding status.
 
 If the user is already registered, you have to return `User already exists` with the `403 Forbidden` status.
 
@@ -543,10 +547,10 @@ If the identifier matches, you should return the same JSON as for `/jwt/register
 }
 ```
 
-This time didn't create any resource, so we'll just return an `OK` status 😄
+This time we haven't created any resource, so we'll just return an `OK` status 😄
 
 As always don't forget error handling:
-- If there is no `body`, return a `Bad Request` message & status.
+- If there's a wrong `body`, return a `Bad Request` message & status.
 - If the email doesn't match any user, return `User not found` with the `404 Not Found` status
 - If the password doesn't match, return `Wrong password` with `404` again.
 
@@ -574,11 +578,16 @@ And the last errors to handle:
 - If no user is found, return `Unknown user` with the right status.
 
 
+> ⚠️ Be careful when using the tests for this step, you'll need to restart your server every time you want to run them.\
+> Indeed, a registration test for example will fail if we launch it twice as our function will return a `User already exists` error.\
+> Restarting the server will clear our RAM database and fix this 😃
+
 ## Bonus
 
 Well done for completing this day 🔥
 
 TODO: add auth advanced exercises
+
 If you are still looking for exercises, here are two intermediate ones:
 
 
