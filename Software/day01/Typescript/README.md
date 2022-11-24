@@ -458,6 +458,9 @@ Let's configure it with the CLI:
 npx eslint --init
 ```
 
+> 💡 `npx` is a tool to execute a binary installed locally in a NodeJS project.
+> For example, you can use `npx depcheck` to detect unused dependencies
+
 <Details>
   <Summary><strong>Follow those steps when configuring ESLint</strong></Summary>
 
