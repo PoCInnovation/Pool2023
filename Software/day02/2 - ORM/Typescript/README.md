@@ -86,9 +86,9 @@ We can now initialize prisma:
 npx prisma init
 ```
 
-> 💡 `npx` is a tool to execute binary installed locally in a NodeJS project.
+> 💡 `npx` is a tool to execute a binary installed locally in a NodeJS project.
 
-You should see a new folder `prisma` in your current directory, which means that you're ready to start!
+You should see a new `prisma` folder in your current directory, which means that you're ready to start!
 
 ### Schema
 
@@ -320,8 +320,6 @@ To gain time, we created a Jest testing suite for you ✨
   Then, you should add Jest to your project:
   ```shell
   npm install -D jest ts-jest @types/jest
-
-  npm install @jest/globals
   ```
 
   Finally, add the following scripts to your <code>package.json</code>:
