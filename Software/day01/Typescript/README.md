@@ -443,7 +443,7 @@ Create a `tsconfig.json` file with the following content:
   }
 }
 ```
-> You can learn more about why we need this option from the [documentation](https://www.typescriptlang.org/tsconfig#esModuleInterop) of in this [great blog post](https://duckwho.codes/posts/esmoduleinterop/) 😄
+> You can learn more about why we need this option from the [documentation](https://www.typescriptlang.org/tsconfig#esModuleInterop) or in this [great blog post](https://duckwho.codes/posts/esmoduleinterop/) 😄
 
 ### ESLint - Quality guardian
 
