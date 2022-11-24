@@ -34,7 +34,7 @@ You can verify that node is correctly installed using the command below:
 ```shell
 # Version must be at least >= 14
 node -v
-> v16.13.1
+> v18.12.1
 ```
 
 We will also need a package manager!  
@@ -46,7 +46,7 @@ You should already have it installed on your computer if you used `nvm`.
 ```shell
 # Get npm version
 npm -v
-> 8.1.2
+> 8.19.2
 ```
 
 ### Why Typescript?
@@ -150,7 +150,7 @@ npm install -D typescript ts-node @types/node
 
 If you open your `package.json`, you should see them in `devDependencies`.
 
-A new file named `package.lock` should also appear. Don't remove it, it's a
+A new file named `package-lock.json` should also appear. Don't remove it, it's a
 file that list all dependencies required by your installed dependencies.  
 You should also have a `node_modules` directory, it contains all the source files of those dependencies 😉
 
@@ -221,7 +221,7 @@ This way, you'll be familiar with loop, conditions, arrays and methods.
 
 Still in `src`, create the file `getSortedEvenNumbers.ts`.
 
-Inside it, create a function `getSortedEvenNumbers` :
+Inside it, create a function `getSortedEvenNumbers`:
 - It takes an `array` of `number` as parameter.
 - It returns a `string` composed of all even numbers in ascendant order split by a `-`.
 
@@ -249,30 +249,29 @@ To do so, we will use [Jest](https://jestjs.io), the most popular Javascript tes
 Start by installing it
 
 ```shell
-npm install -D jest ts-jest @jest/globals @types/jest
+npm install -D jest ts-jest @types/jest
 ```
 
 > Yes, it's again a development dependencies as we won't need to run tests in production.
 
 In your `package.json`, add those scripts:
-- `test`: `jest tests --env=node`
-- `test:cov`: `jest --coverage tests --env=node`
-- `test:watch`: `jest --watchAll tests --env=node`
+- `test`: `jest tests/ --env=node`
+- `test:cov`: `jest tests/ --env=node --coverage`
+- `test:watch`: `jest tests/ --env=node --watchAll`
 
 > 💡 It's common to add a subcommand with `:` to change the behavior of a command.
 
 Now we will [configure Jest](https://jestjs.io/docs/configuration).
-Create the file `jest.config.js` with the following content 
-TODO: replace <rootDir> with something? need more explanations
-```js
-module.exports = {
-	roots: ['<rootDir>'],
-	transform: {
-		'^.+\\.tsx?$': 'ts-jest',
-	},
-	testMatch: ['**/tests/**/*.ts?()'],
-	moduleFileExtensions: ['ts', 'js'],
-};
+Create the file `jest.config.json` with the following content:
+
+```json
+{
+    "transform": {
+        "^.+\\.tsx?$": "ts-jest"
+    },
+    "testMatch": ["**/tests/**/*.tests.ts"],
+    "moduleFileExtensions": ["ts", "js"]
+}
 ```
 
 Create a `tests` directory, this is where we will write our tests.
@@ -291,7 +290,7 @@ To make sure your `getSortedEvenNumbers` works as intended, you can write a test
   <strong>Example of a test</strong>
   </Summary>
 
-  Imagine you want to test a simple `sum` function :
+  Imagine you want to test a simple `sum` function:
 
   ```ts
   // sum.ts
@@ -307,12 +306,10 @@ To make sure your `getSortedEvenNumbers` works as intended, you can write a test
   };
   ```
 
-  Your test file will be :
+  Your test file will be:
 
   ```ts
-  // sum.tests.ts
-  import { describe, expect, it } from '@jest/globals';
-  
+  // sum.tests.ts  
   import sum from '../src/sum';
   
   /**
@@ -436,6 +433,18 @@ It will help to ensure the codebase is clean and spot errors before you run your
 - [Prettier](https://prettier.io) set rules to keep the same coding style in
 the codebase, which is very useful when collaborating with other developers on a project.
 
+We will also customize the behavior of Typescript using a [dedicated config file](https://www.typescriptlang.org/tsconfig).
+
+Create a `tsconfig.json` file with the following content:
+```json
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+  }
+}
+```
+> You can learn more about why we need this option from the [documentation](https://www.typescriptlang.org/tsconfig#esModuleInterop) or in this [great blog post](https://duckwho.codes/posts/esmoduleinterop/) 😄
+
 ### ESLint - Quality guardian
 
 First, install `eslint` in your development dependencies:
@@ -452,13 +461,12 @@ npx eslint --init
 > 💡 `npx` is a tool to execute a binary installed locally in a NodeJS project.
 > For example, you can use `npx depcheck` to detect unused dependencies
 
-TODO: update with latest message/versions
 <Details>
   <Summary><strong>Follow those steps when configuring ESLint</strong></Summary>
 
   <pre>
   ? How would you like to use ESLint?
-  <b>To check syntax, find problems, and enforce code style</b>
+  <b>To check syntax and find problems</b>
   ? What type of modules does your project use?
   <b>JavaScript modules (import/export)</b>
   ? Which framework does your project use?
@@ -467,23 +475,20 @@ TODO: update with latest message/versions
   <b>Yes</b>
   ? Where does your code run?
   <b>Node</b>
-  ? How would you like to define a style for your project?
-  <b>Use a popular style guide</b>
-  ? Which style guide do you want to follow?
-  <b>Airbnb: https://github.com/airbnb/javascript</b>
   ? What format do you want your config file to be in?
-  <b>JavaScript</b>
-  Checking peerDependencies of eslint-config-airbnb-base@latest
-  The config that you've selected requires the following  dependencies:
-  
-  @typescript-eslint/eslint-plugin@latest eslint-config-airbnb-base@latest eslint@^5.16.0 || ^6.8.0 || ^7. 2.0
-  eslint-plugin-import@^2.21.2 @typescript-eslint/parser@latest ? Would you like to install them now with npm?
+  <b>YAML</b>
+  The config that you've selected requires the following dependencies:
+
+  @typescript-eslint/eslint-plugin@latest @typescript-eslint/parser@latest
+  ? Would you like to install them now?
   <b>Yes</b>
+  ? Which package manager do you want to use?
+  <b>npm</b>
   </pre>
 </Details>
 
 > Those steps are configuring some ESLint rules, during the pool we will follow the
-> [AirBnB](https://airbnb.io/javascript/#objects--prototype-builtins) convention.
+> [AirBnB](https://github.com/airbnb/javascript) convention.
 
 Let's add some rules in the `package.json` to run the linter:
 - `lint`: `eslint src/**/*.ts`.
@@ -491,58 +496,46 @@ Let's add some rules in the `package.json` to run the linter:
 
 > You will certainly find syntax errors when running it.
 
-As you'll see, calls to `console.log` are considered as a warning. To remove it
-we will update our ESLint configuration with the one below:
+As you'll see, calls to `console.log` are considered as a warning.<br>
+We also need to use the base convention provided by AirBnB.
 
-TODO: check config version, es2022 or even esNext...
-```js
-module.exports = {
-  env: {
-    browser: true,
-    es2021: true,
-  },
-  extends: ['airbnb-base'],
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    ecmaVersion: 13,
-    sourceType: 'module',
-  },
-  plugins: ['@typescript-eslint'],
-  settings: {
-    'import/resolver': {
-      node: {
-        extensions: ['.ts'],
-      },
-    },
-  },
-  rules: {
-    'no-console': 'off',
-    'import/extensions': [
-      'error',
-      'ignorePackages',
-      {
-        ts: 'never',
-      },
-    ],
-  },
-};
+To fix this, let's update our ESLint configuration with the one below:
+```yaml
+env:
+  browser: true
+  es2022: true
+
+extends:
+  - airbnb-base
+  - airbnb-typescript/base
+  - plugin:@typescript-eslint/recommended
+
+parser: '@typescript-eslint/parser'
+
+parserOptions:
+  project: tsconfig.json
+  ecmaVersion: latest
+  sourceType: module
+
+rules:
+  no-console: 'off'
+  quotes:
+    - error
 ```
 
-Be sure that you have the following modules in your `devDependencies`:
-#TODO: versions
+Make that you have the following modules in your `devDependencies`:
 ```json
-"@typescript-eslint/eslint-plugin": "^5.3.1",
-"@typescript-eslint/parser": "^5.3.1",
-"eslint": "^8.0.0",
+"@typescript-eslint/eslint-plugin": "^5.42.0",
+"@typescript-eslint/parser": "^5.42.0",
+"eslint": "^8.27.0",
 "eslint-config-airbnb-base": "^15.0.0",
-"eslint-plugin-import": "^2.25.3",
-"prettier": "^2.4.1",
+"eslint-config-airbnb-typescript": "^17.0.0",
 ```
 
 If a dependency is missing, install it.
 > It's not a problem if your versions are different 😉
 
-As well, ESLint extensions are available in your favorite IDE :
+As well, ESLint extensions are available in your favorite IDE:
 - [VSCode](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 - [WebStorm](https://www.jetbrains.com/help/webstorm/eslint.html)
 
@@ -550,13 +543,19 @@ With those, you will see errors and warning directly in your code 🤩
 
 ### Prettier - Clean guardian
 
-ESLint is ready, let's setup Prettier now!  
+ESLint is ready, let's setup Prettier now!<br>
 As before, you have to add it as a development dependency:
 ```shell
-npm install -D prettier
+npm install -D prettier eslint-config-prettier eslint-plugin-prettier
 ```
 
-Create a `.prettierrc.json` file at the root of your project and [configure](https://prettier.io/docs/en/configuration.html)
+> [`eslint-config-prettier`](https://github.com/prettier/eslint-config-prettier#readme) is used avoid conflicts between ESLint and Prettier rules, while [`eslint-plugin-prettier`](https://github.com/prettier/eslint-plugin-prettier#readme) will report Prettier errors in ESLint 😉
+
+When you are done, update your `.eslintrc.yml` to:
+- [extends `plugin:prettier/recommended`](https://github.com/prettier/eslint-plugin-prettier#recommended-configuration)
+- set the `prettier/prettier` rule to `warn`
+
+Finally, create a `.prettierrc.json` file at the root of your project and [configure](https://prettier.io/docs/en/configuration.html)
 it as you like!
 
 There are also extensions available:
@@ -567,7 +566,7 @@ There are also extensions available:
 
 You are ready for a complex exercise. Let's create our first application!
 
-It will be a program that helps you manage your favorite artists from your terminal.
+It will be a program that helps you manage your favorite artists from your terminal 🎵
 
 We will not code everything in one step, that would be too huge for this moment.
 
@@ -705,8 +704,7 @@ can store data. Here, it will be a simple `JSON` file.
 ]
 ```
 
-You will need to write a [`tsconfig.json`](https://www.typescriptlang.org/tsconfig)
-that [allows you to import `.json` files](https://www.typescriptlang.org/tsconfig#resolveJsonModule).
+You will need to modify your `tsconfig.json` to [import `.json` files](https://www.typescriptlang.org/tsconfig#resolveJsonModule) 😉
 
 ### Summary
 
@@ -769,15 +767,6 @@ function create(name: string, callback: (found: boolean, err: NodeJS.ErrnoExcept
 
 > `found` help you to know what to do after calling `create`, for example if
 > `found` is true, you'll display `<artist name> already exists!` in the terminal.
-
-If you encounter an error when using `NodeJS.ErrnoException`, add those lines in 
-your ESLint config file :
-
-```js
-globals: {
-  NodeJS: true,
-},
-```
 
 As you've seen in the function prototype, you will use a [`callback`](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function).
 
@@ -988,7 +977,7 @@ What do you want to do?
 See you!
 ```
 
-#TODO: add DELETE
+TODO: add DELETE
 
 ## Step 7 - Artists Book v3.0
 
@@ -1000,7 +989,7 @@ Let's add some fields by updating the `Artist` type:
 - `id`: A [unique identifier](https://www.npmjs.com/package/nanoid) of type `string`
 - `top`: Best song, as a `string`
 - `fans`: `number` of fans
-- `listenedTime`: the amount of time you listened to this artist. It must be stored as a [`Date`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
+- `listenedTime`: the amount of time you listened to this artist, stored as a `number` of listened hours
 
 > 💡 It's common to put a unique identifier when you store data, this way, you can easily distinguish them.
 
