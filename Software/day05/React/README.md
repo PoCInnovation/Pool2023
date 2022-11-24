@@ -22,11 +22,7 @@ For instance, your terminal is a user interface.
 
 **What does this Javascript library allow us to do?**
 
-Thanks to React, you can build [*React Components*](https://en.reactjs.org/docs/components-and-props.html).
-
-**What is a React component?**
-
-It's a Javascript function that returns a Javascript object representing a DOM element in memory.
+Thanks to React, you can build [*React Components*](https://en.reactjs.org/docs/components-and-props.html), which is a Javascript function that returns a Javascript object representing a DOM element in memory.
 
 All these DOM elements in memory compose the Virtual DOM.
 
@@ -45,17 +41,19 @@ When you create a React component, you can specify when its states should change
 This is the magic. You no more need to update the Real DOM by hand! 🪄
 
 > Maybe you don't understand why this is awesome. It's because you haven't played yet with the Real DOM.\
-> If you want, at the end of the day, build the same application without React. Then you will understand. 👍
+> If you want, at the end of the day, try to build the same application without React, then you will understand 👍
 > Here's the [official DOM documentation](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction).
 
 **How to use React the right way?**
 
-***Build a tree of components! Build a React Component for each element of your UI!***
+There are two rules to follow:
+- **Build a tree of components**
+- **Build a React Component for each element of your UI**
 
 Here's an example:
 <div align="center">
 
-![react schema](../../../.github/assets/react-architecture-example.png)
+![react architecture example](../../../.github/assets/react-architecture-example.png)
 
 </div>
 
@@ -77,7 +75,7 @@ As a consequence, by using React you give your users ***a more fluid experience*
 
 ## Step 0 - Setup
 
-In your pool repository, create a new directory for the `day05` :
+In your pool repository, create a new directory for the `day05`:
 
 ```sh
 mkdir -p day05
@@ -89,7 +87,8 @@ Then, create a new React project with Typescript:
 npx create-react-app artists-book --template typescript
 ```
 
-> Don't worry if you see vulnerabilities after this command it's a false positive, if you are curious about it [take a look at this issue](https://github.com/facebook/create-react-app/issues/11174) 😉
+> Don't worry if you see vulnerabilities after this command, it's a false positive.<br>
+> If you are curious about it [take a look at this issue](https://github.com/facebook/create-react-app/issues/11174) 😉
 
 To verify that everything is ok, run the following commands:
 
@@ -101,18 +100,16 @@ cd artists-book
 npm start
 ```
 
-If you get a page with the React logo spinning, then you can continue!
+If you get a page with the React logo spinning, then you can continue 🚀
 
 ***
+### **⚠️ Important note ⚠️**
 
-⚠️ ✋ ⚠️ ✋ ⚠️ ***Very Important*** ⚠️ ✋ ⚠️ ✋ ⚠️
+Before going further, **take a moment to read the React [Getting Started](https://en.reactjs.org/docs/getting-started.html) and its tutorials**.<br>
+Make sure to understand **what is a [functional component](https://www.robinwieruch.de/react-function-component/)** as you'll have to use it for every component you'll create.
 
-***Before going further, take a moment to read the React [Getting Started](https://en.reactjs.org/docs/getting-started.html) and its tutorials.***
-
-***Make sure to understand what is a [functional component](https://www.robinwieruch.de/react-function-component/), you have to use it for every component.***
-
-***It's important to take at least 30 minutes to read these tutorials, it will save you a lot of time.***
-
+It's important to take at least 30 minutes to read these tutorials, it will save you a lot of time.
+> Don't also hesitate to ask the staff if you don't understand certain concepts 😄
 ***
 
 ## Step 1 - Lay the foundations
@@ -140,16 +137,19 @@ Remove some files to have the following hierarchy:
 ```
 > It's ok if some errors appear, it will be fixed 😃
 
-Then follow these steps to setup your project with [Chakra UI](https://chakra-ui.com), a component library to help you build your React projects, [ESlint](https://eslint.org) and [Prettier](https://prettier.io). It will also give you a good architecture to start this day 🔥
+Then follow these steps to setup your project with [Chakra UI](https://chakra-ui.com), a component library to help you build your React projects, [ESlint](https://eslint.org) and [Prettier](https://prettier.io).<br>
+It will also give you a good architecture to start this day 🔥
 
 ### Installation
 
-- Install Chakra UI:
+#### **Chakra UI**
+
+As always, install the necessary dependencies:
 ```sh
 npm i @chakra-ui/react @emotion/react @emotion/styled framer-motion
 ```
 
-- Update `src/index.tsx`:
+- Update `src/index.tsx` to wrap your app with a ChakraProvider, allowing us to customize behavior around the whole app:
 ```tsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
@@ -168,12 +168,11 @@ root.render(
 	</React.StrictMode>,
 );
 ```
-> Check the Chakra UI [tutorial](https://chakra-ui.com/guides/getting-started/cra-guide) to setup Create-React-App projects.
+> You can take a look at the Chakra UI [tutorial](https://chakra-ui.com/getting-started/cra-guide#manual-installation) to setup `create-react-app` projects.
 
-- Create the folder `src/theme`.
-> Check the Chakra [documentation](https://chakra-ui.com/docs/theming/customize-theme) about `theme`.
+Now let's create [a custom Chakra theme](https://chakra-ui.com/docs/theming/customize-theme) to extend it with our own preferences 🎱:
 
-- Create the file `src/theme/index.css` and fill it with:
+- Create the folder `src/theme` with an `index.css` file inside. Then you can fill it with the following content to use different fonts and add some global [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS):
 ```css
 /* Import fonts from google fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
@@ -188,7 +187,7 @@ html {
 }
 ```
 
-- Create the file `src/theme/index.ts` and fill it with:
+- Add and `index.ts` file in the `theme` folder to define Chakra breakpoints that will help us make it [responsive](https://www.w3schools.com/html/html_responsive.asp):
 ```ts
 import { extendTheme } from '@chakra-ui/react';
 
@@ -205,9 +204,11 @@ const breakpoints = {
 export default extendTheme({ breakpoints });
 ```
 
+To finish the Chakra setup, let's import and use basic components from Chakra
+
 - Create the folder `src/app`.
 
-- Move the file `src/App.tsx` in the `app` folder and fill it with this:
+- Move the file `src/App.tsx` in the `app` folder and fill it with this to see the power of Chakra in action 🔥:
 ```tsx
 import { Center, Spinner, Text, VStack } from '@chakra-ui/react';
 
@@ -223,15 +224,21 @@ const App = (): JSX.Element => (
 export default App;
 ```
 
-- Add `"baseUrl": "src",` under the `compilerOptions` of your `tsconfig.json`.
-> Check the tsconfig [documentation](https://www.typescriptlang.org/tsconfig#baseUrl) about `baseUrl`.
+Lastly, add `"baseUrl": "src"` under the `compilerOptions` of your `tsconfig.json`.
+> Check the tsconfig [documentation](https://www.typescriptlang.org/tsconfig#baseUrl) about `baseUrl` to see why it's useful 😉
 
-- Install ESlint:
+#### **ESLint**
+
+You can't install ESLint exactly like the other days, we need to use different configurations to support the React syntax and use ESLint at his full potential 😄
+
+Install the dependencies:
 ```sh
 npm install -D eslint eslint-config-airbnb eslint-config-airbnb-typescript eslint-config-prettier eslint-plugin-prettier @typescript-eslint/eslint-plugin @typescript-eslint/parser
 ```
 
-- Create the file `.eslintrc.yaml` and fill it with:
+What's next? Creating a config file like `.eslintrc.yaml` 🚀 
+
+Here's a good config to get started:
 ```yaml
 parser: "@typescript-eslint/parser"
 
@@ -255,20 +262,22 @@ rules:
   no-console: off
 ```
 
-- Add the following scripts to `package.json`:
-```json
-{
-  "lint": "eslint src",
-  "lint:fix": "eslint src --fix"
-}
-```
+> Don't forget to add scripts to `package.json`:
+> ```json
+> {
+>   "lint": "eslint src",
+>   "lint:fix": "eslint src --fix"
+> }
+> ```
 
-- Install Prettier:
+#### **Prettier**
+
+Install the dev dependency:
 ```sh
 npm install -D prettier
 ```
 
-- Create the file `.prettierrc` and fill it with:
+And define rules like these in a `.prettierrc` file:
 ```json
 {
   "semi": true,
@@ -282,7 +291,7 @@ npm install -D prettier
 }
 ```
 
-- To finish, run the following commands.
+To test that everything went well, run the following commands:
 ```sh
 # Run lint
 npm run lint
@@ -293,23 +302,21 @@ npm start
 
 You can continue if they all succeed!
 
-Now that the foundations are laid for your project, it's time to start the frontend development!
+Now that the foundations are laid for your project, it's time to dive into frontend development 🏊
 
 ***
+### **⚠️ Important note ⚠️**
 
-⚠️ ✋ ⚠️ ✋ ⚠️ ***Very Important*** ⚠️ ✋ ⚠️ ✋ ⚠️
+Before going further, be aware of this:
 
-***Before going further, be aware of this:***
+As you are using Chakra UI, **you mustn't use HTML tags**. In fact, Chakra makes available plenty of components, such as `Button`, `Box`, `Flex`, `Stack`... You can find the full list [here](https://chakra-ui.com/docs/components).
 
-***As you are using Chakra UI, you mustn't use HTML tags. In fact, Chakra UI makes available plenty of components, such as Button, Box, Flex, Stack, ... You can find the full list [here](https://chakra-ui.com/docs/components).***
+It's important to **take time to read this list**, it will save you a lot of time for the rest of the day 😉
 
-***It's important to take at least 20 minutes to read this list, it will save you a lot of time.***
-
-***For all the following steps, you will have three sections:***
-- ***Requirements: what you must have***
-- ***Constraints: what you must follow***
-- ***Tips: what you must read and use***
-
+For all the following steps, you will have three sections:
+- **Requirements**: what you must have
+- **Constraints**: what you must follow
+- **Tips**: what you must read and use
 ***
 
 ## Step 2 - Your first component 🚀
