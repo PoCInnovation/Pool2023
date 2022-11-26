@@ -321,7 +321,7 @@ For all the following steps, you will have three sections:
 
 ## Step 2 - Your first component 🚀
 
-The first step is to create the Home page.
+Let's start by creating the Home page 😄
 
 **Requirements:**
 - The Home page must contain:
@@ -332,32 +332,31 @@ The first step is to create the Home page.
 - Create the file `src/pages/Home.tsx` with a React Component representing your Home page inside.
 - Update the file `src/app/App.tsx` to call this component.
 
-> Make sure you understood everything in the foundations.
+> Make sure you understood everything from the foundations.
 
-> You should have a look at the Chakra UI [Text](https://chakra-ui.com/docs/typography/text) and [`Heading`](https://chakra-ui.com/docs/components/heading) components 😉
+> Have a look at the Chakra UI [Text](https://chakra-ui.com/docs/typography/text) and [`Heading`](https://chakra-ui.com/docs/components/heading) components 😉
 
 Well done! You have created your first React Component 🥳
 
-> 💡 A ***great idea*** is to create a folder `src/components` to store reusable components.
+> 💡 A **great idea** is to create a folder `src/components` to store reusable components.
 
 ***
+### **⚠️ Important note ⚠️**
 
-⚠️ ✋ ⚠️ ✋ ⚠️ ***Very Important*** ⚠️ ✋ ⚠️ ✋ ⚠️
+From now on, you are free to add any element you want in your UI as long as you have the requirements. Chakra UI is a really powerful tool, have fun with it 🔥
 
-***From now, you're free to add any element you want in your UI as long as you have the requirements. Chakra UI is a really powerful tool, have fun with it!***
+> Don't hesitate to ask us questions about design, about ways to code frontend elements, or to validate your architecture 😉
 
-***Don't hesitate to ask us questions about design, about ways to code frontend elements, or to validate your architecture.***
-
-[***Here is an example of what you will have to do***](https://pool-software-artists-book-47uohqzk7-pool-software-artists-book.vercel.app)
-> Note that this is purely frontend. There is no interaction with a database.
+[Here is an example of what you will have to do](https://pool-software-artists-book-47uohqzk7-pool-software-artists-book.vercel.app)
+> Note that this is purely frontend, there is no interaction with a database.
 
 TODO: update link for example deployed
-
 ***
 
-## Step 3 - Your first routes
 
-Now that you have your Home page, it's time to have Register and Login pages with the following urls: `/register` and `/login`.
+## Step 3 - Your first routes 🛤️
+
+Now that you have your Home page, it's time to have Register and Login pages reachable at the `/register` and `/login` URLs.
 
 **Requirements:**
 - The Home page must contain:
@@ -365,13 +364,14 @@ Now that you have your Home page, it's time to have Register and Login pages wit
   - A `link` to the Login page.
 - The Register page must contain:
   - An `input` to enter an `email`.
-  - An `input` to enter a `password`. Text must be replaced by dots.
-  - An `input` to enter the `confirmed password`. Text must be replaced by dots.
+  - An `input` to enter a `password`.
+  - An `input` to enter the `confirmed password`.
+    > 💡 Text for the password inputs mut be replace by dots
   - A `button` that when clicked, log the values of the email, the password and the confirmed password.
   - A `link` to the Login page.
 - The Login page must contain:
   - An `input` to enter an `email`.
-  - An `input` to enter a `password`. Text must be replaced by dots.
+  - An `input` to enter a `password` with text replaced by dots again.
   - A `button` that when clicked, log the values of the email and the password.
   - A `link` to the Register page.
 
@@ -381,16 +381,16 @@ Now that you have your Home page, it's time to have Register and Login pages wit
 - You must create the file `src/app/Routes.tsx` with a React Component containing the Routes inside, called in `src/app/App.tsx`.
 
 **Tips:**
-- You should have a look at the Chakra UI [Input](https://chakra-ui.com/docs/form/input), [Link](https://chakra-ui.com/docs/navigation/link) and [Button](https://chakra-ui.com/docs/form/button) components.
+- Have a look at the Chakra UI [Input](https://chakra-ui.com/docs/form/input), [Link](https://chakra-ui.com/docs/navigation/link) and [Button](https://chakra-ui.com/docs/form/button) components.
 - You should have a look at the [react-router-dom](https://github.com/remix-run/react-router/blob/main/docs/getting-started/tutorial.md) package.
-- You should have a look at the React [State Hook](https://en.reactjs.org/docs/hooks-state.html).
-- Check the [web console](https://developer.mozilla.org/en-US/docs/Tools/Web_Console) to see the logs (Ctrl + Shift + I) 😉
+- Check the React [State Hook](https://en.reactjs.org/docs/hooks-state.html) 👀
+- Use the [web console](https://developer.mozilla.org/en-US/docs/Tools/Web_Console) to see the logs (Ctrl + Shift + I) 😉
 
-## Step 4 - What if you change the screen size?
+## Step 4 - What if you change the screen size? 📱
 
-Now that you have several pages, its time to make sure that they are responsive on different screen size.
+Now that you have several pages, its time to make sure that they are responsive on different screen sizes 🙂
 
-To do so, open the console and play with the screen width and height.
+To do so, open the console and play with the screen width and height (CTRL + SHIFT + M while inside the console 😉)
 
 If some elements are not responsive, fix it!
 
@@ -402,9 +402,9 @@ If some elements are not responsive, fix it!
   - ...
 
 **Tips:**
-- Here is [how to do](https://chakra-ui.com/docs/features/responsive-styles) with Chakra UI. As you can see, the setup has already been done!
+- Here is [how to do with Chakra UI](https://chakra-ui.com/docs/features/responsive-styles). As you can see, the setup has already been done!
 
-## Step 5 - Testing time
+## Step 5 - Testing time 🧪
 
 TODO: give the tests and explain how they work:
 - npm i -D cypress @types/jest
@@ -444,25 +444,25 @@ To do that, you will use [Cypress](https://www.cypress.io).
 **Tips:**
 - You will need to easily find components of you UI, give them an [`id`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id?retiredLocale=id) 😄
 
-## Step 6 - Your first dashboard
+## Step 6 - Your first dashboard 📋
 
-Now that you have solid foundations, it's time to go further!
+Now that you have solid foundations, it's time to go further 🔥
 
 You have a Home page, a Register page and a Login page. What's missing? A Dashboard page!
 
 Let's now play with artists 🚀
 
-To see what is an `Artist`, check the [API doc](../resources/README.md).
+> 💡 To see what is an `Artist`, check the [API doc](../resources/README.md)
 
-Create a Dashboard page listing some artists, with the following url: `/dashboard`.
+Create a Dashboard page listing some artists, with the `/dashboard` URL.
 
-> ⚠️ For now, data is stored inside a React useState. There is no real database, no interaction with the API.
+> ⚠️ For now, data is stored with a React `useState` hook. There is no real database and no interaction with the API.
 
 **Requirements:**
 - Update the Register `button` to redirect to the Dashboard page when clicked.
 - Update the Login `button` to redirect to the Dashboard page when clicked.
 - The Dashboard page must contains:
-  - A `navbar` in the top containing:
+  - A `navbar` in the top with:
     - A `link` to the Dashboard page on the left.
     - A `button` `Add an Artist` on the right, **doing nothing for now**.
   - A `grid` listing artists's `card`.
@@ -476,13 +476,12 @@ Create a Dashboard page listing some artists, with the following url: `/dashboar
   > Try to display the `rating` using 5 stars ⭐
 
 **Tips:**
-- You should have a look to the Chakra UI [Grid](https://chakra-ui.com/docs/layout/grid) component.
-- You should have a look to the Chakra UI [Navbar](https://chakra-templates.dev/navigation/navbar) and [Cards](https://chakra-templates.dev/components/cards) templates.
-> Be careful with the Chakra UI templates. It's just to give you an idea of what you can do. ***Do not copy-paste code.***
+- The Chakra UI [Grid](https://chakra-ui.com/docs/layout/grid), [Navbar](https://chakra-templates.dev/navigation/navbar) and [Cards](https://chakra-templates.dev/components/cards) components will be useful for this dashboard 😉
+> ⚠️ Be careful with the Chakra UI templates, it's just to give you an idea of what you can do. ***Do not copy-paste code.***
 
-## Step 7 - Become a true Frontend Developer
+## Step 7 - Become a true Frontend Developer 📈
 
-Now that you can list some artists, what if you can add artists?
+Now that you can list artists, what if you could add some?
 
 As you can notice, your `Add an artist` button does nothing for now.
 
@@ -492,17 +491,17 @@ Let's add artists in a cool way 😎: when this button is clicked, a `modal` app
 - You must create the file `src/components/Modal/AddArtistModal.tsx` with the `modal` to add an artist inside, called in `src/components/Button/AddArtistButton.tsx`.
 
 **Tips:**
-- You should have a look to the Chakra UI [Modal](https://chakra-ui.com/docs/overlay/modal) component.
+- Chakra UI has a component perfectly fit for this use case: the [Modal](https://chakra-ui.com/docs/overlay/modal) 🔥
+
 
 ***
+### **⚠️ Important note ⚠️**
 
-⚠️ ✋ ⚠️ ✋ ⚠️ ***Very Important*** ⚠️ ✋ ⚠️ ✋ ⚠️
+First, well done! You've worked hard to be here 👏
 
-First well done! You've worked hard to be here 👏
+It's time to give you a gift: an advice 🎁
 
-It's time to give you a gift: an advice.
-
-One of the most difficult thing when you build a User Interface with React (and other libraries of components / frameworks), is to manage the dozens of components you create.
+One of the most difficult thing when you build a User Interface with React (and other libraries of components / frameworks) is to manage the dozens of components you create.
 
 But why is it difficult?
 
@@ -516,21 +515,20 @@ One of the best thing to do is to build ***stateless components***.
 
 Keep your logic, your function calling APIs... the higher in your tree component. Pass functions, conditions... ***as parameters*** to your components.
 
-It might seems not important, but it will help you so much.
+It might not seem important right now, but it will help you so much.
 
-To set this up, here is a little challenge you can take: all your logic, keep it inside the pages components. Only here.
+To set this up, here is a little challenge you can take: all your logic, keep it inside the pages components, and only there.
 
-If you want to go further in frontend development, follow this principle as much as you can.
-
+If you want to go further in frontend development, follow this principle as much as you can 😉
 ***
 
-## Step 8 - Your first API call from a UI
+## Step 8 - Your first API call from a UI 💯
 
 Now that you have built your User Interface, it's time to call the [API](../resources/README.md) and interact with real data 🚀
 > Please take a moment to setup this.\
-> Feel free to play with it with Postman.
+> Feel free to play with it with a tool like [Postman](https://www.postman.com/).
 
-Let's call the API when a user registers.
+Let's call the API when a user registers 🧔‍♂️
 
 **Requirements:**
 - The user must be notified with the appropriate message if the register action succeeds or fails.
@@ -543,23 +541,19 @@ Let's call the API when a user registers.
 - You must create the folder `src/services` and keep the functions calling the API inside it. In your React components, you will call these functions. Be smart, you're free to organize this folder as you want.
 
 **Tips:**
-- You should have a look at the [axios](https://www.npmjs.com/package/axios) package.
-- You should have a look at the [env-var](https://www.npmjs.com/package/env-var) package.
-- You should have a look at the Chakra UI [toast](https://chakra-ui.com/docs/feedback/toast) component.
-- You should have a look at the [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage), this is where you can keep the `accessToken`.
+- Have a look at the [axios](https://www.npmjs.com/package/axios) and [env-var](https://www.npmjs.com/package/env-var) packages.
+- Another step, another Chakra UI component! This time, look at the [toast](https://chakra-ui.com/docs/feedback/toast) component.
+- Take a look at the [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage), this is where you can keep the `accessToken`.
 
 ***
+### **⚠️ Important note ⚠️**
 
-⚠️ ✋ ⚠️ ✋ ⚠️ ***Very Important*** ⚠️ ✋ ⚠️ ✋ ⚠️
+You will store the given `accessToken` inside the `localStorage`.
 
-***You will store the given `accessToken` inside the `localStorage`.***
+Note that this is a **bad idea**.
+> Please refer to the Security Bonus to understand why.
 
-***Note that this is a bad idea.***
-
-***Please refer to the Security Bonus to understand why.***
-
-***We ask you to do it this way because it's important to be aware of this.***
-
+We ask you to do it this way because it's important to be aware of this.
 ***
 
 ## Step 9 - Time to play with real data 🚀
