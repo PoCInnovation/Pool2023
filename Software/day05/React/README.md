@@ -551,14 +551,14 @@ Let's call the API when a user registers 🧔‍♂️
 You will store the given `accessToken` inside the `localStorage`.
 
 Note that this is a **bad idea**.
-> Please refer to the Security Bonus to understand why.
+> Please refer to [the Security Bonus](#security-issue) to understand why.
 
 We ask you to do it this way because it's important to be aware of this.
 ***
 
 ## Step 9 - Time to play with real data 🚀
 
-Now that you know how to call an API from a User Interface, it's time to have a complete interaction with it.
+Now that you know how to call an API from a User Interface, it's time to have a complete interaction with it!
 
 **Requirements:**
 - On successful login, redirect to the Dashboard page.
@@ -572,11 +572,11 @@ Now that you know how to call an API from a User Interface, it's time to have a 
 **Tips:**
 - You already have all you need, but you can ask the staff if you struggle 😄
 
-## Step 10 - What about musics?
+## Step 10 - What about musics? 🎶
 
 Well, we have artists. What about musics?
 
-Create an Artist page listing all the artist's musics.
+Create an Artist page listing all of his musics.
 
 **Requirements:**
 - When an artist is created, redirect the user to this artist's page.
@@ -588,7 +588,7 @@ Create an Artist page listing all the artist's musics.
 
 **Constraints:**
 - You must create the file `src/components/Card/MusicCard.tsx` with the musics's `card` inside, displaying every information about a music except from its `id`.
-- You must create the file `src/components/Button/AddMusicButton.tsx` with the `Add an Music` `button` inside.
+- You must create the file `src/components/Button/AddMusicButton.tsx` with the `Add a Music` `button` inside.
 - You must create the file `src/components/Modal/AddMusicModal.tsx` with the `modal` to add a music inside, called in `src/components/Button/AddMusicButton.tsx`.
 
 **Tips:**
@@ -596,23 +596,27 @@ Create an Artist page listing all the artist's musics.
 
 ## Bonus
 
+Congratulations for completing this day, you're now able to create a beautiful frontend for your own project 🤩
+
+Here are some bonuses for you if you still have time:
+
 ### Animations
 
 Improve your User Interface using animations 💥 
 
 Here are the best two libraries:
-- [animate JS](https://animejs.com)
-- [motion](https://www.framer.com/motion/)
+- [Animate JS](https://animejs.com)
+- [Motion](https://www.framer.com/motion/)
 
-We advice you to use Motion as it is already installed with Chakra UI.
+> We advice you to use Motion as it is already installed with Chakra UI 😉
 
 ### Dark & Light Mode
 
-Implement a Dark and Light Mode thanks to [Chakra UI](https://chakra-ui.com/docs/features/color-mode) !
+Implement a Dark and Light Mode thanks to [Chakra UI](https://chakra-ui.com/docs/features/color-mode) 🕶️
 
 ### Security Issue
 
-Storing a JWT inside the localStorage is a bad idea. Here is [how to solve this problem](https://www.codeheroes.fr/2020/06/20/securiser-une-api-rest-3-3-gestion-du-jwt-cote-client/) 😉
+As stated earlier, storing a JWT inside the `localStorage` is a bad idea. Here is [how to solve this problem](https://www.codeheroes.fr/2020/06/20/securiser-une-api-rest-3-3-gestion-du-jwt-cote-client/) 😉
 
 Your turn!
 
