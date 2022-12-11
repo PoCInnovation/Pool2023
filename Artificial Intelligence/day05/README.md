@@ -1,11 +1,15 @@
-# PoC Software Pool 2023 - Day 05
+# Reinforcement Learning (Antique Maze)
 
-**Day purposes**
+Hello student, today we will learn about Reinforcement Learning (more specifically Q-Learning) and see how different it is from what you did throughout the week.
 
-:heavy_check_mark: Reinforcement Learning
+In this subject you will learn about:
+- Markov Decision Process.
+- Value Function.
+- Q-Table.
 
-:heavy_check_mark: Q-Learning
+The file to complete is `submit/ReinforcementLearning.ipynb`.
 
-:heavy_check_mark: Deep Q-Learning with PyTorch
+----
 
-> Made with :heart: by PoC
+Original author: [Slo - Slohan.S](https://github.com/L-Antique) <br>
+Traduced and rearranged by: [Nell Fauveau](https://github.com/Nellousan)
