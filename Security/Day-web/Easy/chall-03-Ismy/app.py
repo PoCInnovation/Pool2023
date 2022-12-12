@@ -9,7 +9,7 @@ app = Flask(__name__, template_folder='template', static_folder='static')
 @app.route('/', methods =['GET'])
 def home():
     login = request.headers.get('Login-Status')
-    if (login == 'Admin' or login == 'Hacker'):
+    if (login == 'admin'):
         return render_template('flag.html', flag=os.getenv('FLAG'))
     out = sp.run(["php", "template/index.php"], stdout=sp.PIPE)
     return (out.stdout, {'Login-Status': 'Simple User'})
