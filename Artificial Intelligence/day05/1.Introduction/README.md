@@ -57,6 +57,7 @@ There are two main approaches to solving this problem and finding this policy:\
 The first approach is to directly learn the policy function which will indicate the best action to take at each state of the enviornment.
 
 ![Policy-based representation](./assets/fig6.svg)
+> The arrows represent the optimal actions for each state, the red diamonds are obstacles (negative reward) and the green circle is the goal (positive reward). The blue robot is our agent.
 
 ## b. Indirect approach (Value-based)
 
