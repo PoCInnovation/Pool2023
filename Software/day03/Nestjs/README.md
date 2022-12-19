@@ -47,6 +47,11 @@ Inject this service in your controller and return the result of the method hello
 
 After that, install the **SwaggerUi package** and create **a tag** for **the controller**.
 
+### Technical documentation 📝:
+- [Nestjs modules](https://docs.nestjs.com/modules)
+- [Nestjs controllers](https://docs.nestjs.com/controllers)
+- [Nestjs services](https://docs.nestjs.com/providers)
+
 ## Step 2 - Repeat info 🦜
 
 Now begin the warm-up ! In this step yo need to learn how to use nestjs and how to get all the informations that you need.
@@ -63,7 +68,12 @@ Here are the steps to follow:
 
 ### Important ⚠️
 
-Because you are in **TypesScript** you need to **type all the informations** that you **receive in your app**. For the body, create a dto/repeat-info folder in your module and create a repeat-info-dto.ts file. In this file create a RepeatMyBodyDto class with a message property in readonly (type string). If you wants more informations about dto, check this article: 
+Because you are in **TypesScript** you need to **type all the informations** that you **receive in your app**. For the body, create a dto/repeat-info folder in your module and create a repeat-info-dto.ts file. In this file create a RepeatMyBodyDto class with a message property in readonly (type string).
+
+### Technical documentation 📝:
+
+- [Nestjs request object](https://docs.nestjs.com/controllers#request-object)
+- [Documentation about dto](https://medium.com/@jonathan.tjendana/just-give-me-what-i-want-bdad1f1d0c6)
 
 
 ## Step 3 - Soldier 🪖
@@ -85,6 +95,10 @@ You need to **create one type of dto per request that requires a body**. For exa
 
 *If you don't know the informations to set in your dto, check the prisma.module file*
 
+### Technical documentation 📝:
+- [Prisma documentation](https://www.prisma.io/docs/concepts/components/prisma-client)
+- [Nestjs services](https://docs.nestjs.com/providers)
+
 
 ## Step 4 - Data validation 👮
 
@@ -93,6 +107,9 @@ Nice ! It's works ! However there are things missing. We need to be sure of the 
 Here are the steps to follow:
 - Setup the **class-validator** library
 - Use decorator to check if: **soldierSecret, firstName, lastName** are **strings** and **grade** is a **GradeType enum**. You need to do this for all dto that you need for your body.
+
+### Technical documentation 📝:
+- [Nestjs class validator](https://docs.nestjs.com/pipes#class-validator)
 
 
 ## Step 5 - Confidential information 🔒
@@ -118,7 +135,10 @@ Here are the steps to follow:
 
 ### Important ⚠️
 
-If you wants to **exclude a variable** in a **dto** you need to **construct your object** with the keyword **new** and **to use the constructor**.  
+If you wants to **exclude a variable** in a **dto** you need to **construct your object** with the keyword **new** and **to use the constructor**.
+
+### Technical documentation 📝:
+- [Nestjs serialization](https://docs.nestjs.com/techniques/serialization)
 
 ## Step 6 - Identity check 🛂
 
@@ -137,6 +157,10 @@ Here are the steps to follow:
 
 You need to use the **bcrypt library** to hash the passport. This data is very sensitive it's therefore necessary to the **cipher** to avoid that the enemy can obtain it even if the database leak.
 
+### Technical documentation 📝:
+- [Nestjs authentication](https://docs.nestjs.com/security/authentication)
+- [Passport JWT](https://docs.nestjs.com/security/authentication#implementing-passport-jwt)
+
 ## Step 7 - The destroyer 300 🤖
 
 Youhou ! it’s time to show who is the boss ! Let's create the robot and its weapon.
@@ -148,11 +172,17 @@ Here are the steps to follow:
 - Create a **JwtAuthGuard** in the **auth module** in a **folder guard/jwt**
 - **call the fire method** in the **robot controller** and **protect this route with the guard**
 
-
 Tada !! We can make a nice fireworks !
+### Technical documentation 📝
+- [Nestjs guards](https://docs.nestjs.com/guards#guards)
+- [Passport jwt protect routes](https://docs.nestjs.com/security/authentication#implement-protected-route-and-jwt-strategy-guards)
 
 ## Bonus - Unitary tests ✅
 
 Now that the robot is working it's important to make sure that it will continue to work. A real soldier has to do clean work! Good thing the unit tests are here !
 
 In this step you need to **unitary test all your app**. 
+
+### Technical documentation 📝:
+
+- [Nestjs unit testing](https://docs.nestjs.com/fundamentals/testing#unit-testing)
