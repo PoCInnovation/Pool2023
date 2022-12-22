@@ -8,7 +8,9 @@ Please do all installations in [this document](./SETUP.md)
 
 # Introduction
 
-![neural_network.png](img/neural_network.png)
+<div align="center">
+    <img src="./img/neural_network.png" width="500px" alt="Neural network"/>
+</div>
 
 Multi-layer neural networks are a type of machine learning model used for pattern recognition, classification and prediction. They are inspired by the functioning of the human brain and are composed of several layers of interconnected neurons.
 
