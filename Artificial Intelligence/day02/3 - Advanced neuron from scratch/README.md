@@ -66,7 +66,7 @@ We will initialize the training history with a numpy multidimensional array.
 In this method, we will create the forward propagation. We will use the sigmoid function to calculate the output of the neuron.
 
 <div align="center">
-    <img src="./img/sigmoid.png" width="300px" alt="Neural network"/>
+    <img src="./img/sigmoid.png" width="300px" alt="Forward"/>
 </div>
 
 You need prototype your method like this:
@@ -78,22 +78,38 @@ You need prototype your method like this:
 In this method, we will create the backward propagation. We will use the sigmoid derivative function to calculate the output of the neuron.
 
 <div align="center">
-    <img src="./img/sigmoid_derivative.png" width="300px" alt="Neural network"/>
+    <img src="./img/sigmoid_derivative.png" width="300px" alt="Backward"/>
 </div>
 
 You need prototype your method like this:
 - Input: Y, activations
 - Output: gradients
 
+### Method 4 - Update weights
+
+In this method, we will update the weights of the neuron. We will use the learning rate to update the weights.
+
+<div align="center">
+    <img src="./img/weight.png" width="300px" alt="Weight"/>
+</div>
+
+You need prototype your method like this:
+- Input: gradients, learning rate
+- Output: None
+
+### Method 5 - Predict
+
+In this method, we will predict the output of the neuron. Same as the forward propagation, we will use the sigmoid function to calculate the output of the neuron. You can use the forward propagation method to calculate the output.
+
+<div align="center">
+    <img src="./img/predict.gif" width="400px" alt="Predict"/>
+</div>
+
+You need prototype your method like this:
+- Input: X
+- Output: binary prediction
+
 # ⚠️ after, work in progress ⚠️
-
-- update_weights: update weights
-  - Input: gradients
-  - Output: None
-
-- predict: predict the output
-  - Input: X
-  - Output: binary predictions
 
 - history_show: show the history of the training in a plot
   - Input: None
