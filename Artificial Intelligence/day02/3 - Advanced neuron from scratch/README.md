@@ -90,7 +90,7 @@ You need prototype your method like this:
 In this method, we will update the weights of the neuron. We will use the learning rate to update the weights.
 
 <div align="center">
-    <img src="./img/weight.png" width="300px" alt="Weight"/>
+    <img src="./img/weight.png" width="500px" alt="Weight"/>
 </div>
 
 You need prototype your method like this:
@@ -114,7 +114,7 @@ You need prototype your method like this:
 In this method, we will show the history of the training. We will use matplotlib to show the history of the training.
 
 <div align="center">
-    <img src="./img/plot.png" width="300px" alt="Predict"/>
+    <img src="./img/plot.png" width="500px" alt="Predict"/>
 </div>
 
 You need prototype your method like this:
