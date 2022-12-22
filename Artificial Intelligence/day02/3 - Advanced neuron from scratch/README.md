@@ -31,7 +31,7 @@ You must submit your work in the `day02/3 - Advanced neuron from scratch` folder
 In this step, we will create a dataset. We will use sklearn to create a dataset. The dataset could be make with a circles and should look like this:
 
 <div align="center">
-    <img src="./img/dataset.png" width="300px" alt="Neural network"/>
+    <img src="./img/dataset.png" width="400px" alt="Neural network"/>
 </div>
 
 The dimension of the dataset should be in X: 2, 1500 and in Y: 1, 1500.
@@ -51,8 +51,6 @@ In this step, we will create a neural network class. In this class, we will crea
 
 ### Method 1 - Init
 
-Initialize the class with the following parameters:
-
 You will need to initialize the following variables:
 - dimensions: list of int
 - learning rate: float
@@ -68,18 +66,26 @@ We will initialize the training history with a numpy multidimensional array.
 In this method, we will create the forward propagation. We will use the sigmoid function to calculate the output of the neuron.
 
 <div align="center">
-    <img src="./img/sigmoid.png" width="200px" alt="Neural network"/>
+    <img src="./img/sigmoid.png" width="300px" alt="Neural network"/>
 </div>
 
 You need prototype your method like this:
 - Input: X
 - Output: activations
 
-# ⚠️ after, work in progress
+### Method 3 - Backward propagation
 
-- backward: backward propagation
-  - Input: Y, activations
-  - Output: gradients
+In this method, we will create the backward propagation. We will use the sigmoid derivative function to calculate the output of the neuron.
+
+<div align="center">
+    <img src="./img/sigmoid_derivative.png" width="300px" alt="Neural network"/>
+</div>
+
+You need prototype your method like this:
+- Input: Y, activations
+- Output: gradients
+
+# ⚠️ after, work in progress ⚠️
 
 - update_weights: update weights
   - Input: gradients
