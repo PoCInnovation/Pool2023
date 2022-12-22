@@ -109,11 +109,27 @@ You need prototype your method like this:
 - Input: X
 - Output: binary prediction
 
-# ⚠️ after, work in progress ⚠️
+### Method 6 - History show
 
-- history_show: show the history of the training in a plot
-  - Input: None
-  - Output: show the plot
+In this method, we will show the history of the training. We will use matplotlib to show the history of the training.
+
+<div align="center">
+    <img src="./img/plot.png" width="300px" alt="Predict"/>
+</div>
+
+You need prototype your method like this:
+- Input: None
+- Output: show the plot
+
+## Step 3 - Train the neural network
+
+In this step, we will train the neural network. We will use the forward propagation, backward propagation and update weights methods to train the neural network.
+
+You need prototype your function like this:
+- Input: X, Y, layers, learning rate, epochs
+- Output: None
+
+We will display the history of the training, for this we will insert in your training a save of the history in the training history numpy multidimensional array.
 
 # Resources :book:
 
