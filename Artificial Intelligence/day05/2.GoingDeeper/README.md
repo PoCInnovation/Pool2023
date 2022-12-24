@@ -9,19 +9,12 @@ Now that you've seen examples of both value and policy based methods for RL, let
 
 We were able to train pretty good agents and receive nice rewards using simple Q-Learning by creating a Q-Table and updating its values.
 
-![Q-table](assets/fig3.svg)
+![Environment comparison](assets/fig2.svg)
 
-But a gridworld is not particularly complex environment ! A gridworld of 20*20 size has only 400 possible states, for example.
+CartPole is one of the simpler Gym environments, with only four values in its state space and only two possible actions to be taken.\
+With more and more complex environments, we need to use neural networks to approximate our Q-Table !
 
-Take one of the earliest Atari games, like Breakout, for example: 
-
-![Breakout](assets/fig2.gif)
-
-For such a game, our observation would likely be whatever the player sees on the screen at any time, meaning that the state space would be of size:
-
-$$ screen_{height} * screen_{width} * 3 $$
-
-Although in such a scenario, we would attempt to simplify our state by applying filters such as resizing the screen (to a value high enough so as to keep relevant information) and keeping only one color, we would still have a large state for which maintaining a Q-table would be kind of cumbersome.
+![Q-Table](assets/fig3.svg)
 
 We have learned, during this week, of a function which allows to take an input and output a prediction based on that input.
 
@@ -85,7 +78,7 @@ env = gym.make("LunarLander-v2")
 > python3 dqn.py --lr 5e-4 --gamma 0.99 -M 500 -N 1000 -T 1000
 > ```
 
-Good luck !
+**Good luck !**
 
 ## DQN Extensions
 
