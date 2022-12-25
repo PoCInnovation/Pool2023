@@ -22,44 +22,45 @@ It is important to note that neural networks with multiple layers require a cons
 
 # Submit :trophy:
 
-You must submit your work in the `day02/3 - Advanced neuron from scratch` folder in file `advanced_neuron_from_scratch.py`
+You must submit your work in the `advanced_neuron_from_scratch.py` file.
 
 # Instructions
 
 ## Step 1 - Make a dataset
 
-In this step, we will create a dataset. We will use sklearn to create a dataset. The dataset could be make with a circles and should look like this:
+In this step, we will create a dataset. We will use sklearn to create a dataset. The dataset entries can be represented using circles and should look like this:
 
 <div align="center">
     <img src="./img/dataset.png" width="400px" alt="Neural network"/>
 </div>
 
-The dimension of the dataset should be in X: 2, 1500 and in Y: 1, 1500.
+The dimension of the dataset should be 
+- **X**: `2, 1500` 
+- **Y**: `1, 1500`
 
-We will print the dataset with dimensions to see if it is correct.
+Try printing the datasets dimensions to see if they match the above numbers.
 
-## Step 2 - Create a advanced neural network class
+## Step 2 - Create an advanced neural network class
 
-In this step, we will create a neural network class. In this class, we will create the following variables:
-- params: object
-- count of dimensions: int
-- learning rate: float
-- a numpy multidimensional array for training history (Loss & Accuracy)
-- a params count halved: int
+In this step, we will create a neural network class in which we will define the following variables:
+- **params**: `dict`
+- **dimension count**: `int`
+- **learning rate**: `float`
+- **training history (Loss & Accuracy)**: `numpy multidimensional array`
+- **a params count halved**: `int`
 
-### We will create a class with the following methods:
+### **We will create a class with the following methods:**
 
 ### Method 1 - Init
 
 You will need to initialize the following variables:
-- dimensions: list of int
-- learning rate: float
-- epochs: int
+- **dimensions**: `list of int`
+- **learning rate**: `float`
+- **epochs**: `int`
 
-We will initialize a params object including weights and bias. Don't forget to use the dimensions list to init the params object.
+We will initialize a `params` dict including weights and bias. Don't forget to use the dimensions list to initialize it.
 
 We will initialize the training history with a numpy multidimensional array.
-
 
 ### Method 2 - Forward propagation
 

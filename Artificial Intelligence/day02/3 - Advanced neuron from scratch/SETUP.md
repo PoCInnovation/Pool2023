@@ -5,8 +5,8 @@
 For this step, please create a `requirements.txt` and add the following library inside:
 
 - numpy
-- sklearn
-- Matplotlib
+- scikit-learn
+- matplotlib
 - tqdm
 
 After, install the requirements.
