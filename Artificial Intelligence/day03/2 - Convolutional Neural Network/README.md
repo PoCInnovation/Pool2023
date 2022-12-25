@@ -12,7 +12,7 @@
 
 Today, artificial intelligence allows us to do fabulous things...
 
-If I ask you to write **an algorithm that can detect a cat on a picture, would you develop it?**\
+If I ask you to write **an algorithm that can detect a cat on a picture**, could you develop it?\
 Maybe you would have a result that works from time to time, and even that would be an achievement.
 
 The color of the fur, the color of the eyes, the position of the cat, the size of the cat, the perspective ... so many parameters to take into account.
@@ -22,4 +22,4 @@ You would give up, wouldn't you?
 
 Let me introduce you to **convolutional neural networks**, the heart of **Computer Vision**, used to manipulate visual data.
 
-Good luck with the exercises
+Good luck with the exercises !
