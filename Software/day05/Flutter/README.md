@@ -12,7 +12,7 @@
 
 ## Setup
 
-The objective of this day is to create a music application like spotify with [Flutter](https://flutter.dev).
+The objective of this day is to create a music application like spotify with [Flutter](https://flutter.dev)
 
 You will first install [Flutter](https://docs.flutter.dev/get-started/install) and [Android Studio](https://developer.android.com/studio).
 
@@ -20,15 +20,15 @@ To use Flutter on Android Studio you need to install the plugins for `Flutter` a
 
 To use Flutter on Visual Studio Code you will need to use the [Flutter extension](https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter).
 
-If you want to use another IDE that does not have a plugin for Flutter you can always use the [flutter commands](https://docs.flutter.dev/reference/flutter-cli).
+If you want to use another IDE that does not have a plugin for Flutter you can always use the [flutter commands](https://docs.flutter.dev/reference/flutter-cli)
 
-Even if you use another IDE than Android Studio, you need to install Android Studio.
+Even if you use other IDE than Android Studio, you need to install Android Studio.
 
 To launch your application you will need a smartphone emulator, in other words a virtual smartphone in your PC, which you can create and launch from Android Studio.
 
 Once the installation is complete you can create and launch your first mobile application with the following commands:
 
-```sh
+```shell
 # At the root of your pool repository, create today's folder
 mkdir -p day05
 
@@ -41,11 +41,8 @@ flutter create myapp
 # Enter the folder
 cd myapp
 
-# See connected devices (chrome, linux, smartphone, ect)
-flutter devices
-
 # Launch the application
-flutter run -d "device name"
+flutter run
 ```
 
 If all went well you should have the basic flutter application running in your emulator.
@@ -138,76 +135,100 @@ Once the file is empty in the `lib` folder, reproduce the same architecture as t
 
 ```
 lib/
-├── models/
-├── screens/
+├── components/
+├── pages/
 ├── utils/
 ├── main.dart
 ```
 
-We are going to make our first `screen` which we will call `home.dart` (to put in the screen folder obviously 🙂), it will serve as our home page.
-You will put the following code in it, which will be present on each screen you create:
+Before going further, check the [statelessWidget documentation](https://api.flutter.dev/flutter/widgets/StatelessWidget-class.html#widgets.StatelessWidget.1) and [statefulWidget documentation](https://api.flutter.dev/flutter/widgets/StatefulWidget-class.html#widgets.StatefulWidget.1)
+
+We are going to make our first `page` which we will call `home.dart` (to put in the page folder obviously 🙂), it will serve as our home page.
+You will put the following code in it, which will be present on each page you create:
 
 ```dart
 import "package:flutter/material.dart";
 
-class Home extends StatefulWidget {
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
-  State<Home> createState() => _Home();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _Home extends State<Home> {
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
-  }
-}
-```
-We can now use this blank homepage in our application by calling it in our `main.dart` with the following code:
-```dart
-import "package:flutter/material.dart";
-import "screens/home.dart";
-
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false, // <--- remove the debug banner
-      home: Home(),
+    return Scaffold(
+      child: Center(
+        child: Text("Home"),
+      ),
     );
   }
 }
 ```
 
-## Step 2 - Our first page
+We can now use this blank homepage in our application by calling it in our `main.dart` with the following code:
 
-To begin with, the first thing the user will be taken to when the application starts up for the first time will be a page that will offer him to either register if he doesn't have an account yet, or to log in if he already has one. We will call this page `AuthHomePage`.
+```dart
+import "package:flutter/material.dart";
+import 'package:my_spotify/pages/home.dart';
 
-For this exercise you are asked to create a `Button` component, which you will use in this page. You are free to make it as you wish but it must take the following attributes as parameters:
+void main() => runApp(const MySpotify());
 
-- String `buttonText` which will be the text displayed in the button.
-- GestureTapCallback `onPressed` which will be the function to launch once the button is pressed.
-- double `width` which will be the width of the button.
-- double `height` which will be the height of the button
+class MySpotify extends StatelessWidget {
+  const MySpotify({super.key});
 
-Once this button is created we can use it in the page. The only constraint for this part is the presence of two buttons, `Login` and `Register` and a `title` of type `Text`.
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false, // <--- hide debug banner
+      home: HomePage(),
+    );
+  }
+}
+```
+
+## Step 2 - Our firsts pages
+
+To begin with, the first thing the user will be taken to, when the application starts up for the first time, will be a page that will offer him to either register if he doesn't have an account yet, or to log in if he already has one.
+
+To do so, we will create a new page named `AuthPage`. You can use the following shortcut just by typing `stl` or `stf` then press enter in VsCode
+
+![Shortcut](./.resources/shortcut_stl.png)
+
+Tu put style on our buttons we will use the [theme](https://docs.flutter.dev/cookbook/design/themes), I recommend you tu use the [ElevatedButton](https://api.flutter.dev/flutter/material/ElevatedButton-class.html) widget as the default button in your app.
+
+**To put style on anything generically, use Theme in your MaterialApp**
+
+For this first page you have to put the following element in it:
+
+- A `Text` for the title
+- An `ElevatedButton` to go to the login page
+- An `ElevatedButton` to go to the register page
+
+Here is how it rendered when I done it
+
+<img src="./.resources/first_page.png" height=550px>
 
 Now that our first page is done we can create the pages that will be displayed on the screen after the user presses one of the two buttons, for this you will need two screens, `login` and `register` which should contain the following characteristics:
 
 - Login:
   - A `TextField` for the email.
   - A `TextField` for the password, which should hide the text written inside.
-  - A `Button` `login` which does nothing at the moment.
+  - A `ElevatedButton` `login` which does nothing at the moment.
 - Register:
   - A `TextField` for the email.
-  - A TextField for the password, which should hide the text written inside.
+  - A `TextField` for the password, which should hide the text written inside.
   - A `TextField` to confirm the password, which should also hide the text written inside.
-  - A `Button` `register` which does nothing for the moment.
+  - An `ElevatedButton` `register` which does nothing for the moment.
 
-Consider creating new components to keep your code as clear as possible.
+### Here it's how it look like for me
 
-## Step 3 - What if you change the screen size?
+<img src="./.resources/login_page.png" height=550px>
+<img src="./.resources/register_page.png" height=550px>
+
+## Step 3 - What if you change the screen size ?
 
 To create a `responsive` application, that is to say an application that adapts to the size of the display in real time for that I let you do your research to keep your application responsive through the development of your application.
 
@@ -227,7 +248,7 @@ import '../lib/main.dart';
 
 void main() {
   testWidgets('Required widgets in authentication choice page', (WidgetTester tester) async {
-    await tester.pumpWidget(const MyApp());
+    await tester.pumpWidget(const MySpotify());
 
     final Finder loginButton = find.byKey(const ValueKey("loginButton"));
     final Finder registerButton = find.byKey(const ValueKey("registerButton"));
@@ -239,9 +260,11 @@ void main() {
   });
 }
 ```
+
 If you analyze the above code a bit you will understand that we are looking for the `Widgets` in our app with the `find.byKey` function, this means that we will need to assign `Keys` to our `Widgets`, you may have noticed that the default constructor of the components you created was:
+
 ```dart
-const myComponent({Key? key}) : super(key: key);
+const myComponent({super.key});
 ```
 In this exercise you will need to find a way to add values to the `Keys` of your two buttons that are in your `Home` so that the tests seen earlier are validated.
 
@@ -250,7 +273,7 @@ In this exercise you will need to find a way to add values to the `Keys` of your
 
 Now that you have created your pages that will allow the user to authenticate, you will create the user's path.
 
-That is to say, take the user from the `AuthHomePage` to the appropriate page after they have pressed one of the two buttons, so the `Register` button should bring up the `Register` page with the registration form and the `Login` button should bring up the `Login` page.
+That is to say, take the user from the `AuthPage` to the appropriate page after they have pressed one of the two buttons, so the `Register` button should bring up the `Register` page with the registration form and the `Login` button should bring up the `Login` page.
 
 For this you will need to use the [Navigator](https://docs.flutter.dev/cookbook/navigation/navigation-basics) class.
 
@@ -266,26 +289,24 @@ The first thing we ask you to do here is to create a [bottomNavigationBar](https
 
 Now that you can navigate between your two pages, it's time to populate these pages with the following requirements:
 
-- `Artist List`
+- Artist List
   - A [tile](https://api.flutter.dev/flutter/material/ListTile-class.html) for each artist. All displayed as a list
 
-- Artist creation`:
+- Artist creation:
   - A `TextField` for the artist's name.
   - A `scoring system` that goes from 0 to 5 to rate the artist.
   - A `TextField` for the nationality of the artist.
   - A `TextField` for the genre of the music.
   - A `TextField` for the url of the artist's picture.
-  - A `Button` to confirm the creation of the artist.
+  - An `ElevatedButton` to confirm the creation of the artist.
 
-## Step 6 - Models and stores
+## Step 6 - Models
 
 To prepare for the next exercise you will create a model for the `user`, the `artist` and the `music` with the following attributes:
 
 - User
   - `id` of type `String`.
   - `email` of type `String`.
-  - `password` of type `String`.
-  - `artists` of type `List<Artist>`.
 
 - Artist
   - `name` of type `String`.
@@ -294,19 +315,12 @@ To prepare for the next exercise you will create a model for the `user`, the `ar
   - `musicGender` of type `String`.
   - `photoUrl` of type `String`.
   - `musics` of type `List<Music>`.
-  - `user` of type `User`.
-  - `userId` of type `String`.
 
 - Music
   - `name` of type `String`.
   - `rating` of type `int`.
   - `url` of type `String`.
-  - `artist` of type `Artist`.
   - `artistId` of type `String`.
-
-The goal now is to use these models. You are going to create a `User` after the user has logged in and an `Artist` after filling in the artist creation form, all stored in stores.
-
-To do this you will create a `store` folder and then a `store.dart` file under the `lib` folder, which you will use to store your data so that it can be accessed throughout your code with only the import 'README.md'of the `store.dart` file to access it.
 
 ## Step 7 - Authentication with an API
 
@@ -314,11 +328,11 @@ It is now time to connect your application to an API to store your data.
 
 For this you will use the Flutter package [http](https://pub.dev/packages/http).
 
-Normally the models you created in the previous exercise should make it easier for you to send the data to the API.
+Normally the models you created in the previous exercise should make it easier for you to send ans receive data to the API.
 
 For this exercise you have to be able to authenticate to the api with your application.
 
-To manage the api calls you will create a `api.dart` file in the `providers` folder.
+To manage the api calls you will create an `api.dart` file in the `providers` folder.
 
 To get you started here is the code base to put in the `api.dart` file:
 
@@ -326,24 +340,37 @@ To get you started here is the code base to put in the `api.dart` file:
 import 'package:http/http.dart' as http;
 
 class Api {
-  final String _url = "http://10.0.2.2:8080";
+  static final String _url = "http://10.0.2.2:8080";
+  static String _token = "";
 
-  Future<bool> health() async {
+  static Future<bool> health() async {
     final response = await http.get(Uri.parse("$_url/health"));
     return response.statusCode == 200;
   }
 }
 ```
 
-In the above code `10.0.2.2` is used to reach the `127.0.0.1` of the machine emulating the smartphone.
+The keyword static just mean that you don't need to create an instance of Api to use the it. As we only need one instance of Api class, we can make static everything in it.
+
+example how to use Api without static:
+```dart
+final Api api = Api();
+
+api.health();
+```
+
+example how to use Api with static:
+```dart
+Api.health();
+```
+
+In the above code `10.0.2.2` is used to reach the `127.0.0.1` of the machine emulating the smartphone if you are on web or change it to `127.0.0.1`.
 
 The `health` function in the code base allows you to check that the connection is well established between the api and the application. Thought to use it 😉.
 
 Create a `login` and `register` function that will allow you to authenticate to the API.
 
-Once the `JWT` token is received, store it in a `store` so that it is accessible.
-
-***Note that this is a bad idea. Please refer to the Security Bonus to understand why. We ask you to do it this way because it's important to be aware of this.***
+Once the `JWT` token is received, put it in the `_token` variable.
 
 ## Step 8 - Managing artists with the api
 
@@ -367,10 +394,12 @@ In this exercise you have to create the function `createMusic` and `getMusic` in
 
 Add [animations](https://docs.flutter.dev/development/ui/animations) to enhance your user experience.
 
-### Security Issue
+### Permanent login
 
-Storing a JWT inside a store is a bad idea. Here is [how to solve this problem](https://flutteragency.com/save-jwt-tokens-in-flutter-apps/).
+Login every time you close the app is annoying. Here is [how to solve this problem](https://flutteragency.com/save-jwt-tokens-in-flutter-apps/).
 
-Your turn!
+
+
+Your turn !
 
 > Made with :heart: by PoC
