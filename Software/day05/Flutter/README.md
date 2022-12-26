@@ -12,7 +12,7 @@
 
 ## Setup
 
-The objective of this day is to create a music application like spotify with [Flutter](https://flutter.dev)
+The objective of this day is to create a music application like spotify with [Flutter](https://flutter.dev).
 
 You will first install [Flutter](https://docs.flutter.dev/get-started/install) and [Android Studio](https://developer.android.com/studio).
 
@@ -28,7 +28,7 @@ To launch your application you will need a smartphone emulator, in other words a
 
 Once the installation is complete you can create and launch your first mobile application with the following commands:
 
-```shell
+```sh
 # At the root of your pool repository, create today's folder
 mkdir -p day05
 
@@ -51,7 +51,77 @@ If all went well you should have the basic flutter application running in your e
 
 Flutter is a framework based on the dart language.
 
-***Do not start without knowing anything about it, here is an [introduction](https://dart.dev/samples) to this language.***
+**_Do not start without knowing anything about it, here is an [introduction](https://dart.dev/samples) to this language._**
+
+## Step 0.1 - Hello World
+
+Like every new language you write for the first time, you must print `Hello World` in the terminal.
+
+In order to do this, you have to create a folder `Dart` in which you will put your dart code. Create a `main.dart` file in it and let's code.
+
+Here is a the doc to know [how to make a main in Dart](https://dart.dev/guides/language/language-tour#the-main-function).
+
+To test your code, you need to run it (obviously), so you can do it just by put the `dart` word before your file name, `main.dart` in your case.
+
+```sh
+dart main.dart
+```
+
+## Step 0.2 - Vehicle
+
+`Flutter` is an object oriented framework, so you will code as you might with flutter. In order to do it, you will [create a class](https://dart.dev/samples#classes) named `Vehicle` and create the following variables in it :
+
+- `name` of type `String`;
+- `_started` of type `bool` in it. (the underscore is to make the variable private)
+
+To start the vehicle you have to create the function `start` in the class that make the started value to `true`.
+
+To see if the vehicle is started, you have to make the function `isStarted` that print `Started` or `Not started` depending of the `_started` variable.
+
+If you did everything good, the following code must start.
+
+```dart
+void main() {
+  final Vehicle vehicle = Vehicle(name: "car"); // see named parameters to have a constructor like this.
+  vehicle.start();
+  vehicle.isStarted();
+}
+```
+
+## Step 0.3 - Car
+
+Now that your vehicle is operational, make it [abstract](https://dart.dev/samples#interfaces-and-abstract-classes).
+
+To complete this, task you have to create a `Car` class that inherit of the `Vehicle` class, [override](https://api.flutter.dev/flutter/dart-core/override-constant.html) start function to put a print that display the name of the car followed by `car starting`, and make the following main work:
+
+```dart
+void main() {
+  final Vehicle car = Car(name: "Peugeot");
+  car.start();
+  car.isStarted();
+}
+```
+
+## Step 0.4 - Async
+
+In this day you will have to interact with an API that is not synchronous with your app, as it's another program on another machine, that make sense.
+
+In order to learn a little bit of it, you will make a delay before your car rev the engine. To succeed, you have to make the `revTheEngine` function [asynchronous](https://dart.dev/codelabs/async-await#working-with-futures-async-and-await) and add this line of code on the first line of the function:
+
+```dart
+await Future.delayed(const Duration(seconds: 2));
+```
+
+In order to finish this introduction, use this main and run it:
+
+```dart
+void main() {
+  final Vehicle car = Car(name: "Peugeot");
+  car.start();
+  Future.delayed(const Duration(seconds: 3), car.isStarted);
+  car.isStarted();
+}
+```
 
 ## Step 0.1 - Hello World
 
@@ -195,7 +265,7 @@ To begin with, the first thing the user will be taken to, when the application s
 
 To do so, we will create a new page named `AuthPage`. You can use the following shortcut just by typing `stl` or `stf` then press enter in VsCode
 
-![Shortcut](./.resources/shortcut_stl.png)
+![Shortcut](./.assets/shortcut_stl.png)
 
 Tu put style on our buttons we will use the [theme](https://docs.flutter.dev/cookbook/design/themes), I recommend you tu use the [ElevatedButton](https://api.flutter.dev/flutter/material/ElevatedButton-class.html) widget as the default button in your app.
 
@@ -209,7 +279,7 @@ For this first page you have to put the following element in it:
 
 Here is how it rendered when I done it
 
-<img src="./.resources/first_page.png" height=550px>
+<img src="./.assets/first_page.png" height=550px>
 
 Now that our first page is done we can create the pages that will be displayed on the screen after the user presses one of the two buttons, for this you will need two screens, `login` and `register` which should contain the following characteristics:
 
@@ -225,8 +295,8 @@ Now that our first page is done we can create the pages that will be displayed o
 
 ### Here it's how it look like for me
 
-<img src="./.resources/login_page.png" height=550px>
-<img src="./.resources/register_page.png" height=550px>
+<img src="./.assets/login_page.png" height=550px>
+<img src="./.assets/register_page.png" height=550px>
 
 ## Step 3 - What if you change the screen size ?
 
@@ -266,8 +336,8 @@ If you analyze the above code a bit you will understand that we are looking for 
 ```dart
 const myComponent({super.key});
 ```
-In this exercise you will need to find a way to add values to the `Keys` of your two buttons that are in your `Home` so that the tests seen earlier are validated.
 
+In this exercise you will need to find a way to add values to the `Keys` of your two buttons that are in your `Home` so that the tests seen earlier are validated.
 
 ## Step 5 - Navigation
 
@@ -290,6 +360,7 @@ The first thing we ask you to do here is to create a [bottomNavigationBar](https
 Now that you can navigate between your two pages, it's time to populate these pages with the following requirements:
 
 - Artist List
+
   - A [tile](https://api.flutter.dev/flutter/material/ListTile-class.html) for each artist. All displayed as a list
 
 - Artist creation:
@@ -305,10 +376,12 @@ Now that you can navigate between your two pages, it's time to populate these pa
 To prepare for the next exercise you will create a model for the `user`, the `artist` and the `music` with the following attributes:
 
 - User
+
   - `id` of type `String`.
   - `email` of type `String`.
 
 - Artist
+
   - `name` of type `String`.
   - `rating` of type `int`.
   - `nationality` of type `String`.
@@ -328,11 +401,11 @@ It is now time to connect your application to an API to store your data.
 
 For this you will use the Flutter package [http](https://pub.dev/packages/http).
 
-Normally the models you created in the previous exercise should make it easier for you to send ans receive data to the API.
+Normally the models you created in the previous exercise should make it easier for you to send the data to the API.
 
 For this exercise you have to be able to authenticate to the api with your application.
 
-To manage the api calls you will create an `api.dart` file in the `providers` folder.
+To manage the api calls you will create a `api.dart` file in the `utils` folder.
 
 To get you started here is the code base to put in the `api.dart` file:
 
@@ -353,6 +426,7 @@ class Api {
 The keyword static just mean that you don't need to create an instance of Api to use the it. As we only need one instance of Api class, we can make static everything in it.
 
 example how to use Api without static:
+
 ```dart
 final Api api = Api();
 
@@ -360,6 +434,7 @@ api.health();
 ```
 
 example how to use Api with static:
+
 ```dart
 Api.health();
 ```
@@ -370,7 +445,19 @@ The `health` function in the code base allows you to check that the connection i
 
 Create a `login` and `register` function that will allow you to authenticate to the API.
 
+The enpoint of the login and register routes are the following:
+
+- Register: `/auth/register`.
+- Login: `/auth/login`.
+
+For both routes the body is:
+
+- email
+- password
+
 Once the `JWT` token is received, put it in the `_token` variable.
+
+**If you don't know what is a jwt check this [link](https://jwt.io/introduction)**
 
 ## Step 8 - Managing artists with the api
 
@@ -397,8 +484,6 @@ Add [animations](https://docs.flutter.dev/development/ui/animations) to enhance 
 ### Permanent login
 
 Login every time you close the app is annoying. Here is [how to solve this problem](https://flutteragency.com/save-jwt-tokens-in-flutter-apps/).
-
-
 
 Your turn !
 
