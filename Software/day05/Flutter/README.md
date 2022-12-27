@@ -14,6 +14,7 @@
 
 The objective of this day is to create a music application like spotify with [Flutter](https://flutter.dev).
 
+<!-- markdown-link-check-disable-next-line -->
 You will first install [Flutter](https://docs.flutter.dev/get-started/install) and [Android Studio](https://developer.android.com/studio).
 
 To use Flutter on Android Studio you need to install the plugins for `Flutter` and `Dart`.
@@ -433,7 +434,7 @@ final Api api = Api();
 api.health();
 ```
 
-example how to use Api with static:
+example how to use Api with static
 
 ```dart
 Api.health();
