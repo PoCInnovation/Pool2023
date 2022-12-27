@@ -39,6 +39,6 @@ If you have any concerns, talk to a supervisor.
 ## Resources :book:
 
  - [Numpy docs](https://numpy.org/doc/)
- - [Descente de gradient expliqué en 3 étapes et 12 dessins](https://www.charlesbordet.com/fr/gradient-descent/#ensuite)
+ - [Gradient descent explained in 3 steps and 12 drawings](https://www.charlesbordet.com/fr/gradient-descent/#ensuite)
  - [Gradient descent, how neural networks learn](https://www.youtube.com/watch?v=IHZwWFHWa-w)
- - [Descente de gradient MachineLearnia](https://www.youtube.com/watch?v=rcl_YRyoLIY)
+ - [Gradient descent explained by MachineLearnia](https://www.youtube.com/watch?v=rcl_YRyoLIY)
