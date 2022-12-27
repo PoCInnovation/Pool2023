@@ -64,14 +64,14 @@ This tour is a set of exercise to learn Go basics.
 You can also try the [Go Playground](https://go.dev/play/), a useful tool to test or share pieces of codes.
 
 You will also need a good IDE, we recommend [Visual Studio Code](https://code.visualstudio.com)
-or [Goland](https://www.jetbrains.com/fr-fr/go/).
+or [GoLand](https://www.jetbrains.com/fr-fr/go/).
 
 In summary, here's a bunch of links that will be very useful during the pool:
 - [Go Docs](https://go.dev/doc/)
 - [Go Playground](https://go.dev/play/)
 - [Go Tour](https://go.dev/tour/list)
 - [Visual Studio Code Go plugin](https://code.visualstudio.com/docs/languages/go)
-- [Goland](https://www.jetbrains.com/fr-fr/go/)
+- [GoLand](https://www.jetbrains.com/fr-fr/go/)
 - [Standard Library](https://pkg.go.dev/std)
 
 ## Step 0 - Setup
@@ -256,7 +256,7 @@ and [`fmt.Errorf`](https://pkg.go.dev/fmt#Errorf).
 
 It's really hard to test I/O with unit test, but that's why functional tests exist!
 
-[Download them from GitHub](https://github.com/PoCInnovation/Pool2023/blob/master/Software/day01/Go/resources/testWhatIsYourName.zip)
+[Download them from GitHub](./resources/testWhatIsYourName.zip)
 and extract sources in your directory 📁
 
 Then, create a binary of your project using `go build`.
@@ -282,7 +282,7 @@ To use [gofmt](https://pkg.go.dev/cmd/gofmt), just launch `go fmt .` at the
 root of your module 😉
 
 You can also configure [VSCode](https://code.visualstudio.com/docs/languages/go#_formatting)
-or [Goland](https://www.jetbrains.com/help/go/integration-with-go-tools.html#gofmt)
+or [GoLand](https://www.jetbrains.com/help/go/integration-with-go-tools.html#gofmt)
 to format your code on save.
 
 ## Step 5 - Artists Book v1.0
