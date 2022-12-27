@@ -1,13 +1,11 @@
-# Setup for Advanced neuron from scratch
+# Setup for Maths & Numpy
 
 ## Requirements
 
 For this step, please create a `requirements.txt` and add the following library inside:
 
 - numpy
-- sklearn
 - Matplotlib
-- tqdm
 
 After, install the requirements.
 
