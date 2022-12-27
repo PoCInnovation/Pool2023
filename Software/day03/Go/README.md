@@ -43,7 +43,7 @@ mkdir -p day03
 
 - Initialize a Go module `SoftwareGoDay3`.
 
-> See [day01](../../day01/Golang) if you don't remember how to initialize a Go module 😉
+> See [day01](../../day01/Go) if you don't remember how to initialize a Go module 😉
 
 TODO: add explanations for tests:
 

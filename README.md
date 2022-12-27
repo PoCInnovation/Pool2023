@@ -1,4 +1,4 @@
-# 👋 Welcome to PoC Pools 2022!
+# 👋 Welcome to PoC Pools 2023!
 
 PoC is a student innovation center.
 
