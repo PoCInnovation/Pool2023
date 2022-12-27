@@ -1,5 +1,6 @@
 # 👋 Welcome to the PoC Software Pool 2023!
-
+<!-- TODO: remove the following disable comment -->
+<!-- markdown-link-check-disable -->
 During one week, you will be able to discover the different facets of software development: from database management to devops, through a tour of existing technologies.
 
 At the end of this pool, you will have the keys to start any software project.

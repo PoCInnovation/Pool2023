@@ -742,7 +742,7 @@ let userOAuth: UserOAuth[] = [];
 
 ### Strategy
 
-Passport works with [Strategy](https://www.passportjs.org/packages/),
+Passport works with [Strategy](https://www.passportjs.org/),
 so you will need here to set up the [GoogleStrategy](https://www.passportjs.org/packages/passport-google-oauth20/).
 
 You should use the application identifier, secret code, the callback url

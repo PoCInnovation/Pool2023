@@ -382,7 +382,7 @@ Now that you have your Home page, it's time to have Register and Login pages rea
 
 **Tips:**
 - Have a look at the Chakra UI [Input](https://chakra-ui.com/docs/form/input), [Link](https://chakra-ui.com/docs/navigation/link) and [Button](https://chakra-ui.com/docs/form/button) components.
-- You should have a look at the [react-router-dom](https://github.com/remix-run/react-router/blob/main/docs/getting-started/tutorial.md) package.
+- You should have a look at the [react-router-dom](https://github.com/remix-run/react-router/blob/main/docs/start/tutorial.md) package.
 - Check the React [State Hook](https://en.reactjs.org/docs/hooks-state.html) 👀
 - Use the [web console](https://developer.mozilla.org/en-US/docs/Tools/Web_Console) to see the logs (Ctrl + Shift + I) 😉
 
