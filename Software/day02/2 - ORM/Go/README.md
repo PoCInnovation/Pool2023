@@ -1021,7 +1021,7 @@ You've seen some unit and functional tests, maybe it's time to implement some fo
 If you want to learn more about databases, here are some interesting links:
 - [The graph databases](https://neo4j.com/developer/graph-database/)
 - [Database indexes](https://planetscale.com/blog/how-do-database-indexes-work)
-- [DGraph](https://dgraph.io/)
+- [DGraph](https://dgraph.io/) <!-- markdown-link-check-disable-line -->
 - [MongoDB](https://www.mongodb.com/en)
 
 > Made with ❤️ by PoC
