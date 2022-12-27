@@ -4,7 +4,7 @@
 
 ✔️ Discover HTTP server with Gin.
 
-✔️ Learn the basics and good practices of web development.
+✔️ Learn basics and good practices of web development.
 
 ✔️ Secure your endpoints with validators.
 
