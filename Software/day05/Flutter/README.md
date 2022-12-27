@@ -286,25 +286,25 @@ Now that our first page is done we can create the pages that will be displayed o
 - Login:
   - A `TextField` for the email.
   - A `TextField` for the password, which should hide the text written inside.
-  - A `ElevatedButton` `login` which does nothing at the moment.
+  - An `ElevatedButton` `login` which does nothing at the moment.
 - Register:
   - A `TextField` for the email.
   - A `TextField` for the password, which should hide the text written inside.
   - A `TextField` to confirm the password, which should also hide the text written inside.
   - An `ElevatedButton` `register` which does nothing for the moment.
 
-### Here it's how it look like for me
+### Here's an example of how it can look like:
 
 <img src="./.assets/login_page.png" height=550px>
 <img src="./.assets/register_page.png" height=550px>
 
-## Step 3 - What if you change the screen size ?
+## Step 3 - What if you change the screen size? 📱
 
 To create a `responsive` application, that is to say an application that adapts to the size of the display in real time for that I let you do your research to keep your application responsive through the development of your application.
 
 To guide you in your research here is a first [link](https://docs.flutter.dev/development/ui/layout/adaptive-responsive) to help you.
 
-## Step 4 - Testing time
+## Step 4 - Testing time 🧪
 
 To make sure your application works well without having to test everything by hand Google has created a very powerful test library on Flutter.
 
@@ -445,7 +445,7 @@ The `health` function in the code base allows you to check that the connection i
 
 Create a `login` and `register` function that will allow you to authenticate to the API.
 
-The enpoint of the login and register routes are the following:
+The endpoints of the login and register routes are the following:
 
 - Register: `/auth/register`.
 - Login: `/auth/login`.
@@ -485,6 +485,6 @@ Add [animations](https://docs.flutter.dev/development/ui/animations) to enhance 
 
 Login every time you close the app is annoying. Here is [how to solve this problem](https://flutteragency.com/save-jwt-tokens-in-flutter-apps/).
 
-Your turn !
+Your turn!
 
 > Made with :heart: by PoC
