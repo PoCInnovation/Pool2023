@@ -301,9 +301,6 @@ It must take as parameter an `id` of type `string` and delete it.
 
 > 💡 Find more information about CRUD [here](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete).
 
-> Like yesterday, if you use `nanoid` and get a `ERR_REQUIRE_ESM` error, you have to use `nanoid@^3.3.4` instead of `nanoid@^4.0.0`\
-> Check [this issue](https://github.com/ai/nanoid/issues/365) to learn more about it 😉
-
 
 ### Testing
 Tests are important, even more when it's about resource manipulation.<br>

@@ -986,20 +986,18 @@ You have implemented a complete MVC architecture, that's excellent 🚀
 Only one thing is missing, our data is too basic, it only has a name.
 
 Let's add some fields by updating the `Artist` type:
-- `id`: A [unique identifier](https://www.npmjs.com/package/nanoid) of type `string`
+- `id`: A [unique identifier](https://en.wikipedia.org/wiki/Universally_unique_identifier) of type `string`
 - `top`: Best song, as a `string`
 - `fans`: `number` of fans
 - `listenedTime`: the amount of time you listened to this artist, stored as a `number` of listened hours
 
 > 💡 It's common to put a unique identifier when you store data, this way, you can easily distinguish them.
+> [Several packages and implementations](https://medium.com/@matynelawani/uuid-vs-crypto-randomuuid-vs-nanoid-313e18144d8c) exist, but here we'll use the [built-in randomUUID() method](https://developer.mozilla.org/en-US/docs/Web/API/Crypto/randomUUID) from the `crypto` WebAPI.
 
 You'll have to update all your codebase to support those new fields.
 
 > Don't worry, it's not that hard because you have build a strong architecture!  
 > And if you struggle, remember that the staff is here to help you out 😃
-
-> If you have the error `ERR_REQUIRE_ESM`, you have to use `nanoid@^3.3.4` instead of `nanoid@^4.0.0`\
-> Check [this issue](https://github.com/ai/nanoid/issues/365) to learn more about it 😉
 
 ## Bonus
 
