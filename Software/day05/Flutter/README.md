@@ -268,7 +268,7 @@ To begin with, the first thing the user will be taken to, when the application s
 
 To do so, we will create a new page named `AuthPage`. You can use the following shortcut just by typing `stl` or `stf` then press enter in VSCode
 
-![Shortcut](./.assets/shortcut_stl.png)
+![Shortcut](/.github/assets/software/flutter/shortcut_stl.png)
 
 Tu put style on our buttons we will use the [theme](https://docs.flutter.dev/cookbook/design/themes), I recommend you tu use the [ElevatedButton](https://api.flutter.dev/flutter/material/ElevatedButton-class.html) widget as the default button in your app.
 
@@ -282,7 +282,7 @@ For this first page you have to put the following element in it:
 
 Here's an example of how it can look like:
 
-<img src="./.assets/first_page.png" height=550px>
+<img src="../../../.github/assets/software/flutter/first_page.png" height=550px>
 
 Now that our first page is done we can create the pages that will be displayed on the screen after the user presses one of the two buttons, for this you will need two screens, `login` and `register` which should contain the following characteristics:
 
@@ -298,8 +298,8 @@ Now that our first page is done we can create the pages that will be displayed o
 
 ### Here's an example of how it can look like:
 
-<img src="./.assets/login_page.png" height=550px>
-<img src="./.assets/register_page.png" height=550px>
+<img src="../../../.github/assets/software/flutter/login_page.png" height=550px>
+<img src="../../../.github/assets/software/flutter/register_page.png" height=550px>
 
 ## Step 3 - What if you change the screen size? 📱
 
