@@ -268,7 +268,7 @@ To begin with, the first thing the user will be taken to, when the application s
 
 To do so, we will create a new page named `AuthPage`. You can use the following shortcut just by typing `stl` or `stf` then press enter in VSCode
 
-![Shortcut](/.github/assets/software/flutter/shortcut_stl.png)
+![Shortcut](../../../.github/assets/software/flutter/shortcut_stl.png)
 
 Tu put style on our buttons we will use the [theme](https://docs.flutter.dev/cookbook/design/themes), I recommend you tu use the [ElevatedButton](https://api.flutter.dev/flutter/material/ElevatedButton-class.html) widget as the default button in your app.
 
