@@ -347,10 +347,8 @@ From now on, you are free to add any element you want in your UI as long as you 
 
 > Don't hesitate to ask us questions about design, about ways to code frontend elements, or to validate your architecture 😉
 
-[Here is an example of what you will have to do](https://pool-software-artists-book-47uohqzk7-pool-software-artists-book.vercel.app)
+[Here is an example of what you will have to do](https://pool-software-day05-artists-book.netlify.app/)
 > Note that this is purely frontend, there is no interaction with a database.
-
-TODO: update link for example deployed
 ***
 
 
@@ -406,43 +404,39 @@ If some elements are not responsive, fix it!
 
 ## Step 5 - Testing time 🧪
 
-TODO: give the tests and explain how they work:
-- npm i -D cypress @types/jest
-- add the scripts
-- add the files (config + cypress folder)
-- gitignore with videos/screenshots
-- explain how to add IDs
+Great, you now have a good looking responsive UI, but how do you make sure it works well without manually testing?
 
+A great tool for front-end testing is [Cypress](https://www.cypress.io/), mainly used for [end-to-end](https://css-tricks.com/front-end-testing-is-for-everyone/#h-end-to-end-e2e-testing) and [component](https://docs.cypress.io/guides/component-testing/overview) tests.
 
-You now have three responsive pages.
+To win time, we already created some tests for you, you'll just need to adapt them to your application 😄
 
-Before going further, it's a good practice to create [end-to-end](https://css-tricks.com/front-end-testing-is-for-everyone/#h-end-to-end-e2e-testing) tests.
+First, let's install the necessary dependencies:
+```shell
+npm i -D cypress @types/jest
+```
 
-To do that, you will use [Cypress](https://www.cypress.io).
+Then you have to add the necessary scripts in the `package.json`:
+```json
+"cypress:run": "cypress run",
+"cypress:open": "cypress open",
+```
+> You can run the tests directly in the CLI or open an UI to do so 😉
 
-**Requirements:**
-- Verify that the Home page contains:
-  - One `Register` `button` redirecting to `/register`.
-  - One `Login` `button` redirecting to `/login`.
-- Verify that the Register page contains:
-  - Three `inputs`.
-  - One `Register` `button`.
-  - One `Login` `button` redirecting to `/login`.
-- Verify that the Login page contains:
-  - Two `inputs`.
-  - One `Login` `button`.
-  - One `Register` `button` redirecting to `/register`.
-- Add the following `scripts` to the file `package.json`:
-  - `cypress:open`, running cypress with the GUI.
-  - `cypress:run`, running cypress without the GUI.
+Once this is done, [extract the given files](./src/react-tests.zip). You should have a `cypress` folder at the root of your project with the test files located in `cypress/e2e`, and a `cypress.config.ts` file also at the root.
+> 💡 You'll notice the `cypress/videos` and `cypress/screenshots` folders, when you run the tests cypress will fill these directories with content to help you debug your tests if they fail. You can add them to your `.gitignore` to avoid committing them. 
 
-**Constraints:**
-- You must create the file `cypress/integration/home.spec.ts`
-- You must create the file `cypress/integration/register.spec.ts`
-- You must create the file `cypress/integration/login.spec.ts`
+Lastly, you will need to add some [`id`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id?retiredLocale=id) to the components of your UI. They will be useful to find content of your UI, especially here for the cypress tests. 
 
-**Tips:**
-- You will need to easily find components of you UI, give them an [`id`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id?retiredLocale=id) 😄
+For example in `home.cy.ts`, you have this test for the title where we find the UI content based on the `app-title` id:
+```ts
+it('Good title', () => {
+  cy.get('#app-title').should('contain', 'Artists Book');
+});
+```
+
+When you're done, you can use `npm run cypress:run` and admire the passing tests 🚀
+
+> During the next steps, feel free to add tests for the new components and pages you create 😉
 
 ## Step 6 - Your first dashboard 📋
 
