@@ -483,4 +483,4 @@ Login every time you close the app is annoying. Here is [how to solve this probl
 
 Your turn!
 
-> Made with :heart: by PoC
+> Made with ❤️ by PoC

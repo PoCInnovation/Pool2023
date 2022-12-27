@@ -10,7 +10,7 @@ The training takes place in 5 days, each day will focus on a software theme and 
 
 External speakers will also come to bring their experience in the field and explain the main axes of software development in a company. They will also give you important tips.
 
-## :open_book: Day 1 - Language Initiation
+## 📖 Day 1 - Language Initiation
 
 You will choose a language: Typescript or Go and learn the basics of it by creating an interactive application in your terminal.
 
@@ -23,7 +23,7 @@ This choice will organize your week. You will learn something new in the chosen 
 - TODO
 
 
-## :information_source: Day 2 - Database
+## ℹ️ Day 2 - Database
 
 You will discover the relational databases through the management of a PostgreSQL database in two ways: by hand with SQL queries and with an Object Relational Database (ORM).
 
@@ -47,7 +47,7 @@ You will discover core concepts of the web and the basics of HTTP servers by bui
 **Talks:**
 - TODO
 
-## :policeman: Day 4 - Docker & Deployment
+## 👮‍♂️ Day 4 - Docker & Deployment
 
 This day will be dedicated to DevOps.
 
@@ -61,7 +61,7 @@ In the second part, you'll discover how to deploy a project in production and se
 **Talks:**
 - TODO
 
-## :rose: Day 5 - User Interface
+## 🌹 Day 5 - User Interface
 
 During 4 days, you've worked on the `backend` part of an application. This day you will learn how to build the `frontend` part: the User Interface. You're free to choose React for web applications, or Flutter for mobile applications.
 
@@ -72,7 +72,7 @@ During 4 days, you've worked on the `backend` part of an application. This day y
 - TODO
 - TODO
 
-## :alarm_clock: Rush
+## ⏰ Rush
 
 By groups of 3 to 5, you will have to create a clone of Airbnb, Deezer, Linkedin, Instagram, ...
 
