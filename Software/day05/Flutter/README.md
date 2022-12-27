@@ -1,4 +1,4 @@
-# PoC Software Pool 2022 - Day05 - Flutter
+# PoC Software Pool 2023 - Day05 - Flutter
 
 **Day purposes**
 
@@ -25,7 +25,7 @@ If you want to use another IDE that does not have a plugin for Flutter you can a
 
 Even if you use other IDE than Android Studio, you need to install Android Studio.
 
-To launch your application you will need a smartphone emulator, in other words a virtual smartphone in your PC, which you can create and launch from Android Studio.
+> 💡 To launch your application you will need a smartphone emulator, in other words a virtual smartphone in your PC, which you can create and launch from Android Studio.
 
 Once the installation is complete you can create and launch your first mobile application with the following commands:
 
@@ -46,7 +46,7 @@ cd myapp
 flutter run
 ```
 
-If all went well you should have the basic flutter application running in your emulator.
+If all went well you should have the basic flutter application running in your emulator 🚀
 
 ## Step 0 - Dart
 
@@ -62,7 +62,7 @@ In order to do this, you have to create a folder `Dart` in which you will put yo
 
 Here is a the doc to know [how to make a main in Dart](https://dart.dev/guides/language/language-tour#the-main-function).
 
-To test your code, you need to run it (obviously), so you can do it just by put the `dart` word before your file name, `main.dart` in your case.
+To test your code, you need to run it (obviously), so you can do it just by using the `dart` command with your file name, `main.dart` in your case.
 
 ```sh
 dart main.dart
@@ -105,7 +105,7 @@ void main() {
 
 ## Step 0.4 - Async
 
-In this day you will have to interact with an API that is not synchronous with your app, as it's another program on another machine, that make sense.
+In this day you will have to interact with an API that is not synchronous with your app, as it's another program on another machine, that makes sense.
 
 In order to learn a little bit of it, you will make a delay before your car rev the engine. To succeed, you have to make the `revTheEngine` function [asynchronous](https://dart.dev/codelabs/async-await#working-with-futures-async-and-await) and add this line of code on the first line of the function:
 
@@ -130,10 +130,9 @@ Like every new language you write for the first time, you must print `Hello Worl
 
 In order to do this, you have to create a folder `Dart` in which you will put your dart code. Create a `main.dart` file in it and let's code.
 
-Here is a the doc to know [how to make a main in Dart](https://dart.dev/guides/language/language-tour#the-main-function).
+Here is a the documentation to know [how to make a main in Dart](https://dart.dev/guides/language/language-tour#the-main-function).
 
-To test your code, you need to run it (obviously), so you can do it just by put the `dart` word before your file name, `main.dart` in your case.
-
+To test your code, you need to run it (obviously), so you can do it just by putting the `dart` word before your file name, `main.dart` in your case.
 
 ```sh
 dart main.dart
@@ -141,16 +140,17 @@ dart main.dart
 
 ## Step 0.2 - Vehicle
 
-`Flutter` is an object oriented framework, so you will code as you might with flutter. In order to do it, you will [create a class](https://dart.dev/samples#classes) named `Vehicle` and create the following variables in it : 
+`Flutter` is an object oriented framework, so let's discover some useful concepts. You will [create a class](https://dart.dev/samples#classes) named `Vehicle` and with the following variables in it: 
 
-- `name` of type `String`;
-- `_started` of type `bool` in it. (the underscore is to make the variable private)
+- `name` of type `String`
+- `_started` of type `bool` in it
+> The underscore is to make the variable private 😉
 
-To start the vehicle you have to create the function `start` in the class that make the started value to `true`.
+To start the vehicle you have to create the method `start` in the class that changes the started value to `true`.
 
-To see if the vehicle is started, you have to make the function `isStarted` that print `Started` or `Not started` depending of the `_started` variable.
+To check if the vehicle is started, you have to create the method `isStarted` that prints `Started` or `Not started` depending on the `_started` variable.
 
-If you did everything good, the following code must start.
+If you did everything good, the following code must run successfully:
 
 ```dart
 void main() {
@@ -163,9 +163,9 @@ void main() {
 
 ## Step 0.3 - Car
 
-Now that your vehicle is operational, make it [abstract](https://dart.dev/samples#interfaces-and-abstract-classes).
+Now that your vehicle is operational, let's make it [abstract](https://dart.dev/samples#interfaces-and-abstract-classes).
 
-To complete this, task you have to create a `Car` class that inherit of the `Vehicle` class, [override](https://api.flutter.dev/flutter/dart-core/override-constant.html) start function to put a print that display the name of the car followed by `car starting`, and make the following main work:
+To complete this, you have to create a `Car` class that inherits of the `Vehicle` class, [override](https://api.flutter.dev/flutter/dart-core/override-constant.html) the `start` method to add a print that displays the name of the car followed by `car starting`, and make the following `main` works:
 
 ```dart
 void main() {
@@ -178,9 +178,9 @@ void main() {
 
 ## Step 0.4 - Async
 
-In this day you will have to interact with an API that is not synchronous with your app, as it's another program on another machine, that make sense.
+In this day you will have to interact with an API that is not synchronous with your app, as it's another program on another machine, that makes sense.
 
-In order to learn a little bit of it, you will make a delay before your car rev the engine. To succeed, you have to make the `revTheEngine` function [asynchronous](https://dart.dev/codelabs/async-await#working-with-futures-async-and-await) and add this line of code on the first line of the function:
+In order to learn a little bit about it, you will add a delay before your car rev the engine. To succeed, you have to make the `revTheEngine` function [asynchronous](https://dart.dev/codelabs/async-await#working-with-futures-async-and-await) and add this line of code on the first line of the function:
 
 ```dart
 await Future.delayed(const Duration(seconds: 2));
@@ -200,9 +200,11 @@ void main() {
 
 ## Step 1 - Getting started
 
+Now that you're warmed up, let's start to develop our music app 🔥
+
 You can open the `main.dart` file located in the `lib` folder and delete everything in it.
 
-Once the file is empty in the `lib` folder, reproduce the same architecture as the diagram below:
+Once the file is empty, reproduce the same architecture as the diagram below in the `lib` folder:
 
 ```
 lib/
@@ -264,7 +266,7 @@ class MySpotify extends StatelessWidget {
 
 To begin with, the first thing the user will be taken to, when the application starts up for the first time, will be a page that will offer him to either register if he doesn't have an account yet, or to log in if he already has one.
 
-To do so, we will create a new page named `AuthPage`. You can use the following shortcut just by typing `stl` or `stf` then press enter in VsCode
+To do so, we will create a new page named `AuthPage`. You can use the following shortcut just by typing `stl` or `stf` then press enter in VSCode
 
 ![Shortcut](./.assets/shortcut_stl.png)
 
@@ -278,7 +280,7 @@ For this first page you have to put the following element in it:
 - An `ElevatedButton` to go to the login page
 - An `ElevatedButton` to go to the register page
 
-Here is how it rendered when I done it
+Here's an example of how it can look like:
 
 <img src="./.assets/first_page.png" height=550px>
 
@@ -307,9 +309,9 @@ To guide you in your research here is a first [link](https://docs.flutter.dev/de
 
 ## Step 4 - Testing time 🧪
 
-To make sure your application works well without having to test everything by hand Google has created a very powerful test library on Flutter.
+To make sure your application works well without having to test everything by hand Google has created a very powerful testing library for Flutter.
 
-To use it, you should have a `test/` folder generated by default at the creation of the Flutter project, this folder contains a `widget test dart` file that you will open and empty of its content to paste the following code:
+To use it, you should have a `test/` folder generated by default at the creation of the Flutter project, this folder contains a `widget test dart` file that you will open and replace all of its content with the following code:
 
 ```dart
 import 'package:flutter/material.dart';
@@ -342,7 +344,7 @@ In this exercise you will need to find a way to add values to the `Keys` of your
 
 ## Step 5 - Navigation
 
-Now that you have created your pages that will allow the user to authenticate, you will create the user's path.
+Now that you have created the pages that will allow a user to authenticate, you will create the user's path.
 
 That is to say, take the user from the `AuthPage` to the appropriate page after they have pressed one of the two buttons, so the `Register` button should bring up the `Register` page with the registration form and the `Login` button should bring up the `Login` page.
 
@@ -350,10 +352,9 @@ For this you will need to use the [Navigator](https://docs.flutter.dev/cookbook/
 
 Now you should be able to navigate between the `choice of authentication` page, the `login` page and the `register` page without being able to go any further.
 
-Now it's time to see how to create the two main pages of our application:
+It's time to see how to create the two main pages of our application:
 
 - `Artist List`: a list of all artists created by the user.
-
 - `Artist creation`: a form to fill in each field needed to create an artist.
 
 The first thing we ask you to do here is to create a [bottomNavigationBar](https://api.flutter.dev/flutter/material/BottomNavigationBar-class.html) that will allow us to navigate between these two pages.
@@ -361,9 +362,7 @@ The first thing we ask you to do here is to create a [bottomNavigationBar](https
 Now that you can navigate between your two pages, it's time to populate these pages with the following requirements:
 
 - Artist List
-
   - A [tile](https://api.flutter.dev/flutter/material/ListTile-class.html) for each artist. All displayed as a list
-
 - Artist creation:
   - A `TextField` for the artist's name.
   - A `scoring system` that goes from 0 to 5 to rate the artist.
@@ -377,36 +376,32 @@ Now that you can navigate between your two pages, it's time to populate these pa
 To prepare for the next exercise you will create a model for the `user`, the `artist` and the `music` with the following attributes:
 
 - User
-
   - `id` of type `String`.
   - `email` of type `String`.
-
 - Artist
-
   - `name` of type `String`.
   - `rating` of type `int`.
   - `nationality` of type `String`.
   - `musicGender` of type `String`.
   - `photoUrl` of type `String`.
   - `musics` of type `List<Music>`.
-
 - Music
   - `name` of type `String`.
   - `rating` of type `int`.
   - `url` of type `String`.
   - `artistId` of type `String`.
 
-## Step 7 - Authentication with an API
+## Step 7 - Authentication with an API 🔒
 
 It is now time to connect your application to an API to store your data.
 
-For this you will use the Flutter package [http](https://pub.dev/packages/http).
+For this you will use the [http](https://pub.dev/packages/http) package 😃
 
-Normally the models you created in the previous exercise should make it easier for you to send the data to the API.
+> The models you created in the previous step should make it easier for you to send the data to the API.
 
-For this exercise you have to be able to authenticate to the api with your application.
+For this step you have to be able to authenticate to the API with your application.
 
-To manage the api calls you will create a `api.dart` file in the `utils` folder.
+To manage the API calls you will create an `api.dart` file in the `utils` folder.
 
 To get you started here is the code base to put in the `api.dart` file:
 
@@ -424,59 +419,59 @@ class Api {
 }
 ```
 
-The keyword static just mean that you don't need to create an instance of Api to use the it. As we only need one instance of Api class, we can make static everything in it.
+The keyword static just mean that you don't need to create an instance of Api to use it. As we only need one instance of Api class, we can static everything inside it static 😉
 
-example how to use Api without static:
-
+For example example, here's how to use Api without static:
 ```dart
 final Api api = Api();
 
 api.health();
 ```
 
-example how to use Api with static
-
+and with it:
 ```dart
 Api.health();
 ```
 
-In the above code `10.0.2.2` is used to reach the `127.0.0.1` of the machine emulating the smartphone if you are on web or change it to `127.0.0.1`.
+In the above code `10.0.2.2` is used to reach the address of the machine emulating the smartphone. If you are on web you have to change it to `127.0.0.1`.
 
-The `health` function in the code base allows you to check that the connection is well established between the api and the application. Thought to use it 😉.
+The `health` function allows you to check that the connection is well established between the api and the application. Very useful here 😉
 
 Create a `login` and `register` function that will allow you to authenticate to the API.
 
 The endpoints of the login and register routes are the following:
-
 - Register: `/auth/register`.
 - Login: `/auth/login`.
 
 For both routes the body is:
-
 - email
 - password
 
 Once the `JWT` token is received, put it in the `_token` variable.
 
-**If you don't know what is a jwt check this [link](https://jwt.io/introduction)**
+**If you don't know what is a JWT, check this [link](https://jwt.io/introduction)**
 
-## Step 8 - Managing artists with the api
+## Step 8 - Managing artists with the API 🖌️
 
-For this exercise you will have to manage the artist creation and the recovery of all the artists created with the api from the application.
+For this step you will have to manage the artist creation and the recovery of all the artists created with the api from the application.
 
 You have to make sure that once the artist creation form is filled and the confirmation button is pressed, a request is sent to the api to create an artist with the given characteristics.
 
 You will have to retrieve all the artists created at the launch of the application to be able to display them in the list of artists.
 
-In this exercise you will need to create the `createArtist` and `getArtist` function in your `Api` class.
+You will need to create the `createArtist` and `getArtist` function in your `Api` class.
 
-## Step 9 - Managing music with the api
+## Step 9 - Managing music with the API 🎵
 
 In this exercise you will have to manage the creation of music and the retrieval of music from an artist when the user presses on one of the artists in the artist list page.
 
 In this exercise you have to create the function `createMusic` and `getMusic` in your `Api` class.
 
 ## Bonus
+
+Congratulations for completing this day 🚀
+
+Here are a few bonus ideas if you want to further explore Flutter 😄
 
 ### Animations
 
