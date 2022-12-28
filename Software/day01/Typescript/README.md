@@ -651,11 +651,10 @@ to the user.
 ### Repositories
 
 A repository is responsible for all interactions with the data storage.
-#TODO: GetAll in PascalCase?
 - Create a directory `repositories` in the `artistsBook` folder. 
 - Create a directory `artists` in it.
 - Create a file `get.ts`
-- Write the function `GetAll` that retrieves user's favorite artists
+- Write the function `getAll` that retrieves user's favorite artists
 
 ### Views
 

@@ -29,11 +29,10 @@ If you are curious, you can [look at the CLI documentation](https://pkg.go.dev/c
 
 Start by [installing the CLI](https://go.dev/doc/install), you can verify that
 everything works using the command below:
-TODO: update displayed version
 ```shell
 # Version must be at least 1.16
 go version
-# go version go1.17.5 darwin/arm64
+# go version go1.19.4 linux/amd64
 ```
 
 > If you have any issue don't hesitate to ask the staff for help 😄
