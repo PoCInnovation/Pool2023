@@ -42,8 +42,8 @@ We've already done this for you today, so you only have to connect to it 🔥
 ### 📌 **Tasks**:
 
 - Check your email address, you've received some information related to your dedicated instance
-    - An IP address
-    - A private SSH key
+  - An IP address
+  - A private SSH key
 - Connect to the instance through SSH using the above information
 
 ### 📚 **Documentation**:
@@ -66,4 +66,28 @@ hostnamectl
 You can then `exit` to go back to your terminal 😄
 
 
-# Step 1 - Copy app files & run it
+# Step 1 - Copy app files & run it 📁
+
+### 📑 **Description**:
+
+Now that you know how to connect to your virtual instance, you have to add your application files and run it 🔥\
+Here you can use the same application as [this morning](../1%20-%20Docker/resources/) for which you already created a `docker-compose.yml` file for an easy startup 👍
+
+### 📌 **Tasks**:
+
+- Find a command to copy a local folder to a remote computer via SSH
+- Move your application code to the instance, for example in the `/home/ubuntu/myapp` folder
+- Connect to the instance and run your application
+  - You may need to install docker, but now you know how to do it 🚀
+
+> Don't forget to update the necessary variables in the `.env` files 😉
+
+### 📚 **Documentation**:
+
+- [Secure Copy Protocol](https://en.wikipedia.org/wiki/Secure_copy_protocol)
+
+### ✔️ **Validation**:
+
+If everything went well, you can open your browser at `http://<INSTANCE_IP>:3000` and access your app 🚀
+
+Unlike you run it on `localhost`, here it's accessible to anyone 😉
