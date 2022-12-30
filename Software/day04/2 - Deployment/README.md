@@ -36,7 +36,7 @@ Then you will discover [GitHub Actions](https://github.com/features/actions) to 
 
 ### 📑 **Description**:
 
-The first thing you would normally do is to [create an instance](https://www.youtube.com/watch?v=1ulVecpL6QE) with all the settings you want, like the OS, computing power, storage space...\
+The first thing you would normally do is to [create an instance](https://www.youtube.com/watch?v=1ulVecpL6QE) with all the settings you want, like the OS, computing power, storage space...<br>
 We've already done this for you today, so you only have to connect to it 🔥
 
 ### 📌 **Tasks**:
@@ -70,7 +70,7 @@ You can then `exit` to go back to your terminal 😄
 
 ### 📑 **Description**:
 
-Now that you know how to connect to your virtual instance, you have to add your application files and run it 🔥\
+Now that you know how to connect to your virtual instance, you have to add your application files and run it 🔥<br>
 Here you can use the same application as [this morning](../1%20-%20Docker/resources/) for which you already created a `docker-compose.yml` file for an easy startup 👍
 
 ### 📌 **Tasks**:
@@ -88,6 +88,49 @@ Here you can use the same application as [this morning](../1%20-%20Docker/resour
 
 ### ✔️ **Validation**:
 
-If everything went well, you can open your browser at `http://<INSTANCE_IP>:3000` and access your app 🚀
-
+If everything went well, you can open your browser at `http://<INSTANCE_IP>:3000` and access your app 🚀<br>
 Unlike you run it on `localhost`, here it's accessible to anyone 😉
+
+
+# Step 2 - Your first GitHub Action
+
+### 📑 **Description**:
+
+Deploying an application manually is cool, but DevOps is also about automating processes.<br>
+Several tools exists to automate all kinds of workflows, from testing to deployment, and today you'll use [GitHub Actions](https://github.com/features/actions).
+
+An Action is basically composed of several jobs (like `docker compose` services 😉) that can be triggered on events happening in your repository (a push, a PR opened...). These jobs will run in a virtual machine provided by GitHub with several OS choices. 
+
+No better way to discover it than to practice, let's create your first GitHub Action 🚀
+
+### 📌 **Tasks**:
+
+- Create a `.github/workflows` folder at the root of your repository
+> Commonly, the `.github` folder can also contain an `assets` directory that stores your images used in `README`s, or the `ISSUE_TEMPLATE` folder that is useful to setup templates for features, bug reports...
+
+- Create a `hello.yaml` file in `.github/workflows` with the following properties:
+  - It should be named `Hello world`
+  - It should be triggered:
+    - When there is a push on any branch
+    - When an issue is opened on the repository
+  - It should have one job called `hello-world` that:
+    - Is executed on a Ubuntu 22.04 machine
+    - Has a step named `Display a greeting` that displays (with the `echo` command) the following message:<br>
+      `Hi from GitHub Action, I'm running on <OS> and I was triggered by <USER> on the <EVENT> event!`
+      > The values between <> should be retrieved from the environment 😉
+
+### 📚 **Documentation**:
+
+- [Understanding GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions)
+- [Environment variables in Actions](https://docs.github.com/en/actions/learn-github-actions/environment-variables)
+
+### ✔️ **Validation**:
+
+You can see the workflow runs in GitHub by going in the `Actions` tab (or appending `/actions` to your repository URL).<br>
+Make a push and open an issue to check if the action is correctly triggered and if the message displayed is correct 😄
+
+
+# Step 3 - Run tests in Action
+- with upload artifacts (screenshots + videos)
+
+# Step 4 - CD on the Scaleway instance
