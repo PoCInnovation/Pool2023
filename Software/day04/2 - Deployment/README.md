@@ -92,7 +92,7 @@ If everything went well, you can open your browser at `http://<INSTANCE_IP>:3000
 Unlike you run it on `localhost`, here it's accessible to anyone 😉
 
 
-# Step 2 - Your first GitHub Action
+# Step 2 - Your first GitHub Action ⚙️
 
 ### 📑 **Description**:
 
@@ -130,7 +130,7 @@ You can see the workflow runs in GitHub by going in the `Actions` tab (or append
 Make a push and open an issue to check if the action is correctly triggered and if the message displayed is correct 😄
 
 
-# Step 3 - Run tests in Action
+# Step 3 - Run tests in Action 🧪
 - with upload artifacts (screenshots + videos)
 
-# Step 4 - CD on the Scaleway instance
+# Step 4 - CD on the Scaleway instance 🔀
