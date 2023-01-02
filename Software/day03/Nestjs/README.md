@@ -1,18 +1,36 @@
+# PoC Software Pool 2023 - Day 03 - REST API
+
+**Day purposes**
+
+✔️ Discover the basics of the framwork Nestjs.
+
+✔️ Learn the concept of reverse control.
+
+✔️ Learn the advanced concepts in the backend developpment (serialization, constraint validation...).
+
+✔️ Learn how to create an authentication system.
+
 ## Introduction 📻
 
 Pshhh ! Pshhh ! (sound of talky walky)
 
 *You pick up the walky talky*
 
-Hello solider ! As I can see, you choose the royal way today. This is great because I need you.
+Hello soldier ! As I can see, you choose the royal way today. This is great because I need you.
 
 We need to build a new war robot, it's name is "the destroyer 300".
 
+## Step 0 - Setup the robot 🔧
+
+To create our robot, it's mandatory to setup our tools. Go to the [SETUP.md](./SETUP.md) file and follow the steps.
+
 ## Step 1 - Hello world 👋
 
-First of all, we need to start the app. 
+First of all, we need to restructure and start the app. 
 
-To do that, you need to create a new **module** app. In the **src/app** folder.
+To do that, you need to create a new **module app**. In the **src/app** folder.
+
+The **principal concept** used by nestjs is the **inversion control**. This consists in **allowing the application** to **handle class injections**. The purpose of a module is both to **compartmentalize the application** in different functionalities, but also to **define that where are the classes that we need to inject in our module**.
 
 I recommend you to use the **cli** provided with **nest** with the command
 
@@ -47,10 +65,14 @@ Inject this service in your controller and return the result of the method hello
 
 After that, install the **SwaggerUi package** and create **a tag** for **the controller**.
 
+**Swagger ui** is a librairy that allows you to **generate documentation** of your **API** automatically **throughout your development**.
+
 ### Technical documentation 📝:
 - [Nestjs modules](https://docs.nestjs.com/modules)
 - [Nestjs controllers](https://docs.nestjs.com/controllers)
 - [Nestjs services](https://docs.nestjs.com/providers)
+- [Inversion of control](https://www.theserverside.com/definition/inversion-of-control-IoC#:~:text=Inversion%20of%20control%20is%20a,different%20part%20of%20the%20application.)
+- [Nestjs swagger UI](https://docs.nestjs.com/openapi/introduction)
 
 ## Step 2 - Repeat info 🦜
 
@@ -114,7 +136,7 @@ Here are the steps to follow:
 
 ## Step 5 - Confidential information 🔒
 
-Great ! Now we can intercat with a soldier model but we need to **be sure** of **the informations** provided when **we interact** with **it**. 
+Great ! Now we can interact with a soldier model but we need to **be sure** of **the informations** provided when **we interact** with **it**. 
 
 We have one **last thing** to do for **this part** of the **robot**. **Keep sensitive information secret.**
 
@@ -127,7 +149,7 @@ Here are the steps to follow:
 - Create a **SoldierUpdatedDto** class
 - Create a **SoldierFoundDto** class
 - Create a **SoldierDeletedDto** class
-- Exclude the property **soldierSecret**
+- Exclude the property **SoldierSecret**
 - Declare a **partial contructor** on each class
 - **Return the good dto** in **each service's method** and **each controller's method**
 - Use the **ClassSerializerInterceptor** in the **main**
@@ -149,13 +171,14 @@ First of all I reccomand you to **read the documentation** about it in the **nes
 Here are the steps to follow:
 - Create a **new auth module**
 - Create a **new auth controller** with a route **POST '/auth/login' route**
-- Create **a new jwtAuthService** with **two methods** one for **valitateSolider** with his **id** and one for **login the user with is id and soldierSecret**
+- Create **a new jwtAuthService** with **two methods** one for **valitate the soldier** with his **id** and one for **login the user with is id and soldierSecret**
 - Create a **jwtStrategy** in a **folder /strategy/jwt** in the **auth module**. in its constructor **extract the token from bearer** and create a method that **validate a soldier** with a **jwt payload**. This method must call the **jwtAuthService validate method to validate the user**.
 
 
 ## Important ⚠️
 
-You need to use the **bcrypt library** to hash the passport. This data is very sensitive it's therefore necessary to the **cipher** to avoid that the enemy can obtain it even if the database leak.
+You need to use the **bcrypt library** to hash the passport. This data is very sensitive it's therefore necessary to the **cipher** to avoid that the enemy can obtain it even if the database leak. If one day they get all the information from the databases, they will see only a hash and will not be able to get the real password.
+
 
 ### Technical documentation 📝:
 - [Nestjs authentication](https://docs.nestjs.com/security/authentication)
@@ -163,7 +186,9 @@ You need to use the **bcrypt library** to hash the passport. This data is very s
 
 ## Step 7 - The destroyer 300 🤖
 
-Youhou ! it’s time to show who is the boss ! Let's create the robot and its weapon.
+Youhou, it’s time to show who is the boss 😎
+
+Let's create the robot and its weapon.
 
 Here are the steps to follow:
 - Create a **new robot module**
@@ -172,16 +197,18 @@ Here are the steps to follow:
 - Create a **JwtAuthGuard** in the **auth module** in a **folder guard/jwt**
 - **call the fire method** in the **robot controller** and **protect this route with the guard**
 
-Tada !! We can make a nice fireworks !
+Tada 🎉 We can make a nice fireworks ! 🥳
 ### Technical documentation 📝
 - [Nestjs guards](https://docs.nestjs.com/guards#guards)
 - [Passport jwt protect routes](https://docs.nestjs.com/security/authentication#implement-protected-route-and-jwt-strategy-guards)
 
 ## Bonus - Unitary tests ✅
 
-Now that the robot is working it's important to make sure that it will continue to work. A real soldier has to do clean work! Good thing the unit tests are here !
+Now that the robot is up and running it's important to make sure that it will continue to work with future changes. A real soldier has to do a clean work! 
 
-In this step you need to **unitary test all your app**. 
+In this step you need to **unitary test all your app**.
+
+In the **backend application** development there are **different types of tests**. In this bonus you will see the **unit test**, this type of test consists to test your functions isolated form their context.
 
 ### Technical documentation 📝:
 
