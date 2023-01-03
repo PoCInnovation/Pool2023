@@ -526,7 +526,7 @@ func (c Controller) DeleteArtist(ctx context.Context, id string) (*ent.Artist, e
 - [Go - Parse a UUID](https://pkg.go.dev/github.com/google/uuid#Parse)
 - [Go - Working with Errors](https://go.dev/blog/go1.13-errors)
 
-## Step 6 - Contact Artists
+## Step 5 - Contact Artists
 
 Now you know how to:
 - Basically use the CRUD of an ORM for a model
@@ -618,7 +618,7 @@ An artist's contact will be loaded into the `Artist.Edges.Contact` field.
 
 Create the `UpdateContact` method on the `Controller` type that takes the following parameters:
 - `context`: A context for ENT
-- `id`: the contact ID to be modified
+- `id`: the artist ID to be modified
 - `phone`: The contact's phone number (could be empty/invalid).
 - `email`: Contact email (could be empty/invalid).
 
@@ -630,7 +630,7 @@ Create the `DeleteContact` methods that take the following parameters:
 
 > If the contact does not exist, you must return an error ❌
 
-## Step 7 - Music Labels
+## Step 6 - Music Labels
 
 You have just implemented your first relationship on OneToOne artists 🥳
 
@@ -738,7 +738,7 @@ Your function will disconnect these entities according to their identifier.
 > Perhaps you have heard about various arguments? Wouldn't it be practical to give a list of artists to add instead of one by one?
 > Ent give you access to many functions... 😉
 
-## Step 8 - Active Artists
+## Step 7 - Active Artists
 
 Finally, we are near the end! There is only one entity left: `Music` 😄
 
