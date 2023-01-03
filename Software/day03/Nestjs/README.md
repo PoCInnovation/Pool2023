@@ -28,7 +28,7 @@ To create our robot, it's mandatory to setup our tools. Go to the [SETUP.md](./S
 
 First of all, we need to restructure and start the app. 
 
-To do that, you need to create a new **module app**. In the **src/app** folder.
+To do that, you need to create a new **module app**. In the `src/app` folder.
 
 The **principal concept** used by Nest is the **inversion control**. This consists in **allowing the application** to **handle class injections**. The purpose of a module is both to **compartmentalize the application** in different functionalities, but also to **define that where are the classes that we need to inject in our module**.
 
@@ -57,24 +57,24 @@ you can use the command:
 npx nest g service ./app/service/app
 ```
 
-To display a hello a world, create a new **service** in the `src/app/service/app` folder with a method **helloWorld** that return the string `hello world!`
+To display a hello world, create a new **service** in the `src/app/service/app` folder with a method **helloWorld** that return the string `hello world!`
 
 Inject this service in your controller and return the result of the method helloWorld.
 
 After that, install the **SwaggerUi package** and create **a tag** for **the controller**.
 
-**Swagger ui** is a library that allows you to **generate documentation** of your **API** automatically **throughout your development**.
+**Swagger UI** is a library that allows you to **generate documentation** of your **API** automatically **throughout your development**.
 
 ### Technical documentation 📝:
 - [NestJS modules](https://docs.nestjs.com/modules)
 - [NestJS controllers](https://docs.nestjs.com/controllers)
 - [NestJS services](https://docs.nestjs.com/providers)
 - [Inversion of control](https://www.theserverside.com/definition/inversion-of-control-IoC#:~:text=Inversion%20of%20control%20is%20a,different%20part%20of%20the%20application.)
-- [NestJS swagger UI](https://docs.nestjs.com/openapi/introduction)
+- [NestJS with Swagger UI](https://docs.nestjs.com/openapi/introduction)
 
 ## Step 2 - Repeat info 🦜
 
-Now begin the warm-up ! In this step yo need to learn how to use NestJS and how to get all the information that you need.
+Now begin the warm-up ! In this step you need to learn how to use Nest and how to get all the information that you need.
 
 
 Here are the steps to follow:
@@ -88,7 +88,7 @@ Here are the steps to follow:
 
 ### Important ⚠️
 
-Because you are in **Typesscript** you need to **type all the information** that you **receive in your app**. For the body, create a dto/repeat-info folder in your module and create a `repeat-info-dto.ts` file. In this file create a RepeatMyBodyDto class with a message property in readonly (type string).
+Because you are in **Typescript** you need to **type all the information** that you **receive in your app**. For the body, create a dto/repeat-info folder in your module and create a `repeat-info-dto.ts` file. In this file create a `RepeatMyBodyDto` class with a message property in readonly (type string).
 
 ### Technical documentation 📝:
 
@@ -98,9 +98,9 @@ Because you are in **Typesscript** you need to **type all the information** that
 
 ## Step 3 - Soldier 🪖
 
-Can't handle no more ? ah ah ah it's just the beginning! 
+Can't handle no more? ah ah it's just the beginning! 
 
-In this this step we will create a soldier module. Th goal of this module is to allow you te create, update, get and delete a soldier. For security the robot this information to allow you to using it.
+In this this step we will create a soldier module. Th goal of this module is to allow you te create, update, get and delete a soldier.
 
 Here are the steps to follow:
 -  Create a **new module soldier** 
@@ -111,9 +111,9 @@ Here are the steps to follow:
 
 ### Important ⚠️
 
-You need to **create one type of dto per request that requires a body**. For example if you want to create, and update a weapon in a module you need to create one **CreateWeaponDto** and one **UpdateWeaponDto** (with nullable properties because we not need to update all info all times).
+You need to **create one type of dto per request that requires a body**. For example if you want to create, and update a weapon in a module you need to create one `CreateWeaponDto` and one `UpdateWeaponDto` (with nullable properties because we don't need to always update every information).
 
-*If you don't know the information to set in your dto, check the prisma.module file*
+> If you don't know the information to set in your dto, check the `prisma.module` file :wink: 
 
 ### Technical documentation 📝:
 - [Prisma documentation](https://www.prisma.io/docs/concepts/components/prisma-client)
@@ -122,11 +122,12 @@ You need to **create one type of dto per request that requires a body**. For exa
 
 ## Step 4 - Data validation 👮
 
-Nice, it works! However there are things missing. We need to be sure of the information that we receive in our robot.
+Nice, it works 🎉\
+However there are things missing. We need to be sure of the information that we receive in our robot.
 
 Here are the steps to follow:
 - Setup the **class-validator** library
-- Use decorator to check if: **soldierSecret, firstName, lastName** are **strings** and **grade** is a **GradeType enum**. You need to do this for all dto that you need for your body.
+- Use a decorator to check if: **soldierSecret, firstName, lastName** are **strings** and **grade** is a **GradeType enum**. You need to do this for all dto that you need for your body.
 
 ### Technical documentation 📝:
 - [NestJS class validator](https://docs.nestjs.com/pipes#class-validator)
@@ -162,9 +163,7 @@ If you wants to **exclude a variable** in a **dto** you need to **construct your
 
 ## Step 6 - Identity check 🛂
 
-Before create the robot module, we need to construct an auth system. To do this, we need use the **jwt passport module**. 
-
-First of all I recommend you to **read the documentation** about it in the **nestjs documentation**
+Before create the robot module, we need to construct an auth system. To do this, we need use the **jwt passport module**.
 
 Here are the steps to follow:
 - Create a **new auth module**
@@ -204,7 +203,7 @@ Congratulation 🎉 we can make a nice fireworks! 🥳
 
 Now that the robot is up and running it's important to make sure that it will continue to work with future changes. A real soldier has to do a clean work! 
 
-In this step you need to **unitary test all your app**.
+In this step you need to **unitary test your app**.
 
 In the **backend application** development there are **different types of tests**. In this bonus you will see the **unit test**, this type of test consists to test your functions isolated form their context.
 
