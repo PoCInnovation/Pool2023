@@ -1,12 +1,11 @@
 # PoC Software Pool 2023 - Day 02 - ORM
 
-✔ Understanding and Using an ORM
+✔️ Discover and use an ORM
 
-✔ Implement a clean architecture
+✔️ Understand the Go interface system
 
-✔ Familiarize yourself with unit tests
+✔️ Implement a clean architecture
 
-✔ Understand the Go interface system
 
 > ⚠️ This half-day is particularly long and contains a lot of concepts to explore.</br>
 > Here are some tips for you to advance as far as possible:
@@ -320,10 +319,22 @@ func (d Database) DeleteArtist(ctx context.Context, id uuid.UUID) (*ent.Artist, 
 }
 ```
 If the artist does not exist, you must return an error.
-TODO: add tip to use the given tests
-> ⚠️ Don`t forget to test your functions.
 
 > ⚠️ Make sure that you have respected the prototype of the methods given above.
+
+### T for Test 🧪
+
+Testing is important, even more so when it comes to resource manipulation.
+If something is broken in it, your whole app will be broken.
+
+You're lucky, we've prepared a whole bunch of tests for you!
+
+For each step, you should have a `tests/` folder to place in your app.\
+You can run them with the following command:
+```shell
+go test ./tests
+# ok  SoftwareGoDay2/tests  0.069s
+```
 
 
 **Resources**
@@ -515,203 +526,6 @@ func (c Controller) DeleteArtist(ctx context.Context, id string) (*ent.Artist, e
 - [Go - Parse a UUID](https://pkg.go.dev/github.com/google/uuid#Parse)
 - [Go - Working with Errors](https://go.dev/blog/go1.13-errors)
 
-
-TODO: use the content of this step for the tests, and reduce it by explaining how the tests work
-## Step 5 - Test the CRUD
-
-> Estimated time: 30 minutes
-
-
-If you are a real developer, you should have tested your functions/methods.
-
-However, it would be cool to automate your tests in order to check your application and serve as a safety net when making changes or implementing new features.
-
----
-**A little reminder about the tests.**
-
-There are 3 bid test families:
-- Unitary: Tests a function/feature and only one without interaction with your other components (connection to the database, ...).
-- Integration: Tests the behavior of a feature that brings together several components together.
-- Functional or EndToEnd(E2E): Tests all components of your application for a given feature.
-
-![img.png](../../../../.github/assets/ent.png)
-
----
-Go has a [built-in package](https://pkg.go.dev/testing) directly in the language that allows you to perform tests.
-
-If this package is generally used for unit tests, it can also be used for some integration tests.
-
-You will first implement unit tests, then integration tests.
-
-> In Go, any function that starts with the prefix "Test", which takes as a single parameter a `*testing.T` and is located in a file named with the suffix "_test.go" is launched during the tests.
->
-> You can run all tests with the `go test ./...` command.
-
-You will first test your logic, that is, your controller only.
-
-### Unitary: With a Mock
-
-As a reminder, a unit test only checks the logical functioning of an action. </br>
-It must be quickly executable, and must not depend on any other component of your application.
-
-However, your current controller relies on your `Database` type of the `database` package, which itself relies on ENT which connects to your postgres database, which is a different component of your application. </br>
-This violates the principle of a unit test.
-
-If you wanted to test your controller with your postgreSQL database, it falls into the integration tests family.
-
-> So why not do integration tests directly?
->
-> As your application becomes more complex, it is often necessary to first check if your logic is correct.</br>
-> 
-> If an error occurs in your tests, the problem can have several origins.</br>
-> It is important to minimize the range of possibility of source your errors.
-> 
-> This will make it easier for you to see where your error occurs and to correct it. </br>
-> This will also make it easier for you to quickly test in local before running integration tests that may take longer.
-
-
-### Set up the mock
-
-To perform your unit tests, we will have to make some modifications to use a fake database (a mock).
-
-You will therefore change the type of the `Database` field from your `Controller` type but without changing the method called (without changing all your code).</br>
-This new type will be used in exactly the same way as your `Database` type of the `database` package.
-
-To do this, you will use the [interface principle](https://go.dev/tour/methods/9) (CF: previous day's interface exercise).
-
-You will need to declare an interface that defines the same methods defined in your Database type that are used in your Controller
-
-> ⚠️ If you have not followed the prototypes of the methods of the exercise on the crud with an ORM, the interface will not be accepted when compiling your code.
-
-In the `controller/controller.go` file, declare the interface below, and change the `Controller` and its `NewController` constructor to use your new interface instead of a pointer to your  type `database.Database`.
-
-```go
-package controller
-
-type Database interface {
-	CreateArtist(ctx context.Context, name, nationality string) (*ent.Artist, error)
-	GetArtists(ctx context.Context) ([]*ent.Artist, error)
-	GetArtistByID(ctx context.Context, id uuid.UUID) (*ent.Artist, error)
-	UpdateArtist(ctx context.Context, artist *ent.Artist) (*ent.Artist, error)
-	DeleteArtist(ctx context.Context, id uuid.UUID) (*ent.Artist, error)
-}
-
-type Controller struct {
-	Database
-	// ...
-}
-
-func NewController(db Database) *Controller {
-	return &Controller{Database: db}
-}
-```
-> Note: GoLand IDE allows you to easily extract an interface from an existing type. </br>
-> For this purpose:
-> - Put your cursor over the `Database` type of your `database` package.
-> - In the tabs at the top of your IDE, `Refactor` -> `Extract/Introduce` -> `Interface...`
-> - From the menu that appears, select all methods of your type `Database`
-> - On the `To directory` line, open the file explorer and find the `controller/controller.go`
-
-If you have followed all the steps so far, the `NewController` constructor is perfectly capable of using a `*database.Database` argument without causing any errors.
-
-Create a new test package.
-
-In a `tests/mock_database.go` file, copy the entire following file:
-
-
-### [Link to the mock code](./resources/mock_database.go)
-
-Now that everything is in place, it's time to write your first tests.
-
-Create a `tests/artist_mock_test.go`.
-
-Here is an example of a test for creating an artist with the mock.
-
-```go
-package tests
-
-func TestCreateArtist(t *testing.T) {
-	artists:= []struct {
-		Name, Nationality string
-	}{
-		{Name: "Florida", Nationality: "us"},
-		{Name: "Charles Aznavour", Nationality: "en"},
-	}
-
-	c:= controller.NewController(NewMockDatabase())
-	ctx:= context. Background()
-
-	for _, a:= range artists {
-		_, err:= c.CreateArtist(ctx, a.Name, a.Nationality)
-		if err!= nil {
-			t.Errorf("artist create failed: %v", err)
-		}
-	}
-}
-```
-
-You can copy it and run your tests.
-
-Now that you have an example, write tests on your controller to verify that:
-- `CreateArtist` returns an error when the artist's name is empty.
-- `GetArtist` with a badly formed `uuid` returns an error.
-- `UpdateArtist` modifies the right fields of your artist.
-- `UpdateArtist` with a badly formed `uuid` returns an error.
-- `DeleteArtist` with a badly formed `uuid` returns an error.
-
-### Integration tests - With your Database
-
-Now that you have tested your logic, it is time to test the integration of your PostgreSQL Database with ENT.
-
-Create a new file `tests/artist_db_test.go`.
-
-Declare a global variable for your tests that will contain the connection and an init function to instantiate it only once when you run the tests.
-
-```go
-package tests
-
-var db *database.Database
-
-func init() {
-	// Load your environment
-	
-	var err error
-	
-	// Use your ENT Database
-	db, err = database.NewDatabase(...)
-	if err!= nil {
-		log. Fatal("Failed to initialize database: %+v n", err)
-	}
-}
-```
-
-> Resource: [The `init` function in GO](https://tutorialedge.net/golang/the-go-init-function/).
-
-Now write tests on your controller to verify that:
-- `CreateArtist` instantiates an artist in the Database and `GetArtist` allows you to retrieve it.
-- `CreateArtist` reviews an error when the artist's name is empty.
-- `GetArtists` refers all artists present in DB.
-- `GetArtist` with a badly formed `uuid` returns an error.
-- `UpdateArtist` modifies your artist well.
-- `UpdateArtist` with a badly formed `uuid` returns an error.
-- `DeleteArtist` removes an Artist in DB.
-- `DeleteArtist` with a badly formed `uuid` returns an error.
-
-> Note: You may have noticed that the interface could be improved.
->
-> Let's take the example where you decide to change ENT to another ORM.</br>
-> You always have an ent.Artist type that involves a dependency on ENT.
->
-> Generally speaking, outside your database, it is a bad idea to use the types provided by the ORM, because it makes your code dependent on it.
->
-> Instead, you will use a dedicated package to define your models, such as the previous day's model package (M of MVC), and in your database package, perform transformations between your model and that of ENT.
->
-> For the sake of time, we won`t look into this problem, but you can implement it as a bonus if you have time
-
-**Resources**
- - [GO - Interface](https://go.dev/tour/methods/9)
- - [GO - init function](https://tutorialedge.net/golang/the-go-init-function/)
-
 ## Step 6 - Contact Artists
 
 Now you know how to:
@@ -894,7 +708,7 @@ Create the `UpdateRecordCompany` method on the `Database` type that takes the fo
 
 ### D for Delete
 
-Create the `UpdateRecordCompany` methods that takes the following parameters:
+Create the `DeleteRecordCompany` method that takes the following parameters:
 - `context`: A context for ENT
 - `id`: the label identifier to be deleted
 
@@ -1011,10 +825,12 @@ Have fun!
 
 ### Testing, again and again 🧪
 
-You've noticed that your architecture has become more complex.
+You've noticed that your architecture has become more complex.\
 If this continues, you risk, when modifying a feature, to break other essential functionalities.
 
-You've seen some unit and functional tests, maybe it's time to implement some for your application?
+Now that you have used the given tests, it may be the time to implement your own!
+
+Take a look at the tests for each steps and try to improve them 😄
 
 ## Additional Resources
 
