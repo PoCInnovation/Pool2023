@@ -153,6 +153,7 @@ For this exercise, you have to use the [Cypress](https://cypress.io/) tests cont
 
 ### 📚 **Documentation**
 
+- [Continuous Integration with Cypress](https://docs.cypress.io/guides/continuous-integration/introduction)
 - [GitHub Actions Marketplace](https://github.com/marketplace/actions)
 - [Workflow Artifacts](https://docs.github.com/en/actions/using-workflows/storing-workflow-data-as-artifacts)
 
@@ -177,3 +178,41 @@ Then, change the title of the application in `src/App.tsx` to make the tests fai
 
 
 # Step 4 - CD on the Scaleway instance 🔀
+
+### 📑 **Description**
+
+Well done, now you have a way to automatically keep your app stable 🎉\
+But if it's working correctly you can probably deploy it (directly in production to your users, or in a development environment for a future version release for example).
+
+### 📌 **Tasks**
+
+Your objective for this step is to combine the knowledge you've acquired from the previous steps to create a GitHub Action that will deploy the application (frontend and backend) to your Scaleway instance when there's a commit on your `main` branch
+
+This means that you need to:
+- Have some credentials to connect to the instance
+- Upload the code
+- Set environment variables if needed
+- Rebuild the app with docker
+
+> This step is intentionally less guided as you should have all the basic knowledge to be able to complete it, but don't hesitate to ask the staff for help if you struggle 😉
+
+### 📚 **Documentation**
+
+- [Using Secrets with Actions](https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#using-secrets)
+
+### ✔️ **Validation**
+
+Just like in the first step, you can access your app at `http://<INSTANCE_IP>:3000`. Change the code (like the frontend title in `src/App.tsx`), commit it and wait for the action to deploy it on your instance. 
+
+If you refresh the page you should have the new version displayed 🚀
+
+
+## 📈 To go further
+
+Congratulation for completing this day!
+
+You've learned the basics of DevOps and launched an application in production, but there's still a lot to discover 😄
+
+Here are a few interesting links to learn more:
+- TODO
+- TODO
