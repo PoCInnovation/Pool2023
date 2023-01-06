@@ -34,24 +34,24 @@ Then you will discover [GitHub Actions](https://github.com/features/actions) to 
 
 ## Step 0 - Setup
 
-### 📑 **Description**:
+### 📑 **Description**
 
 The first thing you would normally do is to [create an instance](https://www.youtube.com/watch?v=1ulVecpL6QE) with all the settings you want, like the OS, computing power, storage space...<br>
 We've already done this for you today, so you only have to connect to it 🔥
 
-### 📌 **Tasks**:
+### 📌 **Tasks**
 
 - Check your email address, you've received some information related to your dedicated instance
   - An IP address
   - A private SSH key
 - Connect to the instance through SSH using the above information
 
-### 📚 **Documentation**:
+### 📚 **Documentation**
 
 - [Scaleway Instances Quickstart](https://www.scaleway.com/en/docs/compute/instances/quickstart/)
 - [What is SSH and how to use it](https://www.ucl.ac.uk/isd/what-ssh-and-how-do-i-use-it)
 
-### ✔️ **Validation**:
+### ✔️ **Validation**
 
 Once you are connected to the instance, you can check the machine information with the following command:
 ```sh
@@ -68,12 +68,12 @@ You can then `exit` to go back to your terminal 😄
 
 # Step 1 - Copy app files & run it 📁
 
-### 📑 **Description**:
+### 📑 **Description**
 
 Now that you know how to connect to your virtual instance, you have to add your application files and run it 🔥<br>
 Here you can use the same application as [this morning](../1%20-%20Docker/resources/) for which you already created a `docker-compose.yml` file for an easy startup 👍
 
-### 📌 **Tasks**:
+### 📌 **Tasks**
 
 - Find a command to copy a local folder to a remote computer via SSH
 - Move your application code to the instance, for example in the `/home/ubuntu/myapp` folder
@@ -82,11 +82,11 @@ Here you can use the same application as [this morning](../1%20-%20Docker/resour
 
 > Don't forget to update the necessary variables in the `.env` files 😉
 
-### 📚 **Documentation**:
+### 📚 **Documentation**
 
 - [Secure Copy Protocol](https://en.wikipedia.org/wiki/Secure_copy_protocol)
 
-### ✔️ **Validation**:
+### ✔️ **Validation**
 
 If everything went well, you can open your browser at `http://<INSTANCE_IP>:3000` and access your app 🚀<br>
 Unlike you run it on `localhost`, here it's accessible to anyone 😉
@@ -94,7 +94,7 @@ Unlike you run it on `localhost`, here it's accessible to anyone 😉
 
 # Step 2 - Your first GitHub Action ⚙️
 
-### 📑 **Description**:
+### 📑 **Description**
 
 Deploying an application manually is cool, but DevOps is also about automating processes.<br>
 Several tools exists to automate all kinds of workflows, from testing to deployment, and today you'll use [GitHub Actions](https://github.com/features/actions).
@@ -103,7 +103,7 @@ An Action is basically composed of several jobs (like `docker compose` services 
 
 No better way to discover it than to practice, let's create your first GitHub Action 🚀
 
-### 📌 **Tasks**:
+### 📌 **Tasks**
 
 - Create a `.github/workflows` folder at the root of your repository
 > Commonly, the `.github` folder can also contain an `assets` directory that stores your images used in `README`s, or the `ISSUE_TEMPLATE` folder that is useful to setup templates for features, bug reports...
@@ -119,18 +119,61 @@ No better way to discover it than to practice, let's create your first GitHub Ac
       `Hi from GitHub Action, I'm running on <OS> and I was triggered by <USER> on the <EVENT> event!`
       > The values between <> should be retrieved from the environment 😉
 
-### 📚 **Documentation**:
+### 📚 **Documentation**
 
 - [Understanding GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions)
 - [Environment variables in Actions](https://docs.github.com/en/actions/learn-github-actions/environment-variables)
 
-### ✔️ **Validation**:
+### ✔️ **Validation**
 
 You can see the workflow runs in GitHub by going in the `Actions` tab (or appending `/actions` to your repository URL).<br>
 Make a push and open an issue to check if the action is correctly triggered and if the message displayed is correct 😄
 
 
 # Step 3 - Run tests in Action 🧪
-- with upload artifacts (screenshots + videos)
+
+### 📑 **Description**
+
+Good job creating and running your first GitHub Action 🥳\
+Now that you are familiar with it's syntax, let's go further by implementing a Continuous Integration: the objective is to make sure our project keeps working as intended while we keep developing it.
+
+That's why here we will create an Action to run some tests on every commits, and retrieve the results for a simplified debugging if they fail 😉
+
+For this exercise, you have to use the [Cypress](https://cypress.io/) tests contained in the frontend of you application.
+
+> Cypress is a tool to run all kind of tests on your frontend, you'll discover it tomorrow if you choose the React option 😉
+
+### 📌 **Tasks**
+
+- Create a `ci-tests.yaml` action with the following parameters:
+  - It should be triggered on every push and pull request
+  - It should contain a single job named `front-cypress`
+    - Run the frontend and the tests
+    - Upload the screenshots and videos as artifacts if the tests fail
+
+### 📚 **Documentation**
+
+- [GitHub Actions Marketplace](https://github.com/marketplace/actions)
+- [Workflow Artifacts](https://docs.github.com/en/actions/using-workflows/storing-workflow-data-as-artifacts)
+
+### ✔️ **Validation**
+
+To validate your work, you can check the logs of your action to see if they contain the tests output.
+
+Then, change the title of the application in `src/App.tsx` to make the tests fail and make sure the artifacts are present in the Action run.
+
+<details>
+  <summary>Example of success output</summary>
+
+  ![Success output](../../../.github/assets/software/deployment/action_test_success.png)
+</details>
+
+<details>
+  <summary>Example of failure output</summary>
+
+  ![Failure output](../../../.github/assets/software/deployment/action_test_failure.png)
+</details>
+<br>
+
 
 # Step 4 - CD on the Scaleway instance 🔀
