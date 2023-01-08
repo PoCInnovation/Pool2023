@@ -111,7 +111,6 @@ As usual, every exercises must be pushed to a git repository.<br>
 TODO: add classroom link
 To make it easier, we will use a GitHub classroom! Follow this [link]() to create your git repository.
 
-TODO: refactor this part depending on the tests (1 classroom per day?)
 You can then clone your repository.
 
 ```shell
@@ -798,66 +797,71 @@ This function should be in the views, in `display.ts` for example.
 
 You should have the following result: 
 
-```text
-Welcome into your Artists Book!
+<details>
+  <summary>Result preview</summary>
 
-What do you want to do?
-1 - List my favorite artists
-2 - Add an artist to my favorite
-3 - Leave
+  ```text
+  Welcome into your Artists Book!
 
-# User tip input
-> 2
+  What do you want to do?
+  1 - List my favorite artists
+  2 - Add an artist to my favorite
+  3 - Leave
 
-What's the artist's name?
+  # User tip input
+  > 2
 
-# User tip input
-> Bob Marley
+  What's the artist's name?
 
-Bob Marley has been added to your favorite artists!
+  # User tip input
+  > Bob Marley
 
-What do you want to do?
-1 - List my favorite artists
-2 - Add an artist to my favorite
-3 - Leave
+  Bob Marley has been added to your favorite artists!
 
-# User tip input
-> 1
+  What do you want to do?
+  1 - List my favorite artists
+  2 - Add an artist to my favorite
+  3 - Leave
 
-Here's your favorite artists:
--- 1 -- B2O
--- 2 -- SCH
--- 3 -- Laylow
--- 4 -- Billie Eilish
--- 5 -- Bob Marley
+  # User tip input
+  > 1
 
-What do you want to do?
-1 - List my favorite artists
-2 - Add an artist to my favorite
-3 - Leave
+  Here's your favorite artists:
+  -- 1 -- B2O
+  -- 2 -- SCH
+  -- 3 -- Laylow
+  -- 4 -- Billie Eilish
+  -- 5 -- Bob Marley
 
-# User tip input
-> 2
+  What do you want to do?
+  1 - List my favorite artists
+  2 - Add an artist to my favorite
+  3 - Leave
 
-What's the artist's name?
+  # User tip input
+  > 2
 
-# User tip input
-> Bob Marley
+  What's the artist's name?
 
-Bob Marley already exists!
+  # User tip input
+  > Bob Marley
 
-What do you want to do?
-1 - List my favorite artists
-2 - Add an artist to my favorite
-3 - Leave
+  Bob Marley already exists!
 
-# User tip input
-> 3
+  What do you want to do?
+  1 - List my favorite artists
+  2 - Add an artist to my favorite
+  3 - Leave
 
-See you!
-```
+  # User tip input
+  > 3
 
-### Update
+  See you!
+  ```
+</details>
+<br>
+
+### UPDATE
 
 Update your application to allow the user to **update** an artist in his list.
 
@@ -887,96 +891,217 @@ Don't forget to update your `controller`, the `router` and add anything
 required to correctly update an artist.
 
 You should have a result similar to this one:
+<details>
+  <summary>Result preview</summary>
 
-```text
-Welcome into your Artists Book!
+  ```text
+  Welcome into your Artists Book!
 
-What do you want to do?
-1 - List my favorite artists
-2 - Add an artist to my favorite
-3 - Leave
+  What do you want to do?
+  1 - List my favorite artists
+  2 - Add an artist to my favorite
+  3 - Update an artist in my favorite
+  4 - Leave
 
-# User tip input
-> 2
+  # User tip input
+  > 2
 
-What's the artist's name?
+  What's the artist's name?
 
-# User tip input
-> Bob Marley
+  # User tip input
+  > Bob Marley
 
-Bob Marley has been added to your favorite artists!
+  Bob Marley has been added to your favorite artists!
 
-What do you want to do?
-1 - List my favorite artists
-2 - Add an artist to my favorite
-3 - Update an artist in my favorite
-4 - Leave
+  What do you want to do?
+  1 - List my favorite artists
+  2 - Add an artist to my favorite
+  3 - Update an artist in my favorite
+  4 - Leave
 
-# User tip input
-> 3
+  # User tip input
+  > 3
 
-What's the name of the artist you want to update?
+  What's the name of the artist you want to update?
 
-# User tip input
-> unknown
+  # User tip input
+  > unknown
 
-What will be the new name of unknown?
+  What will be the new name of unknown?
 
-# User tip input
-> Mac Miller
+  # User tip input
+  > Mac Miller
 
-unknown is not in your favorite list.
+  unknown is not in your favorite list.
 
-What do you want to do?
-1 - List my favorite artists
-2 - Add an artist to my favorite
-3 - Update an artist in my favorite
-4 - Leave
+  What do you want to do?
+  1 - List my favorite artists
+  2 - Add an artist to my favorite
+  3 - Update an artist in my favorite
+  4 - Leave
 
-# User tip input
-> 3
+  # User tip input
+  > 3
 
-What's the name of the artist you want to update?
+  What's the name of the artist you want to update?
 
-# User tip input
-> B20
+  # User tip input
+  > B20
 
-What will be the new name of unknown?
+  What will be the new name of unknown?
 
-# User tip input
-> Booba
+  # User tip input
+  > Booba
 
-B2O has been successfully updated.
+  B2O has been successfully updated.
 
-What do you want to do?
-1 - List my favorite artists
-2 - Add an artist to my favorite
-3 - Update an artist in my favorite
-4 - Leave
+  What do you want to do?
+  1 - List my favorite artists
+  2 - Add an artist to my favorite
+  3 - Update an artist in my favorite
+  4 - Leave
 
-# User tip input
-> 1
+  # User tip input
+  > 1
 
-Here's your favorite artists:
--- 1 -- Booba
--- 2 -- SCH
--- 3 -- Laylow
--- 4 -- Billie Eilish
--- 5 -- Bob Marley
+  Here's your favorite artists:
+  -- 1 -- Booba
+  -- 2 -- SCH
+  -- 3 -- Laylow
+  -- 4 -- Billie Eilish
+  -- 5 -- Bob Marley
 
-What do you want to do?
-1 - List my favorite artists
-2 - Add an artist to my favorite
-3 - Update an artist in my favorite
-4 - Leave
+  What do you want to do?
+  1 - List my favorite artists
+  2 - Add an artist to my favorite
+  3 - Update an artist in my favorite
+  4 - Leave
 
-# User tip input
-> 4
+  # User tip input
+  > 4
 
-See you!
+  See you!
+  ```
+</details>
+<br>
+
+### DELETE
+
+Update your application to allow the user to **delete** an artist in his list.
+
+#### Repository
+
+Create the file `delete.ts` in your `repository` folder.
+
+Add the function `deleteFunc` to delete an artist in the data storage.
+
+> 💡 We can't use `delete` as it's [a reserved word](https://www.w3schools.com/js/js_reserved.asp)
+
+The function must follow this prototype:
+
+```ts
+function deleteFunc(name: string, callback: (found: boolean, err: NodeJS.ErrnoException) => void) {}
 ```
 
-TODO: add DELETE
+> ⚠️ Same as before, take care when you rewrite the JSON file.
+
+#### View
+
+You already have the `askNewName` function that you can use 😉
+
+#### Result
+
+Don't forget to update your `controller`, the `router` and add anything
+required to correctly delete an artist.
+
+You should have a result similar to this one:
+<details>
+  <summary>Result preview</summary>
+
+  ```text
+  Welcome into your Artists Book!
+
+  What do you want to do?
+  1 - List my favorite artists
+  2 - Add an artist to my favorite
+  3 - Update an artist in my favorite
+  4 - Delete an artist
+  5 - Leave
+
+  # User tip input
+  > 2
+
+  What's the artist's name?
+
+  # User tip input
+  > Bob Marley
+
+  Bob Marley has been added to your favorite artists!
+
+  What do you want to do?
+  1 - List my favorite artists
+  2 - Add an artist to my favorite
+  3 - Update an artist in my favorite
+  4 - Delete an artist
+  5 - Leave
+
+  # User tip input
+  > 4
+
+  What's the name of the artist you want to delete?
+
+  # User tip input
+  > unknown
+
+  unknown is not in your favorite list.
+
+  What do you want to do?
+  1 - List my favorite artists
+  2 - Add an artist to my favorite
+  3 - Update an artist in my favorite
+  4 - Delete an artist
+  5 - Leave
+
+  # User tip input
+  > 3
+
+  What's the name of the artist you want to delete?
+
+  # User tip input
+  > Bob Marley
+
+  B2O has been successfully deleted.
+
+  What do you want to do?
+  1 - List my favorite artists
+  2 - Add an artist to my favorite
+  3 - Update an artist in my favorite
+  4 - Delete an artist
+  5 - Leave
+
+  # User tip input
+  > 1
+
+  Here's your favorite artists:
+  -- 1 -- Booba
+  -- 2 -- SCH
+  -- 3 -- Laylow
+  -- 4 -- Billie Eilish
+
+  What do you want to do?
+  1 - List my favorite artists
+  2 - Add an artist to my favorite
+  3 - Update an artist in my favorite
+  4 - Delete an artist
+  5 - Leave
+
+  # User tip input
+  > 5
+
+  See you!
+  ```
+</details>
+<br>
 
 ## Step 7 - Artists Book v3.0
 

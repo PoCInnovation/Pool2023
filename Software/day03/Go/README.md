@@ -586,8 +586,6 @@ And the last errors to handle:
 
 Well done for completing this day 🔥
 
-TODO: add auth advanced exercises
-
 If you are still looking for exercises, here are two intermediate ones:
 
 
