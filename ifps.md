@@ -17,11 +17,11 @@
 
 ## Introduction
 
-Pour cet matine nous allons utiliser une implementation d'IPFS en Go.
-Cette implementation est la plus utilise aujourd'hui et la plus complete.
-Il existe egalement de mutilples implementation Iroh en Rust, Js et bien d'autres.
+For this matinee we will use an implementation of IPFS in Go.
+This implementation is the most used today and the most complete.
+There are also many Iroh implementations in Rust, Js and many others.
 
-Il n'est pas necessaire d'avoir fait du Go, l'objectif est de comprendre la technologie et pour ce nous utiliserons la CLI.
+It is not necessary to have done Go, the goal is to understand the technology and for this we will use the CLI.
 
 ## Step 0 - Setup
 
@@ -33,277 +33,227 @@ Please refer to the [SETUP.md](./SETUP.md) file.
 
 ### :pushpin: **Tasks**:
 
-- Nous allons creer un fichier appele `Hello_World.txt` dans celui ci, nous allons ecrire `Hello World !`.
-  L'objectif est de creer un CID a partir de ce fichier.
-- Trouvez la commande permettant de creer un CID a partir d'un contenu de type fichier.
+- We will create a file called `Hello_World.txt` in which we will write `Hello World !`.
+  The goal is to create a CID from this file.
+- Find the command to create a CID from a file content.
 
 
-### :books: **Documentation**:
+### books: **Documentation**:
 
-- [[NOTION]](http://link.com)
-- [[NOTION]](http://link.com)
+- [IPFS Documentation](https://docs.ipfs.tech/)
 
 ### ✔️ **Validation**:
 
-!Script de correction
+- Run the validation script `./scripts/scripts/validate -1` then enter your CID to validate your work.
 
-Et voila, nous avons creer notre premier CID !
-Il est maintenant accessible sur notre machine et vous pouvez le retrouver dans `$HOME/.ipfs/blocks`
+And that's it, we have created our first CID!
+It is now available on our machine and you can find it in `$HOME/.ipfs/blocks`.
 
-Une des particularite de votre CID est qu'il commence toujours par Qm. C'est ce qu'on appel un CID de version 1.
+One of the features of your CID is that it always starts with Qm. This is called a version 0 CID.
 
-Notre objectif est maintenant de creer un CID v0 avec le meme contenu.
-Nous avons maintenant un nouveau CID avec le meme contenu ?
+```
+### Bonus - Version 1 CID
+Our goal now is to create a v1 CID with the same file.
 
-La question est : Qu'avons nous dans notre `$HOME/.ipfs/blocks` ? Deux fichiers identiques ?
+We now have a new CID with the same content?
+
+The question is: What do we have in our `$HOME/.ipfs/blocks`? Two identical files?
+```
 
 ## Step 2 - Custom CID
 
 ### :bookmark_tabs: **Description**:
 
-Il est bien d'utiliser du SHA-2 mais le SHA-1 c'est mieux !
-On va aller un peu plus loin. Dans le fichier `./utils`, on peut retrouver deux image nommme IAmA.jpg and IAmB.jpg.
-Par groupe de deux, vous allez chacun choisir une image differente et creer un CID avec pour hash le SHA-1.
+It's good to use SHA-2 but SHA-1 is better!
+Let's go a little further. In the file `./utils`, you can find two pdf named `infographic-1.pdf` and `infographic-2.pdf`.
+In groups of two, you will each choose a different pdf and create a CID with the SHA-1 hash.
 
-Quel est concretement la difference entre le SHA-1 et SHA-2 ?
+What is the difference between SHA-1 and SHA-2?
 
-Le Hash d'un contenu est une fonction mathematique permettant d'avoir toujours le meme output avec un input donnee.
-L'inverse n'est malheureusement pas possible. Cette pratique est utilise pour stocker les mots de passe par exemple.
-On va verifier l'egalite entre notre mot de passe que l'on va hasher et le mot de passe deja hasher en base de donnee.
-Si celui ci est identique, c'est que  le mot de passe donne en input est correct.
-De plus, si notre base de donnee leak, le malandrin aura seulement des hashes qu'il ne pourra pas reverse.
+The hash of a content is a mathematical function allowing to have always the same output with a given input.
+The reverse is unfortunately not possible. This practice is used to store passwords for example.
+We will check the equality between our password that we will hash and the password already hashed in database.
+If it is identical, it means that the password given in input is correct.
+Moreover, if our database leaks, the crook will only have hashes that he won't be able to reverse.
 
-Mais on peut se poser la question : Quel est l'utilite de plusieurs algorithm de Hashage.
-Il est possible d'obtenir deux hash identique avec des contenu different, ce qu'on appel une collision de Hash.
-Si nous reprenons notre exemple de base de donnee, il serait dont possible d'obtenir le meme hash sans avoir un mot de passe identique.
-Vous l'aurez devine, avec le SHA-1 nous somme capable de faire des collisions de Hash.
+But we can ask ourselves the question: What is the use of several hash algorithms?
+It is possible to obtain two identical hashes with different contents, which is called a hash collision.
+If we go back to our database example, it would be possible to get the same hash without having an identical password.
+As you may have guessed, with SHA-1 we are able to make hash collisions.
 
-### :pushpin: **Tasks**:
+### pushpin: **Tasks**:
 
-- Il est maintenant temps de hash notre photo et de voir ce que l'on va obtenir.
+- Now it's time to create CID using SHA-1 and compare the two CIDs.
 
-### :books: **Documentation**:
+### books: **Documentation**:
 
-- [[NOTION]](http://link.com)
-- [[NOTION]](http://link.com)
+- [CLI Kubo](https://docs.ipfs.tech/reference/kubo/cli/)
+- CID](https://docs.ipfs.io/concepts/content-addressing/#cid-conversion)
+- [Google Shattered](https://www.numerama.com/tech/235436-shattered-google-a-casse-la-methode-de-chiffrement-sha-1.html)
 
 ### ✔️ **Validation**:
 
-!Script Correction
+- Run the validation script `./scripts/scripts/validate -2` then enter your CID to validate your work.
 
-Felicitation ! Nous avons obtenu le meme hash avec deux contenu visiblement different.
+Congratulations! We got the same CID with two visibly different contents.
+Actually the first pdf you will chunk will be stored on your machine and not overwritten by the second one.
 
-Il vous est possible de changer la taille de votre bloc et d'autres choses encore plus passionnante mais nous allons passer tres vite a la suite !
+You can change the size of your block and other more exciting things but we'll move on very quickly!
 
+You will notice that the CID does not start with Qm anymore but with bafy. This is what we call a version 1 CID.
+It is customizable and allows to do more interesting things (block size, encoding, hash, ...).
 
 ## Step 3 - My name is Daemon
 
 ### :bookmark_tabs: **Description**:
 
-Vous l'aurez remarquer, il est possible de creer des CID mais personne peut actuellement communiquer avec vous.
-Personne ? Plus pour longtemps. Il est temps de s'ouvrir au monde du p2p.
+As you can see, it is possible to create CIDs but nobody can actually communicate with you.
+Nobody? Not for long. It's time to open up to the p2p world.
 
-### :pushpin: **Tasks**:
+### pushpin: **Tasks**:
 
-- Lancer votre daemon ipfs.
-
-### :books: **Documentation**:
-
-- [[NOTION]](http://link.com)
-- [[NOTION]](http://link.com)
+- Run your ipfs daemon.
 
 ### ✔️ **Validation**:
 
+- Run the validation script `./scripts/scripts/validate -3` to validate your work.
+
 YES ! Let's do it !
-Vous pouvez maintenant echanger et recuperer du contenu partout dans le monde. Comment faire ?
+You can now exchange and retrieve content anywhere in the world. How to do it ?
 
 ## Step 4 - Get my content
 
 ### :bookmark_tabs: **Description**:
 
-Voici le CID qui va vous etre utilse : CID....
-Nous avons vu qu'on CID point vers un contenu. En effecuter une commande GET nous devrions etre capable de retrouver le contenu desire.
+By default a content is not replicated on the network.
+When we add a content, it is accessible but for it to be replicated the content must be requested.
+The requested content is stored in the cache of your daemon but is not permanent.
+For it to be permanent you must pin it.
+
+
+Here is the CID that will be used: `QmYRssHQjcDf8oKHuc2Ztzxb3T9ChhkhW34Yfa4NMSr3h1`
+We have seen that a CID points to a content. By performing a GET command we should be able to find the desired content.
 
 ### :pushpin: **Tasks**:
 
-- Recuperer ce contenu, il est possible que ce contenu mette du temps a etre recuperer. Votre daemon va demander a toutes les personnes que vous connaissez sur le reseau.
-
-
-### :books: **Documentation**:
-
-- [[NOTION]](http://link.com)
-- [[NOTION]](http://link.com)
+- Retrieve this content, it is possible that this content will take some time to be retrieved. Your daemon will ask everyone you know on the network.
 
 ### ✔️ **Validation**:
 
-Ouvrez le contenu une fois recu !
-Si votre contenu est identique a !image vous avez reussi !
+Open the content once received!
+If your content is identical to `./utils/POC_01_black.png` you have succeeded!
 
-Ca va bien plus vite que prevu !
+It goes much faster than expected!
 
 ## Step 5 - One, Two, Three ... Replication
 
-### :bookmark_tabs: **Description**:
 
-Il est utile de recuperer du contenu, mais le mieux est de le replication aussi connu sous le nom de pinner.
-Cela va permettre d'ecrire de la metadata est d'exprimer que vous ne souhaitez pas supprimer le contenu.
-
-REPLICATIONNNNN ! Nous sommes maintenant plusieurs a avoir notre contenu.
-Plus vous avez de noeuds avec votre contenu pinner, plus vous allez avoir la recuperer et l'echange de contenu sera rapide.
-
-Il existe des services de pinning qui vous permet d'utiliser des machines afin de pinner des contenu.
-
-EXAMPLE : Pinata, Scaleway. Vous avez meme des blockchains dediee a recompenser par des Tokens les gens qui mettents a
-disposition leurs machines (Filecoin).
-
-### :pushpin: **Tasks**:
-
-- A l'aide du CID, faites un pin du contenu.
-
-### :books: **Documentation**:
-
-- [[NOTION]](http://link.com)
-- [[NOTION]](http://link.com)
-
-### ✔️ **Validation**:
-
-Verifier a l'aide de la commande `ipfs pin ls` que votre contenu est bien pin.
-
-## Step 6 - One, Two, Three ... Replication
 
 ### :bookmark_tabs: **Description**:
 
-Maintenant que notre contenu est pinner. Nous allons supprimer tous les blocks inutiles,
-Il existe plusieurs type de garbage collector en informatique.
-Le garbage collector en programmation qui vous permet de free votre memoire de maniere automatique commme le python ou le JS.
-Et celui qui permet de supprimer des blocks sur les filesystems.
+It is useful to retrieve content, but the best is to replicate it also known as pinner.
+This will allow you to write some metadata and express that you don't want to delete the content.
 
-### :pushpin: **Tasks**:
+REPLICATIONNNNNN! Now we have several nodes with our content.
+The more nodes you have with your pinned content, the faster the retrieval and exchange of content will be.
 
-- Devinez lequel nous allons utiliser :eyes:
+There are pinning services that allow you to use machines to pin content.
 
-Cette commande est un peu plus complique a trouver mais vous allez y arriver !
-Le `gc`, n'est par defaut pas activer sur vos noeuds.
+EXAMPLE : Pinata, Scaleway. You even have blockchains dedicated to rewarding with tokens the people who put their machines at
+their machines (Filecoin).
 
-### :books: **Documentation**:
+### pushpin: **Tasks**:
 
-- [[NOTION]](http://link.com)
-- [[NOTION]](http://link.com)
+- Using the CID from step 4, make a pin of the content.
 
 ### ✔️ **Validation**:
 
-!Script Correction
+Verify with the `ipfs pin ls` command that your content is pinned.
 
-## Step 7 - Garbage Collector
+## Step 6 - Garbage Collector
 
 ### :bookmark_tabs: **Description**:
 
-Maintenant que notre contenu est pinner. Nous allons supprimer tous les blocks inutiles,
-Il existe plusieurs type de garbage collector en informatique.
-Le garbage collector en programmation qui vous permet de free votre memoire de maniere automatique commme le python ou le JS.
-Et celui qui permet de supprimer des blocks sur les filesystems.
+Now that our content is pinner. We will remove all the useless blocks,
+There are several types of garbage collector in computer science.
+The garbage collector in programming that allows you to free your memory automatically like python or JS.
+And the one that allows you to delete blocks on filesystems.
 
-### :pushpin: **Tasks**:
+### pushpin: **Tasks**:
 
-- Devinez lequel nous allons utiliser :eyes:
+- Guess which one we are going to use :eyes:
 
-Cette commande est un peu plus complique a trouver mais vous allez y arriver !
-Le `gc`, n'est par defaut pas activer sur vos noeuds.
-
-### :books: **Documentation**:
-
-- [[NOTION]](http://link.com)
-- [[NOTION]](http://link.com)
+This command is a bit more complicated to find but you'll get there!
+The `gc`, by default is not enabled on your nodes, you can check your ~/.ipfs/config file for that.
 
 ### ✔️ **Validation**:
 
-!Script Correction
+Enter the command you found with `./scripts/validate -6` to validate your work.
 
-## Step 8 - Turn Off
+## Step 7 - Turn Off
 
 ### :bookmark_tabs: **Description**:
 
-Nous allons nous assurer de toujours avoir notre contenu, Mais avant ca pour ne pas etre biaiser, nous allons eteindre notre daemon.
-Sinon, il est possible sans le savoir de recuperer le contenu d'un autre noeud.
+We'll make sure we always have our content, but before we do that so we don't get biased, we'll turn off our daemon.
+Otherwise, it is possible without knowing it to get the content of another node.
 
-### :pushpin: **Tasks**:
+### pushpin: **Tasks**:
 
-- Deconnecter votre neoud du reseau.
-- Pour ca besoin de couper votre connexion internet :sink:
-
-### :books: **Documentation**:
-
-- [[NOTION]](http://link.com)
-- [[NOTION]](http://link.com)
+- Disconnect your node from the network.
+- No need to cut your internet connection for this :sink:
 
 ### ✔️ **Validation**:
 
-!Script Correction
+You can run the script `./scripts/validate -7` to validate your work.
 
-## Step 9 - Unpin content
+## Step 8 - Unpin content
 
 ### :bookmark_tabs: **Description**:
 
-Rappelons nous, tout a l'heure nous avons pin un contenu. C'est a dire qu'il est permanent sur notre machine.
-Il serait bien d'update notre metadata pour qu'au prochain gc, il puisse etre supprime.
+Remember, earlier we pinned a content. That is to say that it is permanent on our machine.
+It would be nice to update our metadata so that at the next gc, it can be deleted.
 
 ### :pushpin: **Tasks**:
 
-- L'objectif est d'unpin notre CID.
-
-### :books: **Documentation**:
-
-- [[NOTION]](http://link.com)
-- [[NOTION]](http://link.com)
+- The goal is to unpin our CID.
 
 ### ✔️ **Validation**:
 
-Verifier bien a l'aide `ipfs pin ls` que votre cid n'est pas existant
+Check with `ipfs pin ls` that your cid does not exist
 
-## Step 10 - Back to the past
+## Step 9 - Back to the past
 
 ### :bookmark_tabs: **Description**:
 
-Si toutes les etapes ce sont bien passe, nous ne devrions etre capable de faire passer le GC et voir nos blocs disparaitre a tout jamais.
+If all the steps went well, we should only be able to pass the GC and see our blocks disappear forever.
 
-### :pushpin: **Tasks**:
+### pushpin: **Tasks**:
 
-- Refaite passer le GC
-
-### :books: **Documentation**:
-
-- [[NOTION]](http://link.com)
-- [[NOTION]](http://link.com)
+- Pass the GC again
 
 ### ✔️ **Validation**:
 
-Votre CID doit etre afficher sur votre shell apres la commande.
+Your CID should be displayed on your shell after the command.
 
-## Step 11 - Node automatic
+## Step 10 - Node automatic
 
 ### :bookmark_tabs: **Description**:
 
-Nous avons pu observer pas mal de souci sur notre neoud.
+We have observed a lot of problems with our node.
 
-Pourquoi notre GC ne passe pas par defaut ?
+Why our GC doesn't default?
 
 ### :pushpin: **Tasks**:
 
-Nous allons parametrer notre noeud pour que notre GC passe toutes les 10 min.
-N'oubliez pas de faire la commande `ipfs init` pour prendre en compte vos changement.
+Our node is set up so that the gc passes every 1 hour.
+So why doesn't it do that?
 
-### :books: **Documentation**:
-
-- [[NOTION]](http://link.com)
-- [[NOTION]](http://link.com)
+You will have to find the command that enables the GC.
+Be careful your daemon must be running.
 
 ### ✔️ **Validation**:
 
-!Script Correction
-
-## Bonus - [NAME]
-
-[BONUS TASKS, TO GO FURTHER]
+Enter the complete command with `./scripts/validate -10` to validate your work.
 
 ## Conclusion
 
@@ -314,8 +264,8 @@ Hope you enjoyed the workshop !
 
 ## Authors
 
-| [<img src="https://github.com/Doozers.png?size=85" width=85><br><sub>Isma</sub>](https://github.com/Doozers) | 
-|:------------------------------------------------------------------------------------------------------------:|
+| [<img src="https://github.com/OnsagerHe.png?size=85" width=85><br><sub>Onsager</sub>](https://github.com/OnsagerHe) | 
+|:---------------------------------------------------------------------------------------------------------------:|
 <h2 align=center>
 Organization
 </h2>
