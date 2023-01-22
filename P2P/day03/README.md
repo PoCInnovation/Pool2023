@@ -176,6 +176,7 @@ However it is only the beginning of foundry and if you wish to go futher here ar
 - [foundrybook](https://book.getfoundry.sh/)
 - [awesome foundry](https://github.com/crisgarner/awesome-foundry)
 - [solmate](https://github.com/transmissions11/solmate)
+- [ga](https://book.getfoundry.sh/config/continous-integration?highlight=github#github-actions]
 
 ## Authors
 
