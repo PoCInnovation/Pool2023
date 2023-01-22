@@ -92,10 +92,13 @@ And what you will learn is fuzzing. Fuzzing tests means that instead of you manu
 
 In this step, you will learn how to create a fungible token of ERC20 type to pay the fees to use the Vesting service.
 
+This token will be based off `openzeppelin` library
+
 ### 📌 **Tasks**:
 
 - Create a `VestingToken` contract inside the `VestingToken.sol` file in the `src` directory
-- This token should implement rightfully the `ERC721`
+- Add openzeppelin contracts as dependency of the project
+- This token should inherit from openzeppelin ERC721
 - When deploying this token, you should set a price for users to exchange an amount of native tokens (ETH for exemple) against a token
 - Add a `price()` function to returns the price of a token
 - Add a `buy()` function that mints a new amount of tokens against a amount sent when calling the function
@@ -104,6 +107,7 @@ In this step, you will learn how to create a fungible token of ERC20 type to pay
 
 ### 📚 **Documentation**:
 
+- [foundry dependencies](https://book.getfoundry.sh/projects/dependencies)
 - [ERC721](https://eips.ethereum.org/EIPS/eip-721)
 - [library of open source smart contracts](https://docs.openzeppelin.com/contracts/4.x/)
 
