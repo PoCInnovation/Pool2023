@@ -98,7 +98,7 @@ This token will be based off `openzeppelin` library
 
 - Create a `VestingToken` contract inside the `VestingToken.sol` file in the `src` directory
 - Add openzeppelin contracts as dependency of the project
-- This token should inherit from openzeppelin ERC721
+- This token should inherit from openzeppelin ERC20
 - When deploying this token, you should set a price for users to exchange an amount of native tokens (ETH for exemple) against a token
 - Add a `price()` function to returns the price of a token
 - Add a `buy()` function that mints a new amount of tokens against a amount sent when calling the function
@@ -108,7 +108,7 @@ This token will be based off `openzeppelin` library
 ### 📚 **Documentation**:
 
 - [foundry dependencies](https://book.getfoundry.sh/projects/dependencies)
-- [ERC721](https://eips.ethereum.org/EIPS/eip-721)
+- [ERC721](https://eips.ethereum.org/EIPS/eip-20)
 - [library of open source smart contracts](https://docs.openzeppelin.com/contracts/4.x/)
 
 ### ✔ **Validation**:
