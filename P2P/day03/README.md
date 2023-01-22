@@ -146,8 +146,11 @@ You will see how to deploy it to a local blockchain and a testnet
 
 - Create a script to deploy VestingToken
 - Create a script to deploy VestingPlatform
-- Create a Makefile to run both of those scripts
+- Create a Makefile
+- Add a rule to launch a local blockchain called `anvil`
 - Add a rule into this Makefile to run the tests and the coverage
+- Add a rule to deploy to local blockchain
+- Add a rule to deploy to a testnet with a given rpc url (can be from alchemy, infura ...)
 - Run those scripts to deploy
 
 ### 📚 **Documentation**:
@@ -163,6 +166,8 @@ You achieved to create a fully working and good foundry project, I hope you now 
 
 Just having solidity inside the whole project makes it a lot more reslient and better than typescript.
 
+You can also interact with your contracts directly with one of foundry tools called `cast` if you'd wish
+
 However it is only the beginning of foundry and if you wish to go futher here are some ressources:
 
 - [foundry best practices](https://book.getfoundry.sh/tutorials/best-practices)
@@ -170,6 +175,7 @@ However it is only the beginning of foundry and if you wish to go futher here ar
 - [verify with etherscan](https://book.getfoundry.sh/forge/deploying?highlight=etherscan%20verify#verifying-a-pre-existing-contract)
 - [foundrybook](https://book.getfoundry.sh/)
 - [awesome foundry](https://github.com/crisgarner/awesome-foundry)
+- [solmate](https://github.com/transmissions11/solmate)
 
 ## Authors
 
