@@ -181,6 +181,7 @@ However it is only the beginning of foundry and if you wish to go futher here ar
 - [awesome foundry](https://github.com/crisgarner/awesome-foundry)
 - [solmate](https://github.com/transmissions11/solmate)
 - [github-action](https://book.getfoundry.sh/config/continous-integration?highlight=github#github-actions)
+- [solidity topics in videos](https://www.youtube.com/@smartcontractprogrammer)
 
 ## Authors
 
