@@ -32,9 +32,8 @@ You will discover the relational databases through the management of a PostgreSQ
 - [Typescript](./day02/2%20-%20ORM/Typescript/)
 - [Go](./day02/2%20-%20ORM/Go/)
 
-**Talks:**
-- TODO
-- TODO
+**Talk:**
+- SQL vs NoSQL: how to choose wisely? - [Tanguy MOULLEC](https://www.linkedin.com/in/tanguy-moullec) & [Alexis TACNET](https://www.linkedin.com/in/alexis-tacnet-aa0478109/)
 
 
 ## 💻: Day 3 - API REST
@@ -44,8 +43,6 @@ You will discover core concepts of the web and the basics of HTTP servers by bui
 - [Typescript](./day03/Typescript/)
 - [Go](./day03/Go/)
 
-**Talks:**
-- TODO
 
 ## 👮‍♂️ Day 4 - Docker & Deployment
 
@@ -70,14 +67,10 @@ During 4 days, you've worked on the `backend` part of an application. This day y
 
 **Talks:**
 - TODO
-- TODO
 
 ## ⏰ Rush
 
 By groups of 3 to 5, you will have to create a clone of Airbnb, Deezer, Linkedin, Instagram, ...
-
-**Talks:**
-- TODO
 
 ## Authors
 TODO
