@@ -1,0 +1,29 @@
+version: '3.9'
+
+# releases metadata (optional)
+x-pathwar:
+  challenge:
+    name: "Antou"
+    slug: Antou
+    locale: "en"
+    author: "Ylan Garnier"
+    homepage: https://github.com/pathwar/challenge-template
+  flavor:
+    purchase_price: 0
+    validation_reward: 15
+    body: "Find the right file !"
+    passphrases: 1
+    category: web
+    tags:
+      - Server
+      - Security
+    redump-policy:
+      - strategy: on-validation
+      - strategy: every
+        delay: 1h
+
+services:
+  front:
+    build: front
+    ports:
+      - 80
