@@ -1,0 +1,30 @@
+version: '3.9'
+
+# releases metadata (optional)
+x-pathwar:
+  challenge:
+    name: "Lenna"
+    slug: Lenna
+    locale: "en"
+    author: "Ylan Garnier"
+    homepage: https://github.com/pathwar/challenge-template
+  flavor:
+    purchase_price: 0
+    validation_reward: 15
+    body: "Don't forget to think about backup files !"
+    passphrases: 1
+    category: web
+    tags:
+      - System
+      - Security
+      - Beginner
+    redump-policy:
+      - strategy: on-validation
+      - strategy: every
+        delay: 1h
+
+services:
+  front:
+    build: front
+    ports:
+      - 80
