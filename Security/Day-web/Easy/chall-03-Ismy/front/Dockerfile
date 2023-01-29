@@ -5,7 +5,7 @@ ENV FLAG=PoC{tHERE_I5_MOre_7H@n_4_80Dy}
 
 #Update systeme
 RUN apt update && apt install python3 python3-pip -y
-    
+
 # Install requiring packages
 WORKDIR /app
 COPY ./requirements.txt /app/requirements.txt
