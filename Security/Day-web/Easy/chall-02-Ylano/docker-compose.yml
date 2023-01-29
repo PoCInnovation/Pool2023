@@ -3,10 +3,10 @@ version: '3.9'
 # releases metadata (optional)
 x-pathwar:
   challenge:
-    name: "Lenna"
-    slug: Lenna
+    name: "Ylano"
+    slug: Ylano
     locale: "en"
-    author: "Ylan Garnier"
+    author: "Antony Jin"
     homepage: https://github.com/pathwar/challenge-template
   flavor:
     purchase_price: 0
@@ -27,4 +27,4 @@ services:
   front:
     build: front
     ports:
-      - 80
+      - 8080:80
