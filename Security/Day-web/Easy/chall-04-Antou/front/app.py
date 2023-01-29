@@ -33,7 +33,6 @@ def miam():
     page = sp.run(["php", "template/miam.php"], stdout=sp.PIPE)
     out = make_response(page.stdout)
     out.set_cookie('Status', status)
-    session["redirected"] = True # degage
     if (request.cookies.get('Status') == 'admin'):
         session["redirected"] = True
         return redirect("/thatoneneither")
