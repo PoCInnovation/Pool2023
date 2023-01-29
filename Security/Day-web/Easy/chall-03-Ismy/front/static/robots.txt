@@ -1,5 +1,5 @@
 I'm tired to login everytime !
-I should look the header i think i can put myself in admin from there
+I should look at the header i think i can put myself in "admin" from there
 
 Disallow: /*/pulse
 Disallow: /*/tree/

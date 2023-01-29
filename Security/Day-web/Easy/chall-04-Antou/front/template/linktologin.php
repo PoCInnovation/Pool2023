@@ -18,21 +18,7 @@
                 <h1>Challenge 04 - Antou</h1>
                 <h1>Welcome to PoC Hacking Plateform</h1>
                 <h2>Will you be able to hack me ?!</h2>
-                <form method="GET">
-                    <!-- <textarea name="username" placeholder="UserName"></textarea> -->
-                    <input name="username" placeholder="UserName"><br>
-                    <input type="password" name="password" placeholder="Password"><br>
-                    <button type="submit">Login</button>
-                </form>
-                <h2>Login result</h2>
-                <?php
-                    $input = $argv[1];
-                    $flag = $argv[2];
-                    echo nl2br ("<h3 style='color:black'>$input sadly isn't a valid credential :(</h3>");
-                    if (strstr($input, "\n")) {
-                        echo nl2br("<h2 style='color:black'> flag = $flag</h2>");
-                    }
-                ?>
+                <a href="/youwontfuzzthatone"> I truly hope you didn't played that scrappy game</a>
             </hgroup>
         </div>
         <div class="row">

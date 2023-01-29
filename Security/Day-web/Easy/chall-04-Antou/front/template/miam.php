@@ -15,24 +15,12 @@
         </div>
         <div class="parallax p1" id="section-1">
             <hgroup>
-                <h1>Challenge 04 - Antou</h1>
-                <h1>Welcome to PoC Hacking Plateform</h1>
-                <h2>Will you be able to hack me ?!</h2>
-                <form method="GET">
-                    <!-- <textarea name="username" placeholder="UserName"></textarea> -->
-                    <input name="username" placeholder="UserName"><br>
-                    <input type="password" name="password" placeholder="Password"><br>
-                    <button type="submit">Login</button>
-                </form>
-                <h2>Login result</h2>
-                <?php
-                    $input = $argv[1];
-                    $flag = $argv[2];
-                    echo nl2br ("<h3 style='color:black'>$input sadly isn't a valid credential :(</h3>");
-                    if (strstr($input, "\n")) {
-                        echo nl2br("<h2 style='color:black'> flag = $flag</h2>");
-                    }
-                ?>
+                <img src="static/marmiton.png" style="width:200px;height:50px;">
+                <h2>Laissez ramollir le beurre à température ambiante. Dans un saladier, malaxez-le avec le sucre.</h2>
+                <h2>Ajoutez l'oeuf et éventuellement le sucre vanillé.</h2>
+                <h2>Versez progressivement la farine, la levure chimique, le sel et les pépites de chocolat. Mélangez bien.</h2>
+                <h2>Beurrez une plaque allant au four ou recouvrez-la d'une plaque de silicone. À l'aide de deux cuillères à soupe ou simplement avec les mains, formez des noix de pâte en les espaçant car elles s'étaleront à la cuisson.</h2>
+                <h2>Faites cuire 8 à 10 minutes à 180°C soit thermostat 6. Il faut les sortir dès que les contours commencent à brunir.</h2>
             </hgroup>
         </div>
         <div class="row">
