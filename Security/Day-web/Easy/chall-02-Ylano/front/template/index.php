@@ -6,7 +6,7 @@
 </head>
 
 <body>
-    <link href='static/style.css' rel='stylesheet' type='text/css'>
+    <link href='style.css' rel='stylesheet' type='text/css'>
     <div class="navbar">
         <ul class="navbar-container">
             <li><a href="#" class="left-underline nav-button brand-logo">PoC</a></li>
