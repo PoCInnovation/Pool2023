@@ -7,12 +7,7 @@ app = Flask(__name__, template_folder='template', static_folder='static')
 
 @app.route('/')
 def home():
-    return render_template('index.html')
-
-@app.route('/index.html~')
-def backup():
-    return send_file("template/index.html~", as_attachment=True)
-
+    return render_template('index.php')
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 4002))
