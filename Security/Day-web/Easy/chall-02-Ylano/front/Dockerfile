@@ -1,11 +1,8 @@
-FROM python:3.10-alpine
+FROM php:7.4-apache
 
-# Install requiring packages
-WORKDIR /app
-COPY ./requirements.txt /app/requirements.txt
-RUN pip install -r requirements.txt
+# Set flag secret key
+ENV FLAG=PoC{cRLf_C4n_BE_H4rd_7o_UndEr57AND}
 
-# Run flask app challenge
-COPY . /app
-ENTRYPOINT [ "python" ]
-CMD ["app.py" ]
+COPY template/ /var/www/html/
+EXPOSE 80
+CMD ["apache2-foreground"]
