@@ -12,14 +12,14 @@ But you can also use your favorite IDE.
 
 To create a new file, click on the file icon on the left side of the screen.
 
-![Remix - Create a new file](../.github/assets/remix-add-file.png)
+![Remix - Create a new file](../../.github/assets/p2p/remix-add-file.png)
 
 ### How to compile your smart contract
 
 To compile your smart contract, click on the "Compile" button on the left side of the screen.
 And then, click on the "Compile" button.
 
-![Remix - Compile](../.github/assets/remix-compile.png)
+![Remix - Compile](../../.github/assets/p2p/remix-compile.png)
 
 ## Back to the workshop
 
