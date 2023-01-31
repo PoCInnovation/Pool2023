@@ -24,7 +24,7 @@ cd new_project
 This should create a new directory with a brand new foundry project
 
 If you already have a repôsitory, you might need to add
-bash```
+```bash
 --no-commit
 ```
 

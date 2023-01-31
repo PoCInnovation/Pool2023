@@ -10,11 +10,11 @@
 
 ## Introduction
 
-During this day, you are going to see how to use foundry, a all in one tool to develop solidity projects.
+During this day, you are going to see how to use foundry, an all in one tool to develop solidity projects.
 
 By doing so, you will develop a vesting platform. A way to let your tokens stay in a smart contract for a determined period of time. This is really usefull when you go about tokenomics
 
-Compared to hardhat, it allows to develop much faster because of tests and scripts directly written in solidity with built in fuzzing.
+Compared to hardhat, foundry allows to develop much faster because of tests and scripts directly written in solidity with built in fuzzing.
 It is also written in rust so the runtime is way faster compared to javascript.
 
 ## Step 0 - Setup
