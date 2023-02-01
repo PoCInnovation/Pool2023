@@ -13,11 +13,11 @@ you create your models.
 
 <br>
 
-![day01-01](../ressources/day01-01.png)
+![day01-01](../../ressources/day01-01.png)
 
 <br>
 
-## Exercice 00 : First cube
+## Exercise 00: First cube
 
 Let's create our Blender scene. Start by launching Blender and deleting the objects already present in your scene hierarchy.
 At the top right of your workspace, press the red "X" to enter a side view. Then, drag & drop a reference image in your scene. 
@@ -25,7 +25,7 @@ This is the image you will base your model on.
 
 <br>
 
-![day01-02](../ressources/day01-02..png)
+![day01-02](../../ressources/day01-02..png)
 
 <br>
 
@@ -36,11 +36,11 @@ Then add a second cube beneath it, and do the same for the lower part of the bar
 
 <br>
 
-![day01-02](../ressources/day01-03..png)
+![day01-02](../../ressources/day01-03..png)
 
 <br>
 
-## Exercice 01 : Loop cut and adding definition
+## Exercise 01: Loop cut and adding definition
 
 In order to add definition to our object, we will need to subdivide it in many polygons.
 
@@ -56,11 +56,11 @@ For our purposes, we will start by creating loop cuts. As you cut, move the new 
 
 <br>
 
-![day01-02](../ressources/day01-04..png)
+![day01-02](../../ressources/day01-04..png)
 
 <br>
 
-## Exercice 02 : Extruding
+## Exercise 02: Extruding
 
 As you select an edge, you may choose to create a new polygon from it. This is called extruding. You may extrude from a face, an edge, even a vertex.
 In order to create the grip of your gun, extrude the edge you created with your previous subdivision.
@@ -70,11 +70,11 @@ Don't forget to define your shape as you go (either with multiple extrusions or 
 
 <br>
 
-![day01-02](../ressources/day01-05..png)
+![day01-02](../../ressources/day01-05..png)
 
 <br>
 
-## Exercice 03 : Complex insertions & extrusions
+## Exercise 03: Complex insertions & extrusions
 
 In order to create the trigger area for our gun, we will need to shrink the central bottom part of our lower barrel.
 
@@ -83,7 +83,7 @@ Make two loop cuts in order to delimit your point of extrusion, then make an ins
 
 <br>
 
-![day01-02](../ressources/day01-06..png)
+![day01-02](../../ressources/day01-06..png)
 
 <br>
 
@@ -93,7 +93,7 @@ As you extrude, don't forget to move your vertices around to define your shape!
 
 <br>
 
-![day01-02](../ressources/day01-07..png)
+![day01-02](../../ressources/day01-07..png)
 
 <br>
 
@@ -107,7 +107,7 @@ Add one or more loop cuts to the front part of your lower barrel, so that you ma
 
 <br>
 
-![day01-02](../ressources/day01-08..png)
+![day01-02](../../ressources/day01-08..png)
 
 <br>
 
@@ -126,11 +126,11 @@ Add a Cavity, then play around with the Ridge setting to obtain something close 
 
 <br>
 
-![day01-02](../ressources/day01-09..png)
+![day01-02](../../ressources/day01-09..png)
 
 <br>
 
-## Exercice 05 : Bonus
+## Exercise 05: Bonus
 
 You now have acquired the basics of modeling.  
 
@@ -143,6 +143,6 @@ model
 
 <br>
 
-![day01-02](../ressources/day01-10..png)
+![day01-02](../../ressources/day01-10..png)
 
 <br>

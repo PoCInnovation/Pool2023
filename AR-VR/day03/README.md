@@ -1,4 +1,4 @@
-# AR/VR Day 03 : rush - Be creative !
+# AR/VR Day 03 : Rush - Be creative!
 
 Pour ce rush, vous aurez le choix entre deux projets, un en AR et un en VR.
 

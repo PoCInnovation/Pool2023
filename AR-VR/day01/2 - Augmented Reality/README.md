@@ -9,7 +9,7 @@ Install the two modules Android Build Support via Unity Hub
 <br >
 <br >
 
-## Exercise 01 : Scene setup
+## Exercise 01: Scene setup
 
 To build the AR project, we are going to use a package called « AR Foundation ».
 
@@ -55,7 +55,7 @@ Add a new component to your AR Session Origin: an AR Raycast Manager. This scrip
 In our case, we want to create a ray starting from our camera objective, going on for an indeterminate length.
 If the ray intercepts an object, it will make it easier for our program to know if the user is pointing the camera at an object or not.
 
-In order to know if our camera ray is intercepting our AR Plane, let’s create a scipt.
+In order to know if our camera ray is intercepting our AR Plane, let’s create a script.
 In our hierarchy, create a new «AR controller» GameObject.
 Add to it a new script type component. The goal of this script is for a cube to spawn when the user touches the screen.
 
@@ -68,7 +68,7 @@ being pressed. If it’s the case, we will display a cube:
 
 - If the user interacts with the screen, we will ask the RaycastManager if the ray coming from our camera has intersected with our AR Plane.  
 
-> Use the Raycast() function !  
+> Use the `Raycast()` function !  
 
 - Then, if RaycastManager finds one or several intersections, then we spawn our GameObject  
 
@@ -80,7 +80,7 @@ Compile your app (Build and Run).
 <br >
 <br >
 
-## Exercice 03: Interactive cube 
+## Exercise 03: Interactive cube  
 
 For this second part, we are going to create an interactive cube. We need to display an information panel when looking directly at a cube, with a simple description on it.
 
@@ -102,14 +102,14 @@ Move your infoPoint directly in contact with the top of our cube. We’ll be abl
 
 <br>
 
-![day01-02](../ressources/day01-11.png)
+![day01-02](../../ressources/day01-11.png)
 
 <br>
 
 <br >
 <br >
 
-## Exercice 04: Hide and seek
+## Exercise 04: Hide and seek
 
 Create a script that we will add to our « InfoPoint »
 cube, named ShowInfo.
@@ -134,7 +134,7 @@ PanelScale to a null scale (0,0,0).
 
 <br >
 
-> How can we change scale via a script ? Heard about Lerp() ?
+> How can we change scale via a script ? Heard about `Lerp()` ?
 
 <br >
 
@@ -151,7 +151,7 @@ ShowInfo component in the cube inspector.
 <br >
 <br >
 
-## Exercice 05: Always in front
+## Exercise 05: Always in front
 
 Let’s create another script named LookAtCamera.
 With this new script, the panel will always face our
@@ -177,7 +177,7 @@ current object, so that the current object
 <br >
 <br >
 
-## Exercice 06: All in one
+## Exercise 06: All in one
 
 Then, let’s create our last script, this one will enable us
 to execute our previous scripts according to the
