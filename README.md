@@ -1,4 +1,4 @@
-# 👋 Welcome to PoC Pools 2022!
+# 👋 Welcome to PoC Pools 2023!
 
 PoC is a student innovation center.
 
@@ -9,7 +9,7 @@ Here are our fields:
 - 🔑 [Security]()
 - 💻 [Software]()
 - 🕸️ [Peer-To-Peer]()
-- 👓 [AR-VR]()
+- 👓 [AR-VR](./AR-VR/)
 
 We put all our heart to work, we hope you will enjoy it and that it will be useful to you.
 
