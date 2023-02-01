@@ -6,10 +6,10 @@ Every year, we organize innovation weeks in a "pool" format to introduce people 
 
 Here are our fields:
 - 🧠 [Artificial Intelligence]()
-- 🛠️ [Hardware & IoT]()
 - 🔑 [Security]()
 - 💻 [Software]()
 - 🕸️ [Peer-To-Peer]()
+- 👓 [AR-VR](/AR-VR/)
 
 We put all our heart to work, we hope you will enjoy it and that it will be useful to you.
 
