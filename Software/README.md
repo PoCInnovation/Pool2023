@@ -20,7 +20,7 @@ This choice will organize your week. You will learn something new in the chosen 
 - [Go](./day01/Go/)
 
 **Talks:**
-- TODO
+- State of Software & Open Source in 2023 - [Flavian GONTIER](https://www.linkedin.com/in/flavian-gontier-44999a133) <!-- markdown-link-check-disable-line -->
 
 
 ## ℹ️ Day 2 - Database
@@ -33,7 +33,7 @@ You will discover the relational databases through the management of a PostgreSQ
 - [Go](./day02/2%20-%20ORM/Go/)
 
 **Talk:**
-- SQL vs NoSQL: how to choose wisely? - [Tanguy MOULLEC](https://www.linkedin.com/in/tanguy-moullec) & [Alexis TACNET](https://www.linkedin.com/in/alexis-tacnet-aa0478109/)
+- SQL vs NoSQL: how to choose wisely? - [Tanguy MOULLEC](https://www.linkedin.com/in/tanguy-moullec) & [Alexis TACNET](https://www.linkedin.com/in/alexis-tacnet-aa0478109/) <!-- markdown-link-check-disable-line -->
 
 
 ## 💻: Day 3 - API REST
@@ -56,7 +56,8 @@ In the second part, you'll discover how to deploy a project in production and se
 - [Deployment](./day04/2%20-%20Deployment)
 
 **Talks:**
-- TODO
+- Cloud providers: What's going on behind the scenes? - [Maxime CORBIN](https://www.linkedin.com/in/maxime-corbin) <!-- markdown-link-check-disable-line -->
+
 
 ## 🌹 Day 5 - User Interface
 
@@ -65,12 +66,11 @@ During 4 days, you've worked on the `backend` part of an application. This day y
 - [React](./day05/React/)
 - [Flutter](./day05/Flutter/)
 
-**Talks:**
-- TODO
 
 ## ⏰ Rush
 
 By groups of 3 to 5, you will have to create a clone of Airbnb, Deezer, Linkedin, Instagram, ...
+
 
 ## Authors
 TODO
