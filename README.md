@@ -9,7 +9,7 @@ Here are our fields:
 - 🔑 [Security]()
 - 💻 [Software]()
 - 🕸️ [Peer-To-Peer]()
-- 👓 [AR-VR](/AR-VR/)
+- 👓 [AR-VR](https://github.com/PoCInnovation/Pool2023/tree/AR-VR/)
 
 We put all our heart to work, we hope you will enjoy it and that it will be useful to you.
 
