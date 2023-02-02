@@ -19,7 +19,7 @@ This choice will organize your week. You will learn something new in the chosen 
 - [Typescript](./day01/Typescript/)
 - [Go](./day01/Go/)
 
-**Talks:**
+**Talk:**
 - State of Software & Open Source in 2023 - [Flavian GONTIER](https://www.linkedin.com/in/flavian-gontier-44999a133) <!-- markdown-link-check-disable-line -->
 
 
@@ -55,7 +55,7 @@ In the second part, you'll discover how to deploy a project in production and se
 - [Docker](./day04/1%20-%20Docker/)
 - [Deployment](./day04/2%20-%20Deployment)
 
-**Talks:**
+**Talk:**
 - Cloud providers: What's going on behind the scenes? - [Maxime CORBIN](https://www.linkedin.com/in/maxime-corbin) <!-- markdown-link-check-disable-line -->
 
 
@@ -63,8 +63,11 @@ In the second part, you'll discover how to deploy a project in production and se
 
 During 4 days, you've worked on the `backend` part of an application. This day you will learn how to build the `frontend` part: the User Interface. You're free to choose React for web applications, or Flutter for mobile applications.
 
+If you've already used React and Flutter, you can even choose Angular to dive further in web UIs!
+
 - [React](./day05/React/)
 - [Flutter](./day05/Flutter/)
+- [Angular](./day05/Angular/)
 
 
 ## ⏰ Rush
@@ -73,12 +76,11 @@ By groups of 3 to 5, you will have to create a clone of Airbnb, Deezer, Linkedin
 
 
 ## Authors
-TODO
 
 | [<img src="https://github.com/RezaRahemtola.png?size=85" width=85><br><sub>Reza Rahemtola</sub>](https://github.com/RezaRahemtola)
 | :---: |
 
-| [<img src="https://github.com/Encorpluptit.png?size=85" width=85><br><sub>Damien BERNARD</sub>](https://github.com/Encorpluptit) | [<img src="https://github.com/lucas-louis.png?size=85" width=85><br><sub>Lucas LOUIS</sub>](https://github.com/lucas-louis) | [<img src="https://github.com/AlexandreCollin.png?size=85" width=85><br><sub>Alexandre COLLIN-BÉTHEUIL</sub>](https://github.com/AlexandreCollin) | [<img src="https://github.com/barbo69.png?size=85" width=85><br><sub>Baptiste BARBOTIN</sub>](https://github.com/barbo69)
+| [<img src="https://github.com/barbo69.png?size=85" width=85><br><sub>Baptiste BARBOTIN</sub>](https://github.com/barbo69) | [<img src="https://github.com/tonida-rodda.png?size=85" width=85><br><sub>Toni DA RODDA</sub>](https://github.com/tonida-rodda) | [<img src="https://github.com/AlexandreCollin.png?size=85" width=85><br><sub>Alexandre COLLIN-BÉTHEUIL</sub>](https://github.com/AlexandreCollin) | [<img src="https://github.com/jeanbaptistedebize.png?size=85" width=85><br><sub>Jean-Baptiste DEBIZE</sub>](https://github.com/jeanbaptistedebize)
 | :---: | :---: | :---: | :---: |
 
 <h2 align=center>
