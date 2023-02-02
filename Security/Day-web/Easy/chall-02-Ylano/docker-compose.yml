@@ -11,7 +11,7 @@ x-pathwar:
   flavor:
     purchase_price: 0
     validation_reward: 15
-    body: "Don't forget to think about backup files !"
+    body: "Give me this page in 64 parts !"
     passphrases: 1
     category: web
     tags:

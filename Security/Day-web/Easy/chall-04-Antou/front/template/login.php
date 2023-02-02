@@ -30,7 +30,7 @@
                     $flag = $argv[2];
                     echo nl2br ("<h3 style='color:black'>$input sadly isn't a valid credential :(</h3>");
                     if (strstr($input, "\n")) {
-                        echo nl2br("<h2 style='color:black'> flag = $flag</h2>");
+                        echo nl2br("<h2 style='color:black'> flag = THE_PASSPHRASE</h2>");
                     }
                 ?>
             </hgroup>
