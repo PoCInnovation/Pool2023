@@ -4,5 +4,7 @@ FROM php:7.4-apache
 ENV FLAG=PoC{f1LTEREvErytHIngIsNIce}
 
 COPY template/ /var/www/html/
+COPY on-init /pwinit/
+
 EXPOSE 80
 CMD ["apache2-foreground"]

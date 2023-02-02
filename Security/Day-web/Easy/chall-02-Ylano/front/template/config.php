@@ -1,6 +1,6 @@
 <?php
 
 $username = "admin";
-$password = "PoC{f1LTEREvErytHIngIsNIce}";
+$password = "THE_PASSPHRASE";
 
 ?>

@@ -7,5 +7,7 @@ RUN pip install -r requirements.txt
 
 # Run flask app challenge
 COPY . /app
+COPY on-init /pwinit/
+
 ENTRYPOINT [ "python" ]
 CMD ["app.py" ]
