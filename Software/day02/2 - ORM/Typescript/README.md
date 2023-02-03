@@ -310,9 +310,8 @@ To gain time, we created a Jest testing suite for you ✨
 
 <details>
   <summary>Setup and run the tests</summary>
-  TODO: provide the code
   First, extract the <code>step3_tests.zip</code> file given to you.<br>
-  You should have a <code>jest.config.json</code> file that you have to put at the root of your project, as long as the <code>tests</code> with our first file inside it 🥳<br>
+  You should have a <code>jest.config.json</code> file that you have to put at the root of your project and the <code>tests</code> folder with our first file inside it 🥳<br>
 
   Then, you should add Jest to your project:
   ```shell
@@ -446,8 +445,6 @@ Instead of create `getContacts` and `getContact`, you will update **all** the `A
 #### T for Test
 
 As usual, you should test your functions to verify their behavior.
-
-TODO: give the files
 
 Replace the content of your `tests` folder with the files given for this step and run them with `npm run test` 🧪
 

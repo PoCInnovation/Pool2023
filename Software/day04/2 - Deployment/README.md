@@ -139,7 +139,7 @@ Now that you are familiar with it's syntax, let's go further by implementing a C
 
 That's why here we will create an Action to run some tests on every commits, and retrieve the results for a simplified debugging if they fail 😉
 
-For this exercise, you have to use the [Cypress](https://cypress.io/) tests contained in the frontend of you application.
+For this exercise, you have to use the [Cypress](https://cypress.io/) tests contained in the frontend of your application.
 
 > Cypress is a tool to run all kind of tests on your frontend, you'll discover it tomorrow if you choose the React option 😉
 
@@ -214,8 +214,9 @@ Congratulation for completing this day!
 You've learned the basics of DevOps and launched an application in production, but there's still a lot to discover 😄
 
 Here are a few interesting links to learn more:
-- TODO
-- TODO
+- [What is a cloud computing Instance?](https://scaleyourapp.com/what-is-an-instance-in-cloud-computing-a-thorough-guide/)
+- [Serverless computing](https://www.cloudflare.com/learning/serverless/what-is-serverless/)
+- [CI/CD best practices](https://www.jetbrains.com/teamcity/ci-cd-guide/ci-cd-best-practices/)
 
 <h2 align=center>
 Organization

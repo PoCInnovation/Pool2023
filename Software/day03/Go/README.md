@@ -45,9 +45,17 @@ mkdir -p day03
 
 > See [day01](../../day01/Go) if you don't remember how to initialize a Go module 😉
 
-TODO: add explanations for tests:
+Finally, let's setup the tests: just like yesterday, you'll find a `step1_tests.zip` file in your repository with a `tests` folder inside it.\
+Update your `go.mod` to install the necessary dependencies:
+```sh
+go mod tidy
+```
 
-go get github.com/stretchr/testify
+You will now be able to test your code with
+```sh
+go test ./tests
+```
+
 
 ## Step 1 - Hello Web 👋
 
@@ -652,23 +660,17 @@ Then you can create the needed routes to handle a google login
 <br><br>
 </details>
 
-### Testing time, round 2
-TODO: replace with advanced tests based on the provided ones
+<details>
+  <summary>Expose Data</summary>
+  <br>
 
-Postman is a powerful tool, but it's an external tool... you need a team
-who knows the tool and everything relate to it. As well, it's hard to
-create complex pipelines with Postman, scripts work good, but it does not
-feel natural compared to code.
-
-Here is [how to write a tests suite](https://kpat.io/2019/06/testing-with-gin/) for each endpoint to verify that it correctly handles errors and works well.
-
-### Expose Data
-
-Yesterday you discovered how to manipulate a database with Ent. Today, you've build an API with Gin.
+  Yesterday you discovered how to manipulate a database with Ent. Today, you've build an API with Gin.
 
 What about mixing it?
 
 Expose yesterday's database with today's API 🚀
+  <br><br>
+</details>
 
 <h2 align=center>
 Organization

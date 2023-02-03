@@ -79,7 +79,18 @@ As usual, you can also create a folder `src`:
 mkdir -p src
 ```
 
-TODO: add instructions for tests
+Finally, let's setup the tests: just like yesterday, you'll find a `step1_tests.zip` file in your repository with a `jest.config.json` file to put at the root of your repository and a `tests` folder with the test files.\
+Install the necessary development dependencies:
+```sh
+npm install -D @types/jest axios jest ts-jest
+```
+
+and add the following scripts in your `package.json` to be ready to go 🚀
+```json
+"test": "jest tests/ --env=node",
+"test:cov": "jest tests/ --env=node --coverage",
+"test:watch": "jest tests/ --env=node --watchAll"
+```
 
 ## Step 1 - Hello web 👋
 

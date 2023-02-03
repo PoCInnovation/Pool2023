@@ -151,7 +151,7 @@ Install ENT with the command:
 go get -d entgo.io/ent/cmd/ent
 ```
 
-### Your first model :
+### Your first model:
 
 ⚠️ During this step, we strongly advise you to keep an eye on the introduction of [ENT](https://entgo.io/docs/getting-started/#create-your-first-schema)
 
