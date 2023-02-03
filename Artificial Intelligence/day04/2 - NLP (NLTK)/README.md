@@ -1,4 +1,4 @@
-# Natural Language Processing (NLP) using spaCy
+# Natural Language Processing (NLP) using NLTK
 
 ## Natural Language 🗣️
 
@@ -23,25 +23,22 @@ Natural language processing (NLP) is a subfield of linguistics, computer science
 
 The goal is a computer capable of "understanding" the contents of documents, including the contextual nuances of the language within them.
 
-The technology can then accurately extract information and insights contained in the documents as well as categorize and organize the documents themselves. 
+The technology can then accurately extract information and insights contained in the documents as well as categorize and organize the documents themselves.
 
-## How to install spacy 🧠
+## How to install nltk 🧠
 
 Installation:
 ```
-  pip install -U pip setuptools wheel
-  pip install -U spacy
+  pip install -U nltk
 ```
 Pipelines used:
 ```
   python -m spacy download en_core_web_sm
-  python -m spacy download en_core_web_md
-  python -m spacy download en_core_web_lg
 ```
 
 ## Submit 🏆
 
-Fill differents files in `src/` folder
+Fill the `NLTK.ipynb` jupyter notebook.
 
 To submit your work, think about pushing your changes. It is important to push so that we are able to assess participation.
 
@@ -49,5 +46,5 @@ If you have any concerns, talk to a supervisor.
 
 ## Resources 📖
 
-- [spaCy](https://spacy.io/usage)
+- [NLTK](https://www.nltk.org/)
 - [NLP](https://en.wikipedia.org/wiki/Natural_language_processing)
