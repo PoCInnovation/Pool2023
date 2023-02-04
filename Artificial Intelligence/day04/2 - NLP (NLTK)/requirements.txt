@@ -1,0 +1,9 @@
+pandas
+numpy
+seaborn
+torch
+torchvision
+re
+nltk
+datasets
+sklearn
