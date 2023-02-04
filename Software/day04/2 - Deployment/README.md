@@ -215,7 +215,7 @@ You've learned the basics of DevOps and launched an application in production, b
 
 Here are a few interesting links to learn more:
 - [What is a cloud computing Instance?](https://scaleyourapp.com/what-is-an-instance-in-cloud-computing-a-thorough-guide/)
-- [Serverless computing](https://www.cloudflare.com/learning/serverless/what-is-serverless/)
+- [Serverless computing](https://www.cloudflare.com/learning/serverless/what-is-serverless/) <!-- markdown-link-check-disable-line -->
 - [CI/CD best practices](https://www.jetbrains.com/teamcity/ci-cd-guide/ci-cd-best-practices/)
 
 <h2 align=center>
