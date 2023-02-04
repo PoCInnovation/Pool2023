@@ -29,6 +29,7 @@ You will discover the relational databases through the management of a PostgreSQ
 
 - [SQL](./day02/1%20-%20SQL/)
 
+ORM:
 - [Typescript](./day02/2%20-%20ORM/Typescript/)
 - [Go](./day02/2%20-%20ORM/Go/)
 

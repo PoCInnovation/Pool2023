@@ -76,13 +76,13 @@ In summary, here's a bunch of links that will be very useful during the pool:
 ## Step 0 - Setup
 
 As usual, every exercise must be pushed to a git repository.<br>
-TODO: update classroom link
-To make it easier, we will use a GitHub classroom! Follow this [link](https://classroom.github.com/a/_7vegqir) to create your git repository.
+
+To make it easier, we will use a GitHub classroom! Follow this [link](https://classroom.github.com/a/DoR-K1PO) to create your git repository.
 
 Then, you can clone your repository.
 
 ```shell
-git clone git@github.com:PoC-Community/software-pool-days-{YOUR-GITHUB-USERNAME}
+git clone git@github.com:PoC-Community/software-pool-days-{YOUR-GITHUB-USERNAME}.git
 ```
 
 For each day, we will create a new folder. Start with the `day01`.

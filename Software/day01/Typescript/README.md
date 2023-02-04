@@ -108,13 +108,13 @@ We recommend you [VSCode](https://code.visualstudio.com) or [WebStorm](https://w
 ## Step 0 - Setup
 
 As usual, every exercises must be pushed to a git repository.<br>
-TODO: add classroom link
-To make it easier, we will use a GitHub classroom! Follow this [link]() to create your git repository.
+
+To make it easier, we will use a GitHub classroom! Follow this [link](https://classroom.github.com/a/DoR-K1PO) to create your git repository.
 
 You can then clone your repository.
 
 ```shell
-git clone git@github.com:PoC-Community/software-pool-days-{YOUR-GITHUB-USERNAME}
+git clone git@github.com:PoC-Community/software-pool-days-{YOUR-GITHUB-USERNAME}.git
 ```
 
 For each day, we will create a new folder. Start with the `day01`.
