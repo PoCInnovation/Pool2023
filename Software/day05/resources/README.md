@@ -1,20 +1,27 @@
 # Artist-Book
 
-A simple Node REST API to manage artists and musics 🚀
+A simple Node REST API to manage artists and musics :rocket:
 
 ## Getting started
 
 Run the following commands:
 ```bash
+# Unzip and move in the folder
+unzip resources.zip
+cd resources
+
 # Copy the required env variables inside the file .env
-cp .envrc.example .envrc
+cp .env.example .env
 
 ###
 # Please update the .env file before going further!
 ###
 
-# To make sure your environment variables are loaded
-direnv allow .
+# To make sure your environment is loaded
+direnv allow .env
+
+# If the previous command didn't work
+source .env
 
 # Build the API images and start the containers
 docker compose up

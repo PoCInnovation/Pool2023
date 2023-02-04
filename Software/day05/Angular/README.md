@@ -46,7 +46,7 @@ Go to the `.html` and add UI elements to it to create a [navbar](https://en.wiki
 
 Once this is done call the component in the right file to display it!
 
-> This first step is intentationnaly complicated to let you discover Angular, but don't hesitate to ask for help 😉
+> This first step is intentionally complicated to let you discover Angular, but don't hesitate to ask for help 😉
 
 
 ### 📚 **Documentation**
@@ -58,7 +58,7 @@ Once this is done call the component in the right file to display it!
 ### ✔️ **Validation**:
 
 You have now a beautiful navbar!\
-It's only styles for the moment, but we will add functionnality soon 😄
+It's only styles for the moment, but we will add functionalities soon 😄
 
 
 ## Step 2 - Binding data 🔖

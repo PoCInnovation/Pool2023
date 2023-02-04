@@ -1,5 +1,0 @@
-.gitignore
-.eslintrc.yml
-.env.example
-Dockerfile
-docker-compose.dev.yaml
