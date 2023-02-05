@@ -11,7 +11,7 @@ AutoML (Auto Machine Learning) refers to using algorithms and techniques to auto
 
 ### 🤷‍♀️ Why AutoML?
 
-AutoML is getting popular because it makes the process of building machine learning models faster, more efficient, and accessible to a wider range of users, including non-experts. By automating many tedious and time-consuming tasks, AutoML allows data scientists and machine learning engineers to focus on other important aspects of the project.
+AutoML is becoming popular because it makes the process of building machine learning models faster, more efficient, and accessible to a wider range of users, including non-experts. By automating many tedious and time-consuming tasks, AutoML allows data scientists and machine learning engineers to focus on other important aspects of the project.
 
 ### 💻 How AutoML works?
 
@@ -23,7 +23,7 @@ To use AutoML, simply provide your data and specify the type of problem you are 
 
 ## 🔥 Day4
 
-You have choice between 2 different AutoML tools:
+You can choose between 2 different AutoML tools:
 - AutoML with H2O
 - AutoML with Prophet
 
@@ -38,8 +38,8 @@ Prophet is a procedure for forecasting time series data with an additive model t
 
 ## How to use it?
 
-You have at your disposal a two Jupyter Notebooks:
+You have at your disposal two Jupyter Notebooks:
 - [One for Time Series Forecasting with Prophet](time_series.ipynb)
 - [One for Tabular Data with H2O](tabular.ipynb)
 
-You're free to choice the one you want to discover and use. If you have time, you can do both.
+You're tasked with completing both notebooks in order to learn about two different types of AutoML.
