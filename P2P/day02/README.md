@@ -12,7 +12,7 @@
 
 ## Introduction
 
-Now that you are familiar with solidity, let's build a more complex project such as creating our own NFT. If you need to learn more about NFTs, check out this link [Nft Explanation](https://www.esports.net/crypto/nft-explained/), [Non-fungible token](https://en.wikipedia.org/wiki/Non-fungible_token/)
+Now that you are familiar with solidity, let's build a more complex project such as creating our own NFT. If you need to learn more about NFTs, check out this link [Nft Explanation](https://www.esports.net/crypto/nft-explained/), [Non-fungible token](https://en.wikipedia.org/wiki/Non-fungible_token)
 
 I think that you are familiar with the concept of an NFT (Non-Fungible Token), the ability to own a unique digital asset.
 

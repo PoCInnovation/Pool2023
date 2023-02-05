@@ -39,7 +39,7 @@ This platform will let users create a new vesting of native tokens (ETH for exem
 ### 📚 **Documentation**:
 
 - [inheritence](https://blog.soliditylang.org/2020/06/18/solidity-0.6-inheritance/)
-- [IVestingPlatform](./interfaces/IVestingPlatform1.sol)
+- [IVestingPlatform](./interfaces/IVestingPlatform.sol)
 - [create tests in foundry](https://book.getfoundry.sh/forge/writing-tests)
 
 ### ✔ **Validation**:
