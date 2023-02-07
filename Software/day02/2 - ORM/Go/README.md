@@ -50,7 +50,7 @@ You will therefore have to create and interact again with a database containing 
 - `Contact`: contact sheets.
 - `Music`: music.
 
-Here's a schema to clear your mind:  
+Here's a schema to clear your mind:
 ![database schema](../../../../.github/assets/software_bdd_part2.png)
 
 But unlike this morning, you're not going to use any SQL commands or queries, but learn how to use an ORM
@@ -115,12 +115,6 @@ Even before implementing the ORM, we must created the database we'll use with th
 
 Like this morning, we will be using a [PostgreSQL](https://www.postgresql.org/) database.
 
-<details>
-  <summary>As a reminder, here is the database diagram:</summary>
-![Database schema](../../../../.github/assets/software_bdd_part2.png)
-
-</details>
-
 Create a `.env` file in which you will put the environment variables related to your db:
 - `DB_USER`: the username of your database.
 - `DB_PASS`: your user's password for your database.
@@ -139,7 +133,7 @@ docker run --name [DB_NAME] -e POSTGRES_PASSWORD=[DB_PASS] -e POSTGRES_USER=[DB_
 Or :
 ```shell
 source .env
-docker run --name $DB_NAME -e POSTGRES_PASSWORD=$DB_PASS -e POSTGRES_USER=$DB_USER -e POSTGRES_DB=$DB_NAME -p $DB_PORT:$DB_PORT-d postgres:alpine
+docker run --name $DB_NAME -e POSTGRES_PASSWORD=$DB_PASS -e POSTGRES_USER=$DB_USER -e POSTGRES_DB=$DB_NAME -p $DB_PORT:$DB_PORT -d postgres:alpine
 ```
 
 > 💡 It's possible to create several databases in a single postgres instance, that's why each db is given a name.
