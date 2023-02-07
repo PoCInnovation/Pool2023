@@ -74,6 +74,8 @@ database with the following command in the directory containing the file `databa
 docker run  --name my_database -e POSTGRES_PASSWORD=password -e POSTGRES_USER=root -e POSTGRES_DB=my_database -p 5432:5432 -v "$(pwd)"/database.sql:/docker-entrypoint-initdb.d/init.sql -d postgres:alpine
 ```
 
+> If you can't manage to connect to your database, try changing the POSTGRES_USER parameter to something else and reloading your container using ``docker rm``.
+
 > Don't worry about this command for now, you will learn docker during day04 👀
 
 Start DataGrip and create a new `Data Source` of type `PostgreSQL`.
