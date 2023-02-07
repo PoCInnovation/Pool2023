@@ -191,7 +191,7 @@ go get -d entgo.io/ent/cmd/ent
     - [With ENT](https://entgo.io/docs/sql-integration#use-pgx-with-postgresql), open the database, initialize the connection and synchronize the schemas to create the tables in your database.
 - Create the file `main.go`.
     - Retrieve your environment variables needed to initialize your database.
-    - Call the `NewEntDatabase` function of the `database` package:
+    - Call the `NewDatabase` function of the `database` package:
         - If successful, write: `Database is ready`.
         - If the operation fails, write: `Failed to initialize database: ` followed by the error message.
 
@@ -266,7 +266,7 @@ package database
 
 import "github.com/google/uuid"
 
-func (d Database) GetArtistByID(ctx context.Context, id uuid.UUID) ([]*ent.Artist, error) {
+func (d Database) GetArtistByID(ctx context.Context, id uuid.UUID) (*ent.Artist, error) {
 
 	... = d.Client...
 
