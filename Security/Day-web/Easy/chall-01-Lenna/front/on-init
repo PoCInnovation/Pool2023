@@ -1,0 +1,3 @@
+#!/bin/sh -e
+
+sed -i "s/THE_PASSPHRASE/$(pwinit passphrase 0)/g" /app/template/index.html~

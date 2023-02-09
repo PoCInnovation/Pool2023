@@ -1,0 +1,13 @@
+FROM python:3.10-alpine
+
+# Install requiring packages
+WORKDIR /app
+COPY ./requirements.txt /app/requirements.txt
+RUN pip install -r requirements.txt
+
+# Run flask app challenge
+COPY . /app
+COPY on-init /pwinit/
+
+ENTRYPOINT [ "python" ]
+CMD ["app.py" ]
