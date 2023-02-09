@@ -14,7 +14,7 @@ def home():
     out = sp.run(["php", "template/index.php"], stdout=sp.PIPE)
     return (out.stdout, {'Login-Status': 'simple user'})
 
-@app.route('/robots.txt~', methods=['GET'])
+@app.route('/admin/robots.txt', methods=['GET'])
 def robots():
     response = make_response(open('static/robots.txt').read())
     response.headers["Content-type"] = "text/plain"
