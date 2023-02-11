@@ -11,7 +11,7 @@ x-pathwar:
   flavor:
     purchase_price: 0
     validation_reward: 15
-    body: "It will be great if we could use somes filters in PHP ^^ !"
+    body: "Find your way !"
     passphrases: 1
     category: web
     tags:
