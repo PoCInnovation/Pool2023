@@ -15,8 +15,8 @@ def admin():
     login = request.headers.get('Login-Status')
     if (login == 'admin'):
         return render_template('flag.html', flag=os.getenv('FLAG'))
-    out = sp.run(["php", "template/admin.php"], stdout=sp.PIPE)
-    return (out.stdout, {'Login-Status': 'simple user'})
+    out = render_template('admin.html')
+    return (out, {'Login-Status': 'simple user'})
 
 @app.route('/admin/robots.txt', methods=['GET'])
 def robots():
@@ -25,5 +25,5 @@ def robots():
     return response
 
 if __name__ == "__main__":
-    port = int(os.environ.get('PORT', 80))
+    port = int(os.environ.get('PORT', 8000))
     app.run(debug=True, host='0.0.0.0', port=port)
