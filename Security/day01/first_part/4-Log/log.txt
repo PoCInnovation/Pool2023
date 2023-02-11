@@ -1,0 +1,24 @@
+Dec 8 15:11:19 server kernel: [856938.128348] TCP: Possible SYN flooding on port 80. 
+Sending cookies.  Check SNMP counters.
+Dec 8 15:11:20 server kernel: [856939.128418] TCP: Possible SYN flooding on port 80. 
+Sending cookies.  Check SNMP counters.
+Dec 8 15:11:21 server kernel: [856940.128488] TCP: Possible SYN flooding on port 80. 
+Sending cookies.  Check SNMP counters.
+Dec 8 15:11:22 server kernel: [856941.128558] TCP: Possible SYN flooding on port 80. 
+Sending cookies.  Check SNMP counters.
+Dec 8 15:11:23 server kernel: [856942.128628] TCP: Possible SYN flooding on port 80. 
+Sending cookies.  Check SNMP counters.
+Dec 8 15:11:24 server kernel: [856943.128698] TCP: Possible SYN flooding on port 80. 
+Sending cookies.  Check SNMP counters.
+Dec 8 15:11:25 server kernel: [856944.128763] TCP: Possible SYN flooding on port 80. 
+Sending cookies.  Check SNMP counters.
+Dec 8 15:11:26 server kernel: [856945.128833] TCP: Possible SYN flooding on port 80. 
+Sending cookies.  Check SNMP counters.
+Dec 8 15:11:27 server kernel: [856946.128903] TCP: Possible SYN flooding on port 80. 
+Sending cookies.  Check SNMP counters.
+Dec 8 15:11:28 server kernel: [856947.128973] TCP: Possible SYN flooding on port 80. 
+Sending cookies.  Check SNMP counters.
+Dec 8 15:11:29 server kernel: [856948.129043] TCP: Possible SYN flooding on port 80. 
+Sending cookies.  Check SNMP counters.
+Dec 8 15:11:30 server kernel: [856949.129113] TCP: Possible SYN flooding on port 80. 
+Sending cookies.  Check SNMP counters.
