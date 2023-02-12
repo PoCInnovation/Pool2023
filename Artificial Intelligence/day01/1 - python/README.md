@@ -47,17 +47,17 @@ Before we get started with **iPython notebooks**, which you will be using for mo
 Open up a new terminal window: inside, simply run the `python` command !
 
 ```bash
-> 1 - python
+> python
 ```
 
 This command will open up the python command line:
 
 ```bash
-> 1 - python
-Python 3.X.XX (main, XXX XX XXXX, XX:XX:XX) 
+> python
+Python 3.X.XX (main, XXX XX XXXX, XX:XX:XX)
 [GCC 7.5.0] :: Anaconda, Inc. on linux
 Type "help", "copyright", "credits" or "license" for more information.
->>> 
+>>>
 ```
 
 The output **will** differ based on your Python version and other variables but it **should** open a command line where you can execute any python code !
@@ -74,7 +74,7 @@ You can try using the `print()` method to print some stuff on your terminal.
 Type "help", "copyright", "credits" or "license" for more information.
 >>> print("Hello world")
 Hello world
->>> 
+>>>
 ```
 
 Pretty cool, right ? What if you instead want to know what the result of 2 + 2 is ?
@@ -88,7 +88,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 4
 >>> 2 + 2
 4
->>> 
+>>>
 ```
 
 Interesting... these three inputs have the same output, "4".
@@ -117,15 +117,15 @@ print(2 + 2)
 
 Why is that ? Well, python is both a strongly and dynamically typed language:
 
-| Typing         | Static    | Dynamic     |
-|----------------|-----------|-------------|
-| Variable       | typed     | not typed   |
-| Value          | not typed | typed       | 
+| Typing   | Static    | Dynamic   |
+| -------- | --------- | --------- |
+| Variable | typed     | not typed |
+| Value    | not typed | typed     |
 
 | Typing         | Strong | Weak | Strong & Dynamic |
-|----------------|--------|------|------------------|
-| "I am " + 13   | ❌     | ✅   | ✅               |
-| "I am " + "13" | ✅     | ✅   | ✅               |
+| -------------- | ------ | ---- | ---------------- |
+| "I am " + 13   | ❌      | ✅    | ✅                |
+| "I am " + "13" | ✅      | ✅    | ✅                |
 
 Static typing (for example C) means that variables have a type which must be known by the interpretor from the moment the variable is declared.\
 Dynamic (for example JavaScript) typing means that values / objects have types which can be changed at any given time.
@@ -142,7 +142,7 @@ You can open a Python command line and use the `type()` method to check out the 
 <class 'int'>
 >>> type("hello world")
 <class 'str'>
->>> 
+>>>
 ```
 
 Before heading over to the `.ipynb` notebook, please fill in and submit a file called `data_types.txt` which contains the corresponding built-in types for the following values in order:
