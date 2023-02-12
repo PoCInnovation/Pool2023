@@ -38,5 +38,4 @@ Organization
 </p>
 
 > 🚀 Don't hesitate to follow us on our different networks, and put a star 🌟 on `PoC's` repositories
-
 > Made with ❤️ by PoC
