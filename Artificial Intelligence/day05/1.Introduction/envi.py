@@ -2,6 +2,7 @@
 In this file we define the environment class to avoid filling the notebook with too much code
 """
 import random
+import numpy as np
 
 GRAPHICS = {' ': [255,  255, 255],
             'O': [255,  0,   0],
@@ -50,7 +51,7 @@ class Environment:
         color_array = [[GRAPHICS[x] for x in y] for y in self.map]
         color_array[self.state // self.map_size][self.state %
                                                  self.map_size] = GRAPHICS['P']
-        return color_array
+        return np.array(color_array).repeat(10, axis=0).repeat(10, axis=1)
 
     def step(self, action):
         """

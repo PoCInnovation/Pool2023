@@ -1,4 +1,4 @@
-# Natural Language Processing (NLP) using NLTK
+# Natural Language Processing (NLP)
 
 ## Natural Language 🗣️
 
@@ -30,10 +30,6 @@ The technology can then accurately extract information and insights contained in
 Installation:
 ```
   pip install -U nltk
-```
-Pipelines used:
-```
-  python -m spacy download en_core_web_sm
 ```
 
 ## Submit 🏆
