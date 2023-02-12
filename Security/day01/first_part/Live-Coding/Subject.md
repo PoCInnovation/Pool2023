@@ -1,3 +1,0 @@
-Install and configure the honeypot software on a dedicated computer or virtual machine. This will typically involve choosing a honeypot type (such as a low-interaction or high-interaction honeypot), configuring the honeypot's network settings, and setting up any other necessary components.
-
-Live-coding HoneyPot : https://securehoney.net/blog/how-to-build-an-ssh-honeypot-in-python-and-docker-part-1.html
