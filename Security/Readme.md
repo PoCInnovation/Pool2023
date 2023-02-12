@@ -16,6 +16,7 @@ In this first day, we will work on network vulnerabilities. We will explain the 
 
 In this day, we will discover:
 
+- Network notion's : IP, DNS, HTTP(S), logs ...
 - Wireshark
 
 [SUBJECT](./day1/)
@@ -47,7 +48,8 @@ In this fourth day, we will introduce you cryptography. We will work a bit more 
 
 In this day, we will discover:
 
-- Math aspect in cybersecurity
+- Math aspect in cybersecurity (Eliptic curves)
+- Encryption (AES)
 
 [SUBJECT](./day4/)
 
