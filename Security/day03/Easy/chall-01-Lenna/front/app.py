@@ -5,7 +5,7 @@ from flask import Flask, render_template, send_file
 app = Flask(__name__, template_folder='template', static_folder='static')
 
 
-@app.route('/')
+@app.route('/index.html')
 def home():
     return render_template('index.html')
 
