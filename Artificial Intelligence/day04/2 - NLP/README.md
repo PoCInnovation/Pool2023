@@ -38,7 +38,7 @@ Pipelines used:
 
 ## Submit 🏆
 
-Fill the `NLTK.ipynb` jupyter notebook.
+Fill the `NLP.ipynb` jupyter notebook.
 
 To submit your work, think about pushing your changes. It is important to push so that we are able to assess participation.
 

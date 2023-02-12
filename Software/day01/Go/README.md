@@ -720,7 +720,7 @@ CalcPerimeter() float64
 
 Create a function `CalcPerimeter` that will take this time an interface
 `GeometricShape` **as parameter** and return the result of the function
-`CalcParameter` called from the interface.
+`CalcPerimeter` called from the interface.
 
 Here's a prototype to help you:
 ```go
@@ -733,7 +733,7 @@ Create the struct `Circle` with a field `Radius`.<br>
 Create the struct `Rectangle` with a field `X` and `Y`.<br>
 Create the struct `Triangle` with a field `X`, `Y` and `Z`.
 
-For each shape, implement the method `CalcParameter` that will return
+For each shape, implement the method `CalcPerimeter` that will return
 the parameter of the shape.
 
 Here's an example of prototype for a `Square`:

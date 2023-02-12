@@ -225,6 +225,7 @@ tree -d
 # │   │   └── notes
 # │   └── test
 # └── frontend
+#     ├── cypress
 #     ├── public
 #     └── src
 #         ├── components

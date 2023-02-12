@@ -788,7 +788,7 @@ If a JWT token or cookie is present and the user is found in storage, return the
 > Don't forget to handle errors 💯
 
 <br><br>
-</details
+</details>
 
 
 <details>
