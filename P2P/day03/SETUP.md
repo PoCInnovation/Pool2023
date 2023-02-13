@@ -49,7 +49,7 @@ forge remappings > remappings.txt
   "editor.formatOnSave": true,
   "solidity.packageDefaultDependenciesContractsDirectory": "src",
   "solidity.packageDefaultDependenciesDirectory": "lib",
-  "solidity.compileUsingRemoteVersion": "v0.8.17"
+  "solidity.compileUsingRemoteVersion": "v0.8.17",
   "[solidity]": {
     "editor.defaultFormatter": "JuanBlanco.vscode-solidity" 
   },
