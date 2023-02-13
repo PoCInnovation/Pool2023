@@ -366,6 +366,53 @@ Take your smart contract from the previous step.
 - [Errors documentation](https://docs.soliditylang.org/en/v0.8.17/contracts.html#errors-and-the-revert-statement)
 
 
+## Step 11 (BONUS) - Storage
+
+### :bookmark_tabs: **Description**:
+
+Now that you have the basics you will deep dive into Solidity.
+In this task you will learn about the storage layout.
+
+### :pushpin: **Tasks**:
+
+Create a solidity contract, with theses variables:
+```solidity
+address mat;
+
+uint eo;
+
+bool m;
+
+address a;
+
+  
+
+uint[] mmm;
+
+mapping(string => mapping (uint => uint)) chall;
+
+string[5] mateo;
+```
+
+your contract must possess 2 functions:
+- a setter
+- a getter
+
+Those 2 functions must be able to set the value of any variable of your contract generically.
+And same for the getter.
+
+- set the value of `a` to your address.
+- set the second element of `mateo` to 20.
+- and finally set the variable of `chall[2][2]` to 999.
+
+
+### :books: **Documentation**:
+
+- [Storage](https://docs.soliditylang.org/en/v0.8.17/internals/layout_in_storage.html)
+- [assembly blocks](https://docs.soliditylang.org/en/v0.8.17/assembly.html)
+
+
+
 ## Conclusion
 
 Well done ! You've accomplished a lot with this first day of P2P pool, and there is so much more to discover.
