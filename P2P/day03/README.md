@@ -1,4 +1,4 @@
-# Day 4 - Foudry : Advanced Solidity Project
+# Day 3 - Foudry : Advanced Solidity Project
 
 ✔ Testing
 
@@ -185,7 +185,7 @@ However it is only the beginning of foundry and if you wish to go futher here ar
 
 ## Authors
 
-| [<img src="https://github.com/0xtekgrinder.png?size=85" width=85><br><sub>Isma</sub>](https://github.com/0xtekgrinder) | 
+| [<img src="https://github.com/0xtekgrinder.png?size=85" width=85><br><sub>0xtekgrinder</sub>](https://github.com/0xtekgrinder) | 
 |:------------------------------------------------------------------------------------------------------------:|
 <h2 align=center>
 Organization
