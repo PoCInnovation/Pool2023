@@ -114,7 +114,7 @@ Each pet must have a :
   Implement a function called **\_getPetsIndexFromAddress** which returns an array of the indexes of pets owned by a giving adress.
 
   ```solidity
-  function _getPetsIndexFromAddress(address _owner) public view returns (uint[] memory) {}
+  function getPetsIndexFromAddress(address _owner) public view returns (uint[] memory) {}
   ```
 
   Implement a function called **getPetsIndex** which returns an array of the indexes of pets owned by the caller of the function.
