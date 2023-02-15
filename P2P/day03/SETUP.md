@@ -32,7 +32,7 @@ The first thing you wants to do is set the solidity version of this project in t
 
 You can do this by adding in the "[profile.default]" section:
 ```toml
-solc_version = "0.8.17"
+solc_version = "0.8.18"
 ```
 
 ## VSCode Integration
@@ -49,9 +49,9 @@ forge remappings > remappings.txt
   "editor.formatOnSave": true,
   "solidity.packageDefaultDependenciesContractsDirectory": "src",
   "solidity.packageDefaultDependenciesDirectory": "lib",
-  "solidity.compileUsingRemoteVersion": "v0.8.17",
+  "solidity.compileUsingRemoteVersion": "v0.8.18",
   "[solidity]": {
-    "editor.defaultFormatter": "JuanBlanco.vscode-solidity" 
+    "editor.defaultFormatter": "JuanBlanco.solidity" 
   },
   "solidity.formatter": "forge",
 }
