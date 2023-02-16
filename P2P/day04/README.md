@@ -1,4 +1,4 @@
-# PoC Software Pool 2023 - Day 04 - Decentralized App
+# PoC P2P Pool 2023 - Day 04 - Decentralized App
 
 **Day purposes**
 
