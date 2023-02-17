@@ -131,7 +131,7 @@ The requested content is stored in the cache of your daemon but is not permanent
 For it to be permanent you must pin it.
 
 
-Here is the CID that will be used: `QmYRssHQjcDf8oKHuc2Ztzxb3T9ChhkhW34Yfa4NMSr3h1`
+Here is the CID that will be used: `QmeVUSb9cFAzKFMQNBqzUCoa4jFCTGaRJVQ8SYWYvXmdQj`
 We have seen that a CID points to a content. By performing a GET command we should be able to find the desired content.
 
 ### :pushpin: **Tasks**:
