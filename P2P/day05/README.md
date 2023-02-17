@@ -88,7 +88,7 @@ As you may have guessed, with SHA-1 we are able to make hash collisions.
 ### books: **Documentation**:
 
 - [CLI Kubo](https://docs.ipfs.tech/reference/kubo/cli/)
-- CID](https://docs.ipfs.io/concepts/content-addressing/#cid-conversion)
+- [CID](https://docs.ipfs.io/concepts/content-addressing/#cid-conversion)
 - [Google Shattered](https://www.numerama.com/tech/235436-shattered-google-a-casse-la-methode-de-chiffrement-sha-1.html)
 
 ### ✔️ **Validation**:
