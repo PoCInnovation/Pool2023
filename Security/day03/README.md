@@ -2,9 +2,9 @@
 
 **Day purposes**
 
-You will find every exercices on PathWar : https://pathwar.poc-innovation.fr/challenges
+You will find every exercises on PathWar : https://pathwar.poc-innovation.fr/challenges <!-- markdown-link-check-disable-line -->
 
-You will find different challenges to exploit, then you have to enter the flag you obtained on PoC's ctfd website : challs.poc-innovation.com
+You will find different challenges to exploit, then you have to enter the flag you obtained on PoC's CTFD website: challs.poc-innovation.com
 
 Here are the challenges names for this pool :
 

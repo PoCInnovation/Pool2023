@@ -74,5 +74,5 @@ Paste it in the hardhat.config.js file.
 
 Faucets let you earn fake money that can be used on testnet networks. They will be very useful since you need money to pay the transaction fees on the blockchain.
 
-Get some ether on [Goerli Faucet](https://goerlifaucet.com/). They will appear shortly on your account (on the goerli test network)
+Get some ether on [Goerli Faucet](https://goerlifaucet.com/). They will appear shortly on your account (on the goerli test network) <!-- markdown-link-check-disable-line -->
 

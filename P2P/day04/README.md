@@ -2,7 +2,7 @@
 
 **Day purposes**
 
-✔ Create a hardhat project to setup your etehereum development environment
+✔ Create a hardhat project to setup your ethereum development environment
 
 ✔ Create an ERC 721 smart contract
 
@@ -82,7 +82,7 @@ Quick tip: You can pass an additional object when calling your smart contract's 
 
 ### ✔️ **Validation**:
 
-You minted your first NFT and can now see it in your collection in your [opensea testnet](https://testnets.opensea.io/account) account.
+You minted your first NFT and can now see it in your collection in your [opensea testnet](https://testnets.opensea.io/account) account. <!-- markdown-link-check-disable-line -->
 
 
 

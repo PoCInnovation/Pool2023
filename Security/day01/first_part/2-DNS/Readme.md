@@ -9,4 +9,4 @@ For this exercise, you will write a program that takes a domain name as input an
 
 You can use the built-in module "socket" in Python to perform the DNS lookup.
 
-![](../../../.github/assets/result.png)
+![](../../../../.github/assets/result.png)

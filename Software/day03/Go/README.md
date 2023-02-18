@@ -23,7 +23,7 @@ They have many usages and everyone uses it daily. One of the most common is reso
 
 Those kinds of applications are called [API](https://www.redhat.com/en/topics/api/what-are-application-programming-interfaces),
 it's an interface exposed to let your application share resources with other applications
-or consumers. For example, you can ask for the weather through a [weather API](https://www.weatherapi.com).
+or consumers. For example, you can ask for the weather through a [weather API](https://www.weatherapi.com). <!-- markdown-link-check-disable-line -->
 
 To communicate, APIs usually follow the [HTTP protocol](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol)
 and standard. The most popular is [REST](https://en.wikipedia.org/wiki/Representational_state_transfer).

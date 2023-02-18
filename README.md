@@ -6,9 +6,9 @@ Every year, we organize innovation weeks in a "pool" format to introduce people 
 
 Here are our fields:
 - 🧠 [Artificial Intelligence](./Artificial%20Intelligence/)
-- 🔑 [Security]()
+- 🔑 [Security](./Security/)
 - 💻 [Software](./Software/)
-- 🕸️ [Peer-To-Peer]()
+- 🕸️ [Peer-To-Peer](./P2P/)
 - 👓 [AR-VR](./AR-VR/)
 
 We put all our heart to work, we hope you will enjoy it and that it will be useful to you.
