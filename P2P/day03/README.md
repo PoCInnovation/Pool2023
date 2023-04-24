@@ -1,4 +1,4 @@
-# Day 3 - Foudry : Advanced Solidity Project
+# Day 3 - Foundry : Advanced Solidity Project
 
 ✔ Testing
 
